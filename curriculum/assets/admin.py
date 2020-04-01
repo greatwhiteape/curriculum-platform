@@ -1,0 +1,16 @@
+from wagtail.contrib.modeladmin.options import (
+    ModelAdmin, modeladmin_register
+)
+
+from .models import Asset
+
+@modeladmin_register
+class AssetAdmin(ModelAdmin):
+    model = Asset
+    menu_label = "Assets"
+    menu_icon = "doc-empty"
+    menu_order = 290
+    add_to_settings_menu = False
+    exclude_from_explorer = False
+    list_display = ("title", "description", "program")
+    search_fields = ("title", "description", "program", "type", "tag")
