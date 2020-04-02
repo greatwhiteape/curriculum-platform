@@ -9,7 +9,7 @@ class AssetAdmin(ModelAdmin):
     model = Asset
     menu_label = "Assets"
     menu_icon = "doc-empty"
-    menu_order = 290
+    menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("title", "description", "program")

@@ -1,13 +1,6 @@
 from django.db import models
 
-# from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
-# from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
-# from wagtail.documents.edit_handlers import DocumentChooserPanel
-# from wagtail.images.edit_handlers import ImageChooserPanel
-# from wagtail.snippets.edit_handlers import SnippetChooserPanel
-
-
 
 class Activity(models.Model):
     class Meta:
