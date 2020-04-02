@@ -1,40 +1,41 @@
 {% load static wagtailuserbar %}
 
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>
-            {% block title %}
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
-            {% endblock %}
-            {% block title_suffix %}
-                {% with self.get_site.site_name as site_name %}
-                    {% if site_name %}- {{ site_name }}{% endif %}
-                {% endwith %}
-            {% endblock %}
-        </title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+{% block head %}
+  {% include "includes/head.html" %}
+{% endblock head %}
 
-        {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/curriculum_platform.css' %}">
+<body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HPT7WL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {% wagtailuserbar %}
 
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
-    </head>
+  {% block header %}
+    {# Header contains the main_navigation block #}
+    {% include "includes/header.html" with parent=site_root calling_page=self %}
+  {% endblock header %}
 
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
+  {% block head-extra %}
+  {% endblock head-extra %}
 
-        {% block content %}{% endblock %}
+  {% block messages %}
+    {% include "includes/messages.html" %}
+  {% endblock messages %}
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/curriculum_platform.js' %}"></script>
+  <main role="main">
+      {% block content %}
+      {% endblock content %}
+  </main>
 
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
-    </body>
+  <!-- Footer -->
+  <footer class="row">
+    {% include "includes/footer.html" %}
+  </footer>
+
+
+  <!-- Analytics & Scripts -->
+  {% include "includes/scripts.html" %}
+</body>
+
 </html>
