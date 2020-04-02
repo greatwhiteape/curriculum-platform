@@ -54,34 +54,72 @@ class Module(Page):
         null=True,
         blank=True
     )
-    lessons_desc = models.TextField(
-        verbose_name = 'Friendly Description of Lessons',
+    module_desc = models.TextField(
+        verbose_name = 'Friendly Description of Module',
         null=True,
         blank=True
     )
-    standards_alignment = models.ForeignKey(
-        'taxonomy.Standard',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-    )
+        
+    @property
+    def standards_alignment(self):
+        standards_alignment = [
+            n.standard for n in self.module_standards_relationship.all()
+        ]
+        return standards_alignment
+    
     time_estimate = models.ForeignKey(
         'taxonomy.TimeEstimate',
         null=True,
         blank=True,
         on_delete = models.SET_NULL
     )
+
     program = models.ForeignKey(
         'taxonomy.Program',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
     )
-    audience = models.ForeignKey(
-        'taxonomy.Audience',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
+    
+    @property
+    def audience(self):
+        audience = [
+            n.audience for n in self.module_audience_relationship.all()
+        ]
+        return audience
+    
+    @property
+    def tags(self):
+        tags = [
+            n.topic for n in self.module_tag_relationship.all()
+        ]
+        return tags
+    
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            ImageChooserPanel('hero_image'),
+            FieldPanel('subtitle')
+        ], heading="Hero Section"),
+        MultiFieldPanel([
+            FieldPanel('intro_copy'),
+            FieldPanel('student_intro'),
+            FieldPanel('module_desc'),
+        ], heading="Marketing Speak"),
+        MultiFieldPanel([
+            FieldPanel('teachers_guide'),
+            SnippetChooserPanel('program'),
+            SnippetChooserPanel('time_estimate'),
+            InlinePanel('module_audience_relationship', label="Audience"),
+            InlinePanel('module_standards_relationship', label="Standards Alignment"),
+            InlinePanel('module_topic_relationship', label="Topics"),
+            InlinePanel('module_tag_relationship', label="Tags"),
+        ], heading="Module Metadata")
+    ]
+
+class ModuleTagRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='module_tag_relationship'
     )
     tag = models.ForeignKey(
         'taxonomy.Tag', 
@@ -89,38 +127,55 @@ class Module(Page):
         blank=True,
         on_delete=models.SET_NULL,
     )
-    topic = models.ForeignKey(
-        'taxonomy.Topic',
+
+    panels = [
+        FieldPanel('tag')
+    ]
+
+class ModuleAudienceRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='module_audience_relationship'
+    )
+    audience = models.ForeignKey(
+        'taxonomy.Audience',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
     )
-    
-    content_panels = Page.content_panels + [
-        MultiFieldPanel([
-            ImageChooserPanel('hero_image'),
-            # FieldPanel('title'), 
-            FieldPanel('subtitle')
-        ], heading="Hero Section"),
-        MultiFieldPanel([
-            FieldPanel('intro_copy'),
-            FieldPanel('student_intro'),
-            FieldPanel('lessons_desc'),
-        ], heading="Marketing Speak"),
-        MultiFieldPanel([
-            FieldPanel('teachers_guide'),
-            SnippetChooserPanel('standards_alignment'),
-            SnippetChooserPanel('time_estimate'),
-            SnippetChooserPanel('program'),
-            SnippetChooserPanel('audience'),
-            SnippetChooserPanel('tag'),
-            SnippetChooserPanel('topic')
-        ], heading="Module Metadata")
+
+    panels = [
+        FieldPanel('audience')
     ]
-    
 
-    # def __str__(self):
-    #     return self.title
+class ModuleStandardsRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='module_standards_relationship'
+    )
+    standard = models.ForeignKey(
+        'taxonomy.Standard',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
 
-    # def get_fields(self):
-    #     return [(field.name, field.value_to_string(self)) for field in Module._meta.fields]
+    panels = [
+        FieldPanel('standard')
+    ]
+
+class ModuleTopicRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='module_topic_relationship'
+    )
+    topic = models.ForeignKey(
+        'taxonomy.Topic',
+        models.SET_NULL,
+        related_name='+',
+        null=True,
+    )
+
+    panels = [
+        FieldPanel('topic')
+    ]
