@@ -25,7 +25,7 @@ class Asset(models.Model):
         related_name='+',
     )
     asset_type = models.ForeignKey(
-        'taxonomy.Type', 
+        'taxonomy.AssetType', 
         on_delete=models.SET_NULL, 
         null=True, 
         blank=True,

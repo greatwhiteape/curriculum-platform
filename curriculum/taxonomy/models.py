@@ -19,7 +19,6 @@ class Program(models.Model):
         verbose_name = "Program"
         verbose_name_plural = "Programs"
 
-
 @register_snippet
 class StandardsBody(models.Model):
     class Meta:
@@ -33,9 +32,8 @@ class StandardsBody(models.Model):
     def __str__(self):
         return self.standards_body
 
-
 @register_snippet
-class Standards(models.Model):
+class Standard(models.Model):
     class Meta:
         managed = True
         verbose_name = 'Standard'
@@ -50,7 +48,6 @@ class Standards(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.standard_group, self.standard)
-        
 
 @register_snippet        
 class Audience(models.Model):
@@ -67,7 +64,6 @@ class Audience(models.Model):
     def __str__(self):
         return self.age_range
 
-
 @register_snippet
 class Topic(models.Model):
     class Meta:
@@ -82,9 +78,8 @@ class Topic(models.Model):
     def __str__(self):
         return self.topic
 
-
 @register_snippet
-class Type(models.Model):
+class AssetType(models.Model):
     class Meta:
         managed = True
         verbose_name = 'Type of Asset'
@@ -92,11 +87,10 @@ class Type(models.Model):
     
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
-    type = models.CharField(max_length=50)
+    asset_type = models.CharField(max_length=50)
 
     def __str__(self):
         return self.type
-
 
 @register_snippet
 class Tag(models.Model):
@@ -112,7 +106,6 @@ class Tag(models.Model):
     def __str__(self):
         return self.tag
 
-
 @register_snippet
 class TimeEstimate(models.Model):
     class Meta: 
@@ -126,3 +119,17 @@ class TimeEstimate(models.Model):
 
     def __str__(self):
         return self.time_estimate
+
+@register_snippet
+class ActivityType(models.Model):
+    class Meta:
+        managed = True
+        verbose_name = 'Type of Activity'
+        verbose_name_plural = 'Type of Activities'
+    
+    createDate = models.DateTimeField(auto_now_add=True)
+    modifiedDate = models.DateTimeField(auto_now=True)
+    activity_type = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.type

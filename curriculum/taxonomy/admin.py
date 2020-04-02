@@ -2,7 +2,7 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdmin, modeladmin_register
 )
 
-from .models import Program, StandardsBody, Standards, Audience, Topic, Type, Tag, TimeEstimate
+from .models import Program, StandardsBody, Standard, Audience, Topic, AssetType, ActivityType, Tag, TimeEstimate
 
 @modeladmin_register
 class ProgramAdmin(ModelAdmin):
@@ -27,9 +27,9 @@ class StandardsBodyAdmin(ModelAdmin):
     search_fields = ("standards_body")
 
 @modeladmin_register
-class StandardsAdmin(ModelAdmin):
-    model = Standards
-    menu_label = "Standards"
+class StandardAdmin(ModelAdmin):
+    model = Standard
+    menu_label = "Standard"
     menu_icon = "placeholder"
     menu_order = 310
     add_to_settings_menu = True
@@ -60,15 +60,26 @@ class TopicAdmin(ModelAdmin):
     search_fields = ("topic")
 
 @modeladmin_register
-class TypeAdmin(ModelAdmin):
-    model = Type
-    menu_label = "Types"
+class AssetTypeAdmin(ModelAdmin):
+    model = AssetType
+    menu_label = "Asset Type"
     menu_icon = "placeholder"
     menu_order = 340
     add_to_settings_menu = True
     exclude_from_explorer = False
-    list_display = ("type")
-    search_fields = ("type")
+    list_display = ("asset_type")
+    search_fields = ("asset_type")
+
+@modeladmin_register
+class ActivityTypeAdmin(ModelAdmin):
+    model = ActivityType
+    menu_label = "Type of Activity"
+    menu_icon = "placeholder"
+    menu_order = 340
+    add_to_settings_menu = True
+    exclude_from_explorer = False
+    list_display = ("activity_type")
+    search_fields = ("activity_type")
 
 @modeladmin_register
 class TagAdmin(ModelAdmin):
