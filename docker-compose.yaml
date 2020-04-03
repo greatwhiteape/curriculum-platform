@@ -4,7 +4,7 @@ services:
   web:
     build: ./app
     image: vs-python
-    command: python /app/evolution/manage.py runserver 0:8080
+    command: python /app/manage.py runserver 0:8080
     volumes:
     - ./app:/app
     - ./docker-data/media:/media

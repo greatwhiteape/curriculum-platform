@@ -24,8 +24,8 @@ COPY ./ /app/
 
 RUN chown -R uwsgi:uwsgi /app
 
-WORKDIR /app/evolution
+WORKDIR /app/curriculum_platform
 
-ENTRYPOINT ["/app/utils/entrypoint.sh"]
+# ENTRYPOINT ["/app/utils/entrypoint.sh"]
 
 CMD ["uwsgi", "--http", ":8080", "--wsgi-file", "curriculum_platform/wsgi.py", "--master", "--processes", "4", "--threads", "2", "--uid", "uwsgi", "--gid", "uwsgi"]
