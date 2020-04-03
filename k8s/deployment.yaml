@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  curriculum-beta
+  labels:
+    service: web
+spec:
+  selector:
+    matchLabels:
+      service: web
+  template:
+    metadata:
+      labels:
+        service: web
+    spec:
+      containers:
+        - name: web
+          image: gmri/curriculum
+          env: 
+            - name: DJANGO_MANAGEPY_MIGRATE
+              value: "on"
+            - name: DJANGO_MANAGEPY_COLLECTSTATIC
+              value: "on"
+          envFrom:
+            - secretRef:
+                name: curriculum-secrets
+          ports: 
+            - containerPort: 8080
+          volumeMounts:
+            - name:  django-static
+              mountPath:  /static
+      imagePullSecrets:
+        - name:  docker-hub-secrets.yaml
+      volumes:
+        - name: django-static
+          emptyDir: {}

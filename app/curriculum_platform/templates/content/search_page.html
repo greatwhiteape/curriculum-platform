@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<div class="{{page.title|lower}}">
+  {% image page.image fill-1600x500 as image %}
+  <div id="hero" class="row" style="background:#061f2b url('{{ image.url }}') center center;">
+    <div id="hero_row" class="col px-0">
+      <h1 id="hero-copy"><span class="labventure-text">{{ page.title }}</span> &mdash; {{ page.hero_text }}</h1>
+    </div>
+  </div>
+  <div id="featured" class="container col-sm-10 offset-1">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-uppercase font-weight-bolder">{{ page.featured_title}}</h5>
+      </div>
+    </div>
+    <div class="row py-3">
+      <div class="col">
+        <h2 id="featured_marketing_copy" class="">{{ page.featured_copy }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row py-5">
+    <div class="col-sm-10 offset-1">
+      {{ page.search_tag|safe }}
+    </div>
+  </div>
+</div>
+{% endblock content %}
