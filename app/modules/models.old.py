@@ -19,9 +19,8 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.search import index
-
-class Lesson(ClusterableModel):
-    template = 'lessons/lesson_page.html'
+class Module(Page):
+    template = 'modules/module_page.html'
 
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
@@ -55,8 +54,8 @@ class Lesson(ClusterableModel):
         null=True,
         blank=True
     )
-    lessons_desc = models.TextField(
-        verbose_name = 'Friendly Description of Lessons',
+    module_desc = models.TextField(
+        verbose_name = 'Friendly Description of Module',
         null=True,
         blank=True
     )
@@ -64,7 +63,7 @@ class Lesson(ClusterableModel):
     @property
     def standards_alignment(self):
         standards_alignment = [
-            n.standard for n in self.lesson_standards_relationship.all()
+            n.standard for n in self.module_standards_relationship.all()
         ]
         return standards_alignment
     
@@ -85,18 +84,18 @@ class Lesson(ClusterableModel):
     @property
     def audience(self):
         audience = [
-            n.audience for n in self.lesson_audience_relationship.all()
+            n.audience for n in self.module_audience_relationship.all()
         ]
         return audience
     
     @property
     def tags(self):
         tags = [
-            n.topic for n in self.lesson_tag_relationship.all()
+            n.topic for n in self.module_tag_relationship.all()
         ]
         return tags
     
-    panels = [
+    content_panels = Page.content_panels + [
         MultiFieldPanel([
             ImageChooserPanel('hero_image'),
             FieldPanel('subtitle')
@@ -104,23 +103,23 @@ class Lesson(ClusterableModel):
         MultiFieldPanel([
             FieldPanel('intro_copy'),
             FieldPanel('student_intro'),
-            FieldPanel('lessons_desc'),
+            FieldPanel('module_desc'),
         ], heading="Marketing Speak"),
         MultiFieldPanel([
             FieldPanel('teachers_guide'),
             SnippetChooserPanel('program'),
             SnippetChooserPanel('time_estimate'),
-            InlinePanel('lesson_audience_relationship', label="Audience"),
-            InlinePanel('lesson_standards_relationship', label="Standards Alignment"),
-            InlinePanel('lesson_topic_relationship', label="Topics"),
-            InlinePanel('lesson_tag_relationship', label="Tags"),
+            InlinePanel('module_audience_relationship', label="Audience"),
+            InlinePanel('module_standards_relationship', label="Standards Alignment"),
+            InlinePanel('module_topic_relationship', label="Topics"),
+            InlinePanel('module_tag_relationship', label="Tags"),
         ], heading="Module Metadata")
     ]
 
-class LessonTagRelationship(models.Model):
-    lesson = ParentalKey(
-        'Lesson',
-        related_name='lesson_tag_relationship'
+class ModuleTagRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='module_tag_relationship'
     )
     tag = models.ForeignKey(
         'taxonomy.Tag', 
@@ -133,10 +132,10 @@ class LessonTagRelationship(models.Model):
         FieldPanel('tag')
     ]
 
-class LessonAudienceRelationship(models.Model):
-    lesson = ParentalKey(
-        'Lesson',
-        related_name='lesson_audience_relationship'
+class ModuleAudienceRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='module_audience_relationship'
     )
     audience = models.ForeignKey(
         'taxonomy.Audience',
@@ -149,10 +148,10 @@ class LessonAudienceRelationship(models.Model):
         FieldPanel('audience')
     ]
 
-class LessonStandardsRelationship(models.Model):
-    lesson = ParentalKey(
-        'Lesson',
-        related_name='lesson_standards_relationship'
+class ModuleStandardsRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='module_standards_relationship'
     )
     standard = models.ForeignKey(
         'taxonomy.Standard',
@@ -165,10 +164,10 @@ class LessonStandardsRelationship(models.Model):
         FieldPanel('standard')
     ]
 
-class LessonTopicRelationship(models.Model):
-    lesson = ParentalKey(
-        'Lesson',
-        related_name='lesson_topic_relationship'
+class ModuleTopicRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='module_topic_relationship'
     )
     topic = models.ForeignKey(
         'taxonomy.Topic',

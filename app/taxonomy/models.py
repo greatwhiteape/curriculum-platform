@@ -90,7 +90,7 @@ class AssetType(models.Model):
     asset_type = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.type
+        return self.asset_type
 
 @register_snippet
 class Tag(models.Model):
@@ -132,4 +132,4 @@ class ActivityType(models.Model):
     activity_type = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.type
+        return self.activity_type

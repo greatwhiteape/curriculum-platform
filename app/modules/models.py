@@ -19,18 +19,22 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.search import index
-class Module(Page):
+
+from streams import blocks
+class Module(ClusterableModel):
     template = 'modules/module_page.html'
 
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
     hero_image = models.ForeignKey(
-        "wagtailimages.Image",
+        'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
+    title = models.CharField(max_length=100)
     subtitle = models.CharField(
         max_length=300,
         null=True,
@@ -54,10 +58,20 @@ class Module(Page):
         null=True,
         blank=True
     )
-    module_desc = models.TextField(
-        verbose_name = 'Friendly Description of Module',
+    lessons_desc = StreamField([
+        ("title", blocks.TitleBlock()),
+    ], null=True, blank=True)
+    time_estimate = models.ForeignKey(
+        'taxonomy.TimeEstimate',
         null=True,
-        blank=True
+        blank=True,
+        on_delete = models.SET_NULL
+    )
+    program = models.ForeignKey(
+        'taxonomy.Program',
+        null=True,
+        blank=True,
+        on_delete = models.SET_NULL
     )
         
     @property
@@ -66,20 +80,6 @@ class Module(Page):
             n.standard for n in self.module_standards_relationship.all()
         ]
         return standards_alignment
-    
-    time_estimate = models.ForeignKey(
-        'taxonomy.TimeEstimate',
-        null=True,
-        blank=True,
-        on_delete = models.SET_NULL
-    )
-
-    program = models.ForeignKey(
-        'taxonomy.Program',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-    )
     
     @property
     def audience(self):
@@ -91,19 +91,41 @@ class Module(Page):
     @property
     def tags(self):
         tags = [
-            n.topic for n in self.module_tag_relationship.all()
+            n.tag for n in self.module_tag_relationship.all()
         ]
         return tags
     
-    content_panels = Page.content_panels + [
+    @property
+    def topics(self):
+        topics = [
+            n.topic for n in self.module_topic_relationship.all()
+        ]
+        return tags
+
+    # audience = models.ManyToManyField(
+    #     'taxonomy.Audience',
+    #     blank=True
+    # )
+    # tag = models.ManyToManyField(
+    #     'taxonomy.Tag', 
+    #     blank=True
+    # )
+    # topic = models.ManyToManyField(
+    #     'taxonomy.Topic',
+    #     blank=True
+    # )
+
+    
+    panels = [
         MultiFieldPanel([
             ImageChooserPanel('hero_image'),
-            FieldPanel('subtitle')
+            FieldPanel('title'),
+            FieldPanel('subtitle'),
         ], heading="Hero Section"),
         MultiFieldPanel([
             FieldPanel('intro_copy'),
             FieldPanel('student_intro'),
-            FieldPanel('module_desc'),
+            StreamFieldPanel('lessons_desc'),
         ], heading="Marketing Speak"),
         MultiFieldPanel([
             FieldPanel('teachers_guide'),

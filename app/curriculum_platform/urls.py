@@ -16,6 +16,8 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
 
+    url(r'curriculum/lessons/', include('lessons.urls')),
+    url(r'curriculum/modules/', include('modules.urls'))
 ]
 
 

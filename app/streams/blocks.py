@@ -1,14 +1,13 @@
-<!-- Title Block -->
-<div class="row text-center cc-title-block">
-    <div class="col">
-        <h3 class="cc-title-title mb-0">
-            {{ self.text }} 
-            <!-- 
-                Could also use {{value.text}}. 
-                self & value refer to the TitleBlock() class in blocks.py
-            -->
-        </h3>
-    </div>
-</div>
-<!-- End Title Block -->
+from wagtail.core import blocks
 
+class TitleBlock(blocks.StructBlock):
+    text = blocks.CharBlock(
+        required=True, 
+        help_text='Text to display',
+    )
+
+    class Meta: 
+        template = "streams/title_block.html"
+        icon = "edit"
+        label = "Title"
+        help_text = "Centered text to display on the page"

@@ -20,7 +20,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.search import index
 
-class Lesson(ClusterableModel):
+class Lesson(Page):
     template = 'lessons/lesson_page.html'
 
     createDate = models.DateTimeField(auto_now_add=True)
@@ -96,7 +96,7 @@ class Lesson(ClusterableModel):
         ]
         return tags
     
-    panels = [
+    content_panels = Page.content_panels + [
         MultiFieldPanel([
             ImageChooserPanel('hero_image'),
             FieldPanel('subtitle')
