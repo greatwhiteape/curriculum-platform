@@ -13,13 +13,22 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
+from wagtail.core import blocks as wagtail_blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
+from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.documents.edit_handlers import DocumentChooserPanel
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.blocks import SnippetChooserBlock
+from wagtail.snippets.models import register_snippet
 from wagtail.search import index
 
+from streams import blocks
+
+@register_snippet
 class Lesson(ClusterableModel):
     template = 'lessons/lesson_page.html'
 
@@ -32,17 +41,18 @@ class Lesson(ClusterableModel):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    title = models.CharField(max_length=100)
     subtitle = models.CharField(
         max_length=300,
         null=True,
         blank=True,
     )
-    intro_copy = models.TextField(
+    intro_copy = RichTextField(
         verbose_name="Marketing Copy",
         null=True,
         blank=True
     )
-    student_intro = models.TextField(
+    student_intro = RichTextField(
         verbose_name="Copy for the Student Page",
         null=True,
         blank=True
@@ -51,13 +61,34 @@ class Lesson(ClusterableModel):
         null=True,
         blank=True
     )
-    learning_outcomes = models.TextField(
+    learning_outcomes = RichTextField(
         null=True,
         blank=True
     )
-    lessons_desc = models.TextField(
-        verbose_name = 'Friendly Description of Lessons',
-        null=True,
+    teachers_desc = StreamField(
+        [
+            ('title', blocks.TitleBlock()),
+            ('copy', wagtail_blocks.RichTextBlock()),
+            ('image', ImageChooserBlock()),
+            ('asset', SnippetChooserBlock('assets.Asset')),
+            ('activity', SnippetChooserBlock('activity.Activity')),
+            ('document', DocumentChooserBlock()),
+            ('embed', EmbedBlock()),
+        ], 
+        null=True, 
+        blank=True
+    )    
+    students_desc = StreamField(
+        [
+            ('title', blocks.TitleBlock()),
+            ('copy', wagtail_blocks.RichTextBlock()),
+            ('image', ImageChooserBlock()),
+            ('asset', SnippetChooserBlock('assets.Asset')),
+            ('activity', SnippetChooserBlock('activity.Activity')),
+            ('document', DocumentChooserBlock()),
+            ('embed', EmbedBlock()),
+        ], 
+        null=True, 
         blank=True
     )
         
@@ -98,16 +129,20 @@ class Lesson(ClusterableModel):
     
     panels = [
         MultiFieldPanel([
+            FieldPanel('title'),
+            FieldPanel('subtitle'),
             ImageChooserPanel('hero_image'),
-            FieldPanel('subtitle')
         ], heading="Hero Section"),
         MultiFieldPanel([
             FieldPanel('intro_copy'),
             FieldPanel('student_intro'),
-            FieldPanel('lessons_desc'),
+            FieldPanel('teachers_guide'),
         ], heading="Marketing Speak"),
         MultiFieldPanel([
-            FieldPanel('teachers_guide'),
+            StreamFieldPanel('teachers_desc'),
+            StreamFieldPanel('students_desc'),
+        ], heading="Detailed Description"),
+        MultiFieldPanel([
             SnippetChooserPanel('program'),
             SnippetChooserPanel('time_estimate'),
             InlinePanel('lesson_audience_relationship', label="Audience"),

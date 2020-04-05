@@ -1,11 +1,9 @@
 from django.db import models
 
 from wagtail.core.fields import RichTextField
-# from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
-# from wagtail.documents.edit_handlers import DocumentChooserPanel
-# from wagtail.images.edit_handlers import ImageChooserPanel
-# from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.models import register_snippet
 
+@register_snippet
 class Asset(models.Model):
     class Meta: 
         verbose_name = "Curriculum Asset"

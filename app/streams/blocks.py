@@ -1,4 +1,6 @@
 from wagtail.core import blocks
+from django.core.exceptions import ValidationError
+from django.forms.utils import ErrorList
 
 class TitleBlock(blocks.StructBlock):
     text = blocks.CharBlock(
@@ -11,3 +13,80 @@ class TitleBlock(blocks.StructBlock):
         icon = "edit"
         label = "Title"
         help_text = "Centered text to display on the page"
+
+class LinkValue(blocks.StructValue):
+
+    def url(self) -> str:
+        internal_page = self.get("internal_page")
+        external_link = self.get("external_link")
+        if internal_page:
+            return internal_page.url
+        elif external_link:
+            return external_link
+        return ""
+
+class Link(blocks.StructBlock):
+    link_text = blocks.CharBlock(
+        max_length=50,
+        default='More Details'
+    )
+    internal_page = blocks.PageChooserBlock(
+        required=False
+    )
+    external_link = blocks.URLBlock(
+        required=False
+    )
+
+    class Meta:
+        value_class = LinkValue
+
+    def clean(self, value):
+        internal_page = value.get("internal_page")
+        external_link = value.get("external_link")
+        errors = {}
+        if internal_page and external_link:
+            errors["internal_page"] = ErrorList(["Both of these fields cannot be filled. Please select or enter only one option."])
+            errors["external_link"] = ErrorList(["Both of these fields cannot be filled. Please select or enter only one option."])
+        elif not internal_page and not external_link:
+            errors["internal_page"] = ErrorList(["Please select a page or enter a URL for one of these options."])
+            errors["external_link"] = ErrorList(["Please select a page or enter a URL for one of these options."])
+
+        if errors:
+            raise ValidationError("Validation error in your Link", params=errors)
+
+        return super().clean(value)
+
+class ChapterBlock(blocks.StructBlock):
+    title = blocks.CharBlock(
+        required=True, 
+        help_text='Chapter Title',
+    )
+    body = blocks.RichTextBlock(
+        required=False,
+        help_text='Chapter Description',
+    )
+
+    class Meta: 
+        template = "streams/chapter_block.html"
+        icon = "edit"
+        label = "Chapter Block"
+        help_text = "Chapter Description"
+
+
+
+class LessonBlock(blocks.StructBlock):
+    title = blocks.CharBlock(
+        required=True, 
+        help_text='Chapter Title',
+    )
+    body = blocks.RichTextBlock(
+        required=True,
+        help_text='Chapter Description',
+    )
+
+    class Meta: 
+        template = "streams/chapter_block.html"
+        icon = "edit"
+        label = "Chapter Block"
+        help_text = "Chapter Description"
+
