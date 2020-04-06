@@ -103,19 +103,24 @@ class TimeEstimateAdmin(ModelAdmin):
     list_display = ("time_estimate")
     search_fields = ("time_estimate")
     
-
-@modeladmin_register
-class TaxonomyAdminGroup(ModelAdminGroup):
-    menu_label = 'Lookup Elements'
-    menu_order = 500
-    items = (
-        ActivityTypeAdmin,
-        AssetTypeAdmin,
-        AudienceAdmin, 
-        ProgramAdmin,
-        StandardsBodyAdmin,
-        StandardAdmin,
-        TagAdmin,
-        TimeEstimateAdmin, 
-        TopicAdmin,
-    )
+# @TODO Fix this...
+# Works when linking through Snippets, 
+# but does not work when linking through 
+# TaxAdminGroup 
+# (seems to be missing /snippets/ in link...)
+# 
+# @modeladmin_register
+# class TaxonomyAdminGroup(ModelAdminGroup):
+#     menu_label = 'Lookup Elements'
+#     menu_order = 500
+#     items = (
+#         ActivityTypeAdmin,
+#         AssetTypeAdmin,
+#         AudienceAdmin, 
+#         ProgramAdmin,
+#         StandardsBodyAdmin,
+#         StandardAdmin,
+#         TagAdmin,
+#         TimeEstimateAdmin, 
+#         TopicAdmin,
+#     )

@@ -5,6 +5,8 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
+from wagtail.api import APIField
+
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     FieldRowPanel,
@@ -130,7 +132,7 @@ class Module(ClusterableModel):
         topics = [
             n.topic for n in self.module_topic_relationship.all()
         ]
-        return tags
+        return topics
     
     panels = [
         MultiFieldPanel([
@@ -156,6 +158,11 @@ class Module(ClusterableModel):
             InlinePanel('module_topic_relationship', label="Topics"),
             InlinePanel('module_tag_relationship', label="Tags"),
         ], heading="Module Metadata")
+    ]
+
+    api_fields = [
+        APIField('title'),
+        APIField('subtitle'),
     ]
 
     def __str__(self):

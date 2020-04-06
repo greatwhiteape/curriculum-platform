@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     'streams',
     'taxonomy',
 
+    'rest_framework',
+
+    'wagtail.api.v2',
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
