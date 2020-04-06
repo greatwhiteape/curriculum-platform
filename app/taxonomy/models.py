@@ -1,10 +1,12 @@
 from django.db import models
-from wagtail.snippets.models import register_snippet
+
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.api import APIField
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
+from wagtail.snippets.models import register_snippet
 
 @register_snippet
 class Program(models.Model):
@@ -18,6 +20,12 @@ class Program(models.Model):
     class Meta: 
         verbose_name = "Program"
         verbose_name_plural = "Programs"
+    
+    api_fields = [
+        APIField('program_name'),
+        APIField('program_description'),
+        APIField('program_url'),
+    ]
 
 @register_snippet
 class StandardsBody(models.Model):

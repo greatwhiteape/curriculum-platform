@@ -30,6 +30,15 @@ from wagtail.search import index
 
 from streams import blocks
 
+from taxonomy.serializers import (
+    ProgramSerializer, 
+    TimeEstimateSerializer, 
+    AudienceSerializer, 
+    StandardsSerializer, 
+    TopicSerializer, 
+    TagSerializer,
+)
+
 @register_snippet
 class Module(ClusterableModel):
     template = 'modules/module_page.html'
@@ -163,6 +172,19 @@ class Module(ClusterableModel):
     api_fields = [
         APIField('title'),
         APIField('subtitle'),
+        APIField('hero_image'),
+        APIField('intro_copy'),
+        APIField('student_intro'),
+        APIField('learning_outcomes'),
+        APIField('teachers_guide'),
+        APIField('teachers_desc'),
+        APIField('students_desc'),
+        APIField('program', serializer=ProgramSerializer()),
+        APIField('time_estimate', serializer=TimeEstimateSerializer()),
+        APIField('module_audience_relationship'),
+        APIField('module_standards_relationship'),
+        APIField('module_topic_relationship'),
+        APIField('module_tag_relationship'),
     ]
 
     def __str__(self):
@@ -184,6 +206,10 @@ class ModuleTagRelationship(models.Model):
         FieldPanel('tag')
     ]
 
+    api_fields = [
+        APIField('tag', serializer=TagSerializer())
+    ]
+
 class ModuleAudienceRelationship(models.Model):
     module = ParentalKey(
         'Module',
@@ -198,6 +224,10 @@ class ModuleAudienceRelationship(models.Model):
 
     panels = [
         FieldPanel('audience')
+    ]
+
+    api_fields = [
+        APIField('audience', serializer=AudienceSerializer())
     ]
 
 class ModuleStandardsRelationship(models.Model):
@@ -216,6 +246,10 @@ class ModuleStandardsRelationship(models.Model):
         FieldPanel('standard')
     ]
 
+    api_fields = [
+        APIField('standard', serializer=StandardsSerializer())
+    ]
+
 class ModuleTopicRelationship(models.Model):
     module = ParentalKey(
         'Module',
@@ -230,4 +264,8 @@ class ModuleTopicRelationship(models.Model):
 
     panels = [
         FieldPanel('topic')
+    ]
+
+    api_fields = [
+        APIField('topic', serializer=TopicSerializer())
     ]

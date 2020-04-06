@@ -8,7 +8,6 @@ from rest_framework import routers, serializers, viewsets
 from rest_framework.parsers import JSONParser
 
 from .models import Module # , Chapter
-from .serializers import ModuleSerializer # , ChapterSerializer
 
 # @csrf_exempt
 # def get_module_data(request):

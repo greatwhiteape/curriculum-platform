@@ -1,6 +1,6 @@
 from wagtail.api.v2.endpoints import BaseAPIEndpoint
 
-from modules.models import Module
+from .models import Module
 
 
 class ModulesAPIEndpoint(BaseAPIEndpoint):
@@ -17,10 +17,10 @@ class ModulesAPIEndpoint(BaseAPIEndpoint):
         'students_desc',
         'program',
         'time_estimate',
-        # 'audience',
-        # 'standards_alignment',
-        # 'topics',
-        # 'tags',
+        'module_audience_relationship',
+        'module_standards_relationship',
+        'module_topic_relationship',
+        'module_tag_relationship',
     ]
 
     listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
@@ -34,8 +34,8 @@ class ModulesAPIEndpoint(BaseAPIEndpoint):
         'students_desc',
         'program',
         'time_estimate',
-        'audience',
-        'standards_alignment',
-        'topics',
-        # 'tags',
+        'module_audience_relationship',
+        'module_standards_relationship',
+        'module_topic_relationship',
+        'module_tag_relationship',
     ]

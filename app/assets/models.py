@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+from wagtail.api import APIField
+
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.documents.models import Document
@@ -8,6 +10,16 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+
+from taxonomy.serializers import (
+    ProgramSerializer, 
+    TimeEstimateSerializer, 
+    AudienceSerializer, 
+    StandardsSerializer, 
+    TopicSerializer, 
+    TagSerializer,
+    AssetTypeSerializer,
+)
 @register_snippet
 class Asset(models.Model):
     class Meta: 
@@ -82,6 +94,20 @@ class Asset(models.Model):
         # SnippetChooserPanel("tag"),
         # SnippetChooserPanel("topic"),
     ]
+
+    api_fields = [
+        APIField("description"),
+        APIField("student_asset"),
+        APIField("internal_link"),
+        APIField("external_link"),
+        APIField("program", serializer=ProgramSerializer()),
+        APIField("audience", serializer=AudienceSerializer()),
+        APIField("asset_type", serializer=AssetTypeSerializer()),
+        # APIField("tag"),
+        # APIField("topic"),
+    ]
+
+    
 
     def clean(self):
         super().clean()

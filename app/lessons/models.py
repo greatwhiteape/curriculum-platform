@@ -5,6 +5,8 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
+from wagtail.api import APIField
+
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     FieldRowPanel,
@@ -27,6 +29,15 @@ from wagtail.snippets.models import register_snippet
 from wagtail.search import index
 
 from streams import blocks
+
+from taxonomy.serializers import (
+    ProgramSerializer, 
+    TimeEstimateSerializer, 
+    AudienceSerializer, 
+    StandardsSerializer, 
+    TopicSerializer, 
+    TagSerializer,
+)
 
 @register_snippet
 class Lesson(ClusterableModel):
@@ -153,6 +164,24 @@ class Lesson(ClusterableModel):
         ], heading="Module Metadata")
     ]
 
+    api_fields = [
+        APIField('title'),
+        APIField('subtitle'),
+        APIField('hero_image'),
+        APIField('intro_copy'),
+        APIField('student_intro'),
+        APIField('learning_outcomes'),
+        APIField('teachers_guide'),
+        APIField('teachers_desc'),
+        APIField('students_desc'),
+        APIField('program', serializer=ProgramSerializer()),
+        APIField('time_estimate', serializer=TimeEstimateSerializer()),
+        APIField('lesson_audience_relationship'),
+        APIField('lesson_standards_relationship'),
+        APIField('lesson_topic_relationship'),
+        APIField('lesson_tag_relationship'),
+    ]
+
     def __str__(self):
         return self.title
 class LessonTagRelationship(models.Model):
@@ -171,6 +200,10 @@ class LessonTagRelationship(models.Model):
         FieldPanel('tag')
     ]
 
+    api_fields = [
+        APIField('tag', serializer=TagSerializer())
+    ]
+
 class LessonAudienceRelationship(models.Model):
     lesson = ParentalKey(
         'Lesson',
@@ -185,6 +218,10 @@ class LessonAudienceRelationship(models.Model):
 
     panels = [
         FieldPanel('audience')
+    ]
+
+    api_fields = [
+        APIField('audience', serializer=AudienceSerializer())
     ]
 
 class LessonStandardsRelationship(models.Model):
@@ -203,6 +240,10 @@ class LessonStandardsRelationship(models.Model):
         FieldPanel('standard')
     ]
 
+    api_fields = [
+        APIField('standard', serializer=StandardsSerializer())
+    ]
+
 class LessonTopicRelationship(models.Model):
     lesson = ParentalKey(
         'Lesson',
@@ -217,4 +258,8 @@ class LessonTopicRelationship(models.Model):
 
     panels = [
         FieldPanel('topic')
+    ]
+
+    api_fields = [
+        APIField('topic', serializer=TopicSerializer())
     ]

@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+from wagtail.api import APIField
+
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
@@ -11,6 +13,15 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+from taxonomy.serializers import (
+    ProgramSerializer, 
+    TimeEstimateSerializer, 
+    AudienceSerializer, 
+    StandardsSerializer, 
+    TopicSerializer, 
+    TagSerializer,
+    ActivityTypeSerializer,
+)
 @register_snippet
 class Activity(ClusterableModel):
     class Meta:
@@ -97,6 +108,20 @@ class Activity(ClusterableModel):
         # SnippetChooserPanel("tag"),
         InlinePanel('activity_tag_relationship', label="Tags"),
     ]
+    
+    api_fields = [
+        APIField("title"),
+        # APIField("teachers_guide"),
+        APIField("overview_copy"),
+        APIField("student_copy"),
+        APIField("internal_link"),
+        APIField("external_link"),
+        APIField("program", serializer=ProgramSerializer()),
+        APIField("audience", serializer=AudienceSerializer()),
+        APIField("activity_type", serializer=ActivityTypeSerializer()),
+        APIField("topic", serializer=TopicSerializer()),
+        APIField('activity_tag_relationship', serializer=TagSerializer()),
+    ]
 
     def clean(self):
         super().clean()
@@ -127,4 +152,8 @@ class ActivityTagRelationship(models.Model):
 
     panels = [
         FieldPanel('tag')
+    ]
+
+    api_fields = [
+        APIField('tag', serializer=TagSerializer())
     ]
