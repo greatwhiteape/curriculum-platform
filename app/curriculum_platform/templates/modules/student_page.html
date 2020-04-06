@@ -12,26 +12,10 @@
   </div>
   <div class="row">
     <div class="col-10 offset-md-1">
-      {% if module.student_intro %}
-      <div>{{ module.student_intro|safe }}</div>
+      {% if module.students_desc %}
+      {{ module.students_desc }}
       {% endif %}
     </div>
   </div>
-  <!-- <ul class="list-group">
-    Testing
-    {% for lesson in module.lesson.all|dictsort:"id" %} 
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col">
-          {% if lesson.title %}
-          <h4>{{ lesson.display_title}}</h4>
-          {% endif %}
-          <p>{{ lesson.student_copy|safe }}</p>
-        </div>
-      </div>
-    </li>
-  {% endfor %}
-  </ul> -->
-
 </div>
 {% endblock content %}

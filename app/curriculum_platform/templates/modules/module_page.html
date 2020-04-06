@@ -1,11 +1,14 @@
 {% extends "base.html" %}
+{% load wagtailimages_tags %}
 
 {% block content %}
+
 <div class="module">
   <div class="row">
     <div class="col-md-11 offset-md-1">
       <div class="row">
-        <div id="hero_module" class="col" style="background: #0098b8 {% if module.hero_image %}url('{{ MEDIA_URL }}{{ module.hero_image.url }}') no-repeat right{% endif %};">
+      {% image module.hero_image width-1600 as hero %}
+        <div id="hero_module" class="col" style="background: #0098b8 {% if module.hero_image %}url({{hero.url}}) no-repeat right{% endif %};">
           <div id="title" class="container col-md-6 col-xl-8 mt-5 ml-n5 py-5 pl-5 pr-3 float-left">
             <h2 class="red-text">{{ module.title|upper }}:</h2>
             <div id="subtitle" class="h4 font-italic">{{ module.subtitle|truncatewords:"100" }}</div>
@@ -84,23 +87,23 @@
                   <h4 class="my-2">Time Estimate: <small class="font-italic">{{ module.time_estimate }}</small></h4>
                   {% endif %}
                   
-                  {% if module.audience.all|length > 0 %}
+                  {% if module.module_audience_relationship.all|length > 0 %}
                   <h4 class="my-4">Audience: <small class="font-italic">
-                  {% for audience in module.audience.all %} 
-                    {{ audience }} {% if not forloop.last %}&nbsp;&middot;&nbsp;{% endif %}
+                  {% for audience in module.module_audience_relationship.all %} 
+                    {{ audience.audience.age_range }} {% if not forloop.last %}&nbsp;&middot;&nbsp;{% endif %}
                   {% endfor %}
                   </small></h4>
                   {% endif %}
                   
-                  {% if module.standards_alignment.all|length > 0 %}
+                  {% if module.module_standards_relationship.all|length > 0 %}
                   <h4>Standards Alignment</h4>
                   <ul class="list-group">
-                  {% for standard in module.standards_alignment.all %} 
+                  {% for standard in module.module_standards_relationship.all %} 
                   {% if standard.standard %}
 
                   <li class="list-group-item">
-                    <h5>{% if standard.standard_link %}<a href="{{ standard.standard_link }}" target="_blank">{% endif %}{{ standard.standard_group}}: {{ standard.standard }}{% if standard.standard_link %}</a>{% endif %}</h5>
-                    {% if standard.description %}<p class="ml-5">{{ standard.description }}</p>{% endif %}
+                    <h5>{% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank">{% endif %}{{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}{% if standard.standard.standard_link %}</a>{% endif %}</h5>
+                    {% if standard.standard.description %}<p class="ml-5">{{ standard.standard.description }}</p>{% endif %}
                   </li>
 
                   {% endif %}
@@ -120,25 +123,10 @@
                 </h5>
               </div>
               <div id="collapse-C" class="collapse" role="tabpanel" data-parent="#content" aria-labelledby="heading-C">
-                <div class="card-body">
-
-                  {% if module.lessons_desc %}
-                  {{ module.lessons_desc|safe }}
+                <div class="card-body p-3">
+                  {% if module.teachers_desc %}
+                  {{ module.teachers_desc }}
                   {% endif %}
-                  <!-- <ul class="list-group">                  
-                    {% for lesson in module.lesson.all|dictsort:"id" %} 
-                    <li class="list-group-item">
-                      <div class="row">
-                        <div class="col">
-                          {% if lesson.title %}
-                          <h4><a href="/curriculum/lessons/{{ lesson.id }}/">{{ lesson.display_title}}</a></h4>
-                          {% endif %}
-                          <p>{{ lesson.intro_copy|safe }}</p>
-                        </div>
-                      </div>
-                    </li>
-                  {% endfor %}
-                  </ul> -->
                 </div>
               </div>
             </div>

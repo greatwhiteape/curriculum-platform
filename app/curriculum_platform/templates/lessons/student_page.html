@@ -10,13 +10,21 @@
       <h2 class="text-center">{{ lesson.subtitle }}</h2>
     </div>
   </div>
+  {% if lesson.student_intro %}
   <div class="row">
     <div class="col-10 offset-md-1">
-      {% if lesson.student_intro %}
-      <div>{{ lesson.student_intro|safe }}</div>
-      {% endif %}
+      {{ lesson.student_intro|safe }}
     </div>
   </div>
+  {% endif %}
+  {% if lesson.students_desc %}
+  <hr />
+  <div class="row">
+    <div class="col-10 offset-md-1">
+      <div>{{ lesson.students_desc }}</div>
+    </div>
+  </div>
+  {% endif %}
   <!-- <ul class="list-group">
     Testing
     {% for lesson in lesson.lesson.all|dictsort:"id" %} 

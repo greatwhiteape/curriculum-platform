@@ -1,11 +1,13 @@
 Django>=3.0,<3.1
 wagtail>=2.8,<2.9
 
+wagtailmenus
 wagtailfontawesome==1.1.4
 
 gunicorn
 psycopg2-binary
 django-cas-client
+
 
 xkcdpass
 

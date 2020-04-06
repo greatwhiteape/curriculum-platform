@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load wagtailimages_tags %}
 
 {% block content %}
 <div class="lesson">
@@ -36,9 +37,9 @@
             <li class="nav-item">
               <a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">Details</a>
             </li>
-            <!-- <li class="nav-item">
-              <a id="tab-C" href="#pane-C" class="nav-link" data-toggle="tab" role="tab">Lessons</a>
-            </li> -->
+            <li class="nav-item">
+              <a id="tab-C" href="#pane-C" class="nav-link" data-toggle="tab" role="tab">Activities</a>
+            </li>
           </ul>
       
       
@@ -82,33 +83,33 @@
                   <h4>Learning Outcomes</h4>
                   {{ lesson.learning_outcomes|safe }}
                   {% endif %}
-                  
-                  {% if lesson.standards_alignment.all|length > 0 %}
-                  <h4>Standards Alignment</h4>
-                  <ul class="list-group">
-                  {% for standard in lesson.standards_alignment.all %} 
-                  {% if standard.standard %}
-
-                  <li class="list-group-item">
-                    <h5><a href="{{ standard.standard_link }}" target="_blank">{{ standard.standard_group}}: {{ standard.standard }}</a></h5>
-                    {% if standard.description %}<p class="ml-5">{{ standard.description }}</p>{% endif %}
-                  </li>
-
-                  {% endif %}
-                  {% endfor %}
-                  </ul>
-                  {% endif %}
 
                   {% if lesson.time_estimate %}
                   <h4 class="my-2">Time Estimate: <small class="font-italic">{{ lesson.time_estimate }}</small></h4>
                   {% endif %}
                   
-                  {% if lesson.audience.all|length > 0 %}
+                  {% if lesson.lesson_audience_relationship.all|length > 0 %}
                   <h4 class="my-4">Audience: <small class="font-italic">
-                  {% for audience in lesson.audience.all %} 
-                    {{ audience }} {% if not forloop.last %}&nbsp;&middot;&nbsp;{% endif %}
+                  {% for audience in lesson.lesson_audience_relationship.all %} 
+                    {{ audience.audience.age_range }} {% if not forloop.last %}&nbsp;&middot;&nbsp;{% endif %}
                   {% endfor %}
                   </small></h4>
+                  {% endif %}
+                  
+                  {% if lesson.lesson_standards_relationship.all|length > 0 %}
+                  <h4>Standards Alignment</h4>
+                  <ul class="list-group">
+                  {% for standard in lesson.lesson_standards_relationship.all %} 
+                  {% if standard.standard %}
+
+                  <li class="list-group-item">
+                    <h5>{% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank">{% endif %}{{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}{% if standard.standard.standard_link %}</a>{% endif %}</h5>
+                    {% if standard.standard.description %}<p class="ml-5">{{ standard.standard.description }}</p>{% endif %}
+                  </li>
+
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
                   {% endif %}
                 </div>
               </div>
@@ -118,120 +119,16 @@
               <div class="card-header" role="tab" id="heading-C">
                 <h5 class="mb-0">
                   <a class="collapsed" data-toggle="collapse" href="#collapse-C" aria-expanded="false" aria-controls="Lessons">
-                    Lessons
+                    Activities 
                   </a>
                 </h5>
               </div>
               <div id="collapse-C" class="collapse" role="tabpanel" data-parent="#content" aria-labelledby="heading-C">
                 <div class="card-body">
-                  <ul class="list-group">                  
-                    {% for lesson in lesson.lesson.all|dictsort:"id" %} 
-                    <li class="list-group-item">
-                      <div class="row">
-                        <div class="col">
-                          {% if lesson.title %}
-                          <h4>{{ lesson.display_title}}</h4>
-                          {% endif %}
-                          <p>{{ lesson.overview_copy|safe }}</p>
-                        </div>
-                      </div>
-                    </li>
-                  {% endfor %}
-                  <!-- {% for chapter in lesson.chapter.all|dictsort:"id" %} 
-                    <li class="list-group-item">
-                      <div class="row">
-                        <div class="col-md-8">
-                          {% if chapter.title %}
-                          <h4>{{ chapter.title}}: 
-                            {% if chapter.subtitle %}<small class="font-italic">{{ chapter.subtitle }}</small>{% endif %}
-                          </h4>
-                          {% endif %}
-                          <p>{{ chapter.intro_copy|safe }}</p>
-                        </div>
-                        <div class="col-md-4 card border border-primary rounded">
-                          <div class="card-body">
-                            <h5 class="card-title">Materials &amp; Technology</h5>
-                              {% if chapter.asset.all %}
-                              {% for item in chapter.asset.all|dictsort:"id" %}
-
-                              {% if item.file.all|length > 0%}
-                              <strong>Files</strong>
-                              <ul class="card-text">
-                                {% for asset in item.file.all|dictsort:"id" %}
-                                  <li><a href="{{asset.file.url}}" target="_blank">
-                                    {% if asset.display_title %}
-                                    {{asset.display_title}}
-                                    {% else %}
-                                    {{asset.title}}
-                                    {% endif %}
-                                  </a></li>
-                                {% endfor %}
-                              </ul>{% endif %}
-
-
-                              {% if item.image.all|length > 0%}
-                              <strong>Images</strong>
-                              <ul class="card-text">
-                                {% for asset in item.image.all|dictsort:"id" %}
-                                  <li><a href="{{asset.image.url}}" target="_blank">
-                                    {% if asset.display_title %}
-                                    {{asset.display_title}}
-                                    {% else %}
-                                    {{asset.title}}
-                                    {% endif %}
-                                  </a></li>
-                                {% endfor %}
-                              </ul>{% endif %}
-
-                              {% if item.url.all|length > 0%}
-                              <strong>Links</strong>
-                              <ul class="card-text">
-                                {% for asset in item.url.all|dictsort:"id" %}
-                                  <li><a href="{{asset.url}}" target="_blank">
-                                    {% if asset.display_title %}
-                                    {{asset.display_title}}
-                                    {% else %}
-                                    {{asset.title}}
-                                    {% endif %}
-                                  </a></li>
-                                {% endfor %}
-                              </ul>{% endif %}
-                              
-                              {% if item.equiptment.all|length > 0%}
-                              <strong>Equiptment</strong>
-                              <ul class="card-text">
-                                {% for asset in item.equiptment.all|dictsort:"id" %}
-                                  <li>
-                                    {% if asset.display_title %}
-                                    {{asset.display_title}}
-                                    {% else %}
-                                    {{asset.name}}
-                                    {% endif %}
-                                  </li>
-                                {% endfor %}
-                              </ul>{% endif %}
-
-                              {% if item.technology.all|length > 0%}
-                              <strong>Technology</strong>
-                              <ul class="card-text">
-                                {% for asset in item.technology.all|dictsort:"id" %}
-                                  <li>
-                                    {% if asset.display_title %}
-                                    {{asset.display_title}}
-                                    {% else %}
-                                    {{asset.name}}
-                                    {% endif %}
-                                  </li>
-                                {% endfor %}
-                              </ul>{% endif %}
-
-                              {% endfor %}
-                              {% endif %}
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  {% endfor %} -->
+                  {% if lesson.teachers_desc %}
+                  {{ lesson.teachers_desc }}
+                  {{ lesson.students_desc }}
+                  {% endif %}
                   </ul>
                 </div>
               </div>
