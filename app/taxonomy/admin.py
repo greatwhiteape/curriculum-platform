@@ -10,9 +10,9 @@ class ProgramAdmin(ModelAdmin):
     menu_label = "Program"
     menu_icon = "snippet"
     menu_order = 290
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("program_name", "program_description", "program_url")
+    list_display = ("program_name", "program_url")
     search_fields = ("program_name", "program_description", "program_url")
     
 
@@ -21,7 +21,7 @@ class StandardsBodyAdmin(ModelAdmin):
     menu_label = "Standards Bodies"
     menu_icon = "snippet"
     menu_order = 300
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("standards_body")
     search_fields = ("standards_body")
@@ -32,7 +32,7 @@ class StandardAdmin(ModelAdmin):
     menu_label = "Standard"
     menu_icon = "snippet"
     menu_order = 310
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("standard", "standard_group", "description")
     search_fields = ("standard", "standard_group", "description")
@@ -43,7 +43,7 @@ class AudienceAdmin(ModelAdmin):
     menu_label = "Audiences"
     menu_icon = "snippet"
     menu_order = 320
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("age_rage")
     search_fields = ("age_rage")
@@ -54,7 +54,7 @@ class TopicAdmin(ModelAdmin):
     menu_label = "Topics"
     menu_icon = "snippet"
     menu_order = 330
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("topic")
     search_fields = ("topic")
@@ -65,7 +65,7 @@ class AssetTypeAdmin(ModelAdmin):
     menu_label = "Asset Type"
     menu_icon = "snippet"
     menu_order = 340
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("asset_type")
     search_fields = ("asset_type")
@@ -76,7 +76,7 @@ class ActivityTypeAdmin(ModelAdmin):
     menu_label = "Type of Activity"
     menu_icon = "snippet"
     menu_order = 340
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("activity_type")
     search_fields = ("activity_type")
@@ -87,7 +87,7 @@ class TagAdmin(ModelAdmin):
     menu_label = "Tags"
     menu_icon = "snippet"
     menu_order = 350
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("tag")
     search_fields = ("tag")
@@ -98,7 +98,7 @@ class TimeEstimateAdmin(ModelAdmin):
     menu_label = "Time Estimates"
     menu_icon = "snippet"
     menu_order = 360
-    add_to_settings_menu = True
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("time_estimate")
     search_fields = ("time_estimate")

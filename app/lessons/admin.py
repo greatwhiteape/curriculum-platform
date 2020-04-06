@@ -12,5 +12,5 @@ class LessonAdmin(ModelAdmin):
     menu_order = 300
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("title", "program", "topic")
+    list_display = ("title", "program")
     search_fields = ("title", "intro_copy", "learning_outcomes")

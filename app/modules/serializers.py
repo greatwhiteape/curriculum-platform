@@ -13,11 +13,11 @@ class ModuleSerializer(serializers.ModelSerializer):
         model = Module
         fields = '__all__'
         
-    standards_alignment = StandardsSerializer(many=True, read_only=True)
-    program = ProgramSerializer(many=True, read_only=True)
-    time_estimate = TimeEstimateSerializer(many=False, read_only=True)
-    audience = AudienceSerializer(many=True, read_only=True)
-    tag = TagSerializer(many=True, read_only=True)
-    topic = TopicSerializer(many=True, read_only=True)
-    lesson = LessonSerializer(many=True, read_only=True)
+    # standards_alignment = StandardsSerializer(many=True, read_only=True)
+    # program = ProgramSerializer(many=True, read_only=True)
+    # time_estimate = TimeEstimateSerializer(many=False, read_only=True)
+    # audience = AudienceSerializer(many=True, read_only=True)
+    # tag = TagSerializer(many=True, read_only=True)
+    # topic = TopicSerializer(many=True, read_only=True)
+    # lesson = LessonSerializer(many=True, read_only=True)
     # chapter = ChapterSerializer(many=True, read_only=True)

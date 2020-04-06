@@ -141,6 +141,7 @@ class Module(ClusterableModel):
         MultiFieldPanel([
             FieldPanel('intro_copy'),
             FieldPanel('student_intro'),
+            FieldPanel('learning_outcomes'),
             FieldPanel('teachers_guide'),
         ], heading="Marketing Speak"),
         MultiFieldPanel([
@@ -156,6 +157,9 @@ class Module(ClusterableModel):
             InlinePanel('module_tag_relationship', label="Tags"),
         ], heading="Module Metadata")
     ]
+
+    def __str__(self):
+        return self.title
 
 class ModuleTagRelationship(models.Model):
     module = ParentalKey(

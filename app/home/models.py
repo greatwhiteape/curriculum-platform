@@ -19,6 +19,7 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 
 @register_snippet
@@ -141,14 +142,20 @@ class HomePage(Page):
       help_text='Short copy blurb'
     )
 
-    feature1_link = models.ForeignKey(
-        'wagtailcore.Page',
-        blank=True,
-        null=True,
-        related_name='+',
-        help_text='Link to resource',
-        on_delete=models.SET_NULL,
+    feature1_link = models.URLField(
+      null=True,
+      blank=True,
+      help_text='Link that call to button action links to'
     )
+
+    # feature1_link = models.ForeignKey(
+    #     'modules.Module',
+    #     blank=True,
+    #     null=True,
+    #     related_name='+',
+    #     help_text='Link to resource',
+    #     on_delete=models.SET_NULL,
+    # )
 
     #Feature 2
     feature2_title = models.CharField(
@@ -172,14 +179,20 @@ class HomePage(Page):
         help_text='Short copy blurb'
     )
 
-    feature2_link = models.ForeignKey(
-        'wagtailcore.Page',
-        blank=True,
-        null=True,
-        related_name='+',
-        help_text='Link to resource',
-        on_delete=models.SET_NULL,
+    feature2_link = models.URLField(
+      null=True,
+      blank=True,
+      help_text='Link that call to button action links to'
     )
+
+    # feature2_link = models.ForeignKey(
+    #     'modules.Module',
+    #     blank=True,
+    #     null=True,
+    #     related_name='+',
+    #     help_text='Link to resource',
+    #     on_delete=models.SET_NULL,
+    # )
 
     #Feature 3
     feature3_title = models.CharField(
@@ -203,14 +216,20 @@ class HomePage(Page):
         help_text='Short copy blurb'
     )
 
-    feature3_link = models.ForeignKey(
-        'wagtailcore.Page',
-        blank=True,
-        null=True,
-        related_name='+',
-        help_text='Link to resource',
-        on_delete=models.SET_NULL,
+    feature3_link = models.URLField(
+      null=True,
+      blank=True,
+      help_text='Link that call to button action links to'
     )
+
+    # feature3_link = models.ForeignKey(
+    #     'lessons.Lesson',
+    #     blank=True,
+    #     null=True,
+    #     related_name='+',
+    #     help_text='Link to resource',
+    #     on_delete=models.SET_NULL,
+    # )
 
     #Feature 4
     feature4_title = models.CharField(
@@ -226,14 +245,20 @@ class HomePage(Page):
         help_text='Short copy blurb'
     )
 
-    feature4_link = models.ForeignKey(
-        'wagtailcore.Page',
-        blank=True,
-        null=True,
-        related_name='+',
-        help_text='Link to resource',
-        on_delete=models.SET_NULL,
+    feature4_link = models.URLField(
+      null=True,
+      blank=True,
+      help_text='Link that call to button action links to'
     )
+
+    # feature4_link = models.ForeignKey(
+    #     'activity.Activity',
+    #     blank=True,
+    #     null=True,
+    #     related_name='+',
+    #     help_text='Link to resource',
+    #     on_delete=models.SET_NULL,
+    # )
 
     #Feature 5
     feature5_title = models.CharField(
@@ -249,14 +274,20 @@ class HomePage(Page):
         help_text='Short copy blurb'
     )
 
-    feature5_link = models.ForeignKey(
-        'wagtailcore.Page',
-        blank=True,
-        null=True,
-        related_name='+',
-        help_text='Link to resource',
-        on_delete=models.SET_NULL,
+    feature5_link = models.URLField(
+      null=True,
+      blank=True,
+      help_text='Link that call to button action links to'
     )
+
+    # feature5_link = models.ForeignKey(
+    #     'activity.Activity',
+    #     blank=True,
+    #     null=True,
+    #     related_name='+',
+    #     help_text='Link to resource',
+    #     on_delete=models.SET_NULL,
+    # )
 
     #Feature 6
     feature6_title = models.CharField(
@@ -280,14 +311,20 @@ class HomePage(Page):
         help_text='Short copy blurb'
     )
 
-    feature6_link = models.ForeignKey(
-        'wagtailcore.Page',
-        blank=True,
-        null=True,
-        related_name='+',
-        help_text='Link to resource',
-        on_delete=models.SET_NULL,
+    feature6_link = models.URLField(
+      null=True,
+      blank=True,
+      help_text='Link that call to button action links to'
     )
+
+    # feature6_link = models.ForeignKey(
+    #     'lessons.Lesson',
+    #     blank=True,
+    #     null=True,
+    #     related_name='+',
+    #     help_text='Link to resource',
+    #     on_delete=models.SET_NULL,
+    # )
 
     #LabVenture
     labventure_section_title = models.CharField(
@@ -332,18 +369,6 @@ class HomePage(Page):
       blank=True,
       help_text='Link that call to button action links to'
     )
-
-    # labventure_section = models.ForeignKey(
-    #     'wagtailcore.Page',
-    #     null=True,
-    #     blank=True,
-    #     on_delete=models.SET_NULL,
-    #     related_name='+',
-    #     help_text='First featured section for the homepage. Will display up to '
-    #     'three child items.',
-    #     verbose_name='Labventure section'
-    # )
-
     # Vital Signs Section
     vitalsigns_section_title = models.CharField(
         null=True,
@@ -516,35 +541,41 @@ class HomePage(Page):
             FieldPanel('feature1_title'),
             FieldPanel('feature1_copy'),
             ImageChooserPanel('feature1_image'),
-            PageChooserPanel('feature1_link'),
+            FieldPanel('feature1_link'),
+            # SnippetChooserPanel('feature1_link'),
           ], heading="Feature 1"),
           MultiFieldPanel([
             FieldPanel('feature2_title'),
             FieldPanel('feature2_copy'),
             ImageChooserPanel('feature2_image'),
-            PageChooserPanel('feature2_link'),
+            FieldPanel('feature2_link'),
+            # SnippetChooserPanel('feature2_link'),
           ], heading="Feature 2"),
           MultiFieldPanel([
             FieldPanel('feature3_title'),
             FieldPanel('feature3_copy'),
             ImageChooserPanel('feature3_image'),
-            PageChooserPanel('feature3_link'),
+            FieldPanel('feature3_link'),
+            # SnippetChooserPanel('feature3_link'),
           ], heading="Feature 3"),
           MultiFieldPanel([
             FieldPanel('feature4_title'),
             FieldPanel('feature4_copy'),
-            PageChooserPanel('feature4_link'),
+            FieldPanel('feature4_link'),
+            # SnippetChooserPanel('feature4_link'),
           ], heading="Feature 4"),
           MultiFieldPanel([
             FieldPanel('feature5_title'),
             FieldPanel('feature5_copy'),
-            PageChooserPanel('feature5_link'),
+            FieldPanel('feature5_link'),
+            # SnippetChooserPanel('feature5_link'),
           ], heading="Feature 5"),
           MultiFieldPanel([
             FieldPanel('feature6_title'),
             FieldPanel('feature6_copy'),
             ImageChooserPanel('feature6_image'),
-            PageChooserPanel('feature6_link'),
+            FieldPanel('feature6_link'),
+            # SnippetChooserPanel('feature6_link'),
           ], heading="Feature 6"),
         ], heading="Featured Section"),
         MultiFieldPanel([

@@ -123,7 +123,7 @@ class Lesson(ClusterableModel):
     @property
     def tags(self):
         tags = [
-            n.topic for n in self.lesson_tag_relationship.all()
+            n.tag for n in self.lesson_tag_relationship.all()
         ]
         return tags
     
@@ -136,6 +136,7 @@ class Lesson(ClusterableModel):
         MultiFieldPanel([
             FieldPanel('intro_copy'),
             FieldPanel('student_intro'),
+            FieldPanel('learning_outcomes'),
             FieldPanel('teachers_guide'),
         ], heading="Marketing Speak"),
         MultiFieldPanel([
@@ -152,6 +153,8 @@ class Lesson(ClusterableModel):
         ], heading="Module Metadata")
     ]
 
+    def __str__(self):
+        return self.title
 class LessonTagRelationship(models.Model):
     lesson = ParentalKey(
         'Lesson',
