@@ -13,7 +13,8 @@ export class TopicPipe implements PipeTransform {
 
   checkFilter(object, selected_topics) {
     if (selected_topics.length > 0) {
-      const some = selected_topics.some(topics => object.topic.some(item => item.id === topics.id));
+      const some = selected_topics.some(topic => object.topic_relationship.some(item => item.topic.id === topic.id));
+      // const some = selected_topics.some(topics => object.topic.some(item => item.id === topics.id));
       return some;
     } else {
       return true;

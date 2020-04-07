@@ -13,7 +13,8 @@ export class TagPipe implements PipeTransform {
 
   checkFilter(object, selected_tags) {
     if (selected_tags.length > 0) {
-      const some = selected_tags.some(tags => object.tag.some(item => item.id === tags.id));
+      const some = selected_tags.some(tag => object.tag_relationship.some(item => item.tag.id === tag.id));
+      // const some = selected_tags.some(tags => object.tag.some(item => item.id === tags.id));
       return some;
     } else {
       return true;
