@@ -9,43 +9,47 @@ export class CurriculumService {
   constructor(private http: HttpClient) { }
 
   public getAssets(baseURL) {
-    console.log('Assets: ', baseURL + 'curriculum/assets/')
-    return this.http.get(baseURL + 'curriculum/assets/');
+    console.log('Assets: ', baseURL + 'api/v2/assets/?format=json')
+    return this.http.get(baseURL + 'api/v2/assets/?format=json');
   }
 
   public getPrograms(baseURL) {
-    return this.http.get(baseURL + 'curriculum/taxa/program/');
+    return this.http.get(baseURL + 'api/v2/programs/?format=json');
   }
 
   public getAudiences(baseURL) {
-    return this.http.get(baseURL + 'curriculum/taxa/audience/');
+    return this.http.get(baseURL + 'api/v2/audiences/?format=json');
   }
 
   public getTopics(baseURL) {
-    return this.http.get(baseURL + 'curriculum/taxa/topic/');
+    return this.http.get(baseURL + 'api/v2/topics/?format=json');
   }
 
   public getTags(baseURL) {
-    return this.http.get(baseURL + 'curriculum/taxa/tag/');
+    return this.http.get(baseURL + 'api/v2/tags/?format=json');
   }
 
-  public getTypes(baseURL) {
-    return this.http.get(baseURL + 'curriculum/taxa/type/');
+  public getAssetTypes(baseURL) {
+    return this.http.get(baseURL + 'api/v2/asset-type/?format=json');
+  }
+
+  public getActivityTypes(baseURL) {
+    return this.http.get(baseURL + 'api/v2/activity-type/?format=json');
   }
 
   public getModules(baseURL) {
-    console.log('getModules: ', baseURL + 'curriculum/modules/');
-    return this.http.get(baseURL + 'curriculum/modules/');
+    console.log('getModules: ', baseURL + 'api/v2/modules/?format=json');
+    return this.http.get(baseURL + 'api/v2/modules/?format=json');
   }
 
   public getLessons(baseURL) {
-    console.log('getLessons: ', baseURL + 'curriculum/lessons/');
-    return this.http.get(baseURL + 'curriculum/lessons/');
+    console.log('getLessons: ', baseURL + 'api/v2/lessons/?format=json');
+    return this.http.get(baseURL + 'api/v2/lessons/?format=json');
   }
 
   public getActivities(baseURL) {
-    console.log('getActivities: ', baseURL + 'curriculum/activities/');
-    return this.http.get(baseURL + 'curriculum/activities/');
+    console.log('getActivities: ', baseURL + 'api/v2/activities/?format=json');
+    return this.http.get(baseURL + 'api/v2/activities/?format=json');
   }
 
 }

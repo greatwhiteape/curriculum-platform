@@ -10,7 +10,7 @@ from activity.endpoints import ActivitiesAPIEndpoint
 from assets.endpoints import AssetsAPIEndpoint
 from lessons.endpoints import LessonsAPIEndpoint
 from modules.endpoints import ModulesAPIEndpoint
-from taxonomy.endpoints import ProgramsAPIEndpoint
+from taxonomy.endpoints import StandardAPIEndpoint, StandardsBodyAPIEndpoint, ProgramsAPIEndpoint, AudienceAPIEndpoint, TagAPIEndpoint, TopicAPIEndpoint, AssetTypeAPIEndpoint, ActivityTypeAPIEndpoint, TimeEstimateAPIEndpoint
 
 # Add the three endpoints using the "register_endpoint" method.
 # The first parameter is the name of the endpoint (eg. pages, images). This
@@ -25,4 +25,12 @@ api_router.register_endpoint('activities', ActivitiesAPIEndpoint)
 api_router.register_endpoint('assets', AssetsAPIEndpoint)
 api_router.register_endpoint('lessons', LessonsAPIEndpoint)
 api_router.register_endpoint('modules', ModulesAPIEndpoint)
+api_router.register_endpoint('standards', StandardAPIEndpoint)
+api_router.register_endpoint('standards-body', StandardsBodyAPIEndpoint)
 api_router.register_endpoint('programs', ProgramsAPIEndpoint)
+api_router.register_endpoint('audiences', AudienceAPIEndpoint)
+api_router.register_endpoint('tags', TagAPIEndpoint)
+api_router.register_endpoint('topics', TopicAPIEndpoint)
+api_router.register_endpoint('asset-type', AssetTypeAPIEndpoint)
+api_router.register_endpoint('activity-type', ActivityTypeAPIEndpoint)
+api_router.register_endpoint('time-estimates', TimeEstimateAPIEndpoint)

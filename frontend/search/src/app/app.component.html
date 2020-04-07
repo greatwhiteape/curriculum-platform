@@ -43,12 +43,23 @@
     </div>
   </div>
 
-      <!-- Selected Type-->
-  <div  class="row my-2" *ngIf="selected_types">
+      <!-- Selected Activity Type-->
+  <div  class="row my-2" *ngIf="selected_activity_types">
     <div class="col">
       <div class="selected-type-wrap">
-        <div class="selected-type" *ngFor="let s of selected_types" >
-          <span class="badge badge-pill badge-primary float-left text-white mx-1">{{s.type}} <span class="delete-type" (click)="deleteType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+        <div class="selected-type" *ngFor="let s of selected_activity_types" >
+          <span class="badge badge-pill badge-primary float-left text-white mx-1">{{s.activity_type}} <span class="delete-type" (click)="deleteAssetType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <!-- Selected Asset Type-->
+  <div  class="row my-2" *ngIf="selected_asset_types">
+    <div class="col">
+      <div class="selected-type-wrap">
+        <div class="selected-type" *ngFor="let s of selected_asset_types" >
+          <span class="badge badge-pill badge-primary float-left text-white mx-1">{{s.asset_type}} <span class="delete-type" (click)="deleteAssetType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
         </div>
       </div>
     </div>

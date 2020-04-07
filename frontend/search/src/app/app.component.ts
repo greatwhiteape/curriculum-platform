@@ -14,8 +14,8 @@ export class AppComponent {
 
 
   title = 'Search';
-  baseURL = 'https://teach.gmri.org/'
-  // baseURL = 'http://localhost/'
+  //baseURL = 'https://teach.gmri.org/'
+  baseURL = 'http://localhost/'
 
   programs;
   selected_programs;
@@ -29,9 +29,12 @@ export class AppComponent {
   topics;
   selected_topics;
   selected_topics_count: number = 0;
-  types;
-  selected_types;
-  selected_types_count: number = 0;
+  asset_types;
+  selected_asset_types;
+  selected_asset_types_count: number = 0;
+  activity_types;
+  selected_activity_types;
+  selected_activity_types_count: number = 0;
   modules;
   selected_modules;
   selected_module_count: number = 0;
@@ -47,13 +50,15 @@ export class AppComponent {
   selected_assets;
   selected_asset_count: number = 0;
 
-  modulesOnly: boolean = true;
+  // modulesOnly: boolean = true;   //Original
+  modulesOnly: boolean = false;
   
   constructor(private elm: ElementRef, private currService: CurriculumService) {
     this.modulesOnly = (elm.nativeElement.getAttribute('modulesOnly')) ? elm.nativeElement.getAttribute('modulesOnly') : false;
 
     this.currService.getTags(this.baseURL).subscribe((data) => {
-      this.tags = data;
+      this.tags = data.items;
+      console.log('Tags: ', this.tags);
       this.tags.forEach(element => {
         element.selected = (element.tag === elm.nativeElement.getAttribute('tag')) ? true : false;
       });
@@ -61,35 +66,48 @@ export class AppComponent {
     });
 
     this.currService.getPrograms(this.baseURL).subscribe((data) => {
-      this.programs = data;
+      this.programs = data.items;
+      console.log('Programs: ', this.programs);
       this.programs.forEach(element => {
         element.selected = (element.program_name === elm.nativeElement.getAttribute('program')) ? true : false;
       });
     });
 
     this.currService.getAudiences(this.baseURL).subscribe((data) => {
-      this.audiences = data;
+      this.audiences = data.items;
+      console.log('Audience: ', this.audiences);
       this.audiences.forEach(element => {
         element.selected = false;
       });
     });
 
     this.currService.getTopics(this.baseURL).subscribe((data) => {
-      this.topics = data;
+      this.topics = data.items;
+      console.log('Topics: ', this.topics);
       this.topics.forEach(element => {
         element.selected = false;
       });
     });
 
-    this.currService.getTypes(this.baseURL).subscribe((data) => {
-      this.types = data;
-      this.types.forEach(element => {
+    this.currService.getActivityTypes(this.baseURL).subscribe((data) => {
+      this.activity_types = data.items;
+      console.log('Activity Type: ', this.activity_types);
+      this.activity_types.forEach(element => {
+        element.selected = false;
+      });
+    });
+
+    this.currService.getAssetTypes(this.baseURL).subscribe((data) => {
+      this.asset_types = data.items;
+      console.log('Asset Type: ', this.asset_types);
+      this.asset_types.forEach(element => {
         element.selected = false;
       });
     });
 
     this.currService.getModules(this.baseURL).subscribe((data) => {
-      this.modules = data;
+      this.modules = data.items;
+      console.log('Modules: ', this.modules);
       this.modules.forEach(element => {
         element.selected = false;
       });
@@ -97,7 +115,8 @@ export class AppComponent {
     });
 
     this.currService.getLessons(this.baseURL).subscribe((data) => {
-      this.lessons = data;
+      this.lessons = data.items;
+      console.log('Lessons: ', this.lessons);
       this.lessons.forEach(element => {
         element.selected = false;
       });
@@ -107,7 +126,7 @@ export class AppComponent {
     this.currService.getAssets(this.baseURL).subscribe((response: CustomResponse) => {
       if (response) {
         const data: any = Object.entries(response);
-        console.log(data);
+        console.log('Get Assets: ',data);
         if (data[0][1]) {
           console.log(data[0][1])
           data.forEach(array => {
@@ -156,6 +175,7 @@ export class AppComponent {
   }
 
   getSelectedTags() {
+    console.log('Get Selected Tags: ',this.selected_tags, this.tags);
     this.selected_tags = this.tags.filter(s => {
       return s.selected;
     });
@@ -167,8 +187,14 @@ export class AppComponent {
     });
   }
 
-  getSelectedTypes() {
-    this.selected_types = this.types.filter(s => {
+  getSelectedActivityTypes() {
+    this.selected_activity_types = this.activity_types.filter(s => {
+      return s.selected;
+    });
+  }
+
+  getSelectedAssetTypes() {
+    this.selected_asset_types = this.asset_types.filter(s => {
       return s.selected;
     });
   }
@@ -183,7 +209,8 @@ export class AppComponent {
     this.getSelectedAudiences();
     this.getSelectedTags();
     this.getSelectedTopics();
-    this.getSelectedTypes();
+    this.getSelectedActivityTypes();
+    this.getSelectedAssetTypes();
   }
 
   deleteModulesOnly() {
@@ -236,14 +263,25 @@ export class AppComponent {
   }
 
   // Delete Single Listed program Tag
-  deleteType(id: number) {
-    this.types = this.types.filter(g => {
+  deleteActivityType(id: number) {
+    this.activity_types = this.activity_types.filter(g => {
       if (g.id == id) {
         g.selected = false;
       }
       return true;
     });
-    this.getSelectedTypes();
+    this.getSelectedActivityTypes();
+  }
+
+  // Delete Single Listed program Tag
+  deleteAssetType(id: number) {
+    this.asset_types = this.asset_types.filter(g => {
+      if (g.id == id) {
+        g.selected = false;
+      }
+      return true;
+    });
+    this.getSelectedAssetTypes();
   }
 }
 
