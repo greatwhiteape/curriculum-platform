@@ -118,28 +118,28 @@ class Module(ClusterableModel):
     @property
     def standards_alignment(self):
         standards_alignment = [
-            n.standard for n in self.module_standards_relationship.all()
+            n.standard for n in self.standards_relationship.all()
         ]
         return standards_alignment
     
     @property
     def audience(self):
         audience = [
-            n.audience for n in self.module_audience_relationship.all()
+            n.audience for n in self.audience_relationship.all()
         ]
         return audience
     
     @property
     def tags(self):
         tags = [
-            n.tag for n in self.module_tag_relationship.all()
+            n.tag for n in self.tag_relationship.all()
         ]
         return tags
     
     @property
     def topics(self):
         topics = [
-            n.topic for n in self.module_topic_relationship.all()
+            n.topic for n in self.topic_relationship.all()
         ]
         return topics
     
@@ -162,10 +162,10 @@ class Module(ClusterableModel):
         MultiFieldPanel([
             SnippetChooserPanel('program'),
             SnippetChooserPanel('time_estimate'),
-            InlinePanel('module_audience_relationship', label="Audience"),
-            InlinePanel('module_standards_relationship', label="Standards Alignment"),
-            InlinePanel('module_topic_relationship', label="Topics"),
-            InlinePanel('module_tag_relationship', label="Tags"),
+            InlinePanel('audience_relationship', label="Audience"),
+            InlinePanel('standards_relationship', label="Standards Alignment"),
+            InlinePanel('topic_relationship', label="Topics"),
+            InlinePanel('tag_relationship', label="Tags"),
         ], heading="Module Metadata")
     ]
 
@@ -181,10 +181,10 @@ class Module(ClusterableModel):
         APIField('students_desc'),
         APIField('program', serializer=ProgramSerializer()),
         APIField('time_estimate', serializer=TimeEstimateSerializer()),
-        APIField('module_audience_relationship'),
-        APIField('module_standards_relationship'),
-        APIField('module_topic_relationship'),
-        APIField('module_tag_relationship'),
+        APIField('audience_relationship'),
+        APIField('standards_relationship'),
+        APIField('topic_relationship'),
+        APIField('tag_relationship'),
     ]
 
     def __str__(self):
@@ -193,7 +193,7 @@ class Module(ClusterableModel):
 class ModuleTagRelationship(models.Model):
     module = ParentalKey(
         'Module',
-        related_name='module_tag_relationship'
+        related_name='tag_relationship'
     )
     tag = models.ForeignKey(
         'taxonomy.Tag', 
@@ -213,7 +213,7 @@ class ModuleTagRelationship(models.Model):
 class ModuleAudienceRelationship(models.Model):
     module = ParentalKey(
         'Module',
-        related_name='module_audience_relationship'
+        related_name='audience_relationship'
     )
     audience = models.ForeignKey(
         'taxonomy.Audience',
@@ -233,7 +233,7 @@ class ModuleAudienceRelationship(models.Model):
 class ModuleStandardsRelationship(models.Model):
     module = ParentalKey(
         'Module',
-        related_name='module_standards_relationship'
+        related_name='standards_relationship'
     )
     standard = models.ForeignKey(
         'taxonomy.Standard',
@@ -253,7 +253,7 @@ class ModuleStandardsRelationship(models.Model):
 class ModuleTopicRelationship(models.Model):
     module = ParentalKey(
         'Module',
-        related_name='module_topic_relationship'
+        related_name='topic_relationship'
     )
     topic = models.ForeignKey(
         'taxonomy.Topic',

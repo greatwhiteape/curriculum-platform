@@ -18,10 +18,10 @@ class LessonsAPIEndpoint(BaseAPIEndpoint):
         'students_desc',
         'program',
         'time_estimate',
-        'lesson_audience_relationship',
-        'lesson_standards_relationship',
-        'lesson_topic_relationship',
-        'lesson_tag_relationship',
+        'audience_relationship',
+        'standards_relationship',
+        'topic_relationship',
+        'tag_relationship',
     ]
 
     listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
@@ -36,8 +36,8 @@ class LessonsAPIEndpoint(BaseAPIEndpoint):
         'students_desc',
         'program',
         'time_estimate',
-        'lesson_audience_relationship',
-        'lesson_standards_relationship',
-        'lesson_topic_relationship',
-        'lesson_tag_relationship',
+        'audience_relationship',
+        'standards_relationship',
+        'topic_relationship',
+        'tag_relationship',
     ]

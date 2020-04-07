@@ -88,18 +88,18 @@
                   <h4 class="my-2">Time Estimate: <small class="font-italic">{{ lesson.time_estimate }}</small></h4>
                   {% endif %}
                   
-                  {% if lesson.lesson_audience_relationship.all|length > 0 %}
+                  {% if lesson.audience_relationship.all|length > 0 %}
                   <h4 class="my-4">Audience: <small class="font-italic">
-                  {% for audience in lesson.lesson_audience_relationship.all %} 
+                  {% for audience in lesson.audience_relationship.all %} 
                     {{ audience.audience.age_range }} {% if not forloop.last %}&nbsp;&middot;&nbsp;{% endif %}
                   {% endfor %}
                   </small></h4>
                   {% endif %}
                   
-                  {% if lesson.lesson_standards_relationship.all|length > 0 %}
+                  {% if lesson.standards_relationship.all|length > 0 %}
                   <h4>Standards Alignment</h4>
                   <ul class="list-group">
-                  {% for standard in lesson.lesson_standards_relationship.all %} 
+                  {% for standard in lesson.standards_relationship.all %} 
                   {% if standard.standard %}
 
                   <li class="list-group-item">

@@ -18,10 +18,10 @@ class ModulesAPIEndpoint(BaseAPIEndpoint):
         'students_desc',
         'program',
         'time_estimate',
-        'module_audience_relationship',
-        'module_standards_relationship',
-        'module_topic_relationship',
-        'module_tag_relationship',
+        'audience_relationship',
+        'standards_relationship',
+        'topic_relationship',
+        'tag_relationship',
     ]
 
     listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
@@ -36,8 +36,8 @@ class ModulesAPIEndpoint(BaseAPIEndpoint):
         'students_desc',
         'program',
         'time_estimate',
-        'module_audience_relationship',
-        'module_standards_relationship',
-        'module_topic_relationship',
-        'module_tag_relationship',
+        'audience_relationship',
+        'standards_relationship',
+        'topic_relationship',
+        'tag_relationship',
     ]
