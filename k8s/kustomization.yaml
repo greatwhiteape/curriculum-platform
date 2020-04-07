@@ -10,7 +10,7 @@ secretGenerator:
 commonLabels:
   app: curriculum
   maintainer: greatwhiteape
-  funder: WHO_KNOWS
+  funder: NASA
   project: GMRI_EDU
 patchesJson6902:
   - target:
