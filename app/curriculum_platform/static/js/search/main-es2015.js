@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"selected_container\">\n  <div  class=\"row my-2\" *ngIf=\"selected_programs\">\n    <div class=\"col\">\n      <!-- Selected Programs-->\n      <div class=\"selected-programs-wrap\">\n        <div class=\"selected-program\" *ngFor=\"let s of selected_programs\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mr-1\">{{s.program_name}} <span class=\"delete-program\" (click)=\"deleteProgram(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Audiences-->\n  <div  class=\"row my-2\" *ngIf=\"selected_audiences\">\n    <div class=\"col\">\n      <div class=\"selected-audience-wrap\">\n        <div class=\"selected-audience\" *ngFor=\"let s of selected_audiences\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mr-1\">{{s.age_range}} <span class=\"delete-audience\" (click)=\"deleteAudience(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Tags-->\n  <div  class=\"row my-2\" *ngIf=\"selected_tags\">\n    <div class=\"col\">\n      <div class=\"selected-tags-wrap\">\n        <div class=\"selected-tags\" *ngFor=\"let s of selected_tags\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mr-1\">{{s.tag}} <span class=\"delete-tag\" (click)=\"deleteTag(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Topic-->\n  <div  class=\"row my-2\" *ngIf=\"selected_topics\">\n    <div class=\"col\">\n      <div class=\"selected-topic-wrap\">\n        <div class=\"selected-topic\" *ngFor=\"let s of selected_topics\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mr-1\">{{s.topic}} <span class=\"delete-topic\" (click)=\"deleteTopic(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Type-->\n  <div  class=\"row my-2\" *ngIf=\"selected_types\">\n    <div class=\"col\">\n      <div class=\"selected-type-wrap\">\n        <div class=\"selected-type\" *ngFor=\"let s of selected_types\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mx-1\">{{s.type}} <span class=\"delete-type\" (click)=\"deleteType(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Modules Only-->\n<div  class=\"row my-2\">\n<div class=\"col\">\n  <div class=\"modules-only-wrap\">\n    <div class=\"modules-only\" *ngIf=\"modulesOnly\" >\n      <span class=\"badge badge-pill badge-primary float-left text-white mx-1\">Modules Only <span class=\"delete-modules-only\" (click)=\"deleteModulesOnly()\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n    </div>\n  </div>\n</div>\n</div>\n</div>\n\n<div class=\"row\">\n  <div id=\"filter_fields\" class=\"col-md-3\">\n    <!-- Program List -->\n    <h5 class=\"mt-4\">Program List</h5>\n    <ul id=\"program-list\" class=\"list-group\">\n      <li *ngFor=\"let p of programs\" class=\"program-item list-group-item\">\n        <input (change)=\"getSelectedPrograms()\" type=\"checkbox\"\n                  name=\"program\"\n                  value=\"{{p.id}}\"\n                  [(ngModel)]=\"p.selected\"/>\n        <small class=\"program-text text-muted ml-2\">{{p.program_name}}</small>\n      </li>\n    </ul>\n\n    <!-- Audience List -->\n    <h5 class=\"mt-4\">Audience List</h5>\n    <ul id=\"audience-list\" class=\"list-group\">\n      <li *ngFor=\"let a of audiences\" class=\"audience-item list-group-item\">\n        <input (change)=\"getSelectedAudiences()\" type=\"checkbox\"\n                  name=\"audience\"\n                  value=\"{{a.id}}\"\n                  [(ngModel)]=\"a.selected\"/>\n        <small class=\"audience-text text-muted ml-2\">{{a.age_range}}</small>\n      </li>\n    </ul>\n\n    <!-- Tag List -->\n    <h5 class=\"mt-4\">Tags</h5>\n    <ul id=\"tag-list\" class=\"list-group\">\n      <li *ngFor=\"let t of tags\" class=\"tag-item list-group-item\">\n        <input (change)=\"getSelectedTags()\" type=\"checkbox\"\n                  name=\"tag\"\n                  value=\"{{t.id}}\"\n                  [(ngModel)]=\"t.selected\"/>\n        <small class=\"tag-text text-muted ml-2\">{{t.tag}}</small>\n      </li>\n    </ul>\n\n    <!-- Topic List -->\n    <h5 class=\"mt-4\">Topics</h5>\n    <ul id=\"topic-list\" class=\"list-group\">\n      <li *ngFor=\"let t of topics\" class=\"topic-item list-group-item\">\n        <input (change)=\"getSelectedTopics()\" type=\"checkbox\"\n                  name=\"topic\"\n                  value=\"{{t.id}}\"\n                  [(ngModel)]=\"t.selected\"/>\n        <small class=\"topic-text text-muted ml-2\">{{t.topic}}</small>\n      </li>\n    </ul>\n\n    <!-- Type List -->\n    <h5 class=\"mt-4\" *ngIf=!modulesOnly>Types</h5>\n    <ul id=\"type-list\" class=\"list-group\" *ngIf=!modulesOnly>\n      <li *ngFor=\"let t of types\" class=\"type-item list-group-item\">\n        <input (change)=\"getSelectedTypes()\" type=\"checkbox\"\n                  name=\"type\"\n                  value=\"{{t.id}}\"\n                  [(ngModel)]=\"t.selected\"/>\n        <small class=\"type-text text-muted ml-2\">{{t.type}}</small>\n      </li>\n    </ul>\n  </div>\n\n\n  <div class=\"col-md-9\">\n    <div id=\"module_container\">\n      <h3 class=\"my-4\">Modules</h3>\n      <ul class=\"list-group\" *ngFor=\"let module of this.modules | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics\">\n        <ng-container>\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ baseURL }}curriculum/modules/{{ module.id }}\" target=\"_blank\">\n              <h3 class=\"h3\">\n                {{ module.title }}: <span class=\"h4 font-italic\">{{ module.subtitle }}</span>\n              </h3>\n              <p [innerHTML]=\"module.intro_copy | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n      </ul>\n    </div>\n    <div id=\"lesson_container\">\n      <h3 class=\"my-4\">Lessons</h3>\n      <ul class=\"list-group\" *ngFor=\"let lesson of this.lessons | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics\">\n        <ng-container>\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ baseURL }}curriculum/lessons/{{ lesson.id }}\" target=\"_blank\">\n              <h3 class=\"h3\">\n                {{ lesson.title }}: <span class=\"h4 font-italic\">{{ lesson.subtitle }}</span>\n              </h3>\n              <p [innerHTML]=\"lesson.intro_copy | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n      </ul>\n    </div> \n    <div id=\"lesson_container\">\n      <h3 class=\"my-4\">Activities</h3>\n      <ul class=\"list-group\" *ngFor=\"let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics\">\n        <ng-container>\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ activity.teachers_guide }}\" target=\"_blank\">\n              <h3 class=\"h3\">\n                {{ activity.title }}\n              </h3>\n              <p [innerHTML]=\"activity.overview_copy | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n      </ul>\n    </div> \n    <div id=\"asset_container\" *ngIf=!modulesOnly>\n      <h3 class=\"my-4\">Individual Assets</h3>\n      <p class=\"text-center\" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>\n      <ul class=\"list-group\" *ngFor=\"let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | type: selected_types\">\n        <ng-container *ngIf=\"asset.file\">\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ asset.file }}\" target=\"_blank\">\n              <ng-container *ngIf=\"asset.display_title; else showTitle\">\n                <h3 class=\"h3\">\n                  {{ asset.display_title }}\n                </h3>\n              </ng-container>\n              <ng-template #showTitle>\n                <h3 class=\"h3\">\n                    {{ asset.title }}\n                  </h3>\n              </ng-template>\n              <p [innerHTML]=\"asset.description | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n        <ng-container *ngIf=\"asset.url\">\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ asset.url }}\" target=\"_blank\">\n                <ng-container *ngIf=\"asset.display_title; else showTitle\">\n                  <h3 class=\"h3\">\n                    {{ asset.display_title }}\n                  </h3>\n                </ng-container>\n                <ng-template #showTitle>\n                  <h3 class=\"h3\">\n                      {{ asset.title }}\n                    </h3>\n                </ng-template>\n              <p [innerHTML]=\"asset.description | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n      </ul>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"selected_container\">\n  <div  class=\"row my-2\" *ngIf=\"selected_programs\">\n    <div class=\"col\">\n      <!-- Selected Programs-->\n      <div class=\"selected-programs-wrap\">\n        <div class=\"selected-program\" *ngFor=\"let s of selected_programs\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mr-1\">{{s.program_name}} <span class=\"delete-program\" (click)=\"deleteProgram(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Audiences-->\n  <div  class=\"row my-2\" *ngIf=\"selected_audiences\">\n    <div class=\"col\">\n      <div class=\"selected-audience-wrap\">\n        <div class=\"selected-audience\" *ngFor=\"let s of selected_audiences\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mr-1\">{{s.age_range}} <span class=\"delete-audience\" (click)=\"deleteAudience(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Tags-->\n  <div  class=\"row my-2\" *ngIf=\"selected_tags\">\n    <div class=\"col\">\n      <div class=\"selected-tags-wrap\">\n        <div class=\"selected-tags\" *ngFor=\"let s of selected_tags\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mr-1\">{{s.tag}} <span class=\"delete-tag\" (click)=\"deleteTag(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Topic-->\n  <div  class=\"row my-2\" *ngIf=\"selected_topics\">\n    <div class=\"col\">\n      <div class=\"selected-topic-wrap\">\n        <div class=\"selected-topic\" *ngFor=\"let s of selected_topics\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mr-1\">{{s.topic}} <span class=\"delete-topic\" (click)=\"deleteTopic(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Activity Type-->\n  <div  class=\"row my-2\" *ngIf=\"selected_activity_types\">\n    <div class=\"col\">\n      <div class=\"selected-type-wrap\">\n        <div class=\"selected-type\" *ngFor=\"let s of selected_activity_types\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mx-1\">{{s.activity_type}} <span class=\"delete-type\" (click)=\"deleteAssetType(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n      <!-- Selected Asset Type-->\n  <div  class=\"row my-2\" *ngIf=\"selected_asset_types\">\n    <div class=\"col\">\n      <div class=\"selected-type-wrap\">\n        <div class=\"selected-type\" *ngFor=\"let s of selected_asset_types\" >\n          <span class=\"badge badge-pill badge-primary float-left text-white mx-1\">{{s.asset_type}} <span class=\"delete-type\" (click)=\"deleteAssetType(s.id)\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Modules Only-->\n<div  class=\"row my-2\">\n<div class=\"col\">\n  <div class=\"modules-only-wrap\">\n    <div class=\"modules-only\" *ngIf=\"modulesOnly\" >\n      <span class=\"badge badge-pill badge-primary float-left text-white mx-1\">Modules Only <span class=\"delete-modules-only\" (click)=\"deleteModulesOnly()\" title=\"Click to delete\" style=\"cursor:pointer;\">X</span></span>\n    </div>\n  </div>\n</div>\n</div>\n</div>\n\n<div class=\"row\">\n  <div id=\"filter_fields\" class=\"col-md-3\">\n    <!-- Program List -->\n    <h5 class=\"mt-4\">Program List</h5>\n    <ul id=\"program-list\" class=\"list-group\">\n      <li *ngFor=\"let p of programs\" class=\"program-item list-group-item\">\n        <input (change)=\"getSelectedPrograms()\" type=\"checkbox\"\n                  name=\"program\"\n                  value=\"{{p.id}}\"\n                  [(ngModel)]=\"p.selected\"/>\n        <small class=\"program-text text-muted ml-2\">{{p.program_name}}</small>\n      </li>\n    </ul>\n\n    <!-- Audience List -->\n    <h5 class=\"mt-4\">Audience List</h5>\n    <ul id=\"audience-list\" class=\"list-group\">\n      <li *ngFor=\"let a of audiences\" class=\"audience-item list-group-item\">\n        <input (change)=\"getSelectedAudiences()\" type=\"checkbox\"\n                  name=\"audience\"\n                  value=\"{{a.id}}\"\n                  [(ngModel)]=\"a.selected\"/>\n        <small class=\"audience-text text-muted ml-2\">{{a.age_range}}</small>\n      </li>\n    </ul>\n\n    <!-- Tag List -->\n    <h5 class=\"mt-4\">Tags</h5>\n    <ul id=\"tag-list\" class=\"list-group\">\n      <li *ngFor=\"let t of tags\" class=\"tag-item list-group-item\">\n        <input (change)=\"getSelectedTags()\" type=\"checkbox\"\n                  name=\"tag\"\n                  value=\"{{t.id}}\"\n                  [(ngModel)]=\"t.selected\"/>\n        <small class=\"tag-text text-muted ml-2\">{{t.tag}}</small>\n      </li>\n    </ul>\n\n    <!-- Topic List -->\n    <h5 class=\"mt-4\">Topics</h5>\n    <ul id=\"topic-list\" class=\"list-group\">\n      <li *ngFor=\"let t of topics\" class=\"topic-item list-group-item\">\n        <input (change)=\"getSelectedTopics()\" type=\"checkbox\"\n                  name=\"topic\"\n                  value=\"{{t.id}}\"\n                  [(ngModel)]=\"t.selected\"/>\n        <small class=\"topic-text text-muted ml-2\">{{t.topic}}</small>\n      </li>\n    </ul>\n\n    <!-- Type List -->\n    <h5 class=\"mt-4\" *ngIf=!modulesOnly>Types</h5>\n    <ul id=\"type-list\" class=\"list-group\" *ngIf=!modulesOnly>\n      <li *ngFor=\"let t of types\" class=\"type-item list-group-item\">\n        <input (change)=\"getSelectedTypes()\" type=\"checkbox\"\n                  name=\"type\"\n                  value=\"{{t.id}}\"\n                  [(ngModel)]=\"t.selected\"/>\n        <small class=\"type-text text-muted ml-2\">{{t.type}}</small>\n      </li>\n    </ul>\n  </div>\n\n\n  <div class=\"col-md-9\">\n    <div id=\"module_container\">\n      <h3 class=\"my-4\">Modules</h3>\n      <ul class=\"list-group\" *ngFor=\"let module of this.modules | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics\">\n        <ng-container>\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ baseURL }}curriculum/modules/{{ module.id }}\" target=\"_blank\">\n              <h3 class=\"h3\">\n                {{ module.title }}: <span class=\"h4 font-italic\">{{ module.subtitle }}</span>\n              </h3>\n              <p [innerHTML]=\"module.intro_copy | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n      </ul>\n    </div>\n    <div id=\"lesson_container\">\n      <h3 class=\"my-4\">Lessons</h3>\n      <ul class=\"list-group\" *ngFor=\"let lesson of this.lessons | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics\">\n        <ng-container>\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ baseURL }}curriculum/lessons/{{ lesson.id }}\" target=\"_blank\">\n              <h3 class=\"h3\">\n                {{ lesson.title }}: <span class=\"h4 font-italic\">{{ lesson.subtitle }}</span>\n              </h3>\n              <p [innerHTML]=\"lesson.intro_copy | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n      </ul>\n    </div> \n    <div id=\"lesson_container\">\n      <h3 class=\"my-4\">Activities</h3>\n      <ul class=\"list-group\" *ngFor=\"let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics\">\n        <ng-container>\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ activity.teachers_guide }}\" target=\"_blank\">\n              <h3 class=\"h3\">\n                {{ activity.title }}\n              </h3>\n              <p [innerHTML]=\"activity.overview_copy | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n      </ul>\n    </div> \n    <div id=\"asset_container\" *ngIf=!modulesOnly>\n      <h3 class=\"my-4\">Individual Assets</h3>\n      <p class=\"text-center\" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>\n      <ul class=\"list-group\" *ngFor=\"let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | type: selected_types\">\n        <ng-container *ngIf=\"asset.file\">\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ asset.file }}\" target=\"_blank\">\n              <ng-container *ngIf=\"asset.display_title; else showTitle\">\n                <h3 class=\"h3\">\n                  {{ asset.display_title }}\n                </h3>\n              </ng-container>\n              <ng-template #showTitle>\n                <h3 class=\"h3\">\n                    {{ asset.title }}\n                  </h3>\n              </ng-template>\n              <p [innerHTML]=\"asset.description | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n        <ng-container *ngIf=\"asset.url\">\n          <li class=\"list-group-item border-0\">\n            <a href=\"{{ asset.url }}\" target=\"_blank\">\n                <ng-container *ngIf=\"asset.display_title; else showTitle\">\n                  <h3 class=\"h3\">\n                    {{ asset.display_title }}\n                  </h3>\n                </ng-container>\n                <ng-template #showTitle>\n                  <h3 class=\"h3\">\n                      {{ asset.title }}\n                    </h3>\n                </ng-template>\n              <p [innerHTML]=\"asset.description | safe: 'html'\"></p>\n            </a>\n          </li>\n        </ng-container>\n      </ul>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -308,91 +308,123 @@ let AppComponent = class AppComponent {
         this.selected_audience_count = 0;
         this.selected_tags_count = 0;
         this.selected_topics_count = 0;
-        this.selected_types_count = 0;
+        this.selected_asset_types_count = 0;
+        this.selected_activity_types_count = 0;
         this.selected_module_count = 0;
         this.selected_lesson_count = 0;
         this.activities = [];
         this.selected_activities_count = 0;
         this.assets = [];
         this.selected_asset_count = 0;
-        this.modulesOnly = true;
+        // modulesOnly: boolean = true;   //Original
+        this.modulesOnly = false;
         this.modulesOnly = (elm.nativeElement.getAttribute('modulesOnly')) ? elm.nativeElement.getAttribute('modulesOnly') : false;
         this.currService.getTags(this.baseURL).subscribe((data) => {
-            this.tags = data;
+            this.tags = data.items;
+            console.log('Tags: ', this.tags);
             this.tags.forEach(element => {
                 element.selected = (element.tag === elm.nativeElement.getAttribute('tag')) ? true : false;
             });
             this.getSelectedTags();
         });
         this.currService.getPrograms(this.baseURL).subscribe((data) => {
-            this.programs = data;
+            this.programs = data.items;
+            console.log('Programs: ', this.programs);
             this.programs.forEach(element => {
                 element.selected = (element.program_name === elm.nativeElement.getAttribute('program')) ? true : false;
             });
         });
         this.currService.getAudiences(this.baseURL).subscribe((data) => {
-            this.audiences = data;
+            this.audiences = data.items;
+            console.log('Audience: ', this.audiences);
             this.audiences.forEach(element => {
                 element.selected = false;
             });
         });
         this.currService.getTopics(this.baseURL).subscribe((data) => {
-            this.topics = data;
+            this.topics = data.items;
+            console.log('Topics: ', this.topics);
             this.topics.forEach(element => {
                 element.selected = false;
             });
         });
-        this.currService.getTypes(this.baseURL).subscribe((data) => {
-            this.types = data;
-            this.types.forEach(element => {
+        this.currService.getActivityTypes(this.baseURL).subscribe((data) => {
+            this.activity_types = data.items;
+            console.log('Activity Type: ', this.activity_types);
+            this.activity_types.forEach(element => {
+                element.selected = false;
+            });
+        });
+        this.currService.getAssetTypes(this.baseURL).subscribe((data) => {
+            this.asset_types = data.items;
+            console.log('Asset Type: ', this.asset_types);
+            this.asset_types.forEach(element => {
                 element.selected = false;
             });
         });
         this.currService.getModules(this.baseURL).subscribe((data) => {
-            this.modules = data;
+            this.modules = data.items;
+            console.log('Modules: ', this.modules);
             this.modules.forEach(element => {
                 element.selected = false;
             });
             this.getSelectedPrograms();
         });
         this.currService.getLessons(this.baseURL).subscribe((data) => {
-            this.lessons = data;
+            this.lessons = data.items;
+            console.log('Lessons: ', this.lessons);
             this.lessons.forEach(element => {
                 element.selected = false;
             });
             this.getSelectedPrograms();
         });
-        this.currService.getAssets(this.baseURL).subscribe((response) => {
-            if (response) {
-                const data = Object.entries(response);
-                console.log(data);
-                if (data[0][1]) {
-                    console.log(data[0][1]);
-                    data.forEach(array => {
-                        array[1].forEach(element => {
-                            this.assets.push(element);
-                        });
-                    });
-                }
-            }
+        this.currService.getAssets(this.baseURL).subscribe((data) => {
+            this.assets = data.items;
+            console.log('Assets: ', this.assets);
+            this.assets.forEach(element => {
+                element.selected = false;
+            });
+            this.getSelectedPrograms();
         });
-        this.currService.getActivities(this.baseURL).subscribe((response) => {
-            if (response) {
-                const data = Object.entries(response);
-                console.log(data);
-                if (data[0][1]) {
-                    console.log(data[0][1]);
-                    data.forEach(array => {
-                        console.log(array);
-                        array[1].forEach(element => {
-                            console.log(element, this.activities);
-                            this.activities.push(element);
-                            console.log(this.activities);
-                        });
-                    });
-                }
-            }
+        this.currService.getActivities(this.baseURL).subscribe((data) => {
+            this.activities = data.items;
+            console.log('Activities: ', this.activities);
+            this.activities.forEach(element => {
+                element.selected = false;
+            });
+            this.getSelectedPrograms();
         });
+        // this.currService.getAssets(this.baseURL).subscribe((response: CustomResponse) => {
+        //   if (response) {
+        //     const data: any = Object.entries(response);
+        //     console.log('Get Assets: ',data);
+        //     if (data[0][1]) {
+        //       console.log(data[0][1])
+        //       data.forEach(array => {
+        //         array[1].forEach(element => {
+        //           this.assets.push(element);
+        //         });
+        //       });
+        //     }
+        //   }
+        // });
+        // this.currService.getActivities(this.baseURL).subscribe((response: CustomResponse) => {
+        //   if (response) {
+        //     const data: any = Object.entries(response);
+        //     console.log(data);
+        //     if (data[0][1]) {
+        //       console.log(data[0][1])
+        //       data.forEach(array => {
+        //         console.log(array);
+        //         array[1].forEach(element => {
+        //           console.log(element, this.activities)
+        //           this.activities.push(element);
+        //           console.log(this.activities)
+        //         });
+        //       });
+        //     }
+        //   }
+        // });
     }
     // Getting Selected programs and Count
     getSelectedPrograms() {
@@ -407,6 +439,7 @@ let AppComponent = class AppComponent {
         });
     }
     getSelectedTags() {
+        console.log('Get Selected Tags: ', this.selected_tags, this.tags);
         this.selected_tags = this.tags.filter(s => {
             return s.selected;
         });
@@ -416,8 +449,13 @@ let AppComponent = class AppComponent {
             return s.selected;
         });
     }
-    getSelectedTypes() {
-        this.selected_types = this.types.filter(s => {
+    getSelectedActivityTypes() {
+        this.selected_activity_types = this.activity_types.filter(s => {
+            return s.selected;
+        });
+    }
+    getSelectedAssetTypes() {
+        this.selected_asset_types = this.asset_types.filter(s => {
             return s.selected;
         });
     }
@@ -431,7 +469,8 @@ let AppComponent = class AppComponent {
         this.getSelectedAudiences();
         this.getSelectedTags();
         this.getSelectedTopics();
-        this.getSelectedTypes();
+        this.getSelectedActivityTypes();
+        this.getSelectedAssetTypes();
     }
     deleteModulesOnly() {
         this.modulesOnly = false;
@@ -478,14 +517,24 @@ let AppComponent = class AppComponent {
         this.getSelectedTopics();
     }
     // Delete Single Listed program Tag
-    deleteType(id) {
-        this.types = this.types.filter(g => {
+    deleteActivityType(id) {
+        this.activity_types = this.activity_types.filter(g => {
             if (g.id == id) {
                 g.selected = false;
             }
             return true;
         });
-        this.getSelectedTypes();
+        this.getSelectedActivityTypes();
+    }
+    // Delete Single Listed program Tag
+    deleteAssetType(id) {
+        this.asset_types = this.asset_types.filter(g => {
+            if (g.id == id) {
+                g.selected = false;
+            }
+            return true;
+        });
+        this.getSelectedAssetTypes();
     }
 };
 AppComponent.ctorParameters = () => [
@@ -631,36 +680,49 @@ let CurriculumService = class CurriculumService {
         this.http = http;
     }
     getAssets(baseURL) {
-        console.log('Assets: ', baseURL + 'curriculum/assets/');
-        return this.http.get(baseURL + 'curriculum/assets/');
+        console.log('Assets: ', baseURL + 'api/v2/assets/?format=json');
+        return this.http.get(baseURL + 'api/v2/assets/?format=json');
     }
+    ;
     getPrograms(baseURL) {
-        return this.http.get(baseURL + 'curriculum/taxa/program/');
+        return this.http.get(baseURL + 'api/v2/programs/?format=json');
     }
+    ;
     getAudiences(baseURL) {
-        return this.http.get(baseURL + 'curriculum/taxa/audience/');
+        return this.http.get(baseURL + 'api/v2/audiences/?format=json');
     }
+    ;
     getTopics(baseURL) {
-        return this.http.get(baseURL + 'curriculum/taxa/topic/');
+        return this.http.get(baseURL + 'api/v2/topics/?format=json');
     }
+    ;
     getTags(baseURL) {
-        return this.http.get(baseURL + 'curriculum/taxa/tag/');
+        return this.http.get(baseURL + 'api/v2/tags/?format=json');
     }
-    getTypes(baseURL) {
-        return this.http.get(baseURL + 'curriculum/taxa/type/');
+    ;
+    getAssetTypes(baseURL) {
+        return this.http.get(baseURL + 'api/v2/asset-type/?format=json');
     }
+    ;
+    getActivityTypes(baseURL) {
+        return this.http.get(baseURL + 'api/v2/activity-type/?format=json');
+    }
+    ;
     getModules(baseURL) {
-        console.log('getModules: ', baseURL + 'curriculum/modules/');
-        return this.http.get(baseURL + 'curriculum/modules/');
+        console.log('getModules: ', baseURL + 'api/v2/modules/?format=json');
+        return this.http.get(baseURL + 'api/v2/modules/?format=json');
     }
+    ;
     getLessons(baseURL) {
-        console.log('getLessons: ', baseURL + 'curriculum/lessons/');
-        return this.http.get(baseURL + 'curriculum/lessons/');
+        console.log('getLessons: ', baseURL + 'api/v2/lessons/?format=json');
+        return this.http.get(baseURL + 'api/v2/lessons/?format=json');
     }
+    ;
     getActivities(baseURL) {
-        console.log('getActivities: ', baseURL + 'curriculum/activities/');
-        return this.http.get(baseURL + 'curriculum/activities/');
+        console.log('getActivities: ', baseURL + 'api/v2/activities/?format=json');
+        return this.http.get(baseURL + 'api/v2/activities/?format=json');
     }
+    ;
 };
 CurriculumService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }

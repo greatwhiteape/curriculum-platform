@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../../app/static/js/search", // "dist/search",
+            "outputPath": "../../app/curriculum_platform/static/js/search", //"dist/search", 
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",

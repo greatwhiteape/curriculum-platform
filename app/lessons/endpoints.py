@@ -7,6 +7,7 @@ class LessonsAPIEndpoint(BaseAPIEndpoint):
     model = Lesson
 
     body_fields = BaseAPIEndpoint.body_fields + [
+        'title',
         'subtitle',
         'hero_image',
         'intro_copy',
@@ -24,6 +25,7 @@ class LessonsAPIEndpoint(BaseAPIEndpoint):
     ]
 
     listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+        'title',
         'subtitle',
         'hero_image',
         'intro_copy',
