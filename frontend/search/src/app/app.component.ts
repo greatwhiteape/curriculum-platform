@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { CurriculumService } from './curriculum.service';
+import { CurriculumService, dataStructure } from './curriculum.service';
 import { ProgramsPipe } from './programs.pipe';
 import { TagPipe } from './tag.pipe';
 
@@ -11,7 +11,6 @@ import { TagPipe } from './tag.pipe';
 })
 
 export class AppComponent {
-
 
   title = 'Search';
   //baseURL = 'https://teach.gmri.org/'
@@ -56,7 +55,7 @@ export class AppComponent {
   constructor(private elm: ElementRef, private currService: CurriculumService) {
     this.modulesOnly = (elm.nativeElement.getAttribute('modulesOnly')) ? elm.nativeElement.getAttribute('modulesOnly') : false;
 
-    this.currService.getTags(this.baseURL).subscribe((data) => {
+    this.currService.getTags(this.baseURL).subscribe((data: dataStructure) => {
       this.tags = data.items;
       console.log('Tags: ', this.tags);
       this.tags.forEach(element => {
@@ -65,7 +64,7 @@ export class AppComponent {
       this.getSelectedTags();
     });
 
-    this.currService.getPrograms(this.baseURL).subscribe((data) => {
+    this.currService.getPrograms(this.baseURL).subscribe((data: dataStructure) => {
       this.programs = data.items;
       console.log('Programs: ', this.programs);
       this.programs.forEach(element => {
@@ -73,7 +72,7 @@ export class AppComponent {
       });
     });
 
-    this.currService.getAudiences(this.baseURL).subscribe((data) => {
+    this.currService.getAudiences(this.baseURL).subscribe((data: dataStructure) => {
       this.audiences = data.items;
       console.log('Audience: ', this.audiences);
       this.audiences.forEach(element => {
@@ -81,7 +80,7 @@ export class AppComponent {
       });
     });
 
-    this.currService.getTopics(this.baseURL).subscribe((data) => {
+    this.currService.getTopics(this.baseURL).subscribe((data: dataStructure) => {
       this.topics = data.items;
       console.log('Topics: ', this.topics);
       this.topics.forEach(element => {
@@ -89,7 +88,7 @@ export class AppComponent {
       });
     });
 
-    this.currService.getActivityTypes(this.baseURL).subscribe((data) => {
+    this.currService.getActivityTypes(this.baseURL).subscribe((data: dataStructure) => {
       this.activity_types = data.items;
       console.log('Activity Type: ', this.activity_types);
       this.activity_types.forEach(element => {
@@ -97,7 +96,7 @@ export class AppComponent {
       });
     });
 
-    this.currService.getAssetTypes(this.baseURL).subscribe((data) => {
+    this.currService.getAssetTypes(this.baseURL).subscribe((data: dataStructure) => {
       this.asset_types = data.items;
       console.log('Asset Type: ', this.asset_types);
       this.asset_types.forEach(element => {
@@ -105,7 +104,7 @@ export class AppComponent {
       });
     });
 
-    this.currService.getModules(this.baseURL).subscribe((data) => {
+    this.currService.getModules(this.baseURL).subscribe((data: dataStructure) => {
       this.modules = data.items;
       console.log('Modules: ', this.modules);
       this.modules.forEach(element => {
@@ -114,7 +113,7 @@ export class AppComponent {
       this.getSelectedPrograms();
     });
 
-    this.currService.getLessons(this.baseURL).subscribe((data) => {
+    this.currService.getLessons(this.baseURL).subscribe((data: dataStructure) => {
       this.lessons = data.items;
       console.log('Lessons: ', this.lessons);
       this.lessons.forEach(element => {
@@ -123,7 +122,7 @@ export class AppComponent {
       this.getSelectedPrograms();
     });
 
-    this.currService.getAssets(this.baseURL).subscribe((data) => {
+    this.currService.getAssets(this.baseURL).subscribe((data: dataStructure) => {
       this.assets = data.items;
       console.log('Assets: ', this.assets);
       this.assets.forEach(element => {
@@ -132,7 +131,7 @@ export class AppComponent {
       this.getSelectedPrograms();
     });
 
-    this.currService.getActivities(this.baseURL).subscribe((data) => {
+    this.currService.getActivities(this.baseURL).subscribe((data: dataStructure) => {
       this.activities = data.items;
       console.log('Activities: ', this.activities);
       this.activities.forEach(element => {
