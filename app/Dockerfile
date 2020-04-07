@@ -24,7 +24,7 @@ COPY ./ /app/
 
 RUN chown -R uwsgi:uwsgi /app
 
-WORKDIR /app/curriculum_platform
+WORKDIR /app
 
 # TODO: Fix this...
 # ENTRYPOINT ["/app/utils/entrypoint.sh"]
