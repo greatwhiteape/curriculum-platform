@@ -123,39 +123,58 @@ export class AppComponent {
       this.getSelectedPrograms();
     });
 
-    this.currService.getAssets(this.baseURL).subscribe((response: CustomResponse) => {
-      if (response) {
-        const data: any = Object.entries(response);
-        console.log('Get Assets: ',data);
-        if (data[0][1]) {
-          console.log(data[0][1])
-          data.forEach(array => {
-            array[1].forEach(element => {
-              this.assets.push(element);
-            });
-          });
-        }
-      }
+    this.currService.getAssets(this.baseURL).subscribe((data) => {
+      this.assets = data.items;
+      console.log('Assets: ', this.assets);
+      this.assets.forEach(element => {
+        element.selected = false;
+      });
+      this.getSelectedPrograms();
     });
 
-
-    this.currService.getActivities(this.baseURL).subscribe((response: CustomResponse) => {
-      if (response) {
-        const data: any = Object.entries(response);
-        console.log(data);
-        if (data[0][1]) {
-          console.log(data[0][1])
-          data.forEach(array => {
-            console.log(array);
-            array[1].forEach(element => {
-              console.log(element, this.activities)
-              this.activities.push(element);
-              console.log(this.activities)
-            });
-          });
-        }
-      }
+    this.currService.getActivities(this.baseURL).subscribe((data) => {
+      this.activities = data.items;
+      console.log('Activities: ', this.activities);
+      this.activities.forEach(element => {
+        element.selected = false;
+      });
+      this.getSelectedPrograms();
     });
+    
+
+    // this.currService.getAssets(this.baseURL).subscribe((response: CustomResponse) => {
+    //   if (response) {
+    //     const data: any = Object.entries(response);
+    //     console.log('Get Assets: ',data);
+    //     if (data[0][1]) {
+    //       console.log(data[0][1])
+    //       data.forEach(array => {
+    //         array[1].forEach(element => {
+    //           this.assets.push(element);
+    //         });
+    //       });
+    //     }
+    //   }
+    // });
+
+
+    // this.currService.getActivities(this.baseURL).subscribe((response: CustomResponse) => {
+    //   if (response) {
+    //     const data: any = Object.entries(response);
+    //     console.log(data);
+    //     if (data[0][1]) {
+    //       console.log(data[0][1])
+    //       data.forEach(array => {
+    //         console.log(array);
+    //         array[1].forEach(element => {
+    //           console.log(element, this.activities)
+    //           this.activities.push(element);
+    //           console.log(this.activities)
+    //         });
+    //       });
+    //     }
+    //   }
+    // });
 
   }
 
