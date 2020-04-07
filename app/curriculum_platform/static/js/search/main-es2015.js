@@ -299,6 +299,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
+    // modulesOnly: boolean = false; // TROUBLESHOOTING
     constructor(elm, currService) {
         this.elm = elm;
         this.currService = currService;
@@ -316,8 +317,7 @@ let AppComponent = class AppComponent {
         this.selected_activities_count = 0;
         this.assets = [];
         this.selected_asset_count = 0;
-        // modulesOnly: boolean = true;   //Original
-        this.modulesOnly = false;
+        this.modulesOnly = true; // Original
         this.modulesOnly = (elm.nativeElement.getAttribute('modulesOnly')) ? elm.nativeElement.getAttribute('modulesOnly') : false;
         this.currService.getTags(this.baseURL).subscribe((data) => {
             this.tags = data.items;

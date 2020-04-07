@@ -49,8 +49,8 @@ export class AppComponent {
   selected_assets;
   selected_asset_count: number = 0;
 
-  // modulesOnly: boolean = true;   //Original
-  modulesOnly: boolean = false;
+  modulesOnly: boolean = true;   // Original
+  // modulesOnly: boolean = false; // TROUBLESHOOTING
   
   constructor(private elm: ElementRef, private currService: CurriculumService) {
     this.modulesOnly = (elm.nativeElement.getAttribute('modulesOnly')) ? elm.nativeElement.getAttribute('modulesOnly') : false;
