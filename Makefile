@@ -25,11 +25,10 @@ prune:
 	docker system prune -a
 
 sass: 
-	sass app/static/css/evolution.scss app/static/css/evolution.css
+	sass bootstrap/curriculum-platform.scss app/curriculum_platform/static/css/curriculum-platform.css
 
 watch-sass:
-	#sass --watch app/evolution/evolution/home/static/css/evolution.scss app/evolution/evolution/home/static/css/evolution.css	
-	sass --watch app/evolution/evolution/home/static/css/evolution.scss:app/evolution/evolution/home/static/css/evolution.css
+	sass --watch bootstrap/curriculum-platform.scss app/curriculum_platform/static/css/curriculum-platform.css
 
 static:
 	docker-compose exec web python /app/manage.py collectstatic
