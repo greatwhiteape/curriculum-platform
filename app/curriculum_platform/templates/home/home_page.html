@@ -7,10 +7,12 @@
 {% block content %}
 <div class="homepage">
 
-  {% image page.image min-2000x1000 as image %}
-  <div id="hero" class="row" style="background:#FFFFFF url('{{ image.url }}') no-repeat center center;">
-    <div id="hero_row" class="col px-0">
-      <h1 id="hero-copy"><span class="green-text">{{ page.title }}</span> &mdash; {{ page.hero_text }}</h1>
+  {% image page.image height-550 as hero %}
+  <div class="jumbotron" id="hero" style="background:#232425 url('{{ hero.url }}') no-repeat right center;">
+    <div class="row">
+      <div class="col-6 offset-1 pr-lg-4">
+        <h1>{{ page.title }} &mdash; {{ page.hero_text }}</h1>
+      </div>
     </div>
   </div>
 
@@ -25,53 +27,122 @@
         <h2 id="featured_marketing_copy" class="">{{ page.featured_copy }}</h2>
       </div>
     </div>
-    <div class="row mt-5">
-      <div class="col-sm-6">
-        <div id="featured_box1" class="box">
-          {% image page.feature1_image fill-600x250 class="half" %}
-          <h6 class="col">{{ page.feature1_title}}</h6>
-          <p><a href="{{page.feature1_link}}">{{page.feature1_copy}}</a></p>
-        </div>
+
+
+      {% image page.feature1_image fill-450x385 as featured1 %}
+      {% image page.feature2_image fill-450x385 as featured2 %}
+      {% image page.feature3_image fill-665x385 as featured3 %}
+      {% image page.feature6_image fill-665x385 as featured6 %}
+
+      <div class="row my-lg-4" style="/*background-color: #ffffff;*/">
+        <div class="col mt-0">
+          <div class="row my-0">
+            <div class="col-5 d-inline-block pl-0 py-0 labventure-background box"><img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured1.url }}"></div>
+            <div class="col-5 offset-1 d-inline-block pl-0 ein-background box"><img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured2.url }}"></div>
+          </div>
+          <div class="row mt-n5">
+            <div class="col-5 d-inline-block pl-0">
+              <div class="row">
+                <div class="col-12 col-lg-5 bg-white py-3 border-bottom">
+                  <small class="my-3 py-3 text-uppercase labventure-text">{{ page.feature1_title }}</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="py-3"><a href="{{ page.feature1.link }}">{{ page.feature1_copy}}</a></h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-5 offset-1 d-inline-block pl-0">
+              <div class="row">
+                <div class="col-12 col-lg-6 bg-white py-3 border-bottom">
+                  <small class="my-3 py-3 text-uppercase ein-text">{{ page.feature2_title }}</small>
+                </div>
+              </div>
+              <div class="row bg-white">
+                <div class="col-12">
+                  <h5 class="py-3"><a href="{{ page.feature2.link }}">{{ page.feature2_copy }}</a></h5>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
-      <div class="col-sm-6 mt-5">
-        <div id="featured_box2" class="box">
-          {% image page.feature2_image fill-600x250 class="half" %}
-          <h6 class="col">{{ page.feature2_title}}</h6>
-          <p><a href="{{page.feature2_link}}">{{page.feature2_copy}}</a></p>
+    </div>
+    <div class="row my-lg-4">
+      <div class="col mt-0">
+        <div class="row my-0">
+          <div class="col-7 d-inline-block pl-0 py-0 ein-background">
+            <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured3.url }}">
+          </div>
+          <div class="col-3 offset-1 d-inline-block p-3 grey-box">
+            <div class="row">
+              <div class="col p-3">
+                <small class="text-primary border-primary p-2 border-bottom">{{ page.feature4_title }}</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="{{ page.feature4.link}}" class="text-primary">
+                  {{ page.feature4_copy }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="row mt-n5">
+            <div class="col-5 d-inline-block pl-0">
+              <div class="row">
+                <div class="col-12 col-lg-6 bg-white py-3 border-bottom">
+                  <small class="my-3 py-3 text-uppercase ein-text">{{ page.feature3_title }}</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="py-3"><a href="{{ page.feature3.link }}">{{ page.feature3_copy }}</a></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row my-lg-4">
+      <div class="col mt-0">
+        <div class="row my-0">
+          <div class="col-3 d-inline-block p-3 grey-box">
+            <div class="row">
+              <div class="col p-3">
+                <small class="text-primary border-primary p-2 border-bottom">{{ page.feature5_title }}</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="{{ page.feature5.link}}" class="text-primary">
+                  {{ page.feature5_copy }}
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-7 offset-1 d-inline-block pl-0 py-0 labventure-background">
+            <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured6.url }}">
+          </div>
+        </div>
+        <div class="row mt-n5">
+          <div class="col-5 offset-4 d-inline-block pl-0">
+            <div class="row">
+              <div class="col-12 col-lg-6 bg-white py-3 border-bottom">
+                <small class="my-3 py-3 text-uppercase labventure-text">{{ page.feature6_title }}</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <h5 class="py-3"><a href="{{ page.feature6.link }}">{{ page.feature6_copy }}</a></h5>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row mt-5">
-      <div class="col-sm-8">
-        <div id="featured_box3" class="box">
-          {% image page.feature3_image fill-700x250 class="three-quarter" %}
-          <h6 class="col">{{ page.feature3_title}}</h6>
-          <p><a href="{{page.feature3_link}}">{{page.feature3_copy}}</a></p>
-        </div>
-      </div>
-      <div class="col-sm-4 mt-5">
-        <div id="featured_box4" class="sm-box">
-          <h6 class="col"><a href="{{ page.feature4_link }}" target="_blank">{{ page.feature4_title}}</a></h6>
-          <p>{{page.feature4_copy|richtext}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="row my-5">
-      <div class="col-sm-4">
-        <div id="featured_box5" class="sm-box">
-          <h6 class="col"><a href="{{ page.feature5_link }}" target="_blank">{{ page.feature5_title}}</a></h6>
-          <p>{{page.feature5_copy|richtext}}</p>
-        </div>
-      </div>
-      <div class="col-sm-8 mt-5">
-        <div id="featured_box6" class="box">
-          {% image page.feature6_image fill-700x250 class="three-quarter" %}
-          <h6 class="col">{{ page.feature6_title}}</h6>
-          <p><a href="{{ page.feature6_link }}">{{page.feature6_copy}}</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </div> 
 
   <div id="lv_block" class="row">
     <div class="col">
@@ -83,14 +154,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-7 offset-md-1" id="lv_section">
+        <div class="col-md-6 offset-md-1" id="lv_section">
           <h2 class="text-white px-2">{{ page.labventure_section_title }}</h2>
           <p class="px-2">{{ page.labventure_section_copy }}</p>
           
           <a class="btn btn-light rounded-pill mx-2" aria-pressed="true" href="{{ page.labventure_section_button_link }}" >{{ page.labventure_section_button_text }}</a>
         </div>
         <div class="col-md-4 overflow-hidden float-lg-right d-none d-md-block">
-          {% image page.labventure_section_hero fill-400x400-c100 id="lv_image" class=""  %}
+          {% image page.labventure_section_hero fill-600x400-c100 id="lv_image" class=""  %}
         </div>
       </div>
     </div>
@@ -101,13 +172,13 @@
       <div class="row logo-row">
         <div class="col-sm-2 offset-lg-8 offset-md-5 mt-sm-n3">
           <h2 id="vs_icon" class="hrz-icon">
-            {% image page.vitalsigns_section_logo width-380 %}
+            {% image page.vitalsigns_section_logo width-380 id="ein_logo" %}
           </h2> 
         </div>
       </div>
       <div class="row">
         <div class="col-md-4 overflow-hidden d-none d-md-block offset-1">
-          {% image page.vitalsigns_section_hero fill-500x450-c100 id="vs_image" %}
+          {% image page.vitalsigns_section_hero fill-600x400-c100 id="vs_image" %}
         </div>
         <div class="col-lg-6 col-md-6 ">
           <h2 class="text-white">{{ page.vitalsigns_section_title }}</h2>
@@ -121,15 +192,18 @@
 
   <div id="gmri_block">
     <div class="row justify-content-between">
-      <div class="col-md-6 offset-md-1">
+      <div class="col-md-5 offset-md-1">
         <h2 id="gmri_icon" class="hrz-icon">
           {% image page.gmri_section_logo width-300 %}
         </h2> 
+        <div id="our_call">
+          Our call to action
+        </div>
         <h2>{{ page.gmri_section_title }}</h2>
         <p>{{ page.gmri_section_copy }}</p>
       </div>
       <div class="col-md-5 overflow-hidden">
-        {% image page.gmri_section_hero fill-500x550-c100 id="gmri_image" class="text-left" %}
+        {% image page.gmri_section_hero fill-600x550-c100 id="gmri_image" class="text-left" %}
       </div>
     </div>
   </div>

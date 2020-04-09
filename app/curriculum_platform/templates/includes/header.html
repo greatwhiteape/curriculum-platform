@@ -1,35 +1,19 @@
-{% load menu_tags %}
-{% load wagtailimages_tags %}
+{% load static menu_tags %}
 
-<div class="container col-11 offset-1 px-0">
-  <nav class="navbar navbar-expand-md navbar-light header clearfix px-0" role="banner">
-    <div class="row align-items-center">
-      <div class="col-md-4 px-0 navbar-brand logo">
-        <a href="/" class=""><img class="col-sm-10" src="https://rwrs-curr-platform.nyc3.digitaloceanspaces.com/images/logo-curriculum-platform3x.original.png" class="mx-auto" /></a>
-      </div>
-      <div class="col">  
-        {% block main_navigation %}
-          <nav class="" id="main-navigation" role="navigation" aria-label="Primary site navigation">
-            <ul class="navbar-nav nav">
-              {% main_menu max_levels=1 template="menus/custom_main_menu.html" %}
-            </ul>
-          </nav>
-        {% endblock %}
-      </div>
-      {% comment %} 
-      <div class="col-lg-3">
-        <div class="row">
-          <div class="col">
-            <form action="/search" method="get" class="search" role="search">
-                <input name="q" type="text" placeholder="Search the site" aria-label="Search the site" autocomplete="on" class="col-lg-10 col-sm-11">
-                <a href="#" class="search-icon">
-                  <i class="fa fab fa-search"></i>
-                </a>
-            </form>
-          </div>
+<header class="row">
+  <div class="col-11 offset-xl-1">
+    <nav class="navbar navbar-light navbar-expand-md p-5 row">
+        <div class="col-3">
+          <a class="navbar-brand" href="https://teach.gmri.org"><img src="{% static 'images/logo-curriculum-platform3x.original.png' %}" height="80px"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         </div>
-      </div>  
-      {% endcomment %}
-    </div>
-  </nav>
-</div>
+
+        <div class="col-2" id="nav_visElement">&nbsp;</div>
+          
+        <div class="collapse navbar-collapse col" id="navcol-1">
+          <ul class="nav navbar-nav">
+            {% main_menu max_levels=1 template="menus/custom_main_menu.html" %}
+          </ul>
+        </div>
+    </nav>
+  </div>
+</header>
