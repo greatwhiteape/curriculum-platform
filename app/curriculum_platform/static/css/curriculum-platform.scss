@@ -1,6 +1,9 @@
 @import "gmri-bootstrap/gmri-sass/partials/gmri";
 
 $nav-grey: #8e8a8a;
+$slightly-darker-grey: #dddbd5;
+$slightly-ligther-black: #292525;
+
 
 body {
     overflow-x: hidden;
@@ -119,7 +122,38 @@ footer {
 .ein-background {
   background-color:$citizen-science;
 }
-  
+
+.sdg-background {
+  background-color:$slightly-darker-grey;
+}
+
+.slb-text {
+  color:$slightly-ligther-black;
+}
+
+.grey-text {
+  color: $nav-grey;
+}
+
+.btn-rounded {
+  border-radius: 40px !important;
+}
+    
+#our_call, #learn_mod, #learn_lesson {
+  margin: 50px 0 30px 0;
+
+  color: $nav-grey;
+
+  font-size:0.9rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 2.86px;
+  color: #6b6e70;
+}
+#homepage{  
   .vert-icon {
     width: inherit;
     height: 170px;
@@ -144,15 +178,6 @@ footer {
       height: auto ;
     }
   }
-  
-  // .logo-row {
-  //   @media(min-width:769px) {
-  //     display:flex;
-  //   }
-  //   @media(max-width:768px) {
-  //     display:none !important;
-  //   } 
-  // }
   
   #hero {
     @media (min-width: 769px) {
@@ -363,21 +388,6 @@ footer {
         margin-left: 15px;
       }
     }  
-    
-    #our_call {
-      margin: 50px 0 30px 0;
-
-      color: $nav-grey;
-
-      font-size:0.9rem;
-      text-transform: uppercase;
-      font-weight: bolder;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1;
-      letter-spacing: 2.86px;
-      color: #6b6e70;
-    }
   
     #gmri_icon {
       img {
@@ -436,175 +446,216 @@ footer {
       p {}
     }
   }
-  
-  .labventure {
-    #hero {
-      @media (min-width: 769px) {
-        height:50vh;
-  
-        #hero_row {
-          height: 50vh;
-      
-          #hero_copy {  
-            width: 60%;
-            position: absolute;
-            bottom: 25px;
-            right: 3rem;
-          }
-        }
-      }
-  
-      @media (max-width: 768px) {
-        height:30vh;
-  
-        #hero_row {
-          height: 30vh;
-      
-          #hero_copy {  
-            width: 80%;
-            position: absolute;
-            bottom: 25px;
-            right: 25px;
-          }
-        }
-      }
-  
-      @media (max-width: 576px) {
-        display:none;
-      }
-  
+}  
+
+.labventure {
+  #hero {
+    @media (min-width: 769px) {
+      height:50vh;
+
       #hero_row {
-        background-color: rgba(0,0,0,0.5);
-  
+        height: 50vh;
+    
         #hero_copy {  
-          font-family: Avenir;
-          font-size: 2.3rem;
-          font-weight: 900;
-          font-style: normal;
-          font-stretch: normal;
-          line-height: 1.4;
-          letter-spacing: 0.45px;
-          color: #ffffff;
-          text-align: right;
+          width: 60%;
+          position: absolute;
+          bottom: 25px;
+          right: 3rem;
         }
       }
     }
-  
-    #title {
-      h2 {
-        color: $gmri-red;
-      }
-  
-      #subtitle {
-        color:$gmri-dark-grey;
-      }
-    }
-  }
-  
-  .module, .lesson{
-    #hero-module, #hero-lesson{
-      color: white;
-      min-height: 5vh;
-    }
-  
-    #title {
-      background-color: white;
-      color:$gmri-dark-grey;
-      font-family: Avenir;
-      font-size: 2.3rem;
-      font-weight: 900;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: 1.4;
-      letter-spacing: 0.45px;
-      text-align: left;
-  
-      h2 {
-        font-size: 2.5rem;
-        color: $gmri-red;
+
+    @media (max-width: 768px) {
+      height:30vh;
+
+      #hero_row {
+        height: 30vh;
+    
+        #hero_copy {  
+          width: 80%;
+          position: absolute;
+          bottom: 25px;
+          right: 25px;
+        }
       }
     }
-  
-    .nav-tabs {
+
+    @media (max-width: 576px) {
       display:none;
     }
-  
-    @media(min-width:768px) {
-      .nav-tabs {
-        display: flex;
-  
-        .nav-item {
-          li {
-            padding: auto 2rem !important;
-          }
-        }
-      }
-      
-      #content {
-        
-      }
-      .card {
-        border: none;
-  
-        .card-header {
-          display:none;
-        }
-      }
-  
-      .card .collapse{
-        display:block;
-      }
-    }
-  
-    @media(max-width:767px){
-      .tab-content > .tab-pane {
-        display: block !important;
-        opacity: 1;
+
+    #hero_row {
+      background-color: rgba(0,0,0,0.5);
+
+      #hero_copy {  
+        font-family: Avenir;
+        font-size: 2.3rem;
+        font-weight: 900;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.4;
+        letter-spacing: 0.45px;
+        color: #ffffff;
+        text-align: right;
       }
     }
   }
-  
-  .template-student {
-    background-color: $gmri-accent-blue !important;
-    color: white;
-    a {
-      color: $labventure-blue;
-    }
-  
-    a:hover {
+
+  #title {
+    h2 {
       color: $gmri-red;
     }
-  
-    ol {
-      color:white;
+
+    #subtitle {
+      color:$gmri-dark-grey;
+    }
+  }
+}
+
+#module, #lesson{
+  #hero-module, #hero-lesson{
+    color: white;
+    min-height: 5vh;
+  }
+
+  #title {
+    background-color: white;
+    color:$gmri-red;
+    font-size: 2.3rem;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: 0.45px;
+    text-align: left;
+
+    h2 {
+      font-size: 2.5rem;
+      color: $gmri-red;
+    }
+  }
+
+  #tabs_row {
+    margin-bottom: 20vh;
+
+    #tabs {
+      font-size: 1.5rem;
+      font-weight:bold;
+
       li {
-        color:white;
+        a.hover {
+          border:1px solid $slightly-darker-grey;
+        }
       }
     }
-  
-    ul {
-      color:white;
-      li {
-        color:white;
-        list-style: disc inside;
+
+    h3 {
+      color: $slightly-ligther-black;
+    }
+
+    h4 {
+      color: $slightly-ligther-black;
+    }
+    p {
+      color: $slightly-ligther-black;
+
+      small {
+        font-weight: lighter;
       }
     }
-  
-    .list-group {
-      .list-group-item {
-        background-color: $gmri-accent-blue !important;
-        color:white;
-  
-        h1, h2, h3, h4, h5 {
-          color: white;
-        }
-  
-        .card {
-          background-color: $gmri-accent-blue !important;
-          border-color: $labventure-blue;
-        }
+
+    li {
+      color:$nav-grey;
+      border:none;
+    }
+    .standards-list {
+      // padding-left:0;
+      a {
+        font-weight:bold;
       }
     }
   }
+
+  .nav-tabs {
+    display:none;
+  }
+
+  @media(min-width:768px) {
+    .nav-tabs {
+      display: flex;
+
+      .nav-item {
+        li {
+          padding: auto 2rem !important;
+        }
+      }
+    }
+    
+    #content {
+      
+    }
+    .card {
+      border: none;
+
+      .card-header {
+        display:none;
+      }
+    }
+
+    .card .collapse{
+      display:block;
+    }
+  }
+
+  @media(max-width:767px){
+    .tab-content > .tab-pane {
+      display: block !important;
+      opacity: 1;
+    }
+  }
+}
+
+.template-student {
+  background-color: $gmri-accent-blue !important;
+  color: white;
+  a {
+    color: $labventure-blue;
+  }
+
+  a:hover {
+    color: $gmri-red;
+  }
+
+  ol {
+    color:white;
+    li {
+      color:white;
+    }
+  }
+
+  ul {
+    color:white;
+    li {
+      color:white;
+      list-style: disc inside;
+    }
+  }
+
+  .list-group {
+    .list-group-item {
+      background-color: $gmri-accent-blue !important;
+      color:white;
+
+      h1, h2, h3, h4, h5 {
+        color: white;
+      }
+
+      .card {
+        background-color: $gmri-accent-blue !important;
+        border-color: $labventure-blue;
+      }
+    }
+  }
+}
 
 @import "gmri-bootstrap/node_modules/bootstrap/scss/bootstrap";
