@@ -119,3 +119,6 @@ node_modules
 .sass-cache/
 
 *.code-workspace
+themes/*
+
+themes/Index/assets/css/index.css
