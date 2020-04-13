@@ -1,20 +1,30 @@
-{% extends "student_base.html" %}
-{% load wagtailimages_tags wagtailcore_tags %}
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags static %}
 
 {% block content %}
-
-<div class="{{module.program|lower}}">
-  <div class="row my-5">
-    <div class="col">
-      <h1 class="text-center">{{ module.title }}</h1>
-      <h2 class="text-center">{{ module.subtitle }}</h2>
+<div class="{{module.title|lower}}">
+  <div class="jumbotron p-0 mb-0">
+    <div class="row labventure-background">
+      <div class="col-5 offset-lg-1 py-5 align-middle">
+        <h2 class="mt-5 pr-5 text-white">{{ module.title }}: {{ module.subtitle }}</h2>
+      </div>
+      {% image module.hero_image fill-900x300 as hero %}
+      <div id="content_hero_bg" class="col-xl-5 p-0"><img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}"></div>
     </div>
   </div>
   <div class="row">
-    <div class="col-10 offset-md-1">
-      {% if module.students_desc %}
+    <div class="col offset-lg-1 mt-5">
+      <h3 class="slb-text">Lessons for Students</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-1 my-0">
+      <hr class="slb-text" />
+    </div>
+  </div>
+  <div class="row py-5 mb-5">
+    <div class="col-lg-10 offset-lg-1">
       {{ module.students_desc }}
-      {% endif %}
     </div>
   </div>
 </div>
