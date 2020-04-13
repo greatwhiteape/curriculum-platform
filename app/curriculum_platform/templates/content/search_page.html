@@ -4,24 +4,15 @@
 
 {% block content %}
 <div class="{{page.title|lower}}">
-  {% image page.image fill-1600x500 as image %}
-  <div id="hero" class="row" style="background:#061f2b url('{{ image.url }}') center center;">
-    <div id="hero_row" class="col-10 offset-1">
-      <h1 id="hero-copy"><span class="labventure-text" style=>{{ page.title }}</span> &mdash; {{ page.hero_text }}</h1>
+  <div class="jumbotron p-0 mb-0">
+    <div class="row labventure-background">
+      <div class="col-5 offset-lg-1 p-5 align-middle">
+        <h2 class="mt-5 pr-5 text-white">{{ page.hero_text }}</h2>
+      </div>
+      {% image page.image fill-900x300 as hero %}
+      <div id="content_hero_bg" class="col-xl-5 p-0"><img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}"></div>
     </div>
   </div>
-  {% comment %} <div id="featured" class="container col-sm-10 offset-1">
-    <div class="row">
-      <div class="col">
-        <h1 class="text-uppercase font-weight-bolder">{{ page.featured_title}}</h5>
-      </div>
-    </div>
-    <div class="row py-3">
-      <div class="col">
-        <h2 id="featured_marketing_copy" class="">{{ page.featured_copy }}</h2>
-      </div>
-    </div>
-  </div> {% endcomment %}
   <div class="row py-5">
     <div class="col-sm-10 offset-1">
       {{ page.search_tag|safe }}

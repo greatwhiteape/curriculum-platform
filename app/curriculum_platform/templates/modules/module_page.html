@@ -11,24 +11,24 @@
         <h1 class="red-text">{{ module.title }}: {{ module.subtitle }}</h1>
         {{ module.intro_copy|safe }}        
       </div>
-      {% image module.hero_image width-800 as hero %}
-      <div class="col-xl-5 p-0 labventure-background"><img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}" style="max-height: 500px;"></div>
+      {% image module.hero_image fill-750x500 as hero %}
+      <div id="ml_hero_bg" class="col-xl-5 p-0 labventure-background"><img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}"></div>
     </div>
     <div class="row p-5">
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-primary btn-rounded px-5 py-3" href="#" role="button">
+        <a class="btn btn-outline-primary btn-rounded px-5 py-3" href="{{ module.module_download }}" role="button">
           Download Full Module
           <img class="pl-5" src="{% static 'images/icon-download.png' %}">
         </a>
       </div>
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="#" role="button">
+        <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="student-page" role="button">
           Student Guide
           <img class="pl-5" src="{% static 'images/icon-resource-link.png' %}">
         </a>
       </div>
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="#" role="button">
+        <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="{{ module.teachers_guide }}" role="button">
           Teacher's Guide
           <img class="pl-5" src="{% static 'images/icon-resource-link.png' %}">
         </a>
@@ -38,19 +38,19 @@
   <div class="row sdg-background" id="tabs_row">
     <div class="col">
       <ul id="tabs" class="row nav nav-tabs" role="tablist">
-        <li class="col-2 offset-1 nav-item">
+        <li class="col-3 offset-1 nav-item">
           <a id="tab-A" href="#pane-A" class="nav-link p-5 active" data-toggle="tab" role="tab">
             <img class="pr-3" src="{% static 'images/icon-tab-overview-inactive.svg' %}">
             Overview
           </a>
         </li>
-        <li class="col-2 nav-item">
+        <li class="col-3 nav-item">
           <a id="tab-B" href="#pane-B" class="nav-link p-5" data-toggle="tab" role="tab">
             <img class="pr-3" src="{% static 'images/icon-tab-details-inactive.svg' %}">
             Details
           </a>
         </li>
-        <li class="col-2 nav-item">
+        <li class="col-3 nav-item">
           <a id="tab-C" href="#pane-C" class="nav-link p-5" data-toggle="tab" role="tab">
             <img class="pr-3" src="{% static 'images/icon-tab-lessons-inactive.svg' %}">
             Lessons

@@ -153,6 +153,33 @@ footer {
   letter-spacing: 2.86px;
   color: #6b6e70;
 }
+
+app-root {
+  a {
+    color: $nav-grey;
+    
+    :hover {
+      text-decoration: none;
+    }
+
+    h3 {
+      color: $slightly-ligther-black !important;
+    }
+  }
+
+  h3 {
+    color: $slightly-ligther-black;
+  }
+
+  .select-list{
+
+    input:checked ~ .checkmark {
+      background-color: #2196F3;
+      display:none;
+    } 
+  }
+}
+
 #homepage{  
   .vert-icon {
     width: inherit;
@@ -535,6 +562,12 @@ footer {
     }
   }
 
+  #ml_hero_bg {
+    max-height:500px;
+    overflow:hidden;
+
+  }
+
   #tabs_row {
     margin-bottom: 20vh;
 
@@ -542,9 +575,10 @@ footer {
       font-size: 1.5rem;
       font-weight:bold;
 
-      li {
-        a.hover {
-          border:1px solid $slightly-darker-grey;
+      .nav-item {
+
+        a:hover {
+          border:none !important;
         }
       }
     }

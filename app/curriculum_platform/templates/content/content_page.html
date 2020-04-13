@@ -3,43 +3,15 @@
 
 {% block content %}
 <div class="{{page.title|lower}}">
-  {% image page.image fill-1600x500 as image %}
-  <div id="hero" class="row" style="background:#061f2b url('{{ image.url }}') center center;">
-    <div id="hero_row" class="col px-0">
-      <h1 id="hero-copy"><span class="labventure-text">{{ page.title }}</span> &mdash; {{ page.hero_text }}</h1>
-    </div>
-  </div>
-  <div id="featured" class="container col-sm-10 offset-1">
-    <div class="row">
-      <div class="col">
-        <h1 class="text-uppercase font-weight-bolder">{{ page.featured_title}}</h5>
+  <div class="jumbotron p-0 mb-0">
+    <div class="row labventure-background">
+      <div class="col-5 offset-lg-1 p-5 align-middle">
+        <h2 class="mt-5 pr-5 text-white">{{ page.hero_text }}</h2>
       </div>
-    </div>
-    <div class="row py-3">
-      <div class="col">
-        <h2 id="featured_marketing_copy" class="">{{ page.featured_copy }}</h2>
-      </div>
+      {% image page.image fill-900x300 as hero %}
+      <div id="content_hero_bg" class="col-xl-5 p-0"><img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}"></div>
     </div>
   </div>
-  <div class="row py-5">
-    <div class="col-sm-10 offset-1">
-      <ul class="list-group">
-      {% for module in page.modules %}
-        {% if module.program.program_name|lower|slugify in request.path %}
-        <li class="list-group-item">
-          <a href="/curriculum/modules/{{ module.id }}" target="_blank">
-            <h3 class="h3">
-              {{ module.title|upper }}: 
-              <span class="h4 font-italic">{{ module.subtitle|truncatewords:"100" }}</span>
-            </h3>
-            {{ module.intro_copy|safe }}
-          </a>
-        </li>
-        {% endif %}
-      {% endfor %}
-      </ul>
-    </div>
-  </div>
-
+  {% comment %}TODO #2:Add stream field to content page. {% endcomment %}
 </div>
 {% endblock content %}

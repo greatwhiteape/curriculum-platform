@@ -72,6 +72,10 @@ class Lesson(ClusterableModel):
         null=True,
         blank=True
     )
+    lesson_download = models.URLField(
+        null=True,
+        blank=True
+    )
     learning_outcomes = RichTextField(
         null=True,
         blank=True
@@ -149,6 +153,7 @@ class Lesson(ClusterableModel):
             FieldPanel('student_intro'),
             FieldPanel('learning_outcomes'),
             FieldPanel('teachers_guide'),
+            FieldPanel('lesson_download'),
         ], heading="Marketing Speak"),
         MultiFieldPanel([
             StreamFieldPanel('teachers_desc'),

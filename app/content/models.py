@@ -17,16 +17,23 @@ from wagtail.admin.edit_handlers import (
     PageChooserPanel,
     StreamFieldPanel,
 )
+from wagtail.core import blocks as wagtail_blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Collection, Page
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtail.api import APIField
 
 from modules.models import Module
 
+from streams import blocks
 
 class ContentPage(Page):
   class Meta:
@@ -62,12 +69,20 @@ class ContentPage(Page):
     blank=True,
     help_text='Featured content copy'
   )
-
-  body = RichTextField(
-    null=True, 
-    blank=True, 
-    help_text='Content Body'
-  )
+  
+  body = StreamField(
+      [
+          ('title', blocks.TitleBlock()),
+          ('copy', wagtail_blocks.RichTextBlock()),
+          ('image', ImageChooserBlock()),
+          ('asset', SnippetChooserBlock('assets.Asset')),
+          ('activity', SnippetChooserBlock('activity.Activity')),
+          ('document', DocumentChooserBlock()),
+          ('embed', EmbedBlock()),
+      ], 
+      null=True, 
+      blank=True
+  )    
 
   content_panels = Page.content_panels + [
     MultiFieldPanel([
@@ -75,11 +90,7 @@ class ContentPage(Page):
       FieldPanel('hero_text', classname="full"),
     ], heading="Hero section"),
     MultiFieldPanel([
-      FieldPanel('featured_title'),
-      FieldPanel('featured_copy')
-    ], heading="Featured Section"),
-    MultiFieldPanel([
-      FieldPanel('body', classname="full"),
+      StreamFieldPanel('body'),
     ], heading="Body")
   ]
 
@@ -103,7 +114,7 @@ class SearchPage(Page):
     managed = True
     verbose_name = 'Search'
     verbose_name_plural = 'Search Pages'
-    
+
   image = models.ForeignKey(
     'wagtailimages.Image',
     null=True,
@@ -144,10 +155,10 @@ class SearchPage(Page):
       ImageChooserPanel('image'),
       FieldPanel('hero_text', classname="full"),
     ], heading="Hero Section"),
-    MultiFieldPanel([
-      FieldPanel('featured_title'),
-      FieldPanel('featured_copy'),
-    ], heading="Featured Section"), 
+    # MultiFieldPanel([
+    #   FieldPanel('featured_title'),
+    #   FieldPanel('featured_copy'),
+    # ], heading="Featured Section"), 
     MultiFieldPanel([
       FieldPanel('search_tag'),
     ], heading="Angular Application Tag")

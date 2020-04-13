@@ -1,43 +1,45 @@
-<div id="selected_container">
-  <div  class="row my-2" *ngIf="selected_programs">
-    <div class="col">
-      <!-- Selected Programs-->
-      <div class="selected-programs-wrap">
-        <div class="selected-program" *ngFor="let s of selected_programs" >
-          <span class="badge badge-pill badge-primary float-left text-white mr-1">{{s.program_name}} <span class="delete-program" (click)="deleteProgram(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+<div class="row" id="selected_container">
+  <div class="col">
+    <div  class="row my-2" *ngIf="selected_programs">
+      <div class="col">
+        <!-- Selected Programs-->
+        <div class="selected-programs-wrap">
+          <div class="selected-program" *ngFor="let s of selected_programs" >
+            <span class="badge badge-pill badge-primary float-left text-white mr-3 py-3 px-5">{{s.program_name}} <span class="delete-program" (click)="deleteProgram(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-      <!-- Selected Audiences-->
-  <div  class="row my-2" *ngIf="selected_audiences">
-    <div class="col">
-      <div class="selected-audience-wrap">
-        <div class="selected-audience" *ngFor="let s of selected_audiences" >
-          <span class="badge badge-pill badge-primary float-left text-white mr-1">{{s.age_range}} <span class="delete-audience" (click)="deleteAudience(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+        <!-- Selected Audiences-->
+    <div  class="row my-2" *ngIf="selected_audiences">
+      <div class="col">
+        <div class="selected-audience-wrap">
+          <div class="selected-audience" *ngFor="let s of selected_audiences" >
+            <span class="badge badge-pill badge-primary float-left text-white mr-3 py-3 px-5">{{s.age_range}} <span class="delete-audience" (click)="deleteAudience(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-      <!-- Selected Tags-->
-  <div  class="row my-2" *ngIf="selected_tags">
-    <div class="col">
-      <div class="selected-tags-wrap">
-        <div class="selected-tags" *ngFor="let s of selected_tags" >
-          <span class="badge badge-pill badge-primary float-left text-white mr-1">{{s.tag}} <span class="delete-tag" (click)="deleteTag(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+        <!-- Selected Tags-->
+    <div  class="row my-2" *ngIf="selected_tags">
+      <div class="col">
+        <div class="selected-tags-wrap">
+          <div class="selected-tags" *ngFor="let s of selected_tags" >
+            <span class="badge badge-pill badge-primary float-left text-white mr-3 py-3 px-5">{{s.tag}} <span class="delete-tag" (click)="deleteTag(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-      <!-- Selected Topic-->
-  <div  class="row my-2" *ngIf="selected_topics">
-    <div class="col">
-      <div class="selected-topic-wrap">
-        <div class="selected-topic" *ngFor="let s of selected_topics" >
-          <span class="badge badge-pill badge-primary float-left text-white mr-1">{{s.topic}} <span class="delete-topic" (click)="deleteTopic(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+        <!-- Selected Topic-->
+    <div  class="row my-2" *ngIf="selected_topics">
+      <div class="col">
+        <div class="selected-topic-wrap">
+          <div class="selected-topic" *ngFor="let s of selected_topics" >
+            <span class="badge badge-pill badge-primary float-left text-white mr-3 py-3 px-5">{{s.topic}} <span class="delete-topic" (click)="deleteTopic(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+          </div>
         </div>
       </div>
     </div>
@@ -48,7 +50,7 @@
     <div class="col">
       <div class="selected-type-wrap">
         <div class="selected-type" *ngFor="let s of selected_activity_types" >
-          <span class="badge badge-pill badge-primary float-left text-white mx-1">{{s.activity_type}} <span class="delete-type" (click)="deleteAssetType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+          <span class="badge badge-pill badge-primary float-left text-white mr-3 mt-5 py-3 px-5">{{s.activity_type}} <span class="delete-type" (click)="deleteAssetType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
         </div>
       </div>
     </div>
@@ -81,49 +83,69 @@
   <div id="filter_fields" class="col-md-3">
     <!-- Program List -->
     <h5 class="mt-4">Program List</h5>
-    <ul id="program-list" class="list-group">
+    <ul id="program-list" class="list-group select-list">
       <li *ngFor="let p of programs" class="program-item list-group-item">
-        <input (change)="getSelectedPrograms()" type="checkbox"
-                  name="program"
-                  value="{{p.id}}"
-                  [(ngModel)]="p.selected"/>
-        <small class="program-text text-muted ml-2">{{p.program_name}}</small>
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input"
+                    (change)="getSelectedPrograms()"
+                    type="checkbox"
+                    id="program_{{p.id}}"
+                    name="program"
+                    value="{{p.id}}"
+                    [(ngModel)]="p.selected"/>
+          <label class="custom-control-label topic-text text-muted ml-2" for="program_{{p.id}}">{{p.program_name}}</label>
+        </div>
       </li>
     </ul>
 
     <!-- Audience List -->
     <h5 class="mt-4">Audience List</h5>
-    <ul id="audience-list" class="list-group">
+    <ul id="audience-list" class="list-group select-list">
       <li *ngFor="let a of audiences" class="audience-item list-group-item">
-        <input (change)="getSelectedAudiences()" type="checkbox"
-                  name="audience"
-                  value="{{a.id}}"
-                  [(ngModel)]="a.selected"/>
-        <small class="audience-text text-muted ml-2">{{a.age_range}}</small>
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input"
+                    (change)="getSelectedAudiences()"
+                    type="checkbox"
+                    id="audience_{{a.id}}"
+                    name="audience"
+                    value="{{a.id}}"
+                    [(ngModel)]="a.selected"/>
+          <label class="custom-control-label topic-text text-muted ml-2" for="audience_{{a.id}}">{{a.age_range}}</label>
+        </div>
       </li>
     </ul>
 
     <!-- Tag List -->
     <h5 class="mt-4">Tags</h5>
-    <ul id="tag-list" class="list-group">
+    <ul id="tag-list" class="list-group select-list">
       <li *ngFor="let t of tags" class="tag-item list-group-item">
-        <input (change)="getSelectedTags()" type="checkbox"
-                  name="tag"
-                  value="{{t.id}}"
-                  [(ngModel)]="t.selected"/>
-        <small class="tag-text text-muted ml-2">{{t.tag}}</small>
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input"
+                    (change)="getSelectedTags()"
+                    type="checkbox"
+                    id="tag_{{t.id}}"
+                    name="tag"
+                    value="{{t.id}}"
+                    [(ngModel)]="t.selected"/>
+          <label class="custom-control-label topic-text text-muted ml-2" for="tag_{{t.id}}">{{t.tag}}</label>
+        </div>
       </li>
     </ul>
 
     <!-- Topic List -->
     <h5 class="mt-4">Topics</h5>
-    <ul id="topic-list" class="list-group">
+    <ul id="topic-list" class="list-group select-list">
       <li *ngFor="let t of topics" class="topic-item list-group-item">
-        <input (change)="getSelectedTopics()" type="checkbox"
-                  name="topic"
-                  value="{{t.id}}"
-                  [(ngModel)]="t.selected"/>
-        <small class="topic-text text-muted ml-2">{{t.topic}}</small>
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input"
+                    (change)="getSelectedTopics()"
+                    type="checkbox"
+                    id="topic_{{t.id}}"
+                    name="topic"
+                    value="{{t.id}}"
+                    [(ngModel)]="t.selected"/>
+          <label class="custom-control-label topic-text text-muted ml-2" for="topic_{{t.id}}">{{t.topic}}</label>
+        </div>
       </li>
     </ul>
 
@@ -138,7 +160,7 @@
         <small class="type-text text-muted ml-2">{{t.type}}</small>
       </li>
     </ul> -->
-  </div> 
+  </div>
 
 
   <div class="col-md-9">
@@ -149,7 +171,7 @@
           <li class="list-group-item border-0">
             <a href="{{ baseURL }}curriculum/modules/{{ module.id }}" target="_blank">
               <h3 class="h3">
-                {{ module.title }}: <span class="h4 font-italic">{{ module.subtitle }}</span>
+                {{ module.title }}: {{ module.subtitle }}
               </h3>
               <p [innerHTML]="module.intro_copy | safe: 'html'"></p>
             </a>
@@ -164,14 +186,14 @@
           <li class="list-group-item border-0">
             <a href="{{ baseURL }}curriculum/lessons/{{ lesson.id }}" target="_blank">
               <h3 class="h3">
-                {{ lesson.title }}: <span class="h4 font-italic">{{ lesson.subtitle }}</span>
+                {{ lesson.title }}: {{ lesson.subtitle }}
               </h3>
               <p [innerHTML]="lesson.intro_copy | safe: 'html'"></p>
             </a>
           </li>
         </ng-container>
       </ul>
-    </div> 
+    </div>
     <!-- <div id="lesson_container">
       <h3 class="my-4">Activities</h3>
       <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
@@ -186,7 +208,7 @@
           </li>
         </ng-container>
       </ul>
-    </div> 
+    </div>
     <div id="asset_container" *ngIf=!modulesOnly>
       <h3 class="my-4">Individual Assets</h3>
       <p class="text-center" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>

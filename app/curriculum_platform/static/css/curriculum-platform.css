@@ -173,6 +173,18 @@ footer {
   letter-spacing: 2.86px;
   color: #6b6e70; }
 
+app-root a {
+  color: #8e8a8a; }
+  app-root a :hover {
+    text-decoration: none; }
+  app-root a h3 {
+    color: #292525 !important; }
+app-root h3 {
+  color: #292525; }
+app-root .select-list input:checked ~ .checkmark {
+  background-color: #2196F3;
+  display: none; }
+
 #homepage .vert-icon {
   width: inherit;
   height: 170px;
@@ -410,13 +422,16 @@ footer {
   #module #title h2, #lesson #title h2 {
     font-size: 2.5rem;
     color: #ea4f12; }
+#module #ml_hero_bg, #lesson #ml_hero_bg {
+  max-height: 500px;
+  overflow: hidden; }
 #module #tabs_row, #lesson #tabs_row {
   margin-bottom: 20vh; }
   #module #tabs_row #tabs, #lesson #tabs_row #tabs {
     font-size: 1.5rem;
     font-weight: bold; }
-    #module #tabs_row #tabs li a.hover, #lesson #tabs_row #tabs li a.hover {
-      border: 1px solid #dddbd5; }
+    #module #tabs_row #tabs .nav-item a:hover, #lesson #tabs_row #tabs .nav-item a:hover {
+      border: none !important; }
   #module #tabs_row h3, #lesson #tabs_row h3 {
     color: #292525; }
   #module #tabs_row h4, #lesson #tabs_row h4 {
