@@ -86,6 +86,20 @@ footer {
       margin:2vh 0.9rem;
     }
   }
+
+  .microscopic {
+    font-size: .7rem;
+    font-style: uppercase;
+
+    a {
+      color:$nav-grey;
+      text-decoration: none;
+
+      :hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
   
 .hero { display: none; min-height: 100vh; }
