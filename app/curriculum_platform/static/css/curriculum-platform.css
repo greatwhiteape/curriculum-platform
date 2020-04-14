@@ -76,7 +76,8 @@ body {
 
 header {
   display: none; }
-  header .logo img {
+  header .navbar-brand img {
+    max-height: 80px;
     margin: auto; }
   header #nav_visElement {
     background: #fff url("../images/DashElement.png") repeat-x left center;
@@ -230,13 +231,11 @@ app-root .select-list input:checked ~ .checkmark {
     color: #8e8a8a; }
   @media (min-width: 769px) {
     #homepage #featured h1 {
-      font-size: 1rem;
-      font-weight: 900;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: 1;
-      letter-spacing: 2.9px;
-      color: #6b6e70; }
+      color: #8e8a8a;
+      font-size: 0.9rem;
+      font-weight: light;
+      letter-spacing: 2.5px;
+      text-transform: uppercase; }
     #homepage #featured #featured_marketing_copy {
       color: #005d8e;
       font-weight: 300; } }

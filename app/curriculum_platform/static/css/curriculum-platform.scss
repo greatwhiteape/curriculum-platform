@@ -12,9 +12,11 @@ body {
 header {
   display:none;
 
-  .logo {
-    img {
+  .navbar-brand {
 
+    img {
+      
+      max-height:80px;
       margin:auto;
       
     }
@@ -253,13 +255,11 @@ app-root {
   
     @media(min-width: 769px) {  
       h1 {
-        font-size: 1rem;
-        font-weight: 900;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 1;
-        letter-spacing: 2.9px;
-        color: $gmri-dark-grey;
+        color: $nav-grey;
+        font-size: 0.9rem;
+        font-weight: light;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
       }
     
       #featured_marketing_copy {

@@ -16,14 +16,14 @@
     </div>
   </div>
 
-  <div id="featured" class="container col-10 offset-1 mb-5">
+  <div id="featured" class="container col-10 offset-1 my-5 pb-5">
     <div class="row">
-      <div class="col">
-        <h1 class="text-uppercase font-weight-bolder">{{ page.featured_title}}</h5>
+      <div class="col-xl-8 my-5 py-2 px-0">
+        <h1>{{ page.featured_title}}</h5>
       </div>
     </div>
     <div class="row py-3">
-      <div class="col">
+      <div class="col-xl-8 px-0">
         <h2 id="featured_marketing_copy" class="">{{ page.featured_copy }}</h2>
       </div>
     </div>
@@ -34,7 +34,7 @@
       {% image page.feature3_image fill-665x385 as featured3 %}
       {% image page.feature6_image fill-665x385 as featured6 %}
 
-      <div class="row my-lg-4" style="/*background-color: #ffffff;*/">
+      <div class="row my-lg-5 py-lg-3">
         <div class="col mt-0">
           <div class="row my-0">
             <div class="col-5 d-inline-block pl-0 py-0 labventure-background box"><img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured1.url }}"></div>

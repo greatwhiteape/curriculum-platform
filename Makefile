@@ -32,3 +32,6 @@ watch-sass:
 
 static:
 	docker-compose exec web python /app/manage.py collectstatic
+
+upgrade-wagtail:
+	docker-compose exec web pip install wagtail --upgrade
