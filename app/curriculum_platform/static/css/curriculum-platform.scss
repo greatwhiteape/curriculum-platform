@@ -1,0 +1,709 @@
+@import "gmri-bootstrap/gmri-sass/partials/gmri";
+
+$nav-grey: #8e8a8a;
+$slightly-darker-grey: #dddbd5;
+$slightly-ligther-black: #292525;
+
+
+body {
+    overflow-x: hidden;
+  }
+  
+header {
+  display:none;
+
+  .logo {
+    img {
+
+      margin:auto;
+      
+    }
+  }
+
+  #nav_visElement {
+    background:(#fff url("../images/DashElement.png") repeat-x left center);
+    max-width:85px;
+
+    @media(max-width: 1599px) {
+      display:none;
+    }
+  }
+
+  li {
+    a.nav-link {
+      margin: auto 3rem;
+
+      color:$nav-grey !important;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 3.0px;
+
+      .hover {
+        color:$gmri-blue;
+      }
+    }
+  }
+
+  .search {
+    @media(max-width: 768px) {
+    }
+    border: 1px solid $gmri-light-grey;
+    padding: auto 2px;
+    
+    color: $gmri-dark-grey;
+    font-weight: 300;
+  }
+}
+  
+footer {
+  background-color: $gmri-light-grey;
+  color: $gmri-dark-grey;
+
+  font-family: Avenir;
+  font-size: 20px;
+  font-weight: light;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+
+  padding:5vh 0;
+
+  small {
+    font-weight: lighter;
+  }
+
+  strong {
+    font-weight: 900;
+  }
+
+  a {
+    color: $gmri-dark-grey;
+  }
+
+  #social_icons {
+    li {
+      margin:2vh 0.9rem;
+    }
+  }
+
+  .microscopic {
+    font-size: .7rem;
+    font-style: uppercase;
+
+    a {
+      color:$nav-grey;
+      text-decoration: none;
+
+      :hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+  
+.hero { display: none; min-height: 100vh; }
+.green {display:none;}
+
+.green-text {
+  color: $gmri-light-green;
+}
+
+.blue-text {
+  color: $gmri-blue;
+}
+
+.orange-text {
+  color: $gmri-orange;
+}
+
+.red-text {
+  color: $gmri-red;
+}
+
+.labventure-text {
+  color: $labventure-blue;
+}
+
+.labventure-background {
+  background-color:$labventure-blue;
+}
+
+.ein-text {
+  color: $citizen-science;
+}
+
+.ein-background {
+  background-color:$citizen-science;
+}
+
+.sdg-background {
+  background-color:$slightly-darker-grey;
+}
+
+.slb-text {
+  color:$slightly-ligther-black;
+}
+
+.grey-text {
+  color: $nav-grey;
+}
+
+.btn-rounded {
+  border-radius: 40px !important;
+}
+    
+#our_call, #learn_mod, #learn_lesson {
+  margin: 50px 0 30px 0;
+
+  color: $nav-grey;
+
+  font-size:0.9rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 2.86px;
+  color: #6b6e70;
+}
+
+app-root {
+  a {
+    color: $nav-grey;
+    
+    :hover {
+      text-decoration: none;
+    }
+
+    h3 {
+      color: $slightly-ligther-black !important;
+    }
+  }
+
+  h3 {
+    color: $slightly-ligther-black;
+  }
+
+  .select-list{
+
+    input:checked ~ .checkmark {
+      background-color: #2196F3;
+      display:none;
+    } 
+  }
+}
+
+#homepage{  
+  .vert-icon {
+    width: inherit;
+    height: 170px;
+    width: 107px;
+    background-color: white;
+    margin-top: -4vh;
+    padding: 10px;
+    
+    img {
+      height: 150px;
+      width: auto;
+    }
+  }
+  
+  .hrz-icon {
+    width: 400px;
+    background-color: white;
+    margin-top: -2vh;
+    padding: 10px;
+  
+    img {
+      height: auto ;
+    }
+  }
+  
+  #hero {
+    @media (min-width: 769px) {
+
+      h1 {
+        min-height: 400px;
+        color: #fff;
+        background-color:rgba(35, 36, 37, .5)
+      }
+    }
+  
+    @media (max-width: 768px) {
+      height:30vh;
+  
+      h1 {
+        display:none;
+      }
+    }
+  
+    @media (max-width: 576px) {
+      display:none;
+    }
+  }
+  
+  #featured {
+    font-family: "Avenir", sans-serif;
+    margin: 5vh auto 5vh auto;
+
+    a {
+      color: $nav-grey;
+    }
+  
+    @media(min-width: 769px) {  
+      h1 {
+        font-size: 1rem;
+        font-weight: 900;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1;
+        letter-spacing: 2.9px;
+        color: $gmri-dark-grey;
+      }
+    
+      #featured_marketing_copy {
+        color: $gmri-blue;
+        font-weight: 300;
+      }
+  
+    }
+    @media(max-width: 768px) {
+    
+      h1 {
+        font-size: 1rem;
+        font-weight: 900;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1;
+        letter-spacing: 2.9px;
+        color: $gmri-dark-grey;
+      }
+    
+      #featured_marketing_copy {
+        color: $gmri-blue;
+        font-weight: 300;
+        font-size: 2rem;
+      }
+  
+    }
+   
+    .box {
+      min-height: 40vh;
+      overflow: hidden;
+      width: auto;
+    }
+
+    .grey-box {
+      background: #e9e9e9 url() no-repeat left top;
+    }
+  }
+  
+  #lv_block {
+    background: $labventure-blue;
+    color:white;
+  
+    @media (min-width: 769px) {
+      height:485px;
+      padding: auto;
+      margin-bottom: 20vh;
+      margin-top: 15vh;
+  
+      p {
+        max-height: 150px;
+        overflow: hidden;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      margin-left:15px;
+      overflow:hidden;
+  
+      h2 {
+        margin-top:1vh;
+        font-size: 2rem;
+      }
+  
+      .btn {
+        margin: 5px 10px;
+      }
+    }
+  
+    #lv_icon {
+      margin-top: -100px;
+      height: 220px;
+      width: 220px;
+      background: #ffffff;
+      border-radius: 50%;
+  
+      img {
+        margin-left: 50px;
+        margin-top: 20px;
+        padding:0;
+      }
+    }
+  }
+  
+  #vs_block {
+    margin-top: 15vh;
+    background: $gmri-light-green;
+    color: white;
+
+    #ein_logo {
+      padding:20px;
+    }
+  
+    @media (min-width: 768px) {
+      height:485px;
+      padding: auto;
+      margin-bottom: 15vh;
+  
+      p {
+        max-height: 150px;
+        overflow: hidden;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      margin-left:15px;
+      padding-left:5px;
+      overflow:hidden;
+      margin-top:5vh;
+  
+      h2 {
+        margin-top:1vh;
+        font-size: 2rem;
+      }
+  
+      #vs_icon {
+        width: 305px;
+      }
+  
+      .btn {
+        margin: 5px 10px;
+      }
+    }
+  }
+  
+  #gmri_block {
+    margin-top: 15vh;
+    background: white;
+    color: black;
+  
+    @media (min-width:768px) {
+      min-height: 60vh;
+      margin: 15vh auto 5vh auto;
+    }
+  
+    @media (max-width:767px) {
+      margin:5vh 0 5vh 15px;
+      max-height: 500px;
+      overflow:hidden;
+  
+      #gmri_icon {
+        display:none;
+      }
+    }
+  
+    h2 {  
+      font-weight: 900;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.25;
+      letter-spacing: 0.25px;
+      color: #292525;
+  
+      @media (max-width:768px) {
+        margin-top: 1vh;
+        font-size: 2rem;
+        margin-left: 15px;
+      }
+    }
+  
+    p {
+      margin: 30px 0;
+
+      color: $nav-grey;
+
+      @media(max-width:768px) {
+        margin-left: 15px;
+      }
+    }  
+  
+    #gmri_icon {
+      img {
+      }
+    }
+  
+    #gmri_image {
+      @media (max-width:768px) {
+        display:none;
+      }
+    }
+  }
+  
+  #c2a_group {
+    h2 {
+      font-size:2rem;
+    }
+  
+    p {
+      color:white;
+    }
+  
+    .card-footer {
+      border:none;
+      padding: 50px;
+      background-color: rgba(0,0,0,0) !important;
+    }
+  
+    #c2a_1 {
+      background-color: $gmri-accent-blue;
+  
+      h2 {
+        color:$labventure-light-blue;
+      }
+  
+      p {  }
+    }
+  
+    #c2a_2 {
+      background-color: $gmri-blue;
+  
+      h2 {
+        color: $gmri-orange;
+      }
+  
+      p {}
+    }
+  
+    #c2a_3 {
+      background-color: $gmri-accent-green;
+  
+      h2 {
+        color: $gmri-yellow;
+      }
+  
+      p {}
+    }
+  }
+}  
+
+.labventure {
+  #hero {
+    @media (min-width: 769px) {
+      height:50vh;
+
+      #hero_row {
+        height: 50vh;
+    
+        #hero_copy {  
+          width: 60%;
+          position: absolute;
+          bottom: 25px;
+          right: 3rem;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      height:30vh;
+
+      #hero_row {
+        height: 30vh;
+    
+        #hero_copy {  
+          width: 80%;
+          position: absolute;
+          bottom: 25px;
+          right: 25px;
+        }
+      }
+    }
+
+    @media (max-width: 576px) {
+      display:none;
+    }
+
+    #hero_row {
+      background-color: rgba(0,0,0,0.5);
+
+      #hero_copy {  
+        font-family: Avenir;
+        font-size: 2.3rem;
+        font-weight: 900;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.4;
+        letter-spacing: 0.45px;
+        color: #ffffff;
+        text-align: right;
+      }
+    }
+  }
+
+  #title {
+    h2 {
+      color: $gmri-red;
+    }
+
+    #subtitle {
+      color:$gmri-dark-grey;
+    }
+  }
+}
+
+#module, #lesson{
+  #hero-module, #hero-lesson{
+    color: white;
+    min-height: 5vh;
+  }
+
+  #title {
+    background-color: white;
+    color:$gmri-red;
+    font-size: 2.3rem;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: 0.45px;
+    text-align: left;
+
+    h2 {
+      font-size: 2.5rem;
+      color: $gmri-red;
+    }
+  }
+
+  #ml_hero_bg {
+    max-height:500px;
+    overflow:hidden;
+
+  }
+
+  #tabs_row {
+    margin-bottom: 20vh;
+
+    #tabs {
+      font-size: 1.5rem;
+      font-weight:bold;
+
+      .nav-item {
+
+        a:hover {
+          border:none !important;
+        }
+      }
+    }
+
+    h3 {
+      color: $slightly-ligther-black;
+    }
+
+    h4 {
+      color: $slightly-ligther-black;
+    }
+    p {
+      color: $slightly-ligther-black;
+
+      small {
+        font-weight: lighter;
+      }
+    }
+
+    li {
+      color:$nav-grey;
+      border:none;
+    }
+    .standards-list {
+      // padding-left:0;
+      a {
+        font-weight:bold;
+      }
+    }
+  }
+
+  .nav-tabs {
+    display:none;
+  }
+
+  @media(min-width:768px) {
+    .nav-tabs {
+      display: flex;
+
+      .nav-item {
+        li {
+          padding: auto 2rem !important;
+        }
+      }
+    }
+    
+    #content {
+      
+    }
+    .card {
+      border: none;
+
+      .card-header {
+        display:none;
+      }
+    }
+
+    .card .collapse{
+      display:block;
+    }
+  }
+
+  @media(max-width:767px){
+    .tab-content > .tab-pane {
+      display: block !important;
+      opacity: 1;
+    }
+  }
+}
+
+.template-student {
+  background-color: $gmri-accent-blue !important;
+  color: white;
+  a {
+    color: $labventure-blue;
+  }
+
+  a:hover {
+    color: $gmri-red;
+  }
+
+  ol {
+    color:white;
+    li {
+      color:white;
+    }
+  }
+
+  ul {
+    color:white;
+    li {
+      color:white;
+      list-style: disc inside;
+    }
+  }
+
+  .list-group {
+    .list-group-item {
+      background-color: $gmri-accent-blue !important;
+      color:white;
+
+      h1, h2, h3, h4, h5 {
+        color: white;
+      }
+
+      .card {
+        background-color: $gmri-accent-blue !important;
+        border-color: $labventure-blue;
+      }
+    }
+  }
+}
+
+@import "gmri-bootstrap/node_modules/bootstrap/scss/bootstrap";

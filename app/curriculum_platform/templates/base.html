@@ -1,0 +1,41 @@
+{% load static wagtailuserbar %}
+
+{% block head %}
+  {% include "includes/head.html" %}
+{% endblock head %}
+
+<body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HPT7WL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {% wagtailuserbar %}
+
+  {% block header %}
+    {# Header contains the main_navigation block #}
+    {% include "includes/header.html" with parent=site_root calling_page=self %}
+  {% endblock header %}
+
+  {% block head-extra %}
+  {% endblock head-extra %}
+
+  {% block messages %}
+    {% include "includes/messages.html" %}
+  {% endblock messages %}
+
+  <main role="main">
+      {% block content %}
+      {% endblock content %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="row">
+    {% include "includes/footer.html" %}
+  </footer>
+
+
+  <!-- Analytics & Scripts -->
+  {% include "includes/scripts.html" %}
+</body>
+
+</html>

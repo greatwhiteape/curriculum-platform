@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<div class="{{page.title|lower}}">
+  <div class="jumbotron p-0 mb-0">
+    <div class="row labventure-background">
+      <div class="col-5 offset-lg-1 py-5 align-middle">
+        <h2 class="mt-5 pr-5 text-white">{{ page.hero_text }}</h2>
+      </div>
+      {% image page.image fill-900x300 as hero %}
+      <div id="content_hero_bg" class="col-xl-5 p-0"><img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}"></div>
+    </div>
+  </div>
+  {% comment %}TODO #2:Add stream field to content page. {% endcomment %}
+</div>
+{% endblock content %}

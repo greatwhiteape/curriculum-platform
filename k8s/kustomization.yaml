@@ -1,0 +1,21 @@
+namespace: curriculum
+resources:
+    - deployment.yaml
+    - ingress.yaml
+    - web-service.yaml
+    - docker-hub-secrets.yaml
+secretGenerator:
+  - name: curriculum-secrets
+    envs: [secret.env]
+commonLabels:
+  app: curriculum
+  maintainer: greatwhiteape
+  funder: NASA
+  project: GMRI_EDU
+patchesJson6902:
+  - target:
+      group: extensions
+      version: v1beta1
+      kind: Ingress
+      name: curriculum-ingress
+    path: ingress_patch.yaml

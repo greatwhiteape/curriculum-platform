@@ -1,0 +1,65 @@
+[
+  {
+  "id": 1,
+  "createDate": "2019-07-29T19:01:13.544921Z",
+  "modifiedDate": "2019-07-29T19:01:13.544984Z",
+  "age_range": "Grade 5",
+  "description": ""
+  },
+  {
+  "id": 2,
+  "createDate": "2019-07-29T19:01:28.021437Z",
+  "modifiedDate": "2019-07-29T19:01:28.021502Z",
+  "age_range": "Grade 6",
+  "description": ""
+  },
+  {
+  "id": 3,
+  "createDate": "2019-07-29T19:01:33.048002Z",
+  "modifiedDate": "2019-07-29T19:01:33.048061Z",
+  "age_range": "Grade 7",
+  "description": ""
+  },
+  {
+  "id": 4,
+  "createDate": "2019-07-29T19:01:39.014451Z",
+  "modifiedDate": "2019-07-29T19:01:39.014516Z",
+  "age_range": "Grade 8",
+  "description": ""
+  },
+  {
+  "id": 5,
+  "createDate": "2019-07-29T19:01:42.930741Z",
+  "modifiedDate": "2019-07-29T19:01:42.930803Z",
+  "age_range": "Grade 9",
+  "description": ""
+  },
+  {
+  "id": 6,
+  "createDate": "2019-07-29T19:01:51.402396Z",
+  "modifiedDate": "2019-07-29T19:01:51.402460Z",
+  "age_range": "Elementary School",
+  "description": ""
+  },
+  {
+  "id": 7,
+  "createDate": "2019-07-29T19:01:58.629462Z",
+  "modifiedDate": "2019-07-29T19:01:58.629526Z",
+  "age_range": "Middle School",
+  "description": ""
+  },
+  {
+  "id": 8,
+  "createDate": "2019-07-29T19:02:03.761908Z",
+  "modifiedDate": "2019-07-29T19:02:03.761973Z",
+  "age_range": "High School",
+  "description": ""
+  },
+  {
+  "id": 9,
+  "createDate": "2019-07-29T19:02:11.075762Z",
+  "modifiedDate": "2019-07-29T19:02:11.075827Z",
+  "age_range": "Adult Learners",
+  "description": ""
+  }
+  ]

@@ -1,0 +1,45 @@
+{% extends "student_base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+
+<div class="{{lesson.program|lower}}">
+  <div class="row my-5">
+    <div class="col">
+      <h1 class="text-center">{{ lesson.title }}</h1>
+      <h2 class="text-center">{{ lesson.subtitle }}</h2>
+    </div>
+  </div>
+  {% if lesson.student_intro %}
+  <div class="row">
+    <div class="col-10 offset-md-1">
+      {{ lesson.student_intro|safe }}
+    </div>
+  </div>
+  {% endif %}
+  {% if lesson.students_desc %}
+  <hr />
+  <div class="row">
+    <div class="col-10 offset-md-1">
+      <div>{{ lesson.students_desc }}</div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- <ul class="list-group">
+    Testing
+    {% for lesson in lesson.lesson.all|dictsort:"id" %} 
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col">
+          {% if lesson.title %}
+          <h4>{{ lesson.display_title}}</h4>
+          {% endif %}
+          <p>{{ lesson.student_copy|safe }}</p>
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+  </ul> -->
+
+</div>
+{% endblock content %}

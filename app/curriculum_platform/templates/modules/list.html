@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<div class="labventure">
+
+  {% image page.image fill-1600x750 as image %}
+  <div id="hero" class="jumbotron col-12 px-0 mx-0" style="background:#061f2b url('{{ image.url }}') center center;">
+    <div class="row align-middle mt-5 pt-5">
+      <div class="col-sm-8 offset-sm-1 align-self-center mt-5 pt-5">
+        <h1 class="hero-copy mt-5 pt-5"><span class="green-text">{{ page.title }}</span> &mdash; {{ page.hero_text }}</h1>
+      </div>
+    </div>
+  </div>
+  <div id="featured" class="container col-sm-10 offset-1">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-uppercase font-weight-bolder">{{ page.featured_title}}</h5>
+      </div>
+    </div>
+    <div class="row py-3">
+      <div class="col">
+        <h2 id="featured_marketing_copy" class="">{{ page.featured_copy }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row py-5">
+    <div class="col-sm-10 offset-1">
+      <ul class="list-group">
+      {% for module in modules %}
+        <li class="list-group-item">
+          <a href="/curriculum/modules/{{ module.id }}" target="_blank">
+            <h3 class="h3">
+              {{ module.title|upper }}: 
+              <span class="h4 font-italic">{{ module.subtitle|truncatewords:"100" }}</span>
+            </h3>
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
