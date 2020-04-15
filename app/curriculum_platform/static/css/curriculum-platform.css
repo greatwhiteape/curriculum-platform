@@ -76,13 +76,15 @@ body {
 
 header {
   display: none; }
-  header .navbar-brand img {
-    max-height: 80px;
-    margin: auto; }
+  header #brand_col {
+    max-width: 350px; }
+    header #brand_col .navbar-brand img {
+      max-height: 80px;
+      margin: auto; }
   header #nav_visElement {
     background: #fff url("../images/DashElement.png") repeat-x left center;
     max-width: 85px; }
-    @media (max-width: 1599px) {
+    @media (max-width: 1199px) {
       header #nav_visElement {
         display: none; } }
   header li a.nav-link {
@@ -167,6 +169,9 @@ footer {
 .grey-text {
   color: #8e8a8a; }
 
+.hero-text-bg {
+  background-color: rgba(35, 36, 37, 0.5); }
+
 .btn-rounded {
   border-radius: 40px !important; }
 
@@ -214,8 +219,7 @@ app-root .select-list input:checked ~ .checkmark {
 @media (min-width: 769px) {
   #homepage #hero h1 {
     min-height: 400px;
-    color: #fff;
-    background-color: rgba(35, 36, 37, 0.5); } }
+    color: #fff; } }
 @media (max-width: 768px) {
   #homepage #hero {
     height: 30vh; }
