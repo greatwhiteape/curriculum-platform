@@ -257,6 +257,7 @@ app-root .select-list input:checked ~ .checkmark {
       font-weight: 300;
       font-size: 2rem; } }
   #homepage #featured .box {
+    margin: 20px;
     min-height: 40vh;
     overflow: hidden;
     width: auto; }

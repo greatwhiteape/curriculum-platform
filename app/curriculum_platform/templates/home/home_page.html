@@ -18,63 +18,129 @@
 
   <div id="featured" class="container col-10 offset-1 my-1 pb-1 my-lg-5 pb-lg-5">
     <div class="row">
-      <div class="col col-xl-8 my-1 my-lg-5 py-2 px-0">
+      <div class="col col-xl-8 my-1 my-lg-5 py-2">
         <h1>{{ page.featured_title}}</h5>
       </div>
     </div>
     <div class="row py-3">
-      <div class="col-xl-8 px-0">
+      <div class="col-xl-8">
         <h2 id="featured_marketing_copy" class="">{{ page.featured_copy }}</h2>
       </div>
     </div>
 
 
-      {% image page.feature1_image fill-450x385 as featured1 %}
-      {% image page.feature2_image fill-450x385 as featured2 %}
-      {% image page.feature3_image fill-665x385 as featured3 %}
-      {% image page.feature6_image fill-665x385 as featured6 %}
+    {% image page.feature1_image fill-450x385 as featured1 %}
+    {% image page.feature2_image fill-450x385 as featured2 %}
+    {% image page.feature3_image fill-665x385 as featured3 %}
+    {% image page.feature6_image fill-665x385 as featured6 %}
 
-      <div class="row my-lg-5 py-lg-3">
-        <div class="col mt-0">
-          <div class="row my-0">
-            <div class="col-5 d-inline-block pl-0 py-0 labventure-background box"><img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured1.url }}"></div>
-            <div class="col-5 offset-1 d-inline-block pl-0 ein-background box"><img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured2.url }}"></div>
-          </div>
-          <div class="row mt-n5">
-            <div class="col-5 d-inline-block pl-0">
-              <div class="row">
-                <div class="col-12 col-lg-5 bg-white py-3 border-bottom">
-                  <small class="my-3 py-3 text-uppercase labventure-text">{{ page.feature1_title }}</small>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <h5 class="py-3"><a href="{{ page.feature1.link }}">{{ page.feature1_copy}}</a></h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-5 offset-1 d-inline-block pl-0">
-              <div class="row">
-                <div class="col-12 col-lg-6 bg-white py-3 border-bottom">
-                  <small class="my-3 py-3 text-uppercase ein-text">{{ page.feature2_title }}</small>
-                </div>
-              </div>
-              <div class="row bg-white">
-                <div class="col-12">
-                  <h5 class="py-3"><a href="{{ page.feature2.link }}">{{ page.feature2_copy }}</a></h5>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
-    <div class="row my-lg-4">
+    <div class="row">
       <div class="col mt-0">
         <div class="row my-0">
-          <div class="col-7 d-inline-block pl-0 py-0 ein-background">
-            <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured3.url }}">
+          <div class="col-md-5 d-inline-block pl-0 box">
+            <div class="row m-0 p-0 labventure-background ">
+              <div class="col m-0 p-0">
+                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured1.url }}">
+              </div>
+            </div>
+            <div class="row mt-n4">
+              <div class="col col-lg-5 bg-white py-3 border-bottom">
+                <small class="my-3 py-3 text-uppercase labventure-text">{{ page.feature1_title }}</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col bg-white">
+                <h5 class="py-3"><a href="{{ page.feature1.link }}">{{ page.feature1_copy}}</a></h5>
+              </div>
+            </div>
           </div>
-          <div class="col-3 offset-1 d-inline-block p-3 grey-box">
+          
+          <div class="col-md-5 offset-md-1 d-inline-block pl-0 box">
+            <div class="row m-0 p-0 ein-background">
+              <div class="col m-0 p-0">
+                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured2.url }}">
+              </div>
+            </div>
+
+            <div class="row mt-n4">
+              <div class="col col-lg-6 bg-white py-3 border-bottom">
+                <small class="my-3 py-3 text-uppercase ein-text">{{ page.feature2_title }}</small>
+              </div>
+            </div>
+            <div class="row bg-white">
+              <div class="col">
+                <h5 class="py-3"><a href="{{ page.feature2.link }}">{{ page.feature2_copy }}</a></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col mt-0">
+        <div class="row my-0">
+          <div class="col-md-5 d-inline-block pl-0 box">
+            <div class="row m-0 p-0 labventure-background ">
+              <div class="col m-0 p-0">
+                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured1.url }}">
+              </div>
+            </div>
+            <div class="row mt-n4">
+              <div class="col col-lg-5 bg-white py-3 border-bottom">
+                <small class="my-3 py-3 text-uppercase labventure-text">{{ page.feature1_title }}</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col bg-white">
+                <h5 class="py-3"><a href="{{ page.feature1.link }}">{{ page.feature1_copy}}</a></h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-5 offset-md-1 d-inline-block pl-0 box">
+            <div class="row m-0 p-0 ein-background">
+              <div class="col m-0 p-0">
+                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured2.url }}">
+              </div>
+            </div>
+
+            <div class="row mt-n4">
+              <div class="col col-lg-6 bg-white py-3 border-bottom">
+                <small class="my-3 py-3 text-uppercase ein-text">{{ page.feature2_title }}</small>
+              </div>
+            </div>
+            <div class="row bg-white">
+              <div class="col">
+                <h5 class="py-3"><a href="{{ page.feature2.link }}">{{ page.feature2_copy }}</a></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col mt-0">
+        <div class="row my-0">
+          <div class="col-md-5 col-xl-7 d-inline-block pl-0">
+            <div class="row ein-background overflow-hidden">
+              <div class="col m-0 p-0">
+                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured3.url }}">
+              </div>
+            </div>
+            <div class="row mt-n5">
+              <div class="col-12 col-lg-6 bg-white py-3 border-bottom">
+                <small class="my-3 py-3 text-uppercase ein-text">{{ page.feature3_title }}</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5 class="py-3"><a href="{{ page.feature3.link }}">{{ page.feature3_copy }}</a></h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 col-xl-3 offset-md-1 d-inline-block grey-box p-3">
             <div class="row">
               <div class="col p-3">
                 <small class="text-primary border-primary p-2 border-bottom">{{ page.feature4_title }}</small>
@@ -89,26 +155,14 @@
             </div>
           </div>
         </div>
-          <div class="row mt-n5">
-            <div class="col-5 d-inline-block pl-0">
-              <div class="row">
-                <div class="col-12 col-lg-6 bg-white py-3 border-bottom">
-                  <small class="my-3 py-3 text-uppercase ein-text">{{ page.feature3_title }}</small>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <h5 class="py-3"><a href="{{ page.feature3.link }}">{{ page.feature3_copy }}</a></h5>
-                </div>
-              </div>
-            </div>
-          </div>
       </div>
     </div>
-    <div class="row my-lg-4">
+
+
+    <div class="row">
       <div class="col mt-0">
         <div class="row my-0">
-          <div class="col-3 d-inline-block p-3 grey-box">
+          <div class="col-md-5 col-xl-3 d-inline-block p-3 grey-box">
             <div class="row">
               <div class="col p-3">
                 <small class="text-primary border-primary p-2 border-bottom">{{ page.feature5_title }}</small>
@@ -122,19 +176,19 @@
               </div>
             </div>
           </div>
-          <div class="col-7 offset-1 d-inline-block pl-0 py-0 labventure-background">
-            <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured6.url }}">
-          </div>
-        </div>
-        <div class="row mt-n5">
-          <div class="col-5 offset-4 d-inline-block pl-0">
+          <div class="col-md-5 col-xl-7 offset-md-1 d-inline-block pl-0 py-0">
+            <div class="row labventure-background overflow-hidden">
+              <div class="col p-0 m-0">
+                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured6.url }}">
+              </div>
+            </div>
             <div class="row">
-              <div class="col-12 col-lg-6 bg-white py-3 border-bottom">
+              <div class="col col-lg-6 bg-white py-3 border-bottom">
                 <small class="my-3 py-3 text-uppercase labventure-text">{{ page.feature6_title }}</small>
               </div>
             </div>
             <div class="row">
-              <div class="col-12">
+              <div class="col">
                 <h5 class="py-3"><a href="{{ page.feature6.link }}">{{ page.feature6_copy }}</a></h5>
               </div>
             </div>
@@ -219,6 +273,8 @@
         <a class="btn btn-light rounded-pill c2a-button" aria-pressed="true" href="{{ page.c2a_1_section_button_link }}" >{{ page.c2a_1_section_button_text }}</a>
       </div>
     </div>
+    
+    <div class="w-100 d-block d-xl-none"></div>
     <div id="c2a_2" class="card">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_2_section_title }}</h2>
@@ -230,6 +286,9 @@
         <a class="btn btn-light rounded-pill c2a-button" aria-pressed="true" href="{{ page.c2a_2_section_button_link }}" >{{ page.c2a_2_section_button_text }}</a>
       </div>
     </div>
+    
+    <div class="w-100 d-block d-xl-none"><!-- wrap every 4 on lg--></div>
+    
     <div id="c2a_3" class="card">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_3_section_title }}</h2>
@@ -242,6 +301,7 @@
       </div>
     </div>
   </div>
+
 {% comment %} 
     <div class="row">
       <div id="c2a_1" class="col-lg-4 py-lg-4 c2a-box">
