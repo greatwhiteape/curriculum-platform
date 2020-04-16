@@ -6,7 +6,7 @@
 
 {% block content %}
 <div id="homepage">
-
+  <!-- Hero Section -->
   {% image page.image height-550 as hero %}
   <div class="jumbotron p-0	.d-sm-none .d-md-block" id="hero" style="background:#232425 url('{{ hero.url }}') no-repeat right center;">
     <div class="row">
@@ -15,8 +15,11 @@
       </div>
     </div>
   </div>
+  <!-- End Hero Section -->
 
+  <!-- Featured Block -->
   <div id="featured" class="container col-10 offset-1 my-1 pb-1 my-lg-5 pb-lg-5">
+    <!-- Featured Header -->
     <div class="row">
       <div class="col col-xl-8 my-1 my-lg-5 py-2">
         <h1>{{ page.featured_title}}</h5>
@@ -24,16 +27,16 @@
     </div>
     <div class="row py-3">
       <div class="col-xl-8">
-        <h2 id="featured_marketing_copy" class="">{{ page.featured_copy }}</h2>
+        <h2 id="featured_marketing_copy" class="mb-5 pb-5">{{ page.featured_copy }}</h2>
       </div>
     </div>
-
+    <!-- End Featured Header-->
 
     {% image page.feature1_image fill-450x385 as featured1 %}
     {% image page.feature2_image fill-450x385 as featured2 %}
     {% image page.feature3_image fill-665x385 as featured3 %}
     {% image page.feature6_image fill-665x385 as featured6 %}
-
+    <!-- Featured Row 1 -->
     <div class="row">
       <div class="col mt-0">
         <div class="row my-0">
@@ -76,12 +79,13 @@
         </div>
       </div>
     </div>
+    <!-- End Featured Row 1 -->
 
-
+    <!-- Featured Row 2 -->
     <div class="row">
       <div class="col mt-0">
         <div class="row my-0">
-          <div class="col-md-5 col-xl-7 d-inline-block pl-0">
+          <div class="col-md-5 col-xl-7 d-inline-block pl-0 box">
             <div class="row m-0 p-0 ein-background overflow-hidden">
               <div class="col m-0 p-0">
                 <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured3.url }}">
@@ -115,8 +119,9 @@
         </div>
       </div>
     </div>
+    <!-- End Featured Row 2 -->
 
-
+    <!-- Featured Row 3 -->
     <div class="row">
       <div class="col mt-0">
         <div class="row my-0">
@@ -134,13 +139,13 @@
               </div>
             </div>
           </div>
-          <div class="col-md-5 col-xl-7 offset-md-1 d-inline-block pl-0 py-0">
+          <div class="col-md-5 col-xl-7 offset-md-1 d-inline-block pl-0 py-0 box">
             <div class="row labventure-background overflow-hidden">
               <div class="col p-0 m-0">
                 <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured6.url }}">
               </div>
             </div>
-            <div class="row">
+            <div class="row mt-n5">
               <div class="col col-lg-6 bg-white py-3 border-bottom">
                 <small class="my-3 py-3 text-uppercase labventure-text">{{ page.feature6_title }}</small>
               </div>
@@ -154,8 +159,11 @@
         </div>
       </div>
     </div>
+    <!-- End Featured Row 3 -->
   </div> 
-
+  <!-- End Featured -->
+  
+  <!-- LabVenture Section -->
   <div id="lv_block" class="row">
     <div class="col">
       <div class="row logo-row">
@@ -172,13 +180,16 @@
           
           <a class="btn btn-light rounded-pill mx-2" aria-pressed="true" href="{{ page.labventure_section_button_link }}" >{{ page.labventure_section_button_text }}</a>
         </div>
-        <div class="col-md-4 overflow-hidden float-lg-right d-none d-md-block">
+        <div class="col-md-5 col-xl-4 overflow-hidden float-lg-right d-none d-md-block">
           {% image page.labventure_section_hero fill-600x400-c100 id="lv_image" class=""  %}
         </div>
       </div>
     </div>
   </div>
+  <!-- End LabVenture Section-->
 
+
+  <!-- EIN Section -->
   <div id="vs_block" class="row">
     <div class="col">
       <div class="row logo-row">
@@ -201,7 +212,9 @@
       </div>
     </div>
   </div>
+  <!-- End EIN Section -->
 
+  <!-- GMRI Section -->
   <div id="gmri_block">
     <div class="row justify-content-between">
       <div class="col-md-5 offset-md-1">
@@ -219,6 +232,10 @@
       </div>
     </div>
   </div>
+  <!-- End GMRI Section -->
+
+  <!-- Call to Action Section -->
+  <!-- C2A Panel 1 -->
   <div id="c2a_group" class="card-group">
     <div id="c2a_1" class="card">
       <div class="card-body">
@@ -231,8 +248,10 @@
         <a class="btn btn-light rounded-pill c2a-button" aria-pressed="true" href="{{ page.c2a_1_section_button_link }}" >{{ page.c2a_1_section_button_text }}</a>
       </div>
     </div>
-    
+    <!-- End C2A Panel 1-->
     <div class="w-100 d-block d-xl-none"></div>
+
+    <!-- C2A Panel 2 -->
     <div id="c2a_2" class="card">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_2_section_title }}</h2>
@@ -244,9 +263,11 @@
         <a class="btn btn-light rounded-pill c2a-button" aria-pressed="true" href="{{ page.c2a_2_section_button_link }}" >{{ page.c2a_2_section_button_text }}</a>
       </div>
     </div>
-    
+    <!-- End C2A Panel 2-->
     <div class="w-100 d-block d-xl-none"><!-- wrap every 4 on lg--></div>
     
+
+    <!-- C2A Panel 3 -->
     <div id="c2a_3" class="card">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_3_section_title }}</h2>
@@ -258,32 +279,8 @@
         <a class="btn btn-light rounded-pill c2a-button" aria-pressed="true" href="{{ page.c2a_3_section_button_link }}" >{{ page.c2a_3_section_button_text }}</a>
       </div>
     </div>
+    <!-- End C2A Panel 3 -->
   </div>
-
-{% comment %} 
-    <div class="row">
-      <div id="c2a_1" class="col-lg-4 py-lg-4 c2a-box">
-        <h2 class="col-9 offset-1">{{ page.c2a_1_section_title }}</h2>
-        {% if page.c2a_1_section_copy %}
-          <p class="col-9 offset-1">{{ page.c2a_1_section_copy }}</p>
-        {% endif %}
-        <a class="btn btn-light rounded-pill c2a-button offset-1" aria-pressed="true" href="{{ page.c2a_1_section_button_link }}" >{{ page.c2a_1_section_button_text }}</a>
-      </div>
-      <div id="c2a_2" class="col-lg-4 py-lg-4 c2a-box">
-        <h2 class="col-9 offset-1">{{ page.c2a_2_section_title }}</h2>
-        {% if page.c2a_2_section_copy %}
-          <p class="col-9 offset-1">{{ page.c2a_2_section_copy }}</p>
-        {% endif %}
-        <a class="btn btn-light rounded-pill c2a-button offset-1" aria-pressed="true" href="{{ page.c2a_2_section_button_link }}" >{{ page.c2a_2_section_button_text }}</a>
-      </div>
-      <div id="c2a_3" class="col-lg-4 py-lg-4 c2a-box">
-        <h2 class="col-9 offset-1">{{ page.c2a_3_section_title }}</h2>
-        {% if page.c2a_3_section_copy %}
-          <p class="col-9 offset-1">{{ page.c2a_3_section_copy }}</p>
-        {% endif %}
-        <a class="btn btn-light rounded-pill c2a-button offset-1" aria-pressed="true" href="{{ page.c2a_3_section_button_link }}" >{{ page.c2a_3_section_button_text }}</a>
-      </div>
-    </div> {% endcomment %}
-
+  <!-- End Call to Action Section -->
 </div>
 {% endblock content %}

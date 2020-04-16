@@ -257,13 +257,25 @@ app-root .select-list input:checked ~ .checkmark {
       font-weight: 300;
       font-size: 2rem; } }
   #homepage #featured .box {
-    margin: 20px;
     min-height: 40vh;
     overflow: hidden;
     width: auto; }
+    @media (max-width: 991px) {
+      #homepage #featured .box {
+        margin-bottom: 20px; }
+        #homepage #featured .box img {
+          max-height: 150px; } }
+    @media (min-width: 992px) {
+      #homepage #featured .box {
+        margin-bottom: 10vh; } }
   #homepage #featured .grey-box {
-    background: #e9e9e9 url() no-repeat left top;
-    margin-bottom: 20px; }
+    background: #e9e9e9 url() no-repeat left top; }
+    @media (max-width: 991px) {
+      #homepage #featured .grey-box {
+        margin-bottom: 20px; } }
+    @media (min-width: 992px) {
+      #homepage #featured .grey-box {
+        margin-bottom: 20vh; } }
 #homepage #lv_block {
   background: #0098b8;
   color: white; }
