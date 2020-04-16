@@ -18,7 +18,7 @@
   <!-- End Hero Section -->
 
   <!-- Featured Block -->
-  <div id="featured" class="container col-10 offset-1 my-1 pb-1 my-lg-5 pb-lg-5">
+  <div id="featured" class="container col col-lg-11 offset-lg-1">
     <!-- Featured Header -->
     <div class="row">
       <div class="col col-xl-8 my-1 my-lg-5 py-2">
@@ -37,7 +37,7 @@
     {% image page.feature3_image fill-665x385 as featured3 %}
     {% image page.feature6_image fill-665x385 as featured6 %}
     <!-- Featured Row 1 -->
-    <div class="row">
+    <div class="row py-5 px-2 p-lg-0">
       <div class="col mt-0">
         <div class="row my-0">
           <div class="col-md-5 d-inline-block pl-0 box">
@@ -82,7 +82,7 @@
     <!-- End Featured Row 1 -->
 
     <!-- Featured Row 2 -->
-    <div class="row">
+    <div class="row py-5 px-2 p-lg-0">
       <div class="col mt-0">
         <div class="row my-0">
           <div class="col-md-5 col-xl-7 d-inline-block pl-0 box">
@@ -122,7 +122,7 @@
     <!-- End Featured Row 2 -->
 
     <!-- Featured Row 3 -->
-    <div class="row">
+    <div class="row py-5 px-2 p-lg-0">
       <div class="col mt-0">
         <div class="row my-0">
           <div class="col-md-5 col-xl-3 d-inline-block p-3 grey-box">
@@ -193,17 +193,17 @@
   <div id="vs_block" class="row">
     <div class="col">
       <div class="row logo-row">
-        <div class="col-sm-2 offset-lg-8 offset-md-5 mt-sm-n3">
+        <div class="col offset-md-5 offset-lg-6 offset-xl-7 mt-sm-n3">
           <h2 id="vs_icon" class="hrz-icon">
             {% image page.vitalsigns_section_logo width-380 id="ein_logo" %}
           </h2> 
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4 overflow-hidden d-none d-md-block offset-1">
+        <div class="col-5 col-lg-4 overflow-hidden d-none d-md-block">
           {% image page.vitalsigns_section_hero fill-600x400-c100 id="vs_image" %}
         </div>
-        <div class="col-lg-6 col-md-6 ">
+        <div class="col offset-lg-1">
           <h2 class="text-white">{{ page.vitalsigns_section_title }}</h2>
           <p>{{ page.vitalsigns_section_copy }}</p>
 
@@ -217,18 +217,20 @@
   <!-- GMRI Section -->
   <div id="gmri_block">
     <div class="row justify-content-between">
-      <div class="col-md-5 offset-md-1">
+      <div class="col-md-6 col-lg-5 offset-lg-1">
         <h2 id="gmri_icon" class="hrz-icon">
           {% image page.gmri_section_logo width-300 %}
         </h2> 
-        <div id="our_call">
+        <div id="our_call" class="d-none d-lg-block">
           Our call to action
         </div>
-        <h2>{{ page.gmri_section_title }}</h2>
+        <h2 class="d-none d-lg-block"
+        >{{ page.gmri_section_title }}</h2>
         <p>{{ page.gmri_section_copy }}</p>
       </div>
       <div class="col-md-5 overflow-hidden">
-        {% image page.gmri_section_hero fill-600x550-c100 id="gmri_image" class="text-left" %}
+        {% image page.gmri_section_hero fill-600x550-c100 id="gmri_image" class="flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end d-none d-md-flex" %} 
+
       </div>
     </div>
   </div>
@@ -237,7 +239,7 @@
   <!-- Call to Action Section -->
   <!-- C2A Panel 1 -->
   <div id="c2a_group" class="card-group">
-    <div id="c2a_1" class="card">
+    <div id="c2a_1" class="card m-0">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_1_section_title }}</h2>
         {% if page.c2a_1_section_copy %}
@@ -249,10 +251,10 @@
       </div>
     </div>
     <!-- End C2A Panel 1-->
-    <div class="w-100 d-block d-xl-none"></div>
+    <div class="w-100 d-block d-lg-none"></div>
 
     <!-- C2A Panel 2 -->
-    <div id="c2a_2" class="card">
+    <div id="c2a_2" class="card m-0">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_2_section_title }}</h2>
         {% if page.c2a_2_section_copy %}
@@ -264,11 +266,11 @@
       </div>
     </div>
     <!-- End C2A Panel 2-->
-    <div class="w-100 d-block d-xl-none"><!-- wrap every 4 on lg--></div>
+    <div class="w-100 d-block d-lg-none"><!-- wrap every 4 on lg--></div>
     
 
     <!-- C2A Panel 3 -->
-    <div id="c2a_3" class="card">
+    <div id="c2a_3" class="card m-0">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_3_section_title }}</h2>
         {% if page.c2a_3_section_copy %}

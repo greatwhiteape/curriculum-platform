@@ -63,11 +63,12 @@ header {
 }
   
 footer {
+  display:none;
   background-color: $gmri-light-grey;
   color: $gmri-dark-grey;
 
   font-family: Avenir;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: light;
   font-stretch: normal;
   font-style: normal;
@@ -75,6 +76,10 @@ footer {
   letter-spacing: normal;
 
   padding:5vh 0;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 
   small {
     font-weight: lighter;
@@ -228,6 +233,7 @@ app-root {
   
     img {
       height: auto ;
+      width:inherit;
     }
   }
   
@@ -347,6 +353,7 @@ app-root {
     @media (max-width: 768px) {
       margin-left:15px;
       overflow:hidden;
+      padding-bottom:15px;
   
       h2 {
         margin-top:1vh;
@@ -375,7 +382,7 @@ app-root {
   
   #vs_block {
     margin-top: 15vh;
-    background: $gmri-light-green;
+    background: $citizen-science;
     color: white;
 
     #ein_logo {
