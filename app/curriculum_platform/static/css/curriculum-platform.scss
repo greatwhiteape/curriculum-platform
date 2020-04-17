@@ -207,6 +207,12 @@ app-root {
       background-color: #2196F3;
       display:none;
     } 
+
+    @media(max-width:991px) {
+      label {
+        font-size: 0.6rem;
+      }
+    }
   }
 }
 

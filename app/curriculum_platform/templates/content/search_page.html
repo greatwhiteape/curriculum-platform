@@ -6,15 +6,15 @@
 <div class="{{page.title|lower}}">
   <div class="jumbotron p-0 mb-0">
     <div class="row labventure-background">
-      <div class="col-5 offset-lg-1 py-5 align-middle">
+      <div class="col col-lg-5 offset-md-1 py-5 align-middle">
         <h2 class="mt-5 pr-5 text-white">{{ page.hero_text }}</h2>
       </div>
       {% image page.image fill-900x300 as hero %}
-      <div id="content_hero_bg" class="col-xl-5 p-0"><img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}"></div>
+      <div id="content_hero_bg" class="col-xl-5 p-0 flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end d-none d-md-flex"><img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}"></div>
     </div>
   </div>
   <div class="row py-5">
-    <div class="col-sm-10 offset-1">
+    <div class="col col-md-10 offset-md-1">
       {{ page.search_tag|safe }}
     </div>
   </div>

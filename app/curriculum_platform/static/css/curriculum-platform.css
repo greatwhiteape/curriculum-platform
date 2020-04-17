@@ -202,6 +202,9 @@ app-root h3 {
 app-root .select-list input:checked ~ .checkmark {
   background-color: #2196F3;
   display: none; }
+@media (max-width: 991px) {
+  app-root .select-list label {
+    font-size: 0.6rem; } }
 
 #homepage .vert-icon {
   width: inherit;

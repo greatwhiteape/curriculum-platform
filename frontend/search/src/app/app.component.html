@@ -1,5 +1,5 @@
 <div class="row" id="selected_container">
-  <div class="col">
+  <div class="col d-none d-md-flex">
     <div  class="row my-2" *ngIf="selected_programs">
       <div class="col">
         <!-- Selected Programs-->
@@ -84,7 +84,7 @@
     <!-- Program List -->
     <h5 class="mt-4">Program List</h5>
     <ul id="program-list" class="list-group select-list">
-      <li *ngFor="let p of programs" class="program-item list-group-item">
+      <li *ngFor="let p of programs" class="program-item list-group-item p-0 p-lg-3">
         <div class="custom-control custom-checkbox">
           <input class="custom-control-input"
                     (change)="getSelectedPrograms()"
@@ -93,7 +93,7 @@
                     name="program"
                     value="{{p.id}}"
                     [(ngModel)]="p.selected"/>
-          <label class="custom-control-label topic-text text-muted ml-2" for="program_{{p.id}}">{{p.program_name}}</label>
+          <label class="custom-control-label topic-text text-muted ml-lg-2" for="program_{{p.id}}">{{p.program_name}}</label>
         </div>
       </li>
     </ul>
@@ -101,7 +101,7 @@
     <!-- Audience List -->
     <h5 class="mt-4">Audience List</h5>
     <ul id="audience-list" class="list-group select-list">
-      <li *ngFor="let a of audiences" class="audience-item list-group-item">
+      <li *ngFor="let a of audiences" class="audience-item list-group-item p-0 p-lg-3">
         <div class="custom-control custom-checkbox">
           <input class="custom-control-input"
                     (change)="getSelectedAudiences()"
@@ -118,7 +118,7 @@
     <!-- Tag List -->
     <h5 class="mt-4">Tags</h5>
     <ul id="tag-list" class="list-group select-list">
-      <li *ngFor="let t of tags" class="tag-item list-group-item">
+      <li *ngFor="let t of tags" class="tag-item list-group-item p-0 p-lg-3">
         <div class="custom-control custom-checkbox">
           <input class="custom-control-input"
                     (change)="getSelectedTags()"
@@ -135,7 +135,7 @@
     <!-- Topic List -->
     <h5 class="mt-4">Topics</h5>
     <ul id="topic-list" class="list-group select-list">
-      <li *ngFor="let t of topics" class="topic-item list-group-item">
+      <li *ngFor="let t of topics" class="topic-item list-group-item p-0 p-lg-3">
         <div class="custom-control custom-checkbox">
           <input class="custom-control-input"
                     (change)="getSelectedTopics()"
