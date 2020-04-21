@@ -2,7 +2,7 @@
 
 $nav-grey: #8e8a8a;
 $slightly-darker-grey: #dddbd5;
-$slightly-ligther-black: #292525;
+$slightly-lighter-black: #292525;
 
 
 body {
@@ -154,7 +154,7 @@ footer {
 }
 
 .slb-text {
-  color:$slightly-ligther-black;
+  color:$slightly-lighter-black;
 }
 
 .grey-background {
@@ -197,12 +197,12 @@ app-root {
     }
 
     h3 {
-      color: $slightly-ligther-black !important;
+      color: $slightly-lighter-black !important;
     }
   }
 
   h3 {
-    color: $slightly-ligther-black;
+    color: $slightly-lighter-black;
   }
 
   .select-list{
@@ -476,10 +476,10 @@ app-root {
       }
     }  
   
-    #gmri_icon {
-      img {
-      }
-    }
+    // #gmri_icon {
+    //   img {
+    //   }
+    // }
   
     #gmri_image {
       @media (max-width:768px) {
@@ -510,7 +510,7 @@ app-root {
         color:$labventure-light-blue;
       }
   
-      p {  }
+      // p {  }
     }
   
     #c2a_2 {
@@ -520,7 +520,7 @@ app-root {
         color: $gmri-orange;
       }
   
-      p {}
+      // p {}
     }
   
     #c2a_3 {
@@ -530,7 +530,7 @@ app-root {
         color: $gmri-yellow;
       }
   
-      p {}
+      // p {}
     }
   }
 }  
@@ -644,14 +644,14 @@ app-root {
     }
 
     h3 {
-      color: $slightly-ligther-black;
+      color: $slightly-lighter-black;
     }
 
     h4 {
-      color: $slightly-ligther-black;
+      color: $slightly-lighter-black;
     }
     p {
-      color: $slightly-ligther-black;
+      color: $slightly-lighter-black;
 
       small {
         font-weight: lighter;
@@ -685,9 +685,10 @@ app-root {
       }
     }
     
-    #content {
+    // #content {
       
-    }
+    // }
+
     .card {
       border: none;
 
