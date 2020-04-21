@@ -12,7 +12,7 @@
         {{ lesson.intro_copy|safe }}        
       </div>
       {% image lesson.hero_image fill-750x500 as hero %}
-      <div id="ml_hero_bg" class="col col-xl-5 p-0 labventure-background d-none d-lg-flex">
+      <div id="ml_hero_bg" class="col col-xl-5 p-0 d-none d-lg-flex" style="background-color:{{module.program.program_color}}">
         <img class="mr-4" src="{{ hero.url }}" alt="{{ hero.alt }}" style="max-height: 500px;">
       </div>
     </div>

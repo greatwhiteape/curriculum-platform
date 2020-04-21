@@ -13,6 +13,7 @@ class Program(models.Model):
     program_name = models.CharField(max_length=100)
     program_description = RichTextField(null=True, blank=True)
     program_url = models.URLField(null=True)
+    program_color = models.CharField(max_length=15, null=True)
 
     def __str__(self):
         return self.program_name
@@ -25,6 +26,7 @@ class Program(models.Model):
         APIField('program_name'),
         APIField('program_description'),
         APIField('program_url'),
+        APIField('program_color'),
     ]
 
 @register_snippet

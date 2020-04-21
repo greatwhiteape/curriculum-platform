@@ -9,13 +9,15 @@ class ProgramsAPIEndpoint(BaseAPIEndpoint):
     body_fields = BaseAPIEndpoint.body_fields + [
         'program_name',
         'program_description',
-        'program_url'
+        'program_url', 
+        'program_color'
     ]
 
     listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
         'program_name',
         'program_description',
-        'program_url'
+        'program_url',
+        'program_color'
     ]
 
 class StandardAPIEndpoint(BaseAPIEndpoint):
