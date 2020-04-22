@@ -24,7 +24,7 @@ prune:
 	docker volume rm $(shell docker volume ls -qf dangling=true)
 	docker system prune -a
 
-sass: 
+sass:
 	sass app/curriculum_platform/static/css/curriculum-platform.scss app/curriculum_platform/static/css/curriculum-platform.css
 
 watch-sass:
@@ -35,3 +35,6 @@ static:
 
 upgrade-wagtail:
 	docker-compose exec web pip install wagtail --upgrade
+
+ng-build:
+  ng build --prod

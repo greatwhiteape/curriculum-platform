@@ -11,24 +11,24 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "frontend/search/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../../app/curriculum_platform/static/js/search", // "dist/search", 
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "outputPath": "app/curriculum_platform/static/js/search",
+            "index": "frontend/search/src/index.html",
+            "main": "frontend/search/src/main.ts",
+            "polyfills": "frontend/search/src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "frontend/search/src/favicon.ico",
+              "frontend/search/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "frontend/search/src/styles.scss"
             ],
             "scripts": []
           },
@@ -36,8 +36,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "frontend/search/src/environments/environment.ts",
+                  "with": "frontend/search/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -84,16 +84,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "main": "frontend/search/src/test.ts",
+            "polyfills": "frontend/search/src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "frontend/search/src/favicon.ico",
+              "frontend/search/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "frontend/search/src/styles.scss"
             ],
             "scripts": []
           }
