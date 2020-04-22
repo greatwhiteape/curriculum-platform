@@ -35,6 +35,15 @@ from modules.models import Module
 
 from streams import blocks
 
+from taxonomy.serializers import (
+    ProgramSerializer, 
+    TimeEstimateSerializer, 
+    AudienceSerializer, 
+    StandardsSerializer, 
+    TopicSerializer, 
+    TagSerializer,
+)
+
 class ContentPage(Page):
   class Meta:
     managed = True
@@ -55,6 +64,13 @@ class ContentPage(Page):
     null=True,
     blank=True,
     help_text='Marketing-speak about GRMI EDU (100 Characters Max)'
+  )
+
+  program = models.ForeignKey(
+    'taxonomy.Program',
+    null=True,
+    blank=True,
+    on_delete=models.SET_NULL,
   )
 
   featured_title = models.CharField(
@@ -91,6 +107,7 @@ class ContentPage(Page):
     ], heading="Hero section"),
     MultiFieldPanel([
       StreamFieldPanel('body'),
+      SnippetChooserPanel('program'),
     ], heading="Body")
   ]
 
@@ -100,6 +117,7 @@ class ContentPage(Page):
     APIField('hero_text'),
     APIField('featured_title'),
     APIField('featured_copy'),
+    APIField('program'),
     APIField('body'),
   ]
 
@@ -150,6 +168,13 @@ class SearchPage(Page):
     help_text='<app-root> tag plus modifiers like Program or modulesOnly'
   )
 
+  program = models.ForeignKey(
+    'taxonomy.Program',
+    null=True,
+    blank=True,
+    on_delete=models.SET_NULL,
+  )
+
   content_panels = Page.content_panels + [
     MultiFieldPanel([
       ImageChooserPanel('image'),
@@ -161,6 +186,7 @@ class SearchPage(Page):
     # ], heading="Featured Section"), 
     MultiFieldPanel([
       FieldPanel('search_tag'),
+      SnippetChooserPanel('program'),
     ], heading="Angular Application Tag")
   ]
 
@@ -171,6 +197,7 @@ class SearchPage(Page):
     APIField('featured_title'),
     APIField('featured_copy'),
     APIField('search_tag'),
+    APIField('program'),
   ]
 
   def serve(self, request):

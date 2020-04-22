@@ -1,15 +1,18 @@
 {% load static menu_tags %}
 
 <header class="row">
-  <div class="col-11 offset-xl-1">
-    <nav class="navbar navbar-light navbar-expand-md p-5 row">
-        <div class="col-3">
-          <a class="navbar-brand" href="https://teach.gmri.org"><img src="{% static 'images/logo-curriculum-platform3x.original.png' %}" height="80px"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+  <div class="col-lg-11 offset-xl-1">
+    <nav class="navbar navbar-light navbar-expand-md justify-content-right p-5 row">
+        <div id="brand_col" class="col-4">
+          <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+          <a class="navbar-brand" href="https://teach.gmri.org"><img class="d-flex flex-grow-1 flex-shrink-1 flex-fill" src="{% static 'images/logo-curriculum-platform3x.original.png' %}"></a>
         </div>
 
-        <div class="col-2" id="nav_visElement">&nbsp;</div>
-          
-        <div class="collapse navbar-collapse col" id="navcol-1">
+        <div class="col-md-1">
+          <div id="nav_visElement">&nbsp;</div>
+        </div>
+
+        <div class="collapse navbar-collapse col " id="navcol-1">
           <ul class="nav navbar-nav">
             {% main_menu max_levels=1 template="menus/custom_main_menu.html" %}
           </ul>
