@@ -8,7 +8,7 @@
     <div class="row bg-white">
       <div class="col col-lg-5 offset-lg-1 p-5">
         <small id="learn_mod">Learning Lesson</small>
-        <h1 class="red-text">{{ lesson.title }}: {{ lesson.subtitle }}</h1>
+        <h1 class="red-text">{{ lesson.title }}{% if  lesson.subtitle %}: {{ lesson.subtitle }}{% endif %}</h1>
         {{ lesson.intro_copy|safe }}        
       </div>
       {% image lesson.hero_image fill-750x500 as hero %}
