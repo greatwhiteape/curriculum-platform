@@ -165,13 +165,6 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/3.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = '/static/'
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
-
-
 
 # If AWS S3 or Digital Ocean Spaces credentials are provided, use them for media storage
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
@@ -206,11 +199,9 @@ if AWS_STORAGE_BUCKET_NAME:
     # MEDIA_URL = f"{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
 else:
     MEDIA_URL = "/media/"
+    STATIC_URL = "/static/"
+    STATIC_ROOT = "/static/"
 
-# Media storage
-# STATIC_URL = "/django-static/"
-# STATIC_ROOT = "/static/"
-# MEDIA_ROOT = "/media/"
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#data-upload-max-memory-size
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # Set the max upload size to 50 mb
