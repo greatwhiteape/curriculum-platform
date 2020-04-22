@@ -41,3 +41,6 @@ ng-build:
 
 ng-serve:
 	ng serve
+
+ng-watch:
+	ng build --watch

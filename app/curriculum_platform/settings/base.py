@@ -193,12 +193,12 @@ if AWS_STORAGE_BUCKET_NAME:
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     AWS_S3_SIGNATURE_VERSION = 's3v4'
 
-    # AWS_STATIC_LOCATION = "static"
+    AWS_STATIC_LOCATION = "static"
     AWS_MEDIA_LOCATION = "media"
     AWS_DEFAULT_ACL = "public-read"
 
-    # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
-    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -208,9 +208,9 @@ else:
     MEDIA_URL = "/media/"
 
 # Media storage
-STATIC_URL = "/django-static/"
-STATIC_ROOT = "/static/"
-MEDIA_ROOT = "/media/"
+# STATIC_URL = "/django-static/"
+# STATIC_ROOT = "/static/"
+# MEDIA_ROOT = "/media/"
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#data-upload-max-memory-size
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # Set the max upload size to 50 mb
