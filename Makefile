@@ -31,10 +31,13 @@ watch-sass:
 	sass --watch app/curriculum_platform/static/css/curriculum-platform.scss:app/curriculum_platform/static/css/curriculum-platform.css
 
 static:
-	docker-compose exec web python /app/manage.py collectstatic
+	docker-compose exec web python /app/manage.py collectstatic --noinput -i gmri-bootstrap
 
 upgrade-wagtail:
 	docker-compose exec web pip install wagtail --upgrade
 
 ng-build:
-  ng build --prod
+	ng build --prod
+
+ng-serve:
+	ng serve
