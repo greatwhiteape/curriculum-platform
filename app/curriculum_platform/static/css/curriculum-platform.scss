@@ -192,17 +192,17 @@ app-root {
   a {
     color: $nav-grey;
 
-    :hover {
-      text-decoration: none;
-    }
-
     h3 {
       color: $slightly-lighter-black !important;
     }
-  }
 
-  h3 {
-    color: $slightly-lighter-black;
+    &:hover {
+    text-decoration:none;
+
+      h3 {
+        text-decoration: underline;
+      }
+    }
   }
 
   .select-list{
