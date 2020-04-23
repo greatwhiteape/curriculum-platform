@@ -165,13 +165,6 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/3.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = '/static/'
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
-
-
 
 # If AWS S3 or Digital Ocean Spaces credentials are provided, use them for media storage
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
@@ -193,12 +186,15 @@ if AWS_STORAGE_BUCKET_NAME:
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     AWS_S3_SIGNATURE_VERSION = 's3v4'
 
-    # AWS_STATIC_LOCATION = "static"
+    AWS_STATIC_LOCATION = "static"
     AWS_MEDIA_LOCATION = "media"
     AWS_DEFAULT_ACL = "public-read"
 
     # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
     # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    # S3 spaces too slow for page load. Fonts & images are not loading.
+    STATIC_URL = "/static/"
+    STATIC_ROOT = "/static/"
 
     MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -206,11 +202,9 @@ if AWS_STORAGE_BUCKET_NAME:
     # MEDIA_URL = f"{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
 else:
     MEDIA_URL = "/media/"
+    STATIC_URL = "/static/"
+    STATIC_ROOT = "/static/"
 
-# Media storage
-STATIC_URL = "/django-static/"
-STATIC_ROOT = "/static/"
-MEDIA_ROOT = "/media/"
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#data-upload-max-memory-size
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # Set the max upload size to 50 mb

@@ -8,21 +8,21 @@ $slightly-lighter-black: #292525;
 body {
     overflow-x: hidden;
   }
-  
+
 header {
   display:none;
 
-    
+
   #brand_col {
     max-width: 350px;
 
     .navbar-brand {
-  
+
       img {
-        
+
         max-height:80px;
         margin:auto;
-        
+
       }
     }
   }
@@ -56,18 +56,18 @@ header {
     }
     border: 1px solid $gmri-light-grey;
     padding: auto 2px;
-    
+
     color: $gmri-dark-grey;
     font-weight: 300;
   }
 }
-  
+
 footer {
   display:none;
   background-color: $gmri-light-grey;
   color: $gmri-dark-grey;
 
-  font-family: Avenir;
+  font-family: "Avenir";
   font-size: 1.2rem;
   font-weight: light;
   font-stretch: normal;
@@ -113,7 +113,7 @@ footer {
     }
   }
 }
-  
+
 .hero { display: none; min-height: 100vh; }
 .green {display:none;}
 
@@ -172,7 +172,7 @@ footer {
 .btn-rounded {
   border-radius: 40px !important;
 }
-    
+
 #our_call, #learn_mod, #learn_lesson {
   margin: 50px 0 30px 0;
 
@@ -191,7 +191,7 @@ footer {
 app-root {
   a {
     color: $nav-grey;
-    
+
     :hover {
       text-decoration: none;
     }
@@ -210,7 +210,7 @@ app-root {
     input:checked ~ .checkmark {
       background-color: #2196F3;
       display:none;
-    } 
+    }
 
     @media(max-width:991px) {
       label {
@@ -220,7 +220,7 @@ app-root {
   }
 }
 
-#homepage{  
+#homepage{
   .vert-icon {
     width: inherit;
     height: 170px;
@@ -228,25 +228,25 @@ app-root {
     background-color: white;
     margin-top: -4vh;
     padding: 10px;
-    
+
     img {
       height: 150px;
       width: auto;
     }
   }
-  
+
   .hrz-icon {
     width: 400px;
     background-color: white;
     margin-top: -2vh;
     padding: 10px;
-  
+
     img {
       height: auto ;
       width:inherit;
     }
   }
-  
+
   #hero {
     @media (min-width: 769px) {
 
@@ -256,20 +256,20 @@ app-root {
         // background-color:rgba(35, 36, 37, .5)
       }
     }
-  
+
     @media (max-width: 768px) {
       height:30vh;
-  
+
       h1 {
         display:none;
       }
     }
-  
+
     @media (max-width: 576px) {
       display:none;
     }
   }
-  
+
   #featured {
     font-family: "Avenir", sans-serif;
     margin: 5vh auto 5vh auto;
@@ -277,8 +277,8 @@ app-root {
     a {
       color: $nav-grey;
     }
-  
-    @media(min-width: 769px) {  
+
+    @media(min-width: 769px) {
       h1 {
         color: $nav-grey;
         font-size: 0.9rem;
@@ -286,15 +286,15 @@ app-root {
         letter-spacing: 2.5px;
         text-transform: uppercase;
       }
-    
+
       #featured_marketing_copy {
         color: $gmri-blue;
         font-weight: 300;
       }
-  
+
     }
     @media(max-width: 768px) {
-    
+
       h1 {
         font-size: 1rem;
         font-weight: 900;
@@ -304,15 +304,15 @@ app-root {
         letter-spacing: 2.9px;
         color: $gmri-dark-grey;
       }
-    
+
       #featured_marketing_copy {
         color: $gmri-blue;
         font-weight: 300;
         font-size: 2rem;
       }
-  
+
     }
-   
+
     .box {
       min-height: 40vh;
       overflow: hidden;
@@ -343,45 +343,45 @@ app-root {
       }
     }
   }
-  
+
   #lv_block {
     background: $labventure-blue;
     color:white;
-  
+
     @media (min-width: 769px) {
       height:485px;
       padding: auto;
       margin-bottom: 20vh;
       margin-top: 15vh;
-  
+
       p {
         max-height: 150px;
         overflow: hidden;
       }
     }
-    
+
     @media (max-width: 768px) {
       margin-left:15px;
       overflow:hidden;
       padding-bottom:15px;
-  
+
       h2 {
         margin-top:1vh;
         font-size: 2rem;
       }
-  
+
       .btn {
         margin: 5px 10px;
       }
     }
-  
+
     #lv_icon {
       margin-top: -100px;
       height: 220px;
       width: 220px;
       background: #ffffff;
       border-radius: 50%;
-  
+
       img {
         margin-left: 50px;
         margin-top: 20px;
@@ -389,7 +389,7 @@ app-root {
       }
     }
   }
-  
+
   #vs_block {
     margin-top: 15vh;
     background: $citizen-science;
@@ -398,74 +398,74 @@ app-root {
     #ein_logo {
       padding:20px;
     }
-  
+
     @media (min-width: 768px) {
       height:485px;
       padding: auto;
       margin-bottom: 15vh;
-  
+
       p {
         max-height: 150px;
         overflow: hidden;
       }
     }
-    
+
     @media (max-width: 767px) {
       margin-left:15px;
       padding-left:5px;
       overflow:hidden;
       margin-top:5vh;
-  
+
       h2 {
         margin-top:1vh;
         font-size: 2rem;
       }
-  
+
       #vs_icon {
         width: 305px;
       }
-  
+
       .btn {
         margin: 5px 10px;
       }
     }
   }
-  
+
   #gmri_block {
     margin-top: 15vh;
     background: white;
     color: black;
-  
+
     @media (min-width:768px) {
       min-height: 60vh;
       margin: 15vh auto 5vh auto;
     }
-  
+
     @media (max-width:767px) {
       margin:5vh 0 5vh 15px;
       max-height: 500px;
       overflow:hidden;
-  
+
       #gmri_icon {
         display:none;
       }
     }
-  
-    h2 {  
+
+    h2 {
       font-weight: 900;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.25;
       letter-spacing: 0.25px;
       color: #292525;
-  
+
       @media (max-width:768px) {
         margin-top: 1vh;
         font-size: 2rem;
         margin-left: 15px;
       }
     }
-  
+
     p {
       margin: 30px 0;
 
@@ -474,66 +474,66 @@ app-root {
       @media(max-width:768px) {
         margin-left: 15px;
       }
-    }  
-  
+    }
+
     // #gmri_icon {
     //   img {
     //   }
     // }
-  
+
     #gmri_image {
       @media (max-width:768px) {
         display:none;
       }
     }
   }
-  
+
   #c2a_group {
     h2 {
       font-size:2rem;
     }
-  
+
     p {
       color:white;
     }
-  
+
     .card-footer {
       border:none;
       padding: 50px;
       background-color: rgba(0,0,0,0) !important;
     }
-  
+
     #c2a_1 {
       background-color: $gmri-accent-blue;
-  
+
       h2 {
         color:$labventure-light-blue;
       }
-  
+
       // p {  }
     }
-  
+
     #c2a_2 {
       background-color: $gmri-blue;
-  
+
       h2 {
         color: $gmri-orange;
       }
-  
+
       // p {}
     }
-  
+
     #c2a_3 {
       background-color: $gmri-accent-green;
-  
+
       h2 {
         color: $gmri-yellow;
       }
-  
+
       // p {}
     }
   }
-}  
+}
 
 .labventure {
   #hero {
@@ -542,8 +542,8 @@ app-root {
 
       #hero_row {
         height: 50vh;
-    
-        #hero_copy {  
+
+        #hero_copy {
           width: 60%;
           position: absolute;
           bottom: 25px;
@@ -557,8 +557,8 @@ app-root {
 
       #hero_row {
         height: 30vh;
-    
-        #hero_copy {  
+
+        #hero_copy {
           width: 80%;
           position: absolute;
           bottom: 25px;
@@ -574,8 +574,8 @@ app-root {
     #hero_row {
       background-color: rgba(0,0,0,0.5);
 
-      #hero_copy {  
-        font-family: Avenir;
+      #hero_copy {
+        font-family: "Avenir";
         font-size: 2.3rem;
         font-weight: 900;
         font-style: normal;
@@ -684,9 +684,9 @@ app-root {
         }
       }
     }
-    
+
     // #content {
-      
+
     // }
 
     .card {
