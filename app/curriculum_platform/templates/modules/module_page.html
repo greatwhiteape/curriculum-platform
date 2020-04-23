@@ -17,26 +17,32 @@
       </div>
     </div>
     <div class="row p-5">
+      {% if module.module_download %}
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-primary btn-rounded px-5 py-3" href="{{ module.module_download }}" role="button">
+        <a class="btn btn-outline-primary btn-rounded px-5 py-3" target="_blank" href="{{ module.module_download }}" role="button">
           Download Full Module
           <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-download.png' %}">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
+      {% endif %}
+      {% if module.students_desc %}
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="student-page" role="button">
+        <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="student-page" role="button">
           Student Guide
           <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-resource-link.png' %}">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
+      {% endif %}
+      {% if module.teachers_guide %}
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="{{ module.teachers_guide }}" role="button">
+        <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="{{ module.teachers_guide }}" role="button">
           Teacher's Guide
           <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-resource-link.png' %}">
         </a>
       </div>
+      {% endif %}
     </div>
   </div>
   <div class="row sdg-background" id="tabs_row">
