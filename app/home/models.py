@@ -86,7 +86,7 @@ class FooterText(models.Model):
 
 
 class HomePage(Page):
-    
+
     template="home/home_page.html"
 
     # Hero section of HomePage
@@ -123,7 +123,7 @@ class HomePage(Page):
     #Feature 1
     feature1_title = models.CharField(
       null=True,
-      blank=True, 
+      blank=True,
       max_length= 50,
       help_text='LabVenture Block 1'
     )
@@ -442,7 +442,7 @@ class HomePage(Page):
         related_name='+'
     )
 
-    # Call to action section 
+    # Call to action section
 
     # C2A_1
     c2a_1_section_title = models.CharField(
@@ -470,6 +470,11 @@ class HomePage(Page):
         null=True,
         blank=True,
         help_text='Link that call to button action links to'
+    )
+
+    c2a_1_section_active = models.BooleanField(
+      default=True,
+      help_text='Enable or disable this box.'
     )
 
   # C2A_2
@@ -500,6 +505,11 @@ class HomePage(Page):
         help_text='Link that call to button action links to'
     )
 
+    c2a_2_section_active = models.BooleanField(
+      default=True,
+      help_text='Enable or disable this box.'
+    )
+
     # C2A_3
     c2a_3_section_title = models.CharField(
         null=True,
@@ -526,6 +536,11 @@ class HomePage(Page):
         null=True,
         blank=True,
         help_text='Link that call to button action links to'
+    )
+
+    c2a_3_section_active = models.BooleanField(
+      default=True,
+      help_text='Enable or disable this box.'
     )
 
 
@@ -605,19 +620,22 @@ class HomePage(Page):
             FieldPanel('c2a_1_section_title'),
             FieldPanel('c2a_1_section_copy'),
             FieldPanel('c2a_1_section_button_text'),
-            FieldPanel('c2a_1_section_button_link')
+            FieldPanel('c2a_1_section_button_link'),
+            FieldPanel('c2a_1_section_active')
           ], heading="Call to Action 1"),
           MultiFieldPanel([
             FieldPanel('c2a_2_section_title'),
             FieldPanel('c2a_2_section_copy'),
             FieldPanel('c2a_2_section_button_text'),
-            FieldPanel('c2a_2_section_button_link')
+            FieldPanel('c2a_2_section_button_link'),
+            FieldPanel('c2a_2_section_active')
           ], heading="Call to Action 2"),
           MultiFieldPanel([
             FieldPanel('c2a_3_section_title'),
             FieldPanel('c2a_3_section_copy'),
             FieldPanel('c2a_3_section_button_text'),
-            FieldPanel('c2a_3_section_button_link')
+            FieldPanel('c2a_3_section_button_link'),
+            FieldPanel('c2a_3_section_active')
           ], heading="Call to Action 3")
         ], heading="Call to Action")
     ]
