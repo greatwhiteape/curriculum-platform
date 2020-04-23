@@ -32,18 +32,21 @@
     </div>
     <!-- End Featured Header-->
 
-    {% image page.feature1_image fill-450x385 as featured1 %}
-    {% image page.feature2_image fill-450x385 as featured2 %}
-    {% image page.feature3_image fill-665x385 as featured3 %}
-    {% image page.feature6_image fill-665x385 as featured6 %}
+    {% image page.feature1_image fill-700x385 as featured1 %}
+    {% image page.feature2_image fill-700x385 as featured2 %}
+    {% image page.feature3_image fill-1000x385 as featured3 %}
+    {% image page.feature6_image fill-1000x385 as featured6 %}
     <!-- Featured Row 1 -->
     <div class="row py-5 px-2 p-lg-0">
       <div class="col mt-0">
         <div class="row my-0">
           <div class="col-md-5 d-inline-block pl-0 box">
-            <div class="row m-0 p-0 labventure-background ">
-              <div class="col m-0 p-0">
-                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured1.url }}">
+            <div class="row m-0 p-0 labventure-background">
+              <div class="col m-0 p-0 overflow-hidden d-flex justify-content-start">
+                <img src="{{ featured1.url }}">
+              </div>
+              <div class="col-1">
+                <div class="d-inline-block">&nbsp;</div>
               </div>
             </div>
             <div class="row mt-n4">
@@ -53,15 +56,18 @@
             </div>
             <div class="row">
               <div class="col bg-white">
-                <h5 class="py-3"><a href="{{ page.feature1.link }}">{{ page.feature1_copy}}</a></h5>
+                <h5 class="py-3"><a href="{{ page.feature1_link }}">{{ page.feature1_copy}}</a></h5>
               </div>
             </div>
           </div>
-          
+
           <div class="col-md-5 offset-md-1 d-inline-block pl-0 box">
             <div class="row m-0 p-0 ein-background">
-              <div class="col m-0 p-0">
-                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured2.url }}">
+              <div class="col m-0 p-0 overflow-hidden d-flex justify-content-start">
+                <img class="img-fluid" src="{{ featured2.url }}">
+              </div>
+              <div class="col-1">
+                <div class="d-inline-block">&nbsp;</div>
               </div>
             </div>
 
@@ -72,7 +78,7 @@
             </div>
             <div class="row bg-white">
               <div class="col">
-                <h5 class="py-3"><a href="{{ page.feature2.link }}">{{ page.feature2_copy }}</a></h5>
+                <h5 class="py-3"><a href="{{ page.feature2_link }}">{{ page.feature2_copy }}</a></h5>
               </div>
             </div>
           </div>
@@ -87,8 +93,11 @@
         <div class="row my-0">
           <div class="col-md-5 col-xl-7 d-inline-block pl-0 box">
             <div class="row m-0 p-0 ein-background overflow-hidden">
-              <div class="col m-0 p-0">
-                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured3.url }}">
+              <div class="col m-0 p-0 overflow-hidden d-flex justify-content-start">
+                <img src="{{ featured3.url }}">
+              </div>
+              <div class="col-1">
+                <div class="d-inline-block">&nbsp;</div>
               </div>
             </div>
             <div class="row mt-n5">
@@ -98,7 +107,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <h5 class="py-3"><a href="{{ page.feature3.link }}">{{ page.feature3_copy }}</a></h5>
+                <h5 class="py-3"><a href="{{ page.feature3_link }}">{{ page.feature3_copy }}</a></h5>
               </div>
             </div>
           </div>
@@ -110,7 +119,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <a href="{{ page.feature4.link}}" class="text-primary">
+                <a href="{{ page.feature4_link}}" class="text-primary">
                   {{ page.feature4_copy }}
                 </a>
               </div>
@@ -133,7 +142,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <a href="{{ page.feature5.link}}" class="text-primary">
+                <a href="{{ page.feature5_link}}" class="text-primary">
                   {{ page.feature5_copy }}
                 </a>
               </div>
@@ -141,8 +150,11 @@
           </div>
           <div class="col-md-5 col-xl-7 offset-md-1 d-inline-block pl-0 py-0 box">
             <div class="row labventure-background overflow-hidden">
-              <div class="col p-0 m-0">
-                <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ featured6.url }}">
+              <div class="col p-0 m-0 overflow-hidden d-flex justify-content-start">
+                <img src="{{ featured6.url }}">
+              </div>
+              <div class="col-1">
+                <div class="d-inline-block">&nbsp;</div>
               </div>
             </div>
             <div class="row mt-n5">
@@ -152,7 +164,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <h5 class="py-3"><a href="{{ page.feature6.link }}">{{ page.feature6_copy }}</a></h5>
+                <h5 class="py-3"><a href="{{ page.feature6_link }}">{{ page.feature6_copy }}</a></h5>
               </div>
             </div>
           </div>
@@ -160,9 +172,9 @@
       </div>
     </div>
     <!-- End Featured Row 3 -->
-  </div> 
+  </div>
   <!-- End Featured -->
-  
+
   <!-- LabVenture Section -->
   <div id="lv_block" class="row">
     <div class="col">
@@ -170,14 +182,14 @@
         <div class="col-1 offset-md-1">
           <h2 id="lv_icon" class="vert-icon">
             {% image page.labventure_section_logo max-100x150 %}
-          </h2> 
+          </h2>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 offset-md-1" id="lv_section">
           <h2 class="text-white px-2">{{ page.labventure_section_title }}</h2>
           <p class="px-2">{{ page.labventure_section_copy }}</p>
-          
+
           <a class="btn btn-light rounded-pill mx-2" aria-pressed="true" href="{{ page.labventure_section_button_link }}" >{{ page.labventure_section_button_text }}</a>
         </div>
         <div class="col-md-5 col-xl-4 overflow-hidden float-lg-right d-none d-md-block">
@@ -196,7 +208,7 @@
         <div class="col offset-md-5 offset-lg-6 offset-xl-7 mt-sm-n3">
           <h2 id="vs_icon" class="hrz-icon">
             {% image page.vitalsigns_section_logo width-380 id="ein_logo" %}
-          </h2> 
+          </h2>
         </div>
       </div>
       <div class="row">
@@ -220,7 +232,7 @@
       <div class="col-md-6 col-lg-5 offset-lg-1">
         <h2 id="gmri_icon" class="hrz-icon">
           {% image page.gmri_section_logo width-300 %}
-        </h2> 
+        </h2>
         <div id="our_call" class="d-none d-lg-block">
           Our call to action
         </div>
@@ -229,7 +241,7 @@
         <p>{{ page.gmri_section_copy }}</p>
       </div>
       <div class="col-md-5 overflow-hidden">
-        {% image page.gmri_section_hero fill-600x550-c100 id="gmri_image" class="flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end d-none d-md-flex" %} 
+        {% image page.gmri_section_hero fill-600x550-c100 id="gmri_image" class="flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end d-none d-md-flex" %}
 
       </div>
     </div>
@@ -267,7 +279,7 @@
     </div>
     <!-- End C2A Panel 2-->
     <div class="w-100 d-block d-lg-none"></div>
-    
+
 
     <!-- C2A Panel 3 -->
     <div id="c2a_3" class="card m-0">
