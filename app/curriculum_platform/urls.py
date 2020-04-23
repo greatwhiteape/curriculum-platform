@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import include, path, re_path
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -9,8 +10,13 @@ from wagtail.documents import urls as wagtaildocs_urls
 from .api import api_router
 from search import views as search_views
 
+import cas.views
+
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
+    # cas
+    path(r'users/login/', cas.views.login, name="login"),
+    path(r'users/logout/', cas.views.logout, name="logout"),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),

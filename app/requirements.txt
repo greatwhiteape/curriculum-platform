@@ -6,8 +6,7 @@ wagtailfontawesome==1.1.4
 
 gunicorn
 psycopg2-binary
-django-cas-client
-
+django-cas-client==1.5.3
 
 xkcdpass
 

@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'streams',
     'taxonomy',
 
+    'cas.apps.CASConfig',
+
     'rest_framework',
     'wagtailfontawesome',
     'corsheaders',
@@ -77,6 +79,8 @@ MIDDLEWARE = [
 
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
+    'cas.middleware.CASMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -121,6 +125,26 @@ DATABASES = {
       "OPTIONS":{"sslmode":"require"},
     }
 }
+
+
+# Authentication
+
+# AUTH_USER_MODEL = "account.User"
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "cas.backends.CASBackend",
+)
+
+CAS_SERVER_URL = os.environ.get("CAS_SERVER_URL", "")
+
+if os.environ.get("CAS_FORCE_SSL_SERVICE_URL"):
+    CAS_FORCE_SSL_SERVICE_URL = True
+
+CAS_RESPONSE_CALLBACKS = ["account.utils.cas.cas_callback"]
+
+if os.environ.get("CAS_API_TOKEN"):
+    CAS_API_TOKEN = os.environ.get("CAS_API_TOKEN")
 
 
 # Password validation
