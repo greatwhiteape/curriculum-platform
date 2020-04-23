@@ -9,7 +9,7 @@
       <div class="col col-lg-5 offset-lg-1 p-5">
         <small id="learn_mod">Learning Module</small>
         <h1 class="red-text">{{ module.title }}{% if module.subtitle %}: {{ module.subtitle }}{% endif %}</h1>
-        {{ module.intro_copy|safe }}        
+        {{ module.intro_copy|safe }}
       </div>
       {% image module.hero_image fill-750x500 as hero %}
       <div id="ml_hero_bg" class="col col-xl-5 p-0 d-none d-lg-flex" style="background-color:{{module.program.program_color}}">
@@ -20,21 +20,21 @@
       <div class="col text-center align-self-center pl-5">
         <a class="btn btn-outline-primary btn-rounded px-5 py-3" href="{{ module.module_download }}" role="button">
           Download Full Module
-          <img class="pl-5" src="{% static 'images/icon-download.png' %}">
+          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-download.png' %}">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
       <div class="col text-center align-self-center pl-5">
         <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="student-page" role="button">
           Student Guide
-          <img class="pl-5" src="{% static 'images/icon-resource-link.png' %}">
+          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-resource-link.png' %}">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
       <div class="col text-center align-self-center pl-5">
         <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="{{ module.teachers_guide }}" role="button">
           Teacher's Guide
-          <img class="pl-5" src="{% static 'images/icon-resource-link.png' %}">
+          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-resource-link.png' %}">
         </a>
       </div>
     </div>
@@ -42,26 +42,26 @@
   <div class="row sdg-background" id="tabs_row">
     <div class="col">
       <ul id="tabs" class="row nav nav-tabs" role="tablist">
-        <li class="col-3 offset-1 nav-item">
-          <a id="tab-A" href="#pane-A" class="nav-link p-5 active" data-toggle="tab" role="tab">
-            <img class="pr-3" src="{% static 'images/icon-tab-overview-inactive.svg' %}">
+        <li class="col-3 offset-lg-1 nav-item">
+          <a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab">
+            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-overview-inactive.svg' %}">
             Overview
           </a>
         </li>
         <li class="col-3 nav-item">
-          <a id="tab-B" href="#pane-B" class="nav-link p-5" data-toggle="tab" role="tab">
-            <img class="pr-3" src="{% static 'images/icon-tab-details-inactive.svg' %}">
+          <a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">
+            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-details-inactive.svg' %}">
             Details
           </a>
         </li>
         <li class="col-3 nav-item">
-          <a id="tab-C" href="#pane-C" class="nav-link p-5" data-toggle="tab" role="tab">
-            <img class="pr-3" src="{% static 'images/icon-tab-lessons-inactive.svg' %}">
+          <a id="tab-C" href="#pane-C" class="nav-link" data-toggle="tab" role="tab">
+            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-lessons-inactive.svg' %}">
             Lessons
           </a>
         </li>
       </ul>
-      
+
         <div class="row bg-white">
           <div id="content" class="col-lg-10 offset-lg-1 tab-content mt-3 mt-lg-0" role="tablist">
             <div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
@@ -73,7 +73,7 @@
                   </a>
                 </h5>
               </div>
-    
+
               <!-- Note: New place of `data-parent` -->
               <div id="collapse-A" class="collapse show" data-parent="#content" role="tabpanel" aria-labelledby="heading-A">
                 <div class="card-body">
@@ -90,7 +90,7 @@
                 </div>
               </div>
             </div>
-      
+
             <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
               <div class="card-header" role="tab" id="heading-B">
                 <h5 class="mb-0">
@@ -101,9 +101,9 @@
               </div>
               <div id="collapse-B" class="collapse" data-parent="#content" role="tabpanel" aria-labelledby="heading-B">
                 <div class="card-body">
-                  
+
                   <h3>Details</h3>
-                  
+
                   <div class="row border-top border-bottom" id="te_a">
 
                     {% if module.time_estimate %}
@@ -114,13 +114,13 @@
                       </p>
                     </div>
                     {% endif %}
-                    
+
                     {% if module.audience_relationship.all|length > 0 %}
                     <div class="col-2 py-3">
                       <p>
                         <strong>Audience</strong><br />
                         <small class="grey-text">
-                          {% for audience in module.audience_relationship.all %} 
+                          {% for audience in module.audience_relationship.all %}
                             {{ audience.audience.age_range }} {% if not forloop.last %}&nbsp;&middot;&nbsp;{% endif %}
                           {% endfor %}
                         </small>
@@ -132,12 +132,12 @@
                   {% if module.standards_relationship.all|length > 0 %}
                   <h4 class="mt-5 py-3">Standards Alignment</h4>
                   <ul class="list-group">
-                  {% for standard in module.standards_relationship.all %} 
+                  {% for standard in module.standards_relationship.all %}
                     {% if standard.standard %}
 
                     <li class="list-group-item py-2 pl-0 standards-list">
                         {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank">{% endif %}
-                          {{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }} 
+                          {{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}
                         {% if standard.standard.standard_link %}
                         <img class="pl-4" src="{% static 'images/icon-external-link.svg' %}">
                         </a>
@@ -151,7 +151,7 @@
                 </div>
               </div>
             </div>
-      
+
             <div id="pane-C" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-C">
               <div class="card-header" role="tab" id="heading-C">
                 <h5 class="mb-0">
