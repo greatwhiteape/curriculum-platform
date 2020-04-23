@@ -18,21 +18,21 @@
     </div>
     <div class="row p-5">
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-primary btn-rounded px-5 py-3" href="{{ lesson.lesson_download }}" role="button">
+        <a class="btn btn-outline-primary btn-rounded px-5 py-3" target="_blank" href="{{ lesson.lesson_download }}" role="button">
           Download Full Lesson
           <img class="pl-5" src="{% static 'images/icon-download.png' %}">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="student-page" role="button">
+        <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="student-page" role="button">
           Student Guide
           <img class="pl-5" src="{% static 'images/icon-resource-link.png' %}">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-dark btn-rounded px-5 py-3" href="{{ lesson.teachers_guide }}" role="button">
+        <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="{{ lesson.teachers_guide }}" role="button">
           Teacher's Guide
           <img class="pl-5" src="{% static 'images/icon-resource-link.png' %}">
         </a>
