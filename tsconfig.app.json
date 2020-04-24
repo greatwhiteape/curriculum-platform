@@ -9,7 +9,7 @@
     "frontend/search/src/polyfills.ts"
   ],
   "include": [
-    "frontend/search/src/**/*.ts"
+    "frontend/search/src/**/*.d.ts"
   ],
   "exclude": [
     "frontend/search/src/test.ts",
