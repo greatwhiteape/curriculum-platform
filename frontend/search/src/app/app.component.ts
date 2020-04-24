@@ -17,6 +17,8 @@ import { TagPipe } from './tag.pipe';
 })
 
 export class AppComponent {
+  // Search tags toggle
+  disabled = false;
 
   title = 'Search';
   baseURL = 'https://teach.gmri.org/'
