@@ -19,8 +19,15 @@
       <h3 class="slb-text">Lessons for Students</h3>
     </div>
   </div>
+  {% if module.student_intro %}
   <div class="row">
-    <div class="col-lg-6 offset-md-1 my-0">
+    <div class="col-lg-8 offset-md-1 mt-5">
+      {{ module.student_intro|safe }}
+    </div>
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-lg-8 offset-md-1 my-0">
       <hr class="slb-text" />
     </div>
   </div>
