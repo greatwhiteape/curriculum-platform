@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
 import { CurriculumService, dataStructure } from './curriculum.service';
 import { ProgramsPipe } from './programs.pipe';
 import { TagPipe } from './tag.pipe';
@@ -7,7 +7,13 @@ import { TagPipe } from './tag.pipe';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ProgramsPipe, TagPipe]
+  providers: [ProgramsPipe, TagPipe],
+  encapsulation: ViewEncapsulation.None,
+  styles: [`
+    .card.disabled {
+      opacity: 0.5;
+    }
+  `]
 })
 
 export class AppComponent {
@@ -51,7 +57,7 @@ export class AppComponent {
 
   modulesOnly: boolean = true;   // Original
   // modulesOnly: boolean = false; // TROUBLESHOOTING
-  
+
   constructor(private elm: ElementRef, private currService: CurriculumService) {
     this.modulesOnly = (elm.nativeElement.getAttribute('modulesOnly')) ? elm.nativeElement.getAttribute('modulesOnly') : false;
 
@@ -139,7 +145,7 @@ export class AppComponent {
       });
       this.getSelectedPrograms();
     });
-    
+
 
     // this.currService.getAssets(this.baseURL).subscribe((response: CustomResponse) => {
     //   if (response) {
