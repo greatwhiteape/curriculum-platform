@@ -10,6 +10,7 @@ import { ProgramsPipe } from './programs.pipe';
 import { TopicPipe } from './topic.pipe';
 import { TagPipe } from './tag.pipe';
 import { TypePipe } from './type.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TypePipe } from './type.pipe';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
