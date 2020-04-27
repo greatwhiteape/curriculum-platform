@@ -38,18 +38,18 @@ from taxonomy.serializers import (
     TagSerializer,
     AssetTypeSerializer,
 )
+
+
 @register_snippet
 class Asset(ClusterableModel):
     class Meta:
         verbose_name = "Curriculum Asset"
         verbose_name_plural = "Curriculum Assets"
 
-
     template = "assets/asset_page.html"
 
     title = models.CharField(max_length=50)
     description = RichTextField(blank=True, null=True)
-
     internal_link = models.ForeignKey(
         'wagtaildocs.Document',
         blank=True,
@@ -60,7 +60,6 @@ class Asset(ClusterableModel):
     )
     external_link = models.URLField(blank=True)
     embed_tag = models.URLField(blank=True)
-
     program = models.ForeignKey(
         'taxonomy.Program',
         on_delete=models.SET_NULL,
@@ -127,7 +126,7 @@ class Asset(ClusterableModel):
         FieldPanel("student_intro"),
         DocumentChooserPanel("internal_link"),
         FieldPanel("external_link"),
-        FieldPanel("embed_link"),
+        FieldPanel("embed_tag"),
         SnippetChooserPanel("program"),
         SnippetChooserPanel('time_estimate'),
         InlinePanel('audience_relationship', label="Audience"),
@@ -141,7 +140,7 @@ class Asset(ClusterableModel):
         APIField("student_asset"),
         APIField("internal_link"),
         APIField("external_link"),
-        APIField("embed_link"),
+        APIField("embed_tag"),
         APIField("program", serializer=ProgramSerializer()),
         APIField("audience", serializer=AudienceSerializer()),
         APIField("asset_type", serializer=AssetTypeSerializer()),
