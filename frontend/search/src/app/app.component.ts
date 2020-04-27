@@ -22,7 +22,6 @@ export class AppComponent {
 
   title = 'Search';
   baseURL = 'https://teach.gmri.org/'
-  //baseURL = 'http://localhost/'
 
   programs;
   selected_programs;
