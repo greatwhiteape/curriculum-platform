@@ -7,29 +7,29 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import routers, serializers, viewsets
 from rest_framework.parsers import JSONParser
 
-from .models import Module
+from .models import Asset
 
 # @csrf_exempt
-class ModulesView(TemplateView):
-    template_name = "modules/search_page.html"
+class AssetsView(TemplateView):
+    template_name = "assets/search_page.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['modules'] = serialize('json',Module.objects.all())
+        context['assets'] = serialize('json',Asset.objects.all())
         return context
 
-class ModuleView(TemplateView):
-    template_name = "modules/module_page.html"
+class AssetView(TemplateView):
+    template_name = "assets/asset_page.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['module'] = Module.objects.get(id=kwargs['module_id'])
+        context['asset'] = Asset.objects.get(id=kwargs['asset_id'])
         return context
 
-class ModuleStudentView(TemplateView):
-    template_name = "modules/student_page.html"
+class AssetStudentView(TemplateView):
+    template_name = "assets/student_page.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['module'] = Module.objects.get(id=kwargs['module_id'])
+        context['asset'] = Asset.objects.get(id=kwargs['asset_id'])
         return context
