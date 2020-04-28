@@ -56,6 +56,8 @@ class Asset(ClusterableModel):
             ('image', ImageChooserBlock()),
             ('document', DocumentChooserBlock()),
             ('external', blocks.Link()),
+            ('google_doc', blocks.GoogleDocEmbed()),
+            ('codap', blocks.CODAPEmbed()),
             ('embed', EmbedBlock()),
             ('raw_html', wagtail_blocks.RawHTMLBlock()),
         ],

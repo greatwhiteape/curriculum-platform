@@ -31,6 +31,30 @@ class Link(blocks.StructBlock):
         label = "Link"
         help_text = "Link to external resource"
 
+class GoogleDocEmbed(blocks.StructBlock):
+    url = blocks.URLBlock(
+        required=True,
+        help_text="Link to Google Doc"
+    )
+
+    class Meta:
+        template = "streams/gd_embed_block.html"
+        icon = "edit"
+        label = "Google Doc"
+        help_text = "Embed a Google Doc"
+
+class CODAPEmbed(blocks.StructBlock):
+    url = blocks.URLBlock(
+        required=True,
+        help_text="Link to CODAP"
+    )
+
+    class Meta:
+        template = "streams/CODAP_embed_block.html"
+        icon = "edit"
+        label = "CODAP"
+        help_text = "Embed a CODAP exercise"
+
 
 class ChapterBlock(blocks.StructBlock):
     title = blocks.CharBlock(
