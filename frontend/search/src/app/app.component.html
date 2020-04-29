@@ -83,61 +83,130 @@
   <div class="col-md-3">
     <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
       <ngb-panel id="custom-panel-1">
-        <ng-template ngbPanelHeader let-opened="opened">
+        <ng-template ngbPanelHeader let-opened="opened" class="bg-white">
           <div class="d-flex align-items-center justify-content-between">
-            <h5 class="m-0">First panel - {{ opened ? 'opened' : 'collapsed' }}</h5>
-            <button ngbPanelToggle class="btn btn-link p-0">Toggle first</button>
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left pl-0">
+              <h5 class="mt-4">
+                Program
+                <fa-icon *ngIf="!opened" class="float-right" [icon]="this.faPlus"></fa-icon>
+                <fa-icon *ngIf="opened" class="float-right" [icon]="this.faMinus"></fa-icon>
+              </h5>
+            </button>
           </div>
         </ng-template>
         <ng-template ngbPanelContent>
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-          aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-          sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-          labore sustainable VHS.
+          <ul id="program-list" class="list-group select-list">
+            <li *ngFor="let p of programs" class="program-item list-group-item p-0 border-0">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input"
+                          (change)="getSelectedPrograms()"
+                          type="checkbox"
+                          id="program_{{p.id}}"
+                          name="program"
+                          value="{{p.id}}"
+                          [(ngModel)]="p.selected"/>
+                <label class="custom-control-label topic-text text-muted ml-lg-2" for="program_{{p.id}}">{{p.program_name}}</label>
+              </div>
+            </li>
+          </ul>
         </ng-template>
       </ngb-panel>
       <ngb-panel>
-        <ng-template ngbPanelHeader>
+        <ng-template ngbPanelHeader let-opened="opened">
           <div class="d-flex align-items-center justify-content-between">
-            <h5 class="m-0">Second panel</h5>
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left pl-0">
+              <h5 class="mt-4">
+                Audience
+                <fa-icon *ngIf="!opened" class="float-right" [icon]="this.faPlus"></fa-icon>
+                <fa-icon *ngIf="opened" class="float-right" [icon]="this.faMinus"></fa-icon>
+              </h5>
+            </button>
             <div>
-              <button ngbPanelToggle class="btn btn-sm btn-outline-primary ml-2">Toggle second</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary ml-2" (click)="disabled = !disabled">
+              <!-- <button type="button" class="btn btn-sm btn-outline-secondary ml-2" (click)="disabled = !disabled">
                 {{ disabled ? 'En' : 'Dis' }}able third
               </button>
-              <button type="button" class="btn btn-sm btn-outline-danger ml-2" (click)="a.collapseAll()">Collapse all</button>
+              <button type="button" class="btn btn-sm btn-outline-danger ml-2" (click)="a.collapseAll()">Collapse all</button> -->
             </div>
           </div>
         </ng-template>
         <ng-template ngbPanelContent>
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-          aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-          sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-          labore sustainable VHS.
+          <ul id="audience-list" class="list-group select-list">
+            <li *ngFor="let a of audiences" class="audience-item list-group-item p-0 border-0">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input"
+                          (change)="getSelectedAudiences()"
+                          type="checkbox"
+                          id="audience_{{a.id}}"
+                          name="audience"
+                          value="{{a.id}}"
+                          [(ngModel)]="a.selected"/>
+                <label class="custom-control-label topic-text text-muted ml-2" for="audience_{{a.id}}">{{a.age_range}}</label>
+              </div>
+            </li>
+          </ul>
         </ng-template>
       </ngb-panel>
       <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
-        <ng-template ngbPanelHeader>
+        <ng-template ngbPanelHeader let-opened="opened">
           <div class="d-flex align-items-center justify-content-between">
-            <button ngbPanelToggle class="btn btn-link container-fluid text-left pl-0">Third panel</button>
-            <p *ngIf="disabled" class="text-muted m-0 small">[I'm&nbsp;disabled]</p>
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left pl-0">
+              <h5 class="mt-4">
+                Topic
+                <fa-icon *ngIf="!opened" class="float-right" [icon]="this.faPlus"></fa-icon>
+                <fa-icon *ngIf="opened" class="float-right" [icon]="this.faMinus"></fa-icon>
+              </h5>
+            </button>
           </div>
         </ng-template>
         <ng-template ngbPanelContent>
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-          aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-          sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-          labore sustainable VHS.
+          <ul id="topic-list" class="list-group select-list">
+            <li *ngFor="let t of topics" class="topic-item list-group-item p-0 border-0">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input"
+                          (change)="getSelectedTopics()"
+                          type="checkbox"
+                          id="topic_{{t.id}}"
+                          name="topic"
+                          value="{{t.id}}"
+                          [(ngModel)]="t.selected"/>
+                <label class="custom-control-label topic-text text-muted ml-2" for="topic_{{t.id}}">{{t.topic}}</label>
+              </div>
+            </li>
+          </ul>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-between">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left pl-0">
+              <h5 class="mt-4">
+                Type of Asset
+                <fa-icon *ngIf="!opened" class="float-right" [icon]="this.faPlus"></fa-icon>
+                <fa-icon *ngIf="opened" class="float-right" [icon]="this.faMinus"></fa-icon>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <ul id="asset_type_list" class="list-group select-list">
+            <li *ngFor="let t of asset_types" class="asset-type-item list-group-item p-0 border-0">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input"
+                          (change)="getSelectedTopics()"
+                          type="checkbox"
+                          id="asset_type_{{t.id}}"
+                          name="asset_type"
+                          value="{{t.id}}"
+                          [(ngModel)]="t.selected"/>
+                <label class="custom-control-label topic-text text-muted ml-2" for="asset_type_{{t.id}}">{{t.asset_type}}</label>
+              </div>
+            </li>
+          </ul>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>
   </div>
+
 
 
   <div class="col-md-9">
@@ -181,11 +250,11 @@
           </li>
         </ng-container>
       </ul>
-    </div>
+    </div-->
     <div id="asset_container" *ngIf=!modulesOnly>
       <h3 class="my-4">Individual Assets</h3>
       <p class="text-center" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>
-      <ul class="list-group" *ngFor="let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | type: selected_types">
+      <ul class="list-group" *ngFor="let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | type: selected_asset_types">
         <ng-container *ngIf="asset.file">
           <li class="list-group-item border-0">
             <a href="{{ asset.file }}" target="_blank">
@@ -221,6 +290,6 @@
           </li>
         </ng-container>
       </ul>
-    </div> -->
+    </div>
   </div>
 </div>

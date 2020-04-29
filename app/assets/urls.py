@@ -2,12 +2,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.contrib.auth.models import User
-from .models import Module
+from .models import Asset
 
 from . import views
 
 urlpatterns = [
     # path('', views.get_module_data),
-    path('<int:module_id>/', views.ModuleView.as_view()),
-    path('<int:module_id>/student-page/', views.ModuleStudentView.as_view()),
+    path('<int:asset_id>/', views.AssetView.as_view()),
+    path('<int:asset_id>/student-page/', views.AssetStudentView.as_view()),
 ]

@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { CurriculumService, dataStructure } from './curriculum.service';
 import { ProgramsPipe } from './programs.pipe';
 import { TagPipe } from './tag.pipe';
@@ -19,6 +20,10 @@ import { TagPipe } from './tag.pipe';
 export class AppComponent {
   // Search tags toggle
   disabled = false;
+
+  programsIcon = this.disabled ? 'faMinus' : 'faPlus';
+  faPlus = faPlus;
+  faMinus = faMinus;
 
   title = 'Search';
   baseURL = 'https://teach.gmri.org/'

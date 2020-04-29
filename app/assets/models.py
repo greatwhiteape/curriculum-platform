@@ -38,29 +38,32 @@ from taxonomy.serializers import (
     TagSerializer,
     AssetTypeSerializer,
 )
+
+
 @register_snippet
 class Asset(ClusterableModel):
     class Meta:
         verbose_name = "Curriculum Asset"
         verbose_name_plural = "Curriculum Assets"
 
-
     template = "assets/asset_page.html"
 
     title = models.CharField(max_length=50)
     description = RichTextField(blank=True, null=True)
 
-    internal_link = models.ForeignKey(
-        'wagtaildocs.Document',
-        blank=True,
+    asset_link = StreamField(
+        [
+            ('image', ImageChooserBlock()),
+            ('document', DocumentChooserBlock()),
+            ('external', blocks.Link()),
+            ('google_doc', blocks.GoogleDocEmbed()),
+            ('codap', blocks.CODAPEmbed()),
+            ('embed', EmbedBlock()),
+            ('raw_html', wagtail_blocks.RawHTMLBlock()),
+        ],
         null=True,
-        related_name='+',
-        help_text='Select an internal Wagtail page',
-        on_delete=models.SET_NULL,
+        blank=True
     )
-    external_link = models.URLField(blank=True)
-    embed_tag = models.URLField(blank=True)
-
     program = models.ForeignKey(
         'taxonomy.Program',
         on_delete=models.SET_NULL,
@@ -122,50 +125,30 @@ class Asset(ClusterableModel):
 
 
     panels = [
-        FieldPanel("description"),
-        FieldPanel("student_asset"),
-        FieldPanel("student_intro"),
-        DocumentChooserPanel("internal_link"),
-        FieldPanel("external_link"),
-        FieldPanel("embed_link"),
-        SnippetChooserPanel("program"),
-        SnippetChooserPanel('time_estimate'),
-        InlinePanel('audience_relationship', label="Audience"),
-        InlinePanel('standards_relationship', label="Standards Alignment"),
-        InlinePanel('topic_relationship', label="Topics"),
-        InlinePanel('tag_relationship', label="Tags"),
+      FieldPanel("title"),
+      FieldPanel("description"),
+      FieldPanel("asset_type"),
+      FieldPanel("student_asset"),
+      FieldPanel("student_intro"),
+      StreamFieldPanel('asset_link'),
+      SnippetChooserPanel("program"),
+      SnippetChooserPanel('time_estimate'),
+      InlinePanel('audience_relationship', label="Audience"),
+      InlinePanel('standards_relationship', label="Standards Alignment"),
+      InlinePanel('topic_relationship', label="Topics"),
+      InlinePanel('tag_relationship', label="Tags"),
     ]
 
     api_fields = [
         APIField("description"),
         APIField("student_asset"),
-        APIField("internal_link"),
-        APIField("external_link"),
-        APIField("embed_link"),
+        APIField("asset_link"),
         APIField("program", serializer=ProgramSerializer()),
         APIField("audience", serializer=AudienceSerializer()),
         APIField("asset_type", serializer=AssetTypeSerializer()),
         APIField("topic", serializer=TopicSerializer()),
         APIField('asset_tag_relationship', serializer=TagSerializer()),
     ]
-
-
-
-    def clean(self):
-        super().clean()
-
-        if self.internal_link and self.external_link:
-            # Both fields are filled out...
-            raise ValidationError({
-                'internal_link': ValidationError("Please only select a document OR enter an external URL"),
-                'external_link': ValidationError("Please only select a document OR enter an external URL"),
-            })
-
-        if not self.internal_link and not self.external_link:
-            raise ValidationError({
-                'internal_link':ValidationError("You must always select a document OR enter an external URL."),
-                'external_link':ValidationError("You must always select a document OR enter an external URL."),
-            })
 
 class AssetTagRelationship(models.Model):
   module = ParentalKey(
