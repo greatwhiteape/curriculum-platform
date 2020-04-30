@@ -254,41 +254,16 @@
     <div id="asset_container" *ngIf=!modulesOnly>
       <h3 class="my-4">Individual Assets</h3>
       <p class="text-center" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>
-      <ul class="list-group" *ngFor="let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | type: selected_asset_types">
-        <ng-container *ngIf="asset.file">
-          <li class="list-group-item border-0">
-            <a href="{{ asset.file }}" target="_blank">
-              <ng-container *ngIf="asset.display_title; else showTitle">
-                <h3 class="h3">
-                  {{ asset.display_title }}
-                </h3>
-              </ng-container>
-              <ng-template #showTitle>
-                <h3 class="h3">
-                    {{ asset.title }}
-                  </h3>
-              </ng-template>
-              <p [innerHTML]="asset.description | safe: 'html'"></p>
-            </a>
-          </li>
-        </ng-container>
-        <ng-container *ngIf="asset.url">
-          <li class="list-group-item border-0">
-            <a href="{{ asset.url }}" target="_blank">
-                <ng-container *ngIf="asset.display_title; else showTitle">
-                  <h3 class="h3">
-                    {{ asset.display_title }}
-                  </h3>
-                </ng-container>
-                <ng-template #showTitle>
-                  <h3 class="h3">
-                      {{ asset.title }}
-                    </h3>
-                </ng-template>
-              <p [innerHTML]="asset.description | safe: 'html'"></p>
-            </a>
-          </li>
-        </ng-container>
+      <!-- <ul class="list-group" *ngFor="let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | type: selected_asset_types"> -->
+      <ul class="list-group" *ngFor="let asset of this.assets">
+        <li class="list-group-item border-0">
+          <a href="{{ baseURL }}curriculum/assets/{{ asset.id }}" target="_blank">
+            <h3 class="h3">
+              {{ asset.title }}
+            </h3>
+            <p [innerHTML]="asset.description | safe: 'html'"></p>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

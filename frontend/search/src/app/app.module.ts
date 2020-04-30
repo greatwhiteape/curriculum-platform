@@ -13,25 +13,29 @@ import { TopicPipe } from './topic.pipe';
 import { TagPipe } from './tag.pipe';
 import { TypePipe } from './type.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AssetTypePipe } from './asset-type.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SafePipe,
-    AudiencesPipe,
-    ProgramsPipe,
-    TopicPipe,
-    TagPipe,
-    TypePipe
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    NgbModule,
-    FontAwesomeModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      SafePipe,
+      AudiencesPipe,
+      ProgramsPipe,
+      TopicPipe,
+      TagPipe,
+      TypePipe,
+      AssetTypePipe
+   ],
+   imports: [
+      BrowserModule,
+      HttpClientModule,
+      FormsModule,
+      NgbModule,
+      FontAwesomeModule
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
