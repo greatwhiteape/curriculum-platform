@@ -43,45 +43,46 @@
         </div>
       </div>
     </div>
-  </div>
+    <!-- Selected Activity Type-->
+    <div  class="row my-2" *ngIf="selected_activity_types">
+      <div class="col">
+        <div class="selected-type-wrap">
+          <div class="selected-type" *ngFor="let s of selected_activity_types" >
+            <span class="badge badge-pill badge-primary float-left text-white mr-3 py-3 px-5">{{s.activity_type}} <span class="delete-type" (click)="deleteAssetType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <!-- Selected Activity Type-->
-  <div  class="row my-2" *ngIf="selected_activity_types">
-    <div class="col">
-      <div class="selected-type-wrap">
-        <div class="selected-type" *ngFor="let s of selected_activity_types" >
-          <span class="badge badge-pill badge-primary float-left text-white mr-3 mt-5 py-3 px-5">{{s.activity_type}} <span class="delete-type" (click)="deleteAssetType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+        <!-- Selected Asset Type-->
+    <div  class="row my-2" *ngIf="selected_asset_types">
+      <div class="col">
+        <div class="selected-type-wrap">
+          <div class="selected-type" *ngFor="let s of selected_asset_types" >
+            <span class="badge badge-pill badge-primary float-left text-white mr-3 py-3 px-5">{{s.asset_type}} <span class="delete-type float-right" (click)="deleteAssetType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-      <!-- Selected Asset Type-->
-  <div  class="row my-2" *ngIf="selected_asset_types">
-    <div class="col">
-      <div class="selected-type-wrap">
-        <div class="selected-type" *ngFor="let s of selected_asset_types" >
-          <span class="badge badge-pill badge-primary float-left text-white mx-1">{{s.asset_type}} <span class="delete-type" (click)="deleteAssetType(s.id)" title="Click to delete" style="cursor:pointer;">X</span></span>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Modules Only-->
-<div  class="row my-2">
-<div class="col">
-  <div class="modules-only-wrap">
-    <div class="modules-only" *ngIf="modulesOnly" >
-      <span class="badge badge-pill badge-primary float-left text-white mx-1">Modules Only <span class="delete-modules-only" (click)="deleteModulesOnly()" title="Click to delete" style="cursor:pointer;">X</span></span>
+  <div  class="row my-2">
+    <div class="col">
+      <div class="modules-only-wrap">
+        <div class="modules-only" *ngIf="modulesOnly" >
+          <span class="badge badge-pill badge-primary float-left text-white mx-1">Modules Only <span class="delete-modules-only" (click)="deleteModulesOnly()" title="Click to delete" style="cursor:pointer;">X</span></span>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 
 <div class="row">
   <div class="col-md-3">
     <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+      <!-- Program Panel -->
       <ngb-panel id="custom-panel-1">
         <ng-template ngbPanelHeader let-opened="opened" class="bg-white">
           <div class="d-flex align-items-center justify-content-between">
@@ -111,6 +112,7 @@
           </ul>
         </ng-template>
       </ngb-panel>
+      <!-- Audience Panel -->
       <ngb-panel>
         <ng-template ngbPanelHeader let-opened="opened">
           <div class="d-flex align-items-center justify-content-between">
@@ -146,6 +148,7 @@
           </ul>
         </ng-template>
       </ngb-panel>
+      <!-- Topic Panel -->
       <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
         <ng-template ngbPanelHeader let-opened="opened">
           <div class="d-flex align-items-center justify-content-between">
@@ -175,6 +178,7 @@
           </ul>
         </ng-template>
       </ngb-panel>
+      <!-- Asset Type Panel -->
       <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
         <ng-template ngbPanelHeader let-opened="opened">
           <div class="d-flex align-items-center justify-content-between">
@@ -192,7 +196,7 @@
             <li *ngFor="let t of asset_types" class="asset-type-item list-group-item p-0 border-0">
               <div class="custom-control custom-checkbox">
                 <input class="custom-control-input"
-                          (change)="getSelectedTopics()"
+                          (change)="getSelectedAssetTypes()"
                           type="checkbox"
                           id="asset_type_{{t.id}}"
                           name="asset_type"
@@ -236,7 +240,7 @@
         </li>
       </ul>
     </div>
-    <!-- <div id="lesson_container">
+    <!-- <div id="activity_container">
       <h3 class="my-4">Activities</h3>
       <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
         <ng-container>
@@ -250,12 +254,11 @@
           </li>
         </ng-container>
       </ul>
-    </div-->
+    </div> -->
     <div id="asset_container" *ngIf=!modulesOnly>
       <h3 class="my-4">Individual Assets</h3>
       <p class="text-center" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>
-      <!-- <ul class="list-group" *ngFor="let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | type: selected_asset_types"> -->
-      <ul class="list-group" *ngFor="let asset of this.assets">
+      <ul class="list-group" *ngFor="let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | assetType: selected_asset_types">
         <li class="list-group-item border-0">
           <a href="{{ baseURL }}curriculum/assets/{{ asset.id }}" target="_blank">
             <h3 class="h3">

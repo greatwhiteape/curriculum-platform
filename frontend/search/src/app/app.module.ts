@@ -11,7 +11,6 @@ import { AudiencesPipe } from './audiences.pipe';
 import { ProgramsPipe } from './programs.pipe';
 import { TopicPipe } from './topic.pipe';
 import { TagPipe } from './tag.pipe';
-import { TypePipe } from './type.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AssetTypePipe } from './asset-type.pipe';
 
@@ -23,7 +22,6 @@ import { AssetTypePipe } from './asset-type.pipe';
       ProgramsPipe,
       TopicPipe,
       TagPipe,
-      TypePipe,
       AssetTypePipe
    ],
    imports: [

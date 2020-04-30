@@ -9,12 +9,13 @@ export class ProgramsPipe implements PipeTransform {
   transform(items: any[], selected_programs?: any[]): any[] {
     if (!items) { return [{}]; }
     if (!selected_programs) { return items; }
+    console.log('ProgramsPipe: ', items);
     return items.filter( item => this.checkFilter(item, selected_programs));
   }
 
-  checkFilter(module, selected_programs) {
+  checkFilter(object, selected_programs) {
     if (selected_programs.length > 0) {
-      const some = selected_programs.some(program => module.program.id === program.id);
+      const some = selected_programs.some(program => object.program.id === program.id);
       return some;
     } else {
       return true;
