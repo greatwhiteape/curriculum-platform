@@ -7,11 +7,9 @@ class AssetsAPIEndpoint(BaseAPIEndpoint):
     model = Asset
 
     body_fields = BaseAPIEndpoint.body_fields + [
+        'title',
         'description',
         'asset_link',
-        # 'internal_link',
-        # 'external_link',
-        # 'embed_tag',
         'program',
         'asset_type',
         'student_asset',
@@ -24,11 +22,9 @@ class AssetsAPIEndpoint(BaseAPIEndpoint):
     ]
 
     listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+        'title',
         'description',
         'asset_link',
-        # 'internal_link',
-        # 'external_link',
-        # 'embed_tag',
         'program',
         'asset_type',
         'student_asset',
