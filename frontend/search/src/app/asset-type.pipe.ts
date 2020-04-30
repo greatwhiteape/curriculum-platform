@@ -1,10 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'asset-type'
+  name: 'assetType'
 })
 export class AssetTypePipe implements PipeTransform {
-
   transform(items: any[], selected_types?: any[]): any[] {
     if (!items) { return [{}]; }
     if (!selected_types) { return items; }
@@ -14,7 +13,8 @@ export class AssetTypePipe implements PipeTransform {
 
   checkFilter(object, selected_types) {
     if (selected_types.length > 0) {
-      const some = selected_types.some(type => object.asset_type === type.id);
+      const some = selected_types.some(type => object.asset_type.id === type.id);
+      console.log('Asset Type Pipe checkFilter: ', some);
       return some;
     } else {
       return true;
