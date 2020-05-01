@@ -240,12 +240,12 @@
         </li>
       </ul>
     </div>
-    <div id="activity_container">
+    <!-- <div id="activity_container">
       <h3 class="my-4">Activities</h3>
       <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
         <ng-container>
           <li class="list-group-item border-0">
-            <a href="{{ baseURL }}curriculum/activity/{{ activity.id }}" target="_blank">
+            <a href="{{ activity.teachers_guide }}" target="_blank">
               <h3 class="h3">
                 {{ activity.title }}
               </h3>
@@ -254,7 +254,7 @@
           </li>
         </ng-container>
       </ul>
-    </div>
+    </div> -->
     <div id="asset_container" *ngIf=!modulesOnly>
       <h3 class="my-4">Individual Assets</h3>
       <p class="text-center" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>
