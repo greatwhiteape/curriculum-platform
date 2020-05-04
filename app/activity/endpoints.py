@@ -5,17 +5,27 @@ from .models import Activity
 
 class ActivitiesAPIEndpoint(BaseAPIEndpoint):
     model = Activity
-    
+
     body_fields = BaseAPIEndpoint.body_fields + [
         "title",
-        # "teachers_guide",
         "overview_copy",
-        "student_copy",
-        "internal_link",
-        "external_link",
+        "teachers_desc",
+        "students_desc",
         "program",
         "audience",
         "activity_type",
         "topic",
-        'activity_tag_relationship',
+        'tag_relationship',
+    ]
+
+    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+        "title",
+        "overview_copy",
+        "teachers_desc",
+        "students_desc",
+        "program",
+        "audience",
+        "activity_type",
+        "topic",
+        'tag_relationship',
     ]

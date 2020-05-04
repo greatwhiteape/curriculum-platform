@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags static %}
+
+{% block content %}
+<div class="{{lesson.title|lower}}">
+  <div class="jumbotron p-0 mb-0">
+    <div class="row" style="background-color:{{module.program.program_color}}">
+      <div class="col col-xl-5 offset-md-1 py-5 align-middle">
+        <h2 class="mt-5 pr-5 text-white">{{ lesson.title }}{% if  lesson.subtitle %}: {{ lesson.subtitle }}{% endif %}</h2>
+      </div>
+      {% image lesson.hero_image fill-900x300 as hero %}
+      <div id="content_hero_bg" class="col-xl-5 p-0">
+        <img class="mr-4 d-none d-xl-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end" src="{{ hero.url }}" alt="{{ hero.alt }}">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col offset-md-1 mt-5">
+      <h3 class="slb-text">Lessons for Students</h3>
+    </div>
+  </div>
+  {% if lesson.student_intro %}
+  <div class="row">
+    <div class="col-lg-8 offset-md-1 mt-5">
+      {{ lesson.student_intro|safe }}
+    </div>
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-lg-8 offset-md-1 my-0">
+      <hr class="slb-text" />
+    </div>
+  </div>
+  <div class="row py-5 mb-5">
+    <div class="col-lg-10 offset-md-1">
+      {{ lesson.students_desc }}
+    </div>
+  </div>
+</div>
+{% endblock content %}

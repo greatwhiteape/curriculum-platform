@@ -1,24 +1,41 @@
-from django.db import models
-from django.core.exceptions import ValidationError
+from __future__ import unicode_literals
 
-from wagtail.api import APIField
+from django.db import models
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
-from wagtail.core.fields import RichTextField
-from wagtail.documents.models import Document
+from wagtail.api import APIField
+
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    FieldRowPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    PageChooserPanel,
+    StreamFieldPanel,
+)
+from wagtail.core import blocks as wagtail_blocks
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page
+from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.documents.edit_handlers import DocumentChooserPanel
-from wagtail.snippets.models import register_snippet
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.blocks import SnippetChooserBlock
+from wagtail.snippets.models import register_snippet
+from wagtail.search import index
+
+from streams import blocks
 
 from taxonomy.serializers import (
-    ProgramSerializer, 
-    TimeEstimateSerializer, 
-    AudienceSerializer, 
-    StandardsSerializer, 
-    TopicSerializer, 
+    ProgramSerializer,
+    TimeEstimateSerializer,
+    AudienceSerializer,
+    StandardsSerializer,
+    TopicSerializer,
     TagSerializer,
     ActivityTypeSerializer,
 )
@@ -35,17 +52,40 @@ class Activity(ClusterableModel):
     # teachers_guide = models.URLField()
     overview_copy = RichTextField(null=True, blank=True)
     student_copy = RichTextField(null=True, blank=True)
-    # link_to_activity = models.URLField()
-
-    internal_link = models.ForeignKey(
-        'wagtaildocs.Document',
-        blank=True,
+    teachers_desc = StreamField(
+        [
+            ('title', blocks.TitleBlock()),
+            ('copy', wagtail_blocks.RichTextBlock()),
+            ('image', ImageChooserBlock()),
+            ('asset', SnippetChooserBlock('assets.Asset')),
+            ('activity', SnippetChooserBlock('activity.Activity')),
+            ('document', DocumentChooserBlock()),
+            ('embed', EmbedBlock()),
+            ('external', blocks.Link()),
+            ('google_doc', blocks.GoogleDocEmbed()),
+            ('codap', blocks.CODAPEmbed()),
+            ('raw_html', wagtail_blocks.RawHTMLBlock()),
+        ],
         null=True,
-        related_name='+',
-        help_text='Select an internal Wagtail page',
-        on_delete=models.SET_NULL,
+        blank=True
     )
-    external_link = models.URLField(blank=True)
+    students_desc = StreamField(
+        [
+            ('title', blocks.TitleBlock()),
+            ('copy', wagtail_blocks.RichTextBlock()),
+            ('image', ImageChooserBlock()),
+            ('asset', SnippetChooserBlock('assets.Asset')),
+            ('activity', SnippetChooserBlock('activity.Activity')),
+            ('document', DocumentChooserBlock()),
+            ('embed', EmbedBlock()),
+            ('external', blocks.Link()),
+            ('google_doc', blocks.GoogleDocEmbed()),
+            ('codap', blocks.CODAPEmbed()),
+            ('raw_html', wagtail_blocks.RawHTMLBlock()),
+        ],
+        null=True,
+        blank=True
+    )
 
     program = models.ForeignKey(
         'taxonomy.Program',
@@ -77,16 +117,16 @@ class Activity(ClusterableModel):
         blank=True,
         on_delete = models.SET_NULL
     )
-    
+
     @property
     def tags(self):
         tags = [
-            n.tag for n in self.lesson_tag_relationship.all()
+            n.tag for n in self.tag_relationship.all()
         ]
         return tags
 
     # tag = models.ManyToManyField(
-    #     'taxonomy.Tag', 
+    #     'taxonomy.Tag',
     #     blank=True
     # )
 
@@ -98,53 +138,38 @@ class Activity(ClusterableModel):
         FieldPanel("title"),
         # FieldPanel("teachers_guide"),
         FieldPanel("overview_copy"),
-        FieldPanel("student_copy"),
-        DocumentChooserPanel("internal_link"),
-        FieldPanel("external_link"),
-        SnippetChooserPanel("program"),
-        SnippetChooserPanel("audience"),
-        SnippetChooserPanel("activity_type"),
-        SnippetChooserPanel("topic"),
+        StreamFieldPanel('teachers_desc'),
+        StreamFieldPanel('students_desc'),
+        SnippetChooserPanel('program'),
+        FieldPanel('activity_type'),
+        InlinePanel('audience_relationship', label="Audience"),
+        InlinePanel('standards_relationship', label="Standards Alignment"),
+        InlinePanel('topic_relationship', label="Topics"),
+        InlinePanel('tag_relationship', label="Tags"),
         # SnippetChooserPanel("tag"),
-        InlinePanel('activity_tag_relationship', label="Tags"),
+        # InlinePanel('tag_relationship', label="Tags"),
     ]
-    
+
     api_fields = [
-        APIField("title"),
-        # APIField("teachers_guide"),
-        APIField("overview_copy"),
-        APIField("student_copy"),
-        APIField("internal_link"),
-        APIField("external_link"),
-        APIField("program", serializer=ProgramSerializer()),
-        APIField("audience", serializer=AudienceSerializer()),
-        APIField("activity_type", serializer=ActivityTypeSerializer()),
-        APIField("topic", serializer=TopicSerializer()),
-        APIField('activity_tag_relationship', serializer=TagSerializer()),
+        APIField('title'),
+        APIField('overview_copy'),
+        APIField('teachers_desc'),
+        APIField('students_desc'),
+        APIField('program', serializer=ProgramSerializer()),
+        APIField('activity_type'),
+        APIField('audience_relationship'),
+        APIField('standards_relationship'),
+        APIField('topic_relationship'),
+        APIField('tag_relationship'),
     ]
 
-    def clean(self):
-        super().clean()
-
-        if self.internal_link and self.external_link:
-            # Both fields are filled out...
-            raise ValidationError({
-                'internal_link': ValidationError("Please only select a document OR enter an external URL"),
-                'external_link': ValidationError("Please only select a document OR enter an external URL"),
-            })
-
-        if not self.internal_link and not self.external_link:
-            raise ValidationError({
-                'internal_link':ValidationError("You must always select a document OR enter an external URL."),
-                'external_link':ValidationError("You must always select a document OR enter an external URL."),
-            })
 class ActivityTagRelationship(models.Model):
     activity = ParentalKey(
         'Activity',
-        related_name='activity_tag_relationship'
+        related_name='tag_relationship'
     )
     tag = models.ForeignKey(
-        'taxonomy.Tag', 
+        'taxonomy.Tag',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -156,4 +181,64 @@ class ActivityTagRelationship(models.Model):
 
     api_fields = [
         APIField('tag', serializer=TagSerializer())
+    ]
+
+class ActivityAudienceRelationship(models.Model):
+    activity = ParentalKey(
+        'Activity',
+        related_name='audience_relationship'
+    )
+    audience = models.ForeignKey(
+        'taxonomy.Audience',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    panels = [
+        FieldPanel('audience')
+    ]
+
+    api_fields = [
+        APIField('audience', serializer=AudienceSerializer())
+    ]
+
+class ActivityStandardsRelationship(models.Model):
+    activity = ParentalKey(
+        'Activity',
+        related_name='standards_relationship'
+    )
+    standard = models.ForeignKey(
+        'taxonomy.Standard',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    panels = [
+        FieldPanel('standard')
+    ]
+
+    api_fields = [
+        APIField('standard', serializer=StandardsSerializer())
+    ]
+
+class ActivityTopicRelationship(models.Model):
+    activity = ParentalKey(
+        'Activity',
+        related_name='topic_relationship'
+    )
+    topic = models.ForeignKey(
+        'taxonomy.Topic',
+        models.SET_NULL,
+        related_name='+',
+        null=True,
+    )
+
+    panels = [
+        FieldPanel('topic')
+    ]
+
+    api_fields = [
+        APIField('topic', serializer=TopicSerializer())
     ]

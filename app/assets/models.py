@@ -151,7 +151,7 @@ class Asset(ClusterableModel):
     ]
 
 class AssetTagRelationship(models.Model):
-  module = ParentalKey(
+  asset = ParentalKey(
       'Asset',
       related_name='tag_relationship'
   )
