@@ -178,6 +178,36 @@
           </ul>
         </ng-template>
       </ngb-panel>
+      <!-- Activity Type Panel -->
+      <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="d-flex align-items-center justify-content-between">
+            <button ngbPanelToggle class="btn btn-link container-fluid text-left pl-0">
+              <h5 class="mt-4">
+                Type of Activity
+                <fa-icon *ngIf="!opened" class="float-right" [icon]="this.faPlus"></fa-icon>
+                <fa-icon *ngIf="opened" class="float-right" [icon]="this.faMinus"></fa-icon>
+              </h5>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <ul id="activity_type_list" class="list-group select-list">
+            <li *ngFor="let t of activity_types" class="activity-type-item list-group-item p-0 border-0">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input"
+                          (change)="getSelectedActivityTypes()"
+                          type="checkbox"
+                          id="activity_type_{{t.id}}"
+                          name="activity_type"
+                          value="{{t.id}}"
+                          [(ngModel)]="t.selected"/>
+                <label class="custom-control-label topic-text text-muted ml-2" for="activity_type_{{t.id}}">{{t.activity_type}}</label>
+              </div>
+            </li>
+          </ul>
+        </ng-template>
+      </ngb-panel>
       <!-- Asset Type Panel -->
       <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
         <ng-template ngbPanelHeader let-opened="opened">
@@ -227,6 +257,7 @@
         </li>
       </ul>
     </div>
+
     <div id="lesson_container">
       <h3 class="my-4">Lessons</h3>
       <ul id="lesson_search_results" class="list-group search-results" *ngFor="let lesson of this.lessons | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
@@ -240,9 +271,11 @@
         </li>
       </ul>
     </div>
+
     <div id="activity_container">
       <h3 class="my-4">Activities</h3>
-      <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
+      <!-- <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types"> {% endcomment %}      {% comment %} <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types"> -->
+      <ul class="list-group" *ngFor="let activity of this.activities | activityType: selected_activity_types">
         <ng-container>
           <li class="list-group-item border-0">
             <a href="{{ baseURL }}curriculum/activity/{{ activity.id }}" target="_blank">
@@ -255,6 +288,7 @@
         </ng-container>
       </ul>
     </div>
+
     <div id="asset_container" *ngIf=!modulesOnly>
       <h3 class="my-4">Individual Assets</h3>
       <p class="text-center" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>

@@ -1,0 +1,9 @@
+.card {
+  border: none;
+}
+
+.card .card-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+/*# sourceMappingURL=app.component.css.map */

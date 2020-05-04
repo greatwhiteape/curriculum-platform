@@ -13,6 +13,7 @@ import { TopicPipe } from './topic.pipe';
 import { TagPipe } from './tag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AssetTypePipe } from './asset-type.pipe';
+import { ActivityTypePipe } from './activity-type.pipe';
 
 @NgModule({
    declarations: [
@@ -22,7 +23,8 @@ import { AssetTypePipe } from './asset-type.pipe';
       ProgramsPipe,
       TopicPipe,
       TagPipe,
-      AssetTypePipe
+      AssetTypePipe,
+      ActivityTypePipe,
    ],
    imports: [
       BrowserModule,
