@@ -548,7 +548,7 @@ class HomePage(Page):
         MultiFieldPanel([
           ImageChooserPanel('image'),
           FieldPanel('hero_text', classname="full"),
-        ], heading="Hero section"),
+        ], heading="Header Section"),
         MultiFieldPanel([
           FieldPanel('featured_title'),
           FieldPanel('featured_copy'),
