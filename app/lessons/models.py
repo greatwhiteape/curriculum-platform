@@ -31,11 +31,11 @@ from wagtail.search import index
 from streams import blocks
 
 from taxonomy.serializers import (
-    ProgramSerializer, 
-    TimeEstimateSerializer, 
-    AudienceSerializer, 
-    StandardsSerializer, 
-    TopicSerializer, 
+    ProgramSerializer,
+    TimeEstimateSerializer,
+    AudienceSerializer,
+    StandardsSerializer,
+    TopicSerializer,
     TagSerializer,
 )
 
@@ -59,12 +59,12 @@ class Lesson(ClusterableModel):
         blank=True,
     )
     intro_copy = RichTextField(
-        verbose_name="Marketing Copy",
+        verbose_name="Header Intro",
         null=True,
         blank=True
     )
     student_intro = RichTextField(
-        verbose_name="Copy for the Student Page",
+        verbose_name="Student Page Intro",
         null=True,
         blank=True
     )
@@ -89,10 +89,11 @@ class Lesson(ClusterableModel):
             ('activity', SnippetChooserBlock('activity.Activity')),
             ('document', DocumentChooserBlock()),
             ('embed', EmbedBlock()),
-        ], 
-        null=True, 
-        blank=True
-    )    
+        ],
+        null=True,
+        blank=True,
+        verbose_name="Overview Tab Content",
+    )
     students_desc = StreamField(
         [
             ('title', blocks.TitleBlock()),
@@ -102,18 +103,19 @@ class Lesson(ClusterableModel):
             ('activity', SnippetChooserBlock('activity.Activity')),
             ('document', DocumentChooserBlock()),
             ('embed', EmbedBlock()),
-        ], 
-        null=True, 
-        blank=True
+        ],
+        null=True,
+        blank=True,
+        verbose_name="Student Page Content",
     )
-        
+
     @property
     def standards_alignment(self):
         standards_alignment = [
             n.standard for n in self.standards_relationship.all()
         ]
         return standards_alignment
-    
+
     time_estimate = models.ForeignKey(
         'taxonomy.TimeEstimate',
         null=True,
@@ -127,38 +129,38 @@ class Lesson(ClusterableModel):
         blank=True,
         on_delete=models.SET_NULL,
     )
-    
+
     @property
     def audience(self):
         audience = [
             n.audience for n in self.audience_relationship.all()
         ]
         return audience
-    
+
     @property
     def tags(self):
         tags = [
             n.tag for n in self.tag_relationship.all()
         ]
         return tags
-    
+
     panels = [
         MultiFieldPanel([
             FieldPanel('title'),
             FieldPanel('subtitle'),
             ImageChooserPanel('hero_image'),
-        ], heading="Hero Section"),
+        ], heading="Header Section"),
         MultiFieldPanel([
             FieldPanel('intro_copy'),
             FieldPanel('student_intro'),
             FieldPanel('learning_outcomes'),
             FieldPanel('teachers_guide'),
             FieldPanel('lesson_download'),
-        ], heading="Marketing Speak"),
+        ], heading="Intro Content"),
         MultiFieldPanel([
             StreamFieldPanel('teachers_desc'),
             StreamFieldPanel('students_desc'),
-        ], heading="Detailed Description"),
+        ], heading="Tabbed Content"),
         MultiFieldPanel([
             SnippetChooserPanel('program'),
             SnippetChooserPanel('time_estimate'),
@@ -166,7 +168,7 @@ class Lesson(ClusterableModel):
             InlinePanel('standards_relationship', label="Standards Alignment"),
             InlinePanel('topic_relationship', label="Topics"),
             InlinePanel('tag_relationship', label="Tags"),
-        ], heading="Module Metadata")
+        ], heading="Lesson Metadata")
     ]
 
     api_fields = [
@@ -195,7 +197,7 @@ class LessonTagRelationship(models.Model):
         related_name='tag_relationship'
     )
     tag = models.ForeignKey(
-        'taxonomy.Tag', 
+        'taxonomy.Tag',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
