@@ -20,6 +20,7 @@ import { TagPipe } from './tag.pipe';
 export class AppComponent {
   // Search tags toggle
   disabled = false;
+  active = 1;
 
   programsIcon = this.disabled ? 'faMinus' : 'faPlus';
   faPlus = faPlus;

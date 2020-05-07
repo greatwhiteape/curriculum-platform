@@ -243,65 +243,90 @@
 
 
 
-  <div class="col-md-9">
-    <div id="module_container">
-      <h3 class="my-4">Modules</h3>
-      <ul id="module_search_results" class="list-group search-results" *ngFor="let module of this.modules | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
-        <li class="list-group-item border-0">
-          <a href="{{ baseURL }}curriculum/modules/{{ module.id }}">
-            <h3 class="h3">
-              {{ module.title }}<ng-container *ngIf="module.subtitle">: {{ module.subtitle }}</ng-container>
-            </h3>
-            <p [innerHTML]="module.intro_copy | safe: 'html'"></p>
-          </a>
-        </li>
-      </ul>
-    </div>
+  <div class="col-md-9 pt-2">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Modules</h5></a>
+        <ng-template ngbNavContent>
+          <div id="module_container">
+            <!-- <h3 class="my-4">Modules</h3> -->
+            <ul id="module_search_results" class="list-group search-results" *ngFor="let module of this.modules | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
+              <li class="list-group-item border-0">
+                <a href="{{ baseURL }}curriculum/modules/{{ module.id }}">
+                  <h3 class="h3">
+                    {{ module.title }}<ng-container *ngIf="module.subtitle">: {{ module.subtitle }}</ng-container>
+                  </h3>
+                  <p [innerHTML]="module.intro_copy | safe: 'html'"></p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2">
+        <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Lessons</h5></a>
+        <ng-template ngbNavContent>
+          <div id="lesson_container">
+            <!-- <h3 class="my-4">Lessons</h3> -->
+            <ul id="lesson_search_results" class="list-group search-results" *ngFor="let lesson of this.lessons | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
+              <li class="list-group-item border-0">
+                <a href="{{ baseURL }}curriculum/lessons/{{ lesson.id }}">
+                  <h3 class="h3">
+                    {{ lesson.title }}<ng-container *ngIf="lesson.subtitle">: {{ lesson.subtitle }}</ng-container>
+                  </h3>
+                  <p [innerHTML]="lesson.intro_copy | safe: 'html'"></p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="3">
+        <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Activities</h5></a>
+        <ng-template ngbNavContent>
+          <div id="activity_container">
+            <!-- <h3 class="my-4">Activities</h3> -->
+            <!-- <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types"> {% endcomment %}      {% comment %} <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types"> -->
+            <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types">
+              <ng-container>
+                <li class="list-group-item border-0">
+                  <a href="{{ baseURL }}curriculum/activity/{{ activity.id }}" target="_blank">
+                    <h3 class="h3">
+                      {{ activity.title }}
+                    </h3>
+                    <p [innerHTML]="activity.overview_copy | safe: 'html'"></p>
+                  </a>
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="4">
+        <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Assets</h5></a>
+        <ng-template ngbNavContent>
+          <div id="asset_container" *ngIf=!modulesOnly>
+            <!-- <h3 class="my-4">Individual Assets</h3> -->
+            <p class="text-center" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>
+            <ul class="list-group" *ngFor="let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | assetType: selected_asset_types">
+              <li class="list-group-item border-0">
+                <a href="{{ baseURL }}curriculum/assets/{{ asset.id }}" target="_blank">
+                  <h3 class="h3">
+                    {{ asset.title }}
+                  </h3>
+                  <p [innerHTML]="asset.description | safe: 'html'"></p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-    <div id="lesson_container">
-      <h3 class="my-4">Lessons</h3>
-      <ul id="lesson_search_results" class="list-group search-results" *ngFor="let lesson of this.lessons | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
-        <li class="list-group-item border-0">
-          <a href="{{ baseURL }}curriculum/lessons/{{ lesson.id }}">
-            <h3 class="h3">
-              {{ lesson.title }}<ng-container *ngIf="lesson.subtitle">: {{ lesson.subtitle }}</ng-container>
-            </h3>
-            <p [innerHTML]="lesson.intro_copy | safe: 'html'"></p>
-          </a>
-        </li>
-      </ul>
-    </div>
 
-    <div id="activity_container">
-      <h3 class="my-4">Activities</h3>
-      <!-- <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types"> {% endcomment %}      {% comment %} <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types"> -->
-      <ul class="list-group" *ngFor="let activity of this.activities | activityType: selected_activity_types">
-        <ng-container>
-          <li class="list-group-item border-0">
-            <a href="{{ baseURL }}curriculum/activity/{{ activity.id }}" target="_blank">
-              <h3 class="h3">
-                {{ activity.title }}
-              </h3>
-              <p [innerHTML]="activity.overview_copy | safe: 'html'"></p>
-            </a>
-          </li>
-        </ng-container>
-      </ul>
-    </div>
 
-    <div id="asset_container" *ngIf=!modulesOnly>
-      <h3 class="my-4">Individual Assets</h3>
-      <p class="text-center" *ngIf='selected_asset_count > 0'>There are no assets associated with your selection. Remove some of your filters to find additional assets.</p>
-      <ul class="list-group" *ngFor="let asset of this.assets | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | assetType: selected_asset_types">
-        <li class="list-group-item border-0">
-          <a href="{{ baseURL }}curriculum/assets/{{ asset.id }}" target="_blank">
-            <h3 class="h3">
-              {{ asset.title }}
-            </h3>
-            <p [innerHTML]="asset.description | safe: 'html'"></p>
-          </a>
-        </li>
-      </ul>
-    </div>
+
+
   </div>
 </div>
