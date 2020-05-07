@@ -189,21 +189,23 @@ footer {
 }
 
 app-root {
+
+  h5 {
+    color: $slightly-lighter-black;
+    font-weight: 300;
+  }
+
   .card {
     border:none;
 
 
     .card-header {
+      margin-top:3px;
       background-color:#fff;
       border-bottom: 1px solid #ccc;
 
       button:hover {
-        text-decoration: none;;
-      }
-
-      h5 {
-        color: $slightly-lighter-black;
-        font-weight: 300;
+        text-decoration: none;
       }
     }
   }
