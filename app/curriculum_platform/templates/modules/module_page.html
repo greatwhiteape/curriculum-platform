@@ -108,9 +108,9 @@
               <div id="collapse-B" class="collapse" data-parent="#content" role="tabpanel" aria-labelledby="heading-B">
                 <div class="card-body">
 
-                  <h3>Details</h3>
+                  <h3 class="my-5 font-weight-light">Details</h3>
 
-                  <div class="row border-top border-bottom" id="te_a">
+                  <div class="row border-top border-bottom mb-3" id="te_a">
 
                     {% if module.time_estimate %}
                     <div class="col col-md-2 py-3">
@@ -135,25 +135,38 @@
                     {% endif %}
                   </div>
 
+                  <div class="row">
+                    <div class="col py-3">
+                      {% if module.learning_outcomes %}
+                      <h4>Learning Outcomes</h4>
+                      {{ module.learning_outcomes|safe }}
+                      {% endif %}
+                    </div>
+                  </div>
+
                   {% if module.standards_relationship.all|length > 0 %}
-                  <h4 class="mt-5 py-3">Standards Alignment</h4>
-                  <ul class="list-group">
-                  {% for standard in module.standards_relationship.all %}
-                    {% if standard.standard %}
+                  <div class="row">
+                    <div class="col py-3">
+                      <h4>Standards Alignment</h4>
+                      <ul class="list-group">
+                      {% for standard in module.standards_relationship.all %}
+                        {% if standard.standard %}
 
-                    <li class="list-group-item py-2 pl-0 standards-list">
-                        {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank">{% endif %}
-                          {{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}
-                        {% if standard.standard.standard_link %}
-                        <img class="pl-4" src="{% static 'images/icon-external-link.svg' %}">
-                        </a>
+                        <li class="list-group-item py-2 pl-0 standards-list">
+                            {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank">{% endif %}
+                              {{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}
+                            {% if standard.standard.standard_link %}
+                            <img class="pl-4" src="{% static 'images/icon-external-link.svg' %}">
+                            </a>
+                            {% endif %}
+                        </li>
+
                         {% endif %}
-                    </li>
-
-                    {% endif %}
-                  {% endfor %}
-                  </ul>
-                  {% endif %}
+                      {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
