@@ -1,12 +1,12 @@
-from wagtail.api.v2.endpoints import BaseAPIEndpoint
+from wagtail.api.v2.views import BaseAPIViewSet
 
 from .models import Asset
 
 
-class AssetsAPIEndpoint(BaseAPIEndpoint):
+class AssetsAPIEndpoint(BaseAPIViewSet):
     model = Asset
 
-    body_fields = BaseAPIEndpoint.body_fields + [
+    body_fields = BaseAPIViewSet.body_fields + [
         'title',
         'description',
         'asset_link',
@@ -21,7 +21,7 @@ class AssetsAPIEndpoint(BaseAPIEndpoint):
         'tag_relationship',
     ]
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + [
         'title',
         'description',
         'asset_link',
