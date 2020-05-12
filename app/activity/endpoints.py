@@ -1,12 +1,12 @@
-from wagtail.api.v2.endpoints import BaseAPIEndpoint
+from wagtail.api.v2.views import BaseAPIViewSet
 
 from .models import Activity
 
 
-class ActivitiesAPIEndpoint(BaseAPIEndpoint):
+class ActivitiesAPIEndpoint(BaseAPIViewSet):
     model = Activity
 
-    body_fields = BaseAPIEndpoint.body_fields + [
+    body_fields = BaseAPIViewSet.body_fields + [
         "title",
         "overview_copy",
         "teachers_desc",
@@ -18,7 +18,7 @@ class ActivitiesAPIEndpoint(BaseAPIEndpoint):
         'tag_relationship',
     ]
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + [
         "title",
         "overview_copy",
         "teachers_desc",

@@ -1,100 +1,100 @@
-from wagtail.api.v2.endpoints import BaseAPIEndpoint
+from wagtail.api.v2.views import BaseAPIViewSet
 
 from .models import Standard, StandardsBody, Program, Audience, Tag, Topic, AssetType, ActivityType, TimeEstimate
 
 
-class ProgramsAPIEndpoint(BaseAPIEndpoint):
+class ProgramsAPIEndpoint(BaseAPIViewSet):
     model = Program
 
-    body_fields = BaseAPIEndpoint.body_fields + [
-        'program_name',
-        'program_description',
-        'program_url', 
-        'program_color'
-    ]
-
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+    body_fields = BaseAPIViewSet.body_fields + [
         'program_name',
         'program_description',
         'program_url',
         'program_color'
     ]
 
-class StandardAPIEndpoint(BaseAPIEndpoint):
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + [
+        'program_name',
+        'program_description',
+        'program_url',
+        'program_color'
+    ]
+
+class StandardAPIEndpoint(BaseAPIViewSet):
     model = Standard
 
-    body_fields = BaseAPIEndpoint.body_fields + [
+    body_fields = BaseAPIViewSet.body_fields + [
         'standard',
         'standard_group',
         'standard_link',
         'description',
     ]
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + [
         'standard',
         'standard_group',
         'standard_link',
         'description',
     ]
 
-class StandardsBodyAPIEndpoint(BaseAPIEndpoint):
+class StandardsBodyAPIEndpoint(BaseAPIViewSet):
     model = StandardsBody
 
-    body_fields = BaseAPIEndpoint.body_fields + [
+    body_fields = BaseAPIViewSet.body_fields + [
         'standards_body',
         'standards_body_url',
     ]
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + [
         'standards_body',
         'standards_body_url',
     ]
 
-class AudienceAPIEndpoint(BaseAPIEndpoint):
+class AudienceAPIEndpoint(BaseAPIViewSet):
     model = Audience
 
-    body_fields = BaseAPIEndpoint.body_fields + [
+    body_fields = BaseAPIViewSet.body_fields + [
         'age_range',
         'description',
     ]
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + [
         'age_range',
         'description',
     ]
 
-class TagAPIEndpoint(BaseAPIEndpoint):
+class TagAPIEndpoint(BaseAPIViewSet):
     model = Tag
 
-    body_fields = BaseAPIEndpoint.body_fields + ['tag']
+    body_fields = BaseAPIViewSet.body_fields + ['tag']
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + ['tag']
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + ['tag']
 
-class TopicAPIEndpoint(BaseAPIEndpoint):
+class TopicAPIEndpoint(BaseAPIViewSet):
     model = Topic
 
-    body_fields = BaseAPIEndpoint.body_fields + ['topic']
+    body_fields = BaseAPIViewSet.body_fields + ['topic']
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + ['topic']
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + ['topic']
 
-class AssetTypeAPIEndpoint(BaseAPIEndpoint):
+class AssetTypeAPIEndpoint(BaseAPIViewSet):
     model = AssetType
 
-    body_fields = BaseAPIEndpoint.body_fields + ['asset_type']
+    body_fields = BaseAPIViewSet.body_fields + ['asset_type']
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + ['asset_type']
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + ['asset_type']
 
-class ActivityTypeAPIEndpoint(BaseAPIEndpoint):
+class ActivityTypeAPIEndpoint(BaseAPIViewSet):
     model = ActivityType
 
-    body_fields = BaseAPIEndpoint.body_fields + ['activity_type']
+    body_fields = BaseAPIViewSet.body_fields + ['activity_type']
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + ['activity_type']
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + ['activity_type']
 
-class TimeEstimateAPIEndpoint(BaseAPIEndpoint):
+class TimeEstimateAPIEndpoint(BaseAPIViewSet):
     model = TimeEstimate
 
-    body_fields = BaseAPIEndpoint.body_fields + ['time_estimate']
+    body_fields = BaseAPIViewSet.body_fields + ['time_estimate']
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + ['time_estimate']
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + ['time_estimate']
 

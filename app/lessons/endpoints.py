@@ -1,16 +1,17 @@
-from wagtail.api.v2.endpoints import BaseAPIEndpoint
+from wagtail.api.v2.views import BaseAPIViewSet
 
 from .models import Lesson
 
 
-class LessonsAPIEndpoint(BaseAPIEndpoint):
+class LessonsAPIEndpoint(BaseAPIViewSet):
     model = Lesson
 
-    body_fields = BaseAPIEndpoint.body_fields + [
+    body_fields = BaseAPIViewSet.body_fields + [
         'title',
         'subtitle',
-        'hero_image',
         'intro_copy',
+        'hero_image',
+        'overview_copy',
         'student_intro',
         'learning_outcomes',
         'teachers_guide',
@@ -24,11 +25,12 @@ class LessonsAPIEndpoint(BaseAPIEndpoint):
         'tag_relationship',
     ]
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + [
         'title',
         'subtitle',
-        'hero_image',
         'intro_copy',
+        'hero_image',
+        'overview_copy',
         'student_intro',
         'learning_outcomes',
         'teachers_guide',

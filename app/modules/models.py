@@ -63,6 +63,11 @@ class Module(ClusterableModel):
         null=True,
         blank=True
     )
+    overview_copy = RichTextField(
+        verbose_name="Overview Tab Copy",
+        null=True,
+        blank=True
+    )
     student_intro = RichTextField(
         verbose_name="Student Page Intro",
         null=True,
@@ -153,10 +158,11 @@ class Module(ClusterableModel):
         MultiFieldPanel([
             FieldPanel('title'),
             FieldPanel('subtitle'),
+            FieldPanel('intro_copy'),
             ImageChooserPanel('hero_image'),
         ], heading="Header Section"),
         MultiFieldPanel([
-            FieldPanel('intro_copy'),
+            FieldPanel('overview_copy'),
             FieldPanel('student_intro'),
             FieldPanel('learning_outcomes'),
             FieldPanel('teachers_guide'),

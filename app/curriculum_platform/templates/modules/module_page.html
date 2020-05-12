@@ -84,10 +84,7 @@
               <div id="collapse-A" class="collapse show" data-parent="#content" role="tabpanel" aria-labelledby="heading-A">
                 <div class="card-body">
                   <div class="my-4">
-                  {% if module.learning_outcomes %}
-                  <h4>Learning Outcomes</h4>
-                  {{ module.learning_outcomes|safe }}
-                  {% endif %}
+                  {{ module.overview_copy|safe }}
                   </div>
                   <div class="my-4">
                     <g:sharetoclassroom class="d-inline" size=32 url="{{ request.build_absolute_uri }}student-page"></g:sharetoclassroom>

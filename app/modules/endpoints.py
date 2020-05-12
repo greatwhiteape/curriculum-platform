@@ -1,16 +1,17 @@
-from wagtail.api.v2.endpoints import BaseAPIEndpoint
+from wagtail.api.v2.views import BaseAPIViewSet
 
 from .models import Module
 
 
-class ModulesAPIEndpoint(BaseAPIEndpoint):
+class ModulesAPIEndpoint(BaseAPIViewSet):
     model = Module
 
-    body_fields = BaseAPIEndpoint.body_fields + [
+    body_fields = BaseAPIViewSet.body_fields + [
         'title',
         'subtitle',
-        'hero_image',
         'intro_copy',
+        'hero_image',
+        'overview_copy',
         'student_intro',
         'learning_outcomes',
         'teachers_guide',
@@ -24,12 +25,14 @@ class ModulesAPIEndpoint(BaseAPIEndpoint):
         'tag_relationship',
     ]
 
-    listing_default_fields = BaseAPIEndpoint.listing_default_fields + [
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + [
         'title',
         'subtitle',
         'hero_image',
         'intro_copy',
-        'student_intro',
+        'hero_image',
+        'overview_copy',
+        'overview_copy',
         'learning_outcomes',
         'teachers_guide',
         'teachers_desc',
