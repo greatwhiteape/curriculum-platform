@@ -251,6 +251,7 @@
   <!-- Call to Action Section -->
   <!-- C2A Panel 1 -->
   <div id="c2a_group" class="card-group">
+  {% if page.c2a_1_section_active %}
     <div id="c2a_1" class="card m-0">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_1_section_title }}</h2>
@@ -264,8 +265,10 @@
     </div>
     <!-- End C2A Panel 1-->
     <div class="w-100 d-block d-lg-none"></div>
+  {% endif %}
 
     <!-- C2A Panel 2 -->
+  {% if page.c2a_2_section_active %}
     <div id="c2a_2" class="card m-0">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_2_section_title }}</h2>
@@ -279,9 +282,11 @@
     </div>
     <!-- End C2A Panel 2-->
     <div class="w-100 d-block d-lg-none"></div>
+  {% endif %}
 
 
     <!-- C2A Panel 3 -->
+  {% if page.c2a_3_section_active %}
     <div id="c2a_3" class="card m-0">
       <div class="card-body">
         <h2 class="card-title">{{ page.c2a_3_section_title }}</h2>
@@ -293,6 +298,8 @@
         <a class="btn btn-light rounded-pill c2a-button" aria-pressed="true" href="{{ page.c2a_3_section_button_link }}" >{{ page.c2a_3_section_button_text }}</a>
       </div>
     </div>
+
+  {% endif %}
     <!-- End C2A Panel 3 -->
   </div>
   <!-- End Call to Action Section -->

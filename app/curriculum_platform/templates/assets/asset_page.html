@@ -1,5 +1,20 @@
-{% extends base.html %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-    <h1>asset_page.html</h1>
+<div class="{{asset.title|lower}}">
+  <div class="jumbotron p-0 mb-0">
+    <div class="row sdg-background" style="background-color:{{asset.program.program_color}}">
+      <div class="col col-lg-5 offset-md-1 py-5 align-middle">
+        <h2 class="mt-5 pr-5 text-white">{{ asset.title }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row py-5">
+    <div class="col-sm-10 offset-1">
+      {{ asset.asset_link }}
+    </div>
+  </div>
+
+</div>
 {% endblock %}

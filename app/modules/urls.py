@@ -3,8 +3,6 @@ from django.urls import path, include
 
 from django.contrib.auth.models import User
 from .models import Module
-# from rest_framework import routers
-# from .views import ModuleViewSet
 
 from . import views
 
