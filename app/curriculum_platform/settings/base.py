@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'activity',
     'assets',
     'content',
@@ -58,7 +59,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
 
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -85,7 +86,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-GRAPHENE = {"SCHEMA": "api.schema.schema"}
+# GRAPHENE = {"SCHEMA": "api.schema.schema"}
 
 ROOT_URLCONF = 'curriculum_platform.urls'
 
@@ -129,7 +130,7 @@ DATABASES = {
 
 # Authentication
 
-# AUTH_USER_MODEL = "account.User"
+AUTH_USER_MODEL = "account.User"
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
@@ -137,6 +138,9 @@ AUTHENTICATION_BACKENDS = (
 )
 
 CAS_SERVER_URL = os.environ.get("CAS_SERVER_URL", "")
+CAS_AUTO_CREATE_USER = True
+CAS_LOGOUT_COMPLETELY = True
+CAS_PROVIDE_URL_TO_LOGOUT = True
 
 if os.environ.get("CAS_FORCE_SSL_SERVICE_URL"):
     CAS_FORCE_SSL_SERVICE_URL = True
