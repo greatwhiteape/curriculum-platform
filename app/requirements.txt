@@ -16,11 +16,9 @@ djangorestframework
 django-rest-swagger
 django-import-export
 django-polymorphic
-graphene_django
-django-graphql-geojson
 django-cors-headers
+django-memoize
 Pillow<6.0,>=4.0.0
-graphene-file-upload
 django-colorfield
 django-summernote
 bootstrap-admin

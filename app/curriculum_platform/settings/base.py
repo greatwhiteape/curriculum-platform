@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'activity',
     'assets',
     'content',
@@ -34,7 +35,8 @@ INSTALLED_APPS = [
     'streams',
     'taxonomy',
 
-    'cas.apps.CASConfig',
+    # 'cas.apps.CASConfig',
+    'cas',
 
     'rest_framework',
     'wagtailfontawesome',
@@ -129,7 +131,7 @@ DATABASES = {
 
 # Authentication
 
-# AUTH_USER_MODEL = "account.User"
+AUTH_USER_MODEL = "account.User"
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
@@ -137,6 +139,10 @@ AUTHENTICATION_BACKENDS = (
 )
 
 CAS_SERVER_URL = os.environ.get("CAS_SERVER_URL", "")
+CAS_REDIRECT_URL = '/admin/'
+CAS_AUTO_CREATE_USER = True
+CAS_LOGOUT_COMPLETELY = True
+CAS_PROVIDE_URL_TO_LOGOUT = True
 
 if os.environ.get("CAS_FORCE_SSL_SERVICE_URL"):
     CAS_FORCE_SSL_SERVICE_URL = True

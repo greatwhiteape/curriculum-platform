@@ -14,9 +14,11 @@ import cas.views
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
-    # cas
-    path(r'users/login/', cas.views.login, name="login"),
-    path(r'users/logout/', cas.views.logout, name="logout"),
+    # CAS
+    path(r'admin/login/', cas.views.login, name='login'),
+    path(r'admin/logout/', cas.views.logout, name='logout'),
+    # path(r'users/login/', cas.views.login, name="login"),
+    # path(r'users/logout/', cas.views.logout, name="logout"),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
