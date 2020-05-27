@@ -22,7 +22,6 @@ class User(AbstractUser):
     gmri_uuid = models.CharField(max_length=255, null=True, blank=True, unique=True)
 
     has_cas_connection = models.BooleanField(default=False)
-
     objects = GMRIUserManager()
 
     @property
