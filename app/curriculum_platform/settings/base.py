@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'streams',
     'taxonomy',
 
-    # 'cas.apps.CASConfig',
     'cas',
 
     'rest_framework',
