@@ -18,10 +18,10 @@ class GMRIUserManager(UserManager):
 
 
 class User(AbstractUser):
-    id = models.UUIDField(primary_key=True, default=uuid4)
-    gmri_uuid = models.CharField(max_length=255, null=True, blank=True, unique=True)
+    # id = models.UUIDField(primary_key=True, default=uuid4)
+    # gmri_uuid = models.CharField(max_length=255, null=True, blank=True, unique=True)
 
-    has_cas_connection = models.BooleanField(default=False)
+    # has_cas_connection = models.BooleanField(default=False)
     objects = GMRIUserManager()
 
     @property
