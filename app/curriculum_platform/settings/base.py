@@ -10,20 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-
-# Application definition
-
 INSTALLED_APPS = [
+    'account',
     'activity',
     'assets',
     'content',
@@ -33,6 +26,8 @@ INSTALLED_APPS = [
     'search',
     'streams',
     'taxonomy',
+
+    'cas',
 
     'rest_framework',
     'wagtailfontawesome',
@@ -77,11 +72,11 @@ MIDDLEWARE = [
 
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
+    'cas.middleware.CASMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-
-GRAPHENE = {"SCHEMA": "api.schema.schema"}
 
 ROOT_URLCONF = 'curriculum_platform.urls'
 
@@ -121,6 +116,30 @@ DATABASES = {
       "OPTIONS":{"sslmode":"require"},
     }
 }
+
+
+# Authentication
+
+AUTH_USER_MODEL = "account.User"
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "cas.backends.CASBackend",
+)
+
+CAS_SERVER_URL = os.environ.get("CAS_SERVER_URL", "")
+CAS_REDIRECT_URL = '/admin/'
+CAS_AUTO_CREATE_USER = True
+CAS_LOGOUT_COMPLETELY = True
+CAS_PROVIDE_URL_TO_LOGOUT = True
+
+if os.environ.get("CAS_FORCE_SSL_SERVICE_URL"):
+    CAS_FORCE_SSL_SERVICE_URL = True
+
+CAS_RESPONSE_CALLBACKS = ["account.utils.cas.cas_callback"]
+
+if os.environ.get("CAS_API_TOKEN"):
+    CAS_API_TOKEN = os.environ.get("CAS_API_TOKEN")
 
 
 # Password validation

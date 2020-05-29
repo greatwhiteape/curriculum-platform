@@ -6,8 +6,7 @@ wagtailfontawesome==1.1.4
 
 gunicorn
 psycopg2-binary
-django-cas-client
-
+django-cas-client==1.5.3
 
 xkcdpass
 
@@ -17,11 +16,8 @@ djangorestframework
 django-rest-swagger
 django-import-export
 django-polymorphic
-graphene_django
-django-graphql-geojson
 django-cors-headers
 Pillow<6.0,>=4.0.0
-graphene-file-upload
 django-colorfield
 django-summernote
 bootstrap-admin
@@ -31,6 +27,7 @@ uWSGI==2.0.18
 
 
 django-sass-processor==0.7.3
+django-memoize==2.3.1
 
 whitenoise==4.1.2
 
