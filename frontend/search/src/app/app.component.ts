@@ -122,7 +122,7 @@ export class AppComponent {
       // this.modules = data.items;
       this.modules = [];
       data.items.forEach(module => {
-        (module.live) ? this.modules.push(module) : console.log(module) ;
+        (module.live) ? this.modules.push(module) : null ;
       })
       console.log('Modules: ', this.modules);
       this.modules.forEach(element => {
@@ -132,7 +132,10 @@ export class AppComponent {
     });
 
     this.currService.getLessons(this.baseURL).subscribe((data: dataStructure) => {
-      this.lessons = data.items;
+      this.lessons = [];
+      data.items.forEach(lesson => {
+        (lesson.live) ? this.lessons.push(lesson) : null ;
+      })
       console.log('Lessons: ', this.lessons);
       this.lessons.forEach(element => {
         element.selected = false;
@@ -141,7 +144,10 @@ export class AppComponent {
     });
 
     this.currService.getAssets(this.baseURL).subscribe((data: dataStructure) => {
-      this.assets = data.items;
+      this.assets = [];
+      data.items.forEach(asset => {
+        (asset.live) ? this.assets.push(asset) : null ;
+      })
       console.log('Assets: ', this.assets);
       this.assets.forEach(element => {
         element.selected = false;
@@ -150,7 +156,10 @@ export class AppComponent {
     });
 
     this.currService.getActivities(this.baseURL).subscribe((data: dataStructure) => {
-      this.activities = data.items;
+      this.activities = [];
+      data.items.forEach(activity => {
+        activity.live ? this.activities.push(activity) : null ;
+      })
       console.log('Activities: ', this.activities);
       this.activities.forEach(element => {
         element.selected = false;
