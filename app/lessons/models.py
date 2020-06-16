@@ -39,7 +39,7 @@ from taxonomy.serializers import (
     TagSerializer,
 )
 
-# @register_snippet
+@register_snippet
 class Lesson(ClusterableModel):
     template = 'lessons/lesson_page.html'
 

@@ -39,7 +39,7 @@ from taxonomy.serializers import (
     TagSerializer,
     ActivityTypeSerializer,
 )
-# @register_snippet
+@register_snippet
 class Activity(ClusterableModel):
     class Meta:
         managed = True

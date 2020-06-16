@@ -28,7 +28,7 @@ export class AppComponent {
 
   title = 'Search';
   baseURL = 'https://teach.gmri.org/'
-  //baseURL = 'http://localhost/'
+  // baseURL = 'http://localhost/'
 
   programs;
   selected_programs;
@@ -119,7 +119,11 @@ export class AppComponent {
     });
 
     this.currService.getModules(this.baseURL).subscribe((data: dataStructure) => {
-      this.modules = data.items;
+      // this.modules = data.items;
+      this.modules = [];
+      data.items.forEach(module => {
+        (module.live) ? this.modules.push(module) : console.log(module) ;
+      })
       console.log('Modules: ', this.modules);
       this.modules.forEach(element => {
         element.selected = false;

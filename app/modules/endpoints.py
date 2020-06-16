@@ -7,6 +7,7 @@ class ModulesAPIEndpoint(BaseAPIViewSet):
     model = Module
 
     body_fields = BaseAPIViewSet.body_fields + [
+        'live',
         'title',
         'subtitle',
         'intro_copy',
@@ -26,6 +27,7 @@ class ModulesAPIEndpoint(BaseAPIViewSet):
     ]
 
     listing_default_fields = BaseAPIViewSet.listing_default_fields + [
+        'live',
         'title',
         'subtitle',
         'hero_image',

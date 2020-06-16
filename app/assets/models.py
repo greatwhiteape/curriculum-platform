@@ -40,7 +40,7 @@ from taxonomy.serializers import (
 )
 
 
-# @register_snippet
+@register_snippet
 class Asset(ClusterableModel):
     class Meta:
         verbose_name = "Curriculum Asset"

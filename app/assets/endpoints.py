@@ -7,6 +7,7 @@ class AssetsAPIEndpoint(BaseAPIViewSet):
     model = Asset
 
     body_fields = BaseAPIViewSet.body_fields + [
+        'live',
         'title',
         'description',
         'asset_link',
@@ -22,6 +23,7 @@ class AssetsAPIEndpoint(BaseAPIViewSet):
     ]
 
     listing_default_fields = BaseAPIViewSet.listing_default_fields + [
+        'live',
         'title',
         'description',
         'asset_link',

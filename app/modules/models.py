@@ -39,6 +39,7 @@ from taxonomy.serializers import (
     TagSerializer,
 )
 
+@register_snippet
 class Module(ClusterableModel):
     template = 'modules/module_page.html'
 
