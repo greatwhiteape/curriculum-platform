@@ -7,6 +7,7 @@ class LessonsAPIEndpoint(BaseAPIViewSet):
     model = Lesson
 
     body_fields = BaseAPIViewSet.body_fields + [
+        'live',
         'title',
         'subtitle',
         'intro_copy',
@@ -26,6 +27,7 @@ class LessonsAPIEndpoint(BaseAPIViewSet):
     ]
 
     listing_default_fields = BaseAPIViewSet.listing_default_fields + [
+        'live',
         'title',
         'subtitle',
         'intro_copy',

@@ -25,5 +25,5 @@ class AssetAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("title", "program", "asset_type")
+    list_display = ("title", "program", "asset_type", "live")
     search_fields = ("title", "description", "program", "asset_type")

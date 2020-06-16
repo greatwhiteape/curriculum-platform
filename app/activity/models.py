@@ -48,6 +48,11 @@ class Activity(ClusterableModel):
 
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
+    live = models.BooleanField(
+        verbose_name='Publish',
+        default=False,
+        editable=True
+    )
     title = models.CharField(max_length=50)
     # teachers_guide = models.URLField()
     overview_copy = RichTextField(null=True, blank=True)
@@ -135,6 +140,7 @@ class Activity(ClusterableModel):
 
 
     panels = [
+        FieldPanel("live"),
         FieldPanel("title"),
         # FieldPanel("teachers_guide"),
         FieldPanel("overview_copy"),
@@ -151,6 +157,7 @@ class Activity(ClusterableModel):
     ]
 
     api_fields = [
+        APIField("live"),
         APIField('title'),
         APIField('overview_copy'),
         APIField('teachers_desc'),

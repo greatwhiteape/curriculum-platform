@@ -45,6 +45,11 @@ class Lesson(ClusterableModel):
 
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
+    live = models.BooleanField(
+        verbose_name='Publish',
+        default=False,
+        editable=True
+    )
     hero_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -151,6 +156,7 @@ class Lesson(ClusterableModel):
 
     panels = [
         MultiFieldPanel([
+            FieldPanel("live"),
             FieldPanel('title'),
             FieldPanel('subtitle'),
             FieldPanel('intro_copy'),
@@ -178,6 +184,7 @@ class Lesson(ClusterableModel):
     ]
 
     api_fields = [
+        APIField("live"),
         APIField('title'),
         APIField('subtitle'),
         APIField('hero_image'),
