@@ -25,5 +25,5 @@ class ModuleAdmin(ModelAdmin):
     menu_order = 400
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("title", "program")
+    list_display = ("title", "program", "live")
     search_fields = ("title", "overview_copy", "learning_outcomes")

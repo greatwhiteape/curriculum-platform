@@ -40,7 +40,7 @@ from taxonomy.serializers import (
 )
 
 
-@register_snippet
+# @register_snippet
 class Asset(ClusterableModel):
     class Meta:
         verbose_name = "Curriculum Asset"
@@ -48,6 +48,11 @@ class Asset(ClusterableModel):
 
     template = "assets/asset_page.html"
 
+    live = models.BooleanField(
+        verbose_name='Publish',
+        default=False,
+        editable=True
+    )
     title = models.CharField(max_length=50)
     description = RichTextField(blank=True, null=True)
 
@@ -125,6 +130,7 @@ class Asset(ClusterableModel):
 
 
     panels = [
+      FieldPanel("live"),
       FieldPanel("title"),
       FieldPanel("description"),
       FieldPanel("asset_type"),
@@ -140,6 +146,7 @@ class Asset(ClusterableModel):
     ]
 
     api_fields = [
+        APIField("live"),
         APIField("description"),
         APIField("student_asset"),
         APIField("asset_link"),

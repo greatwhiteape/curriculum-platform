@@ -39,12 +39,16 @@ from taxonomy.serializers import (
     TagSerializer,
 )
 
-@register_snippet
 class Module(ClusterableModel):
     template = 'modules/module_page.html'
 
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
+    live = models.BooleanField(
+        verbose_name='Publish',
+        default=False,
+        editable=True
+    )
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -156,6 +160,7 @@ class Module(ClusterableModel):
 
     panels = [
         MultiFieldPanel([
+            FieldPanel('live'),
             FieldPanel('title'),
             FieldPanel('subtitle'),
             FieldPanel('intro_copy'),
@@ -183,6 +188,7 @@ class Module(ClusterableModel):
     ]
 
     api_fields = [
+        APIField("live"),
         APIField('title'),
         APIField('subtitle'),
         APIField('hero_image'),
