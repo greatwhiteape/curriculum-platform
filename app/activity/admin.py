@@ -25,5 +25,5 @@ class ActivityAdmin(ModelAdmin):
     menu_order = 210
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("title", "program", "audience", "live")
+    list_display = ("title", "program", "live")
     search_fields = ("title", "overview_copy", "program", "activity_type", "tag")

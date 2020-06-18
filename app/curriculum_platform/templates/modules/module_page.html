@@ -3,6 +3,7 @@
 
 {% block content %}
 
+{% if module.live %}
 <div id="module">
   <div class="jumbotron p-0 mb-0">
     <div class="row bg-white">
@@ -190,4 +191,5 @@
     </div>
   </div>
 </div>
+{% endif %}
 {% endblock content %}
