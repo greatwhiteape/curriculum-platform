@@ -101,6 +101,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'curriculum_platform.wsgi.application'
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -209,11 +211,11 @@ if AWS_STORAGE_BUCKET_NAME:
     AWS_MEDIA_LOCATION = "media"
     AWS_DEFAULT_ACL = "public-read"
 
-    # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
-    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     # S3 spaces too slow for page load. Fonts & images are not loading.
-    STATIC_URL = "/static/"
-    STATIC_ROOT = "/static/"
+    # STATIC_URL = "/static/"
+    # STATIC_ROOT = "/static/"
 
     MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

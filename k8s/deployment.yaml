@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  curriculum-beta
+  name:  curriculum
   labels:
     service: web
 spec:
@@ -16,7 +16,7 @@ spec:
       containers:
         - name: web
           image: gmri/curriculum
-          env: 
+          env:
             - name: DJANGO_MANAGEPY_MIGRATE
               value: "on"
             - name: DJANGO_MANAGEPY_COLLECTSTATIC
@@ -24,7 +24,7 @@ spec:
           envFrom:
             - secretRef:
                 name: curriculum-secrets
-          ports: 
+          ports:
             - containerPort: 8080
           volumeMounts:
             - name:  django-static

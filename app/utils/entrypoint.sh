@@ -22,4 +22,6 @@ if [ "x$DJANGO_MANAGEPY_COLLECTSTATIC" = 'xon' ]; then
     python manage.py collectstatic --noinput -i *.scss -i /app/curriculum_platform/static/css/gmri-bootstrap
 fi
 
+chown -R uwsgi:uwsgi /static
+
 exec "$@"
