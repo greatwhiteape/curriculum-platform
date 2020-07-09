@@ -70,6 +70,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
@@ -101,6 +103,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'curriculum_platform.wsgi.application'
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -108,10 +112,10 @@ WSGI_APPLICATION = 'curriculum_platform.wsgi.application'
 DATABASES = {
     'default':{
       'ENGINE':'django.db.backends.postgresql',
-      'NAME':os.environ.get('POSTGRES_NAME'),
-      'USER':os.environ.get('POSTGRES_USER'),
-      'HOST':os.environ.get('POSTGRES_HOST'),
-      'PASSWORD':os.environ.get('POSTGRES_PASSWORD'),
+      'NAME':os.environ['POSTGRES_NAME'],
+      'USER':os.environ['POSTGRES_USER'],
+      'HOST':os.environ['POSTGRES_HOST'],
+      'PASSWORD':os.environ['POSTGRES_PASSWORD'],
       'PORT':int(os.environ.get('POSTGRES_PORT',5432)),
       "OPTIONS":{"sslmode":"require"},
     }
@@ -138,8 +142,8 @@ if os.environ.get("CAS_FORCE_SSL_SERVICE_URL"):
 
 CAS_RESPONSE_CALLBACKS = ["account.utils.cas.cas_callback"]
 
-if os.environ.get("CAS_API_TOKEN"):
-    CAS_API_TOKEN = os.environ.get("CAS_API_TOKEN")
+if os.environ["CAS_API_TOKEN"]:
+    CAS_API_TOKEN = os.environ["CAS_API_TOKEN"]
 
 
 # Password validation
@@ -183,10 +187,17 @@ STATICFILES_DIRS = [
 # Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/3.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
+# STATIC_URL = "/django-static/"
+# STATIC_ROOT = "/static/"
+
+STATIC_URL = "/static/"
+STATIC_ROOT = "/static/"
 
 # If AWS S3 or Digital Ocean Spaces credentials are provided, use them for media storage
-AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
 AWS_S3_FILE_OVERWRITE = False
 
 if AWS_STORAGE_BUCKET_NAME:
@@ -196,7 +207,7 @@ if AWS_STORAGE_BUCKET_NAME:
     AWS_S3_ENDPOINT_URL = os.environ["AWS_S3_ENDPOINT_URL"]
 
     # Use Cloudfront or Spaces CDN
-    AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN")
+    AWS_S3_CUSTOM_DOMAIN = os.environ["AWS_S3_CUSTOM_DOMAIN"]
     if not AWS_S3_CUSTOM_DOMAIN:
         AWS_S3_CUSTOM_DOMAIN = AWS_S3_ENDPOINT_URL
 
@@ -205,15 +216,14 @@ if AWS_STORAGE_BUCKET_NAME:
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     AWS_S3_SIGNATURE_VERSION = 's3v4'
 
-    AWS_STATIC_LOCATION = "static"
+    # AWS_STATIC_LOCATION = "static"
     AWS_MEDIA_LOCATION = "media"
     AWS_DEFAULT_ACL = "public-read"
 
     # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+    # print(STATIC_URL)
     # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     # S3 spaces too slow for page load. Fonts & images are not loading.
-    STATIC_URL = "/static/"
-    STATIC_ROOT = "/static/"
 
     MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -239,3 +249,36 @@ WAGTAIL_SITE_NAME = "GMRI Curriculum Platform"
 BASE_URL = 'http://teach.gmri.org'
 
 SITE_ID = 1
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'curriculum_platform.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+        'MYAPP': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}

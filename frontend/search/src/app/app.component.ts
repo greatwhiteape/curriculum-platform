@@ -48,10 +48,10 @@ export class AppComponent {
   activity_types;
   selected_activity_types;
   selected_activity_types_count: number = 0;
-  modules;
+  modules = [];
   selected_modules;
   selected_module_count: number = 0;
-  lessons;
+  lessons = [];
   selected_lessons;
   selected_lesson_count: number = 0;
 
@@ -71,7 +71,6 @@ export class AppComponent {
 
     this.currService.getTags(this.baseURL).subscribe((data: dataStructure) => {
       this.tags = data.items;
-      console.log('Tags: ', this.tags);
       this.tags.forEach(element => {
         element.selected = (element.tag === elm.nativeElement.getAttribute('tag')) ? true : false;
       });
@@ -80,7 +79,6 @@ export class AppComponent {
 
     this.currService.getPrograms(this.baseURL).subscribe((data: dataStructure) => {
       this.programs = data.items;
-      console.log('Programs: ', this.programs);
       this.programs.forEach(element => {
         element.selected = (element.program_name === elm.nativeElement.getAttribute('program')) ? true : false;
       });
@@ -88,7 +86,6 @@ export class AppComponent {
 
     this.currService.getAudiences(this.baseURL).subscribe((data: dataStructure) => {
       this.audiences = data.items;
-      console.log('Audience: ', this.audiences);
       this.audiences.forEach(element => {
         element.selected = false;
       });
@@ -96,7 +93,6 @@ export class AppComponent {
 
     this.currService.getTopics(this.baseURL).subscribe((data: dataStructure) => {
       this.topics = data.items;
-      console.log('Topics: ', this.topics);
       this.topics.forEach(element => {
         element.selected = false;
       });
@@ -104,7 +100,6 @@ export class AppComponent {
 
     this.currService.getActivityTypes(this.baseURL).subscribe((data: dataStructure) => {
       this.activity_types = data.items;
-      console.log('Activity Type: ', this.activity_types);
       this.activity_types.forEach(element => {
         element.selected = false;
       });
@@ -112,19 +107,15 @@ export class AppComponent {
 
     this.currService.getAssetTypes(this.baseURL).subscribe((data: dataStructure) => {
       this.asset_types = data.items;
-      console.log('Asset Type: ', this.asset_types);
       this.asset_types.forEach(element => {
         element.selected = false;
       });
     });
 
     this.currService.getModules(this.baseURL).subscribe((data: dataStructure) => {
-      // this.modules = data.items;
-      this.modules = [];
       data.items.forEach(module => {
-        (module.live) ? this.modules.push(module) : console.log(module) ;
+        if (module.live) this.modules.push(module);
       })
-      console.log('Modules: ', this.modules);
       this.modules.forEach(element => {
         element.selected = false;
       });
@@ -132,11 +123,9 @@ export class AppComponent {
     });
 
     this.currService.getLessons(this.baseURL).subscribe((data: dataStructure) => {
-      this.lessons = [];
       data.items.forEach(lesson => {
-        (lesson.live) ? this.lessons.push(lesson) : console.log(lesson) ;
+        if (lesson.live) this.lessons.push(lesson);
       })
-      console.log('Lessons: ', this.lessons);
       this.lessons.forEach(element => {
         element.selected = false;
       });
@@ -144,11 +133,9 @@ export class AppComponent {
     });
 
     this.currService.getAssets(this.baseURL).subscribe((data: dataStructure) => {
-      this.assets = [];
       data.items.forEach(asset => {
-        (asset.live) ? this.assets.push(asset) : console.log(asset) ;
+        if (asset.live) this.assets.push(asset);
       })
-      console.log('Assets: ', this.assets);
       this.assets.forEach(element => {
         element.selected = false;
       });
@@ -156,9 +143,9 @@ export class AppComponent {
     });
 
     this.currService.getActivities(this.baseURL).subscribe((data: dataStructure) => {
-      this.activities = [];
       data.items.forEach(activity => {
-        activity.live ? this.activities.push(activity) : console.log(activity) ;
+        console.log(activity);
+        if (activity.live) this.activities.push(activity);
       })
       console.log('Activities: ', this.activities);
       this.activities.forEach(element => {

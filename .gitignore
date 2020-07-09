@@ -122,5 +122,5 @@ node_modules
 themes/*
 
 themes/Index/assets/css/index.css
-app/curriculum_platform/static/css/curriculum-platform.css*
-app/curriculum_platform/static/js/search/*
+app/curriculum_platform/static/*
+app/curriculum_platform/staticfiles/*

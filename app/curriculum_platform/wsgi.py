@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "curriculum_platform.settings.dev")
+settings = "curriculum_platform.settings.{}"
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings.format(os.environ.get('CURRICULUM_ENV')))
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "curriculum_platform.settings.dev")
 
 application = get_wsgi_application()
