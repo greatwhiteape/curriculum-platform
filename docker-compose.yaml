@@ -6,9 +6,12 @@ services:
     image: vs-python
     command: python /app/manage.py runserver 0:8080
     volumes:
-    - ./app:/app
-    - ./docker-data/media:/media
-    - ./docker-data/django-static:/static
+      - ./app:/app:cached
+      - ./docker-data/media:/media:cached
+      - ./docker-data/django-static:/static:cached
+    # - ./app:/app
+    # - ./docker-data/media:/media
+    # - ./docker-data/django-static:/static
     # ports:
     # - "8000:8080"
     env_file:
