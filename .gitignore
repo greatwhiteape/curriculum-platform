@@ -124,3 +124,6 @@ themes/*
 themes/Index/assets/css/index.css
 app/curriculum_platform/static/*
 app/curriculum_platform/staticfiles/*
+k8s/tls.cert
+k8s/tls.key
+k8s/cert.yaml

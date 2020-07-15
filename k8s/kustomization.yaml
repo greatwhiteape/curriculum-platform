@@ -7,6 +7,11 @@ resources:
 secretGenerator:
   - name: curriculum-secrets
     envs: [secret.env]
+  - name: curriculum-tls
+    files:
+    - tls.crt
+    - tls.key
+    type: "kubernetes.io/tls"
 commonLabels:
   app: curriculum
   maintainer: greatwhiteape
