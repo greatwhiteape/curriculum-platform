@@ -331,6 +331,7 @@ class HomePage(Page):
       null=True,
       blank=True,
       max_length=255,
+      verbose_name = 'LabVenture Section Title',
       help_text='Title to display above the promo copy'
     )
 
@@ -338,6 +339,7 @@ class HomePage(Page):
       null=True,
       blank=True,
       max_length=255,
+      verbose_name = 'LabVenture Section Copy',
       help_text='Marketing copy for the Labventure.'
     )
 
@@ -346,27 +348,31 @@ class HomePage(Page):
       null=True,
       blank=True,
       on_delete=models.SET_NULL,
+      verbose_name = 'LabVenture Section Logo',
       related_name='+'
     )
 
     labventure_section_hero = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
+      'wagtailimages.Image',
+      null=True,
+      blank=True,
+      on_delete=models.SET_NULL,
+      verbose_name = 'LabVenture Section Hero Image',
+      related_name='+'
     )
 
     labventure_section_button_text = models.CharField(
-        null=True,
-        blank=True,
-        max_length=25,
-        help_text='Text for call to action button (25 Characters Max).'
+      null=True,
+      blank=True,
+      max_length=25,
+      verbose_name = 'LabVenture Call to Action Button Text',
+      help_text='Text for call to action button (25 Characters Max).'
     )
 
     labventure_section_button_link = models.URLField(
       null=True,
       blank=True,
+      verbose_name = 'LabVenture Button Link',
       help_text='Link that call to button action links to'
     )
     # Vital Signs Section
@@ -374,12 +380,14 @@ class HomePage(Page):
         null=True,
         blank=True,
         max_length=255,
+        verbose_name = 'Citizen Science Section Title',
         help_text='Title to display above the promo copy'
     )
 
     vitalsigns_section_copy = models.TextField(
         null=True,
         blank=True,
+        verbose_name = 'Citizen Science Copy',
         help_text='Marketing copy for the Vital Signs.'
     )
 
@@ -388,6 +396,7 @@ class HomePage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
+        verbose_name = 'Citizen Science Logo',
         related_name='+'
     )
 
@@ -396,6 +405,7 @@ class HomePage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
+        verbose_name = 'Citizen Science Hero Image',
         related_name='+'
     )
 
@@ -403,12 +413,14 @@ class HomePage(Page):
         null=True,
         blank=True,
         max_length=25,
+        verbose_name = 'Citizen Science Call to Action Button Text',
         help_text='Text for call to action button (25 Characters Max).'
     )
 
     vitalsigns_section_button_link = models.URLField(
         null=True,
         blank=True,
+        verbose_name = 'Citizen Science Button Link',
         help_text='Link that call to button action links to'
     )
 
@@ -608,7 +620,7 @@ class HomePage(Page):
           ImageChooserPanel('vitalsigns_section_hero'),
           FieldPanel('vitalsigns_section_button_text'),
           FieldPanel('vitalsigns_section_button_link')
-        ], heading="Vital Signs"),
+        ], heading="Citizen Science"),
         MultiFieldPanel([
           FieldPanel('gmri_section_title'),
           FieldPanel('gmri_section_copy'),
