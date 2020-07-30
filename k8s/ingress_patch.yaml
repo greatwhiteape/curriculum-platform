@@ -1,9 +1,13 @@
 - op: add
   path: /spec/rules/0/host
   value: teach.gmri.org
-- op: add
-  path: /metadata/annotations/certmanager.k8s.io~1cluster-issuer
-  value: letsencrypt-prod
+
 - op: add
   path: /spec/tls
-  value: [{ hosts: [teach.gmri.org], secretName: letsencrypt-prod }]
+  value: [{ hosts: [teach.gmri.org], secretName: curriculum-tls }]
+
+# - op: add
+#   path: /metadata/annotations/certmanager.k8s.io~1cluster-issuer
+# - op: add
+#   path: /spec/tls
+#   value: [{ hosts: [teach.gmri.org], secretName: letsencrypt-prod }]
