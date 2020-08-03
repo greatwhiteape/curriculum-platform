@@ -45,6 +45,11 @@ class Module(ClusterableModel):
 
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
+    # SETH
+    slug = models.SlugField(
+        null=True,
+        blank=True,
+    )
     live = models.BooleanField(
         verbose_name='Publish',
         default=False,
@@ -162,6 +167,7 @@ class Module(ClusterableModel):
     panels = [
         MultiFieldPanel([
             FieldPanel('live'),
+            FieldPanel('slug'), # SETH
             FieldPanel('title'),
             FieldPanel('subtitle'),
             FieldPanel('intro_copy'),
