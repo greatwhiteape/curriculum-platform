@@ -53,6 +53,10 @@ class Activity(ClusterableModel):
         default=False,
         editable=True
     )
+    slug = models.SlugField(
+        null=True,
+        blank=True,
+    )
     title = models.CharField(max_length=50)
     # teachers_guide = models.URLField()
     overview_copy = RichTextField(null=True, blank=True)
@@ -141,6 +145,7 @@ class Activity(ClusterableModel):
 
     panels = [
         FieldPanel("live"),
+        FieldPanel("slug"),
         FieldPanel("title"),
         # FieldPanel("teachers_guide"),
         FieldPanel("overview_copy"),

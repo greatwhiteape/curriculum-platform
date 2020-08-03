@@ -8,6 +8,7 @@ class ActivitiesAPIEndpoint(BaseAPIViewSet):
 
     body_fields = BaseAPIViewSet.body_fields + [
         "live",
+        'slug',
         "title",
         "overview_copy",
         "teachers_desc",
@@ -21,6 +22,7 @@ class ActivitiesAPIEndpoint(BaseAPIViewSet):
 
     listing_default_fields = BaseAPIViewSet.listing_default_fields + [
         "live",
+        'slug',
         "title",
         "overview_copy",
         "teachers_desc",

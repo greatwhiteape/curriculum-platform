@@ -8,6 +8,6 @@ from . import views
 
 urlpatterns = [
     # path('', views.get_module_data),
-    path('<int:activity_id>/', views.ActivityView.as_view()),
-    path('<int:activity_id>/student-page/', views.ActivityStudentView.as_view()),
+    path('<int:activity_id>-<slug:slug>/', views.ActivityView.as_view()),
+    path('<int:activity_id>-<slug:slug>/student-page/', views.ActivityStudentView.as_view()),
 ]

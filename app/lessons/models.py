@@ -50,6 +50,10 @@ class Lesson(ClusterableModel):
         default=False,
         editable=True
     )
+    slug = models.SlugField(
+        null=True,
+        blank=True,
+    )
     hero_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -157,6 +161,7 @@ class Lesson(ClusterableModel):
     panels = [
         MultiFieldPanel([
             FieldPanel("live"),
+            FieldPanel('slug'), # SETH
             FieldPanel('title'),
             FieldPanel('subtitle'),
             FieldPanel('intro_copy'),

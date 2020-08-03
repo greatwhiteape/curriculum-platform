@@ -53,6 +53,10 @@ class Asset(ClusterableModel):
         default=False,
         editable=True
     )
+    slug = models.SlugField(
+        null=True,
+        blank=True,
+    )
     title = models.CharField(max_length=50)
     description = RichTextField(blank=True, null=True)
 
@@ -131,6 +135,7 @@ class Asset(ClusterableModel):
 
     panels = [
       FieldPanel("live"),
+      FieldPanel('slug'), # SETH
       FieldPanel("title"),
       FieldPanel("description"),
       FieldPanel("asset_type"),

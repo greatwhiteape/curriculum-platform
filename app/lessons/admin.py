@@ -12,5 +12,6 @@ class LessonAdmin(ModelAdmin):
     menu_order = 300
     add_to_settings_menu = False
     exclude_from_explorer = False
+    prepopulated_fields = {"slug": ("title",)}
     list_display = ("title", "program", "live")
     search_fields = ("title", "overview_copy", "learning_outcomes")
