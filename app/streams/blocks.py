@@ -1,4 +1,5 @@
 from wagtail.core import blocks
+from wagtail.embeds.blocks import EmbedBlock
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
 
@@ -90,7 +91,13 @@ class LessonBlock(blocks.StructBlock):
         label = "Chapter Block"
         help_text = "Chapter Description"
 
+class VideoBlock(blocks.StructBlock):
+    video = EmbedBlock()
 
+    class Meta:
+        template = "streams/video_block.html"
+        icon = "media"
+        label = "Embed Video"
 
 
 

@@ -67,6 +67,7 @@ class Asset(ClusterableModel):
             ('external', blocks.Link()),
             ('google_doc', blocks.GoogleDocEmbed()),
             ('codap', blocks.CODAPEmbed()),
+            ('video', blocks.VideoBlock()),
             ('embed', EmbedBlock()),
             ('raw_html', wagtail_blocks.RawHTMLBlock()),
         ],
