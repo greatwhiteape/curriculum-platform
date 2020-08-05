@@ -12,7 +12,71 @@
   </div>
   <div class="row py-5">
     <div class="col-sm-10 offset-1">
-      {{ activity.teachers_desc }}
+      {{ activity.overview_copy|safe }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-10 offset-1">
+      <h3 class="my-5 font-weight-light">Details</h3>
+
+      <div class="row border-top border-bottom mb-3" id="te_a">
+
+        {% if activity.time_estimate %}
+        <div class="col col-md-2 py-3">
+          <p>
+            <strong>Time Estimate</strong><br />
+            <small class="grey-text">{{ activity.time_estimate }}</small>
+          </p>
+        </div>
+        {% endif %}
+
+        {% if activity.audience_relationship.all|length > 0 %}
+        <div class="col col-md-2 py-3">
+          <p>
+            <strong>Audience</strong><br />
+            <small class="grey-text">
+              {% for audience in activity.audience_relationship.all %}
+                {{ audience.audience.age_range }} {% if not forloop.last %}&nbsp;&middot;&nbsp;{% endif %}
+              {% endfor %}
+            </small>
+          </p>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="row">
+        <div class="col py-3">
+          {% if activity.learning_outcomes %}
+          <h4>Learning Outcomes</h4>
+          {{ activity.learning_outcomes|safe }}
+          {% endif %}
+        </div>
+      </div>
+
+      {% if activity.standards_relationship.all|length > 0 %}
+      <div class="row">
+        <div class="col py-3">
+          <h4>Standards Alignment</h4>
+          <ul class="list-group">
+          {% for standard in activity.standards_relationship.all %}
+            {% if standard.standard %}
+
+            <li class="list-group-item py-2 pl-0 standards-list">
+                {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank">{% endif %}
+                  {{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}
+                {% if standard.standard.standard_link %}
+                <img class="pl-4" src="{% static 'images/icon-external-link.svg' %}">
+                </a>
+                {% endif %}
+            </li>
+
+            {% endif %}
+          {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
 

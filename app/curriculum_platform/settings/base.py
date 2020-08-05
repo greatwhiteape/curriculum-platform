@@ -244,6 +244,12 @@ FILE_UPLOAD_PERMISSIONS  = 0o775
 
 WAGTAIL_SITE_NAME = "GMRI Curriculum Platform"
 
+WAGTAILEMBEDS_FINDERS = [
+    {
+        'class': 'wagtail.embeds.finders.oembed'
+    }
+]
+
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://teach.gmri.org'
