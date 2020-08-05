@@ -91,13 +91,16 @@ class LessonBlock(blocks.StructBlock):
         label = "Chapter Block"
         help_text = "Chapter Description"
 
-class VideoBlock(blocks.StructBlock):
-    video = EmbedBlock()
+class YouTubeBlock(blocks.StructBlock):
+    youtube_video = blocks.CharBlock(
+        required=True,
+        help_text='YouTube Video ID (https://youtu.be/XXX-XXX the XXX-XXX section)',
+    )
 
     class Meta:
         template = "streams/video_block.html"
         icon = "media"
-        label = "Embed Video"
+        label = "Embed YouTube Video"
 
 
 
