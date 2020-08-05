@@ -231,8 +231,6 @@ if AWS_STORAGE_BUCKET_NAME:
     # MEDIA_URL = f"{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
 else:
     MEDIA_URL = "/media/"
-    STATIC_URL = "/static/"
-    STATIC_ROOT = "/static/"
 
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#data-upload-max-memory-size
