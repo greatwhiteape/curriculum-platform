@@ -77,6 +77,23 @@
           {% endif %}
         </div>
       </div>
+
+      {% if activity.teachers_desc %}
+      <div class="row">
+        <div class="col-sm-10 offset-md-1">
+          <div class="row">
+            <div class="col">
+              <h4 class="pb-2">Teacher Instructions</h4>
+            </div>
+          </div>
+          <div class="row mb-5" id="teach_overview">
+            <div class="col">
+              {{ activity.teachers_desc }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
     </div>
   </div>
 
