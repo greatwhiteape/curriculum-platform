@@ -93,7 +93,8 @@ class Module(ClusterableModel):
     )
     learning_outcomes = RichTextField(
         null=True,
-        blank=True
+        blank=True,
+        verbose_name="Learning Outcomes (displays on Detail tab)"
     )
     teachers_desc = StreamField(
         [
@@ -110,7 +111,7 @@ class Module(ClusterableModel):
         ],
         null=True,
         blank=True,
-        verbose_name="Overview Tab Content",
+        verbose_name="Lessons Tab Content",
     )
     students_desc = StreamField(
         [
@@ -189,7 +190,7 @@ class Module(ClusterableModel):
         MultiFieldPanel([
             StreamFieldPanel('teachers_desc'),
             StreamFieldPanel('students_desc'),
-        ], heading="Overview"),
+        ], heading="Lessons"),
         MultiFieldPanel([
             SnippetChooserPanel('program'),
             SnippetChooserPanel('time_estimate'),
