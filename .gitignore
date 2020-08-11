@@ -126,3 +126,4 @@ app/curriculum_platform/static/*
 app/curriculum_platform/staticfiles/*
 k8s/tls.crt
 k8s/tls.key
+*.jic
