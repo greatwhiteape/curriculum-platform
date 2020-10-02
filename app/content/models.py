@@ -36,11 +36,11 @@ from modules.models import Module
 from streams import blocks
 
 from taxonomy.serializers import (
-    ProgramSerializer, 
-    TimeEstimateSerializer, 
-    AudienceSerializer, 
-    StandardsSerializer, 
-    TopicSerializer, 
+    ProgramSerializer,
+    TimeEstimateSerializer,
+    AudienceSerializer,
+    StandardsSerializer,
+    TopicSerializer,
     TagSerializer,
 )
 
@@ -49,7 +49,7 @@ class ContentPage(Page):
     managed = True
     verbose_name = 'Content'
     verbose_name_plural = 'Content Pages'
-    
+
   image = models.ForeignKey(
     'wagtailimages.Image',
     null=True,
@@ -57,6 +57,13 @@ class ContentPage(Page):
     on_delete=models.SET_NULL,
     related_name='+',
     help_text='Homepage image'
+  )
+
+  image_alt = models.CharField(
+    max_length=100,
+    null=True,
+    blank=True,
+    help_text='Alt tag for image'
   )
 
   hero_text = models.CharField(
@@ -85,7 +92,7 @@ class ContentPage(Page):
     blank=True,
     help_text='Featured content copy'
   )
-  
+
   body = StreamField(
       [
           ('title', blocks.TitleBlock()),
@@ -95,14 +102,15 @@ class ContentPage(Page):
           ('activity', SnippetChooserBlock('activity.Activity')),
           ('document', DocumentChooserBlock()),
           ('embed', EmbedBlock()),
-      ], 
-      null=True, 
+      ],
+      null=True,
       blank=True
-  )    
+  )
 
   content_panels = Page.content_panels + [
     MultiFieldPanel([
       ImageChooserPanel('image'),
+      FieldPanel('image_alt'),
       FieldPanel('hero_text', classname="full"),
     ], heading="Hero section"),
     MultiFieldPanel([
@@ -114,6 +122,7 @@ class ContentPage(Page):
   # Export fields over the API
   api_fields = [
     APIField('image'),
+    APIField('image_alt'),
     APIField('hero_text'),
     APIField('featured_title'),
     APIField('featured_copy'),
@@ -125,8 +134,8 @@ class ContentPage(Page):
     modules = Module.objects.all()
     self.modules = modules
     return super().serve(request)
-  
-  
+
+
 class SearchPage(Page):
   class Meta:
     managed = True
@@ -140,6 +149,13 @@ class SearchPage(Page):
     on_delete=models.SET_NULL,
     related_name='+',
     help_text='Homepage image'
+  )
+
+  image_alt = models.CharField(
+    max_length=100,
+    null=True,
+    blank=True,
+    help_text='Alt tag for image'
   )
 
   hero_text = models.CharField(
@@ -178,12 +194,13 @@ class SearchPage(Page):
   content_panels = Page.content_panels + [
     MultiFieldPanel([
       ImageChooserPanel('image'),
+      FieldPanel('image_alt'),
       FieldPanel('hero_text', classname="full"),
     ], heading="Hero Section"),
     # MultiFieldPanel([
     #   FieldPanel('featured_title'),
     #   FieldPanel('featured_copy'),
-    # ], heading="Featured Section"), 
+    # ], heading="Featured Section"),
     MultiFieldPanel([
       FieldPanel('search_tag'),
       SnippetChooserPanel('program'),
@@ -193,6 +210,7 @@ class SearchPage(Page):
   # Export fields over the API
   api_fields = [
     APIField('image'),
+    APIField('image_alt'),
     APIField('hero_text'),
     APIField('featured_title'),
     APIField('featured_copy'),
