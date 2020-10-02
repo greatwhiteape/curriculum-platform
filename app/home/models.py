@@ -136,6 +136,13 @@ class HomePage(Page):
         related_name='+'
     )
 
+    feature1_image_alt = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text='Alt-tag for image'
+    )
+
     feature1_copy = models.TextField(
       null=True,
       blank=True,
@@ -173,6 +180,13 @@ class HomePage(Page):
         related_name='+'
     )
 
+    feature2_image_alt = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text='Alt-tag for image'
+    )
+
     feature2_copy = models.TextField(
         null=True,
         blank=True,
@@ -208,6 +222,13 @@ class HomePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
+    )
+
+    feature3_image_alt = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text='Alt-tag for image'
     )
 
     feature3_copy = models.TextField(
@@ -305,6 +326,13 @@ class HomePage(Page):
         related_name='+'
     )
 
+    feature6_image_alt = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text='Alt-tag for image'
+    )
+
     feature6_copy = models.TextField(
         null=True,
         blank=True,
@@ -361,6 +389,13 @@ class HomePage(Page):
       related_name='+'
     )
 
+    labventure_section_hero_alt = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text='Alt-tag for image'
+    )
+
     labventure_section_button_text = models.CharField(
       null=True,
       blank=True,
@@ -409,6 +444,13 @@ class HomePage(Page):
         related_name='+'
     )
 
+    vitalsigns_section_hero_alt = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text='Alt-tag for image'
+    )
+
     vitalsigns_section_button_text = models.CharField(
         null=True,
         blank=True,
@@ -452,6 +494,13 @@ class HomePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
+    )
+
+    gmri_section_hero_alt = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text='Alt-tag for image'
     )
 
     # Call to action section
@@ -556,6 +605,10 @@ class HomePage(Page):
     )
 
 
+
+    feature1_image_alt
+
+
     content_panels = Page.content_panels + [
         MultiFieldPanel([
           ImageChooserPanel('image'),
@@ -568,6 +621,7 @@ class HomePage(Page):
             FieldPanel('feature1_title'),
             FieldPanel('feature1_copy'),
             ImageChooserPanel('feature1_image'),
+            FieldPanel('feature1_image_alt'),
             FieldPanel('feature1_link'),
             # SnippetChooserPanel('feature1_link'),
           ], heading="Feature 1"),
@@ -575,6 +629,7 @@ class HomePage(Page):
             FieldPanel('feature2_title'),
             FieldPanel('feature2_copy'),
             ImageChooserPanel('feature2_image'),
+            FieldPanel('feature2_image_alt'),
             FieldPanel('feature2_link'),
             # SnippetChooserPanel('feature2_link'),
           ], heading="Feature 2"),
@@ -582,6 +637,7 @@ class HomePage(Page):
             FieldPanel('feature3_title'),
             FieldPanel('feature3_copy'),
             ImageChooserPanel('feature3_image'),
+            FieldPanel('feature3_image_alt'),
             FieldPanel('feature3_link'),
             # SnippetChooserPanel('feature3_link'),
           ], heading="Feature 3"),
@@ -601,6 +657,7 @@ class HomePage(Page):
             FieldPanel('feature6_title'),
             FieldPanel('feature6_copy'),
             ImageChooserPanel('feature6_image'),
+            FieldPanel('feature6_image_alt'),
             FieldPanel('feature6_link'),
             # SnippetChooserPanel('feature6_link'),
           ], heading="Feature 6"),
@@ -610,6 +667,7 @@ class HomePage(Page):
           FieldPanel('labventure_section_copy'),
           ImageChooserPanel('labventure_section_logo'),
           ImageChooserPanel('labventure_section_hero'),
+          FieldPanel('labventure_section_hero_alt'),
           FieldPanel('labventure_section_button_text'),
           FieldPanel('labventure_section_button_link')
         ], heading="LabVenture"),
@@ -618,6 +676,7 @@ class HomePage(Page):
           FieldPanel('vitalsigns_section_copy'),
           ImageChooserPanel('vitalsigns_section_logo'),
           ImageChooserPanel('vitalsigns_section_hero'),
+          FieldPanel('vitalsigns_section_hero_alt'),
           FieldPanel('vitalsigns_section_button_text'),
           FieldPanel('vitalsigns_section_button_link')
         ], heading="Citizen Science"),
@@ -626,6 +685,7 @@ class HomePage(Page):
           FieldPanel('gmri_section_copy'),
           ImageChooserPanel('gmri_section_logo'),
           ImageChooserPanel('gmri_section_hero'),
+          FieldPanel('gmri_section_hero_alt'),
         ], heading="GMRI EDU"),
         MultiFieldPanel([
           MultiFieldPanel([

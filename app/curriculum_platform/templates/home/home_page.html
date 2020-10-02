@@ -44,7 +44,7 @@
           <div class="col-md-5 d-inline-block pl-0 box">
             <div class="row m-0 p-0 labventure-background">
               <div class="col m-0 p-0 overflow-hidden d-flex justify-content-start">
-                <img src="{{ featured1.url }}">
+                <img src="{{ featured1.url }}" alt="{{ page.feature1_image_alt }}">
               </div>
               <div class="col-1">
                 <div class="d-inline-block">&nbsp;</div>
@@ -65,7 +65,7 @@
           <div class="col-md-5 offset-md-1 d-inline-block pl-0 box">
             <div class="row m-0 p-0 ein-background">
               <div class="col m-0 p-0 overflow-hidden d-flex justify-content-start">
-                <img class="img-fluid" src="{{ featured2.url }}">
+                <img class="img-fluid" src="{{ featured2.url }}" alt="{{ page.feature2_image_alt }}">
               </div>
               <div class="col-1">
                 <div class="d-inline-block">&nbsp;</div>
@@ -95,7 +95,7 @@
           <div class="col-md-5 col-xl-7 d-inline-block pl-0 box">
             <div class="row m-0 p-0 ein-background overflow-hidden">
               <div class="col m-0 p-0 overflow-hidden d-flex justify-content-start">
-                <img src="{{ featured3.url }}">
+                <img src="{{ featured3.url }}" alt="{{ page.feature3_image_alt }}">
               </div>
               <div class="col-1">
                 <div class="d-inline-block">&nbsp;</div>
@@ -152,7 +152,7 @@
           <div class="col-md-5 col-xl-7 offset-md-1 d-inline-block pl-0 py-0 box">
             <div class="row labventure-background overflow-hidden">
               <div class="col p-0 m-0 overflow-hidden d-flex justify-content-start">
-                <img src="{{ featured6.url }}">
+                <img src="{{ featured6.url }}" alt="{{ page.feature6_image_alt }}">
               </div>
               <div class="col-1">
                 <div class="d-inline-block">&nbsp;</div>
@@ -182,7 +182,7 @@
       <div class="row logo-row">
         <div class="col-1 offset-md-1">
           <h2 id="lv_icon" class="vert-icon">
-            {% image page.labventure_section_logo max-100x150 %}
+            {% image page.labventure_section_logo max-100x150 alt="Labventure Logo" %}
           </h2>
         </div>
       </div>
@@ -194,7 +194,7 @@
           <a class="btn btn-light rounded-pill mx-2" aria-pressed="true" href="{{ page.labventure_section_button_link }}" >{{ page.labventure_section_button_text }}</a>
         </div>
         <div class="col-md-5 col-xl-4 overflow-hidden float-lg-right d-none d-md-block">
-          {% image page.labventure_section_hero fill-600x400-c100 id="lv_image" class=""  %}
+          {% image page.labventure_section_hero fill-600x400-c100 id="lv_image" class="" alt="page.labventure_section_hero_alt"  %}
         </div>
       </div>
     </div>
@@ -208,13 +208,13 @@
       <div class="row logo-row">
         <div class="col offset-md-5 offset-lg-6 offset-xl-7 mt-sm-n3">
           <h2 id="vs_icon" class="hrz-icon">
-            {% image page.vitalsigns_section_logo width-380 id="ein_logo" %}
+            {% image page.vitalsigns_section_logo width-380 id="ein_logo" alt="Exchange Information Network Logo" %}
           </h2>
         </div>
       </div>
       <div class="row">
         <div class="col-5 col-lg-4 overflow-hidden d-none d-md-block">
-          {% image page.vitalsigns_section_hero fill-600x400-c100 id="vs_image" %}
+          {% image page.vitalsigns_section_hero fill-600x400-c100 id="vs_image" alt="page.vitalsigns_section_hero_alt" %}
         </div>
         <div class="col offset-lg-1">
           <h2 class="text-white">{{ page.vitalsigns_section_title }}</h2>
@@ -232,7 +232,7 @@
     <div class="row justify-content-between">
       <div class="col-md-6 col-lg-5 offset-lg-1">
         <h2 id="gmri_icon" class="hrz-icon">
-          {% image page.gmri_section_logo width-300 %}
+          {% image page.gmri_section_logo width-300 alt="GMRI Logo"%}
         </h2>
         <div id="our_call" class="d-none d-lg-block">
           Our call to action
@@ -242,7 +242,7 @@
         <p>{{ page.gmri_section_copy }}</p>
       </div>
       <div class="col-md-5 overflow-hidden">
-        {% image page.gmri_section_hero fill-600x550-c100 id="gmri_image" class="flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end d-none d-md-flex" %}
+        {% image page.gmri_section_hero fill-600x550-c100 id="gmri_image" class="flex-grow-1 flex-shrink-1 flex-fill justify-content-xl-start align-items-xl-end d-none d-md-flex" alt="page.gmri_section_hero_alt" %}
 
       </div>
     </div>
