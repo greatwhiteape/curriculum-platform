@@ -18,21 +18,21 @@
     </div>
     <div class="row p-5">
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-primary btn-rounded px-5 py-3" target="_blank" href="{{ lesson.lesson_download }}" role="button">
+        <a class="btn btn-outline-primary btn-rounded px-5 py-3" target="_blank" href="{{ lesson.lesson_download }}" role="button" aria-label="Opens in separate tab or window">
           Download Full Lesson
           <img class="pl-5" src="{% static 'images/icon-download.png' %}">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="student-page" role="button">
+        <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="student-page" role="button" aria-label="Opens in separate tab or window">
           Student Guide
           <img class="pl-5" src="{% static 'images/icon-resource-link.png' %}">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
       <div class="col text-center align-self-center pl-5">
-        <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="{{ lesson.teachers_guide }}" role="button">
+        <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="{{ lesson.teachers_guide }}" role="button" aria-label="Opens in separate tab or window">
           Teacher's Guide
           <img class="pl-5" src="{% static 'images/icon-resource-link.png' %}">
         </a>
@@ -144,7 +144,7 @@
                         {% if standard.standard %}
 
                         <li class="list-group-item py-2 pl-0 standards-list">
-                            {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank">{% endif %}
+                            {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank" aria-label="Opens in separate tab or window">{% endif %}
                               {{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}
                             {% if standard.standard.standard_link %}
                             <img class="pl-4" src="{% static 'images/icon-external-link.svg' %}">
