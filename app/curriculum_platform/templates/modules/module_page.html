@@ -22,7 +22,7 @@
       <div class="col text-center align-self-center pl-5">
         <a class="btn btn-outline-primary btn-rounded px-5 py-3" target="_blank" href="{{ module.module_download }}" role="button" aria-label="Opens in separate tab or window">
           Download Full Module
-          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-download.png' %}">
+          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-download.png' %}" role="presentation" alt="Download Icon">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
@@ -31,7 +31,7 @@
       <div class="col text-center align-self-center pl-5">
         <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="student-page" role="button" aria-label="Opens in separate tab or window">
           Student Guide
-          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-resource-link.png' %}">
+          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-resource-link.png' %}" role="presentation" alt="Resource Link Icon">
         </a>
       </div>
       <div class="w-100 d-block d-lg-none my-2"></div>
@@ -40,7 +40,7 @@
       <div class="col text-center align-self-center pl-5">
         <a class="btn btn-outline-dark btn-rounded px-5 py-3" target="_blank" href="{{ module.teachers_guide }}" role="button" aria-label="Opens in separate tab or window">
           Teacher's Guide
-          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-resource-link.png' %}">
+          <img class="d-none d-lg-inline-block pl-2" src="{% static 'images/icon-resource-link.png' %}" role="presentation" alt="Resource Link Icon">
         </a>
       </div>
       {% endif %}
@@ -51,19 +51,19 @@
       <ul id="tabs" class="row nav nav-tabs" role="tablist">
         <li class="col-3 offset-lg-1 nav-item">
           <a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab">
-            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-overview-inactive.svg' %}">
+            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-overview-inactive.svg' %}" role="presentation" alt="Magnifying Glass Icon">
             Overview
           </a>
         </li>
         <li class="col-3 nav-item">
           <a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">
-            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-details-inactive.svg' %}">
+            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-details-inactive.svg' %}" role="presentation" alt="Clipboard Icon">
             Details
           </a>
         </li>
         <li class="col-3 nav-item">
           <a id="tab-C" href="#pane-C" class="nav-link" data-toggle="tab" role="tab">
-            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-lessons-inactive.svg' %}">
+            <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-lessons-inactive.svg' %}" role="presentation" alt="Teacher Icon">
             Lessons
           </a>
         </li>
@@ -154,7 +154,7 @@
                           {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank" aria-label="Opens in separate tab or window">{% endif %}
                             {{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}
                           {% if standard.standard.standard_link %}
-                          <img class="pl-4" src="{% static 'images/icon-external-link.svg' %}">
+                          <img class="pl-4" src="{% static 'images/icon-external-link.svg' %}" role="presentation" alt="External Link Icon">
                           </a>
                           {% endif %}
                       </li>
