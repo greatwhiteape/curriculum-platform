@@ -1,17 +1,17 @@
 {% load static menu_tags %}
 <header class="row">
-  <a id="skip_link" class="accessible" href="#ContentArea">Skip to Content</a>
+  <a id="skip_link" class="accessible" href="#ContentArea">Skip</a>
   <div class="col-lg-11 offset-xl-1">
     <nav class="navbar navbar-light navbar-expand-md justify-content-right p-5 row">
         <div id="brand_col" class="col-4">
-          <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+          <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" role="presentation"><span class="accessible">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
           <a class="navbar-brand" href="https://teach.gmri.org">
-            <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill" src="{% static 'images/logo-curriculum-platform3x.original.png' %}" title="GMRI Education Curriculum Platform" alt="GMRI Education Curriculum Platform">
+            <img class="d-flex flex-grow-1 flex-shrink-1 flex-fill" src="{% static 'images/logo-curriculum-platform3x.original.png' %}" alt="GMRI Education Curriculum Platform">
           </a>
         </div>
 
         <div class="col-md-1">
-          <div id="nav_visElement">&nbsp;</div>
+          <div id="nav_visElement" role="none">&nbsp;</div>
         </div>
 
         <div class="collapse navbar-collapse col " id="navcol-1" role="navigation" aria-label="Main Navigation">

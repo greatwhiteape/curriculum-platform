@@ -9,13 +9,14 @@ body {
     overflow-x: hidden;
   }
 
+.accessible {
+   position: absolute !important;
+   top: -9999px !important;
+   left: -9999px !important;
+}
+
 header {
   display:none;
-
-  #skip_link {
-    display:none;
-  }
-
 
   #brand_col {
     max-width: 350px;
