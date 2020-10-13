@@ -1,7 +1,7 @@
 {% load wagtailcore_tags %}
 
 {% for menuitem in menu_items %}
-  <li class="nav-item presentation {{ menuitem.text }}{{ menuitem.active_class }}">
-        <a href="{% pageurl menuitem %}" class="nav-link" role="menuitem">{{ menuitem.text }}</a>
+  <li class="nav-item presentation {{ menuitem.text }}{{ menuitem.active_class }}" role="menuitem">
+        <a href="{% pageurl menuitem %}" class="nav-link">{{ menuitem.text }}</a>
   </li>
 {% endfor %}

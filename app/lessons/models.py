@@ -109,7 +109,7 @@ class Lesson(ClusterableModel):
         ],
         null=True,
         blank=True,
-        verbose_name="Overview Tab Content",
+        verbose_name="Activities Tab Content",
     )
     students_desc = StreamField(
         [
@@ -126,7 +126,7 @@ class Lesson(ClusterableModel):
         ],
         null=True,
         blank=True,
-        verbose_name="Student Page Content",
+        verbose_name="Resources for Students",
     )
 
     @property
