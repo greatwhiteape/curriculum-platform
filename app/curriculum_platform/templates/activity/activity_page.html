@@ -63,7 +63,7 @@
             {% if standard.standard %}
 
             <li class="list-group-item py-2 pl-0 standards-list">
-                {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank">{% endif %}
+                {% if standard.standard.standard_link %}<a href="{{ standard.standard.standard_link }}" target="_blank" aria-label="Opens in separate tab or window">{% endif %}
                   {{ standard.standard.standard_group.standards_body}}: {{ standard.standard.standard }}
                 {% if standard.standard.standard_link %}
                 <img class="pl-4" src="{% static 'images/icon-external-link.svg' %}">
