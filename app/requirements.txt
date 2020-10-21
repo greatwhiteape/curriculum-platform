@@ -1,5 +1,5 @@
 Django>=3.0,<3.1
-wagtail>=2.9.3,<2.10
+wagtail>=2.10,<2.11
 
 wagtailmenus
 wagtailfontawesome==1.1.4
@@ -22,7 +22,7 @@ django-colorfield
 django-summernote
 bootstrap-admin
 django-storages
-boto3
+boto3==1.15.18
 uWSGI==2.0.18
 
 
