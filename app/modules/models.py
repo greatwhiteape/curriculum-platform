@@ -30,6 +30,9 @@ from wagtail.search import index
 
 from streams import blocks
 
+from wagtail_blocks.blocks import HeaderBlock, ListBlock, ImageTextOverlayBlock, CroppedImagesWithTextBlock, \
+    ListWithImagesBlock, ThumbnailGalleryBlock, ChartBlock, MapBlock, ImageSliderBlock
+
 from taxonomy.serializers import (
     ProgramSerializer,
     TimeEstimateSerializer,
@@ -108,6 +111,14 @@ class Module(ClusterableModel):
             ('youtube', blocks.YouTubeBlock()),
             ('google_doc', blocks.GoogleDocEmbed()),
             ('codap', blocks.CODAPEmbed()),
+            ('header', HeaderBlock()),
+            ('list', ListBlock()),
+            ('image_text_overlay', ImageTextOverlayBlock()),
+            ('cropped_images_with_text', CroppedImagesWithTextBlock()),
+            ('list_with_images', ListWithImagesBlock()),
+            ('thumbnail_gallery', ThumbnailGalleryBlock()),
+            ('chart', ChartBlock()),
+            ('map', MapBlock()),
         ],
         null=True,
         blank=True,
@@ -125,6 +136,14 @@ class Module(ClusterableModel):
             ('youtube', blocks.YouTubeBlock()),
             ('google_doc', blocks.GoogleDocEmbed()),
             ('codap', blocks.CODAPEmbed()),
+            ('header', HeaderBlock()),
+            ('list', ListBlock()),
+            ('image_text_overlay', ImageTextOverlayBlock()),
+            ('cropped_images_with_text', CroppedImagesWithTextBlock()),
+            ('list_with_images', ListWithImagesBlock()),
+            ('thumbnail_gallery', ThumbnailGalleryBlock()),
+            ('chart', ChartBlock()),
+            ('map', MapBlock()),
         ],
         null=True,
         blank=True,
