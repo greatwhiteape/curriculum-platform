@@ -624,7 +624,7 @@ class HomePage(Page):
             FieldPanel('feature1_image_alt'),
             FieldPanel('feature1_link'),
             # SnippetChooserPanel('feature1_link'),
-          ], heading="Feature 1"),
+          ], heading="Feature 1", classname='wagtailuiplus__panel--collapsed'),
           MultiFieldPanel([
             FieldPanel('feature2_title'),
             FieldPanel('feature2_copy'),
@@ -632,7 +632,7 @@ class HomePage(Page):
             FieldPanel('feature2_image_alt'),
             FieldPanel('feature2_link'),
             # SnippetChooserPanel('feature2_link'),
-          ], heading="Feature 2"),
+          ], heading="Feature 2", classname='wagtailuiplus__panel--collapsed'),
           MultiFieldPanel([
             FieldPanel('feature3_title'),
             FieldPanel('feature3_copy'),
@@ -640,19 +640,19 @@ class HomePage(Page):
             FieldPanel('feature3_image_alt'),
             FieldPanel('feature3_link'),
             # SnippetChooserPanel('feature3_link'),
-          ], heading="Feature 3"),
+          ], heading="Feature 3", classname='wagtailuiplus__panel--collapsed'),
           MultiFieldPanel([
             FieldPanel('feature4_title'),
             FieldPanel('feature4_copy'),
             FieldPanel('feature4_link'),
             # SnippetChooserPanel('feature4_link'),
-          ], heading="Feature 4"),
+          ], heading="Feature 4", classname='wagtailuiplus__panel--collapsed'),
           MultiFieldPanel([
             FieldPanel('feature5_title'),
             FieldPanel('feature5_copy'),
             FieldPanel('feature5_link'),
             # SnippetChooserPanel('feature5_link'),
-          ], heading="Feature 5"),
+          ], heading="Feature 5", classname='wagtailuiplus__panel--collapsed'),
           MultiFieldPanel([
             FieldPanel('feature6_title'),
             FieldPanel('feature6_copy'),
@@ -660,8 +660,8 @@ class HomePage(Page):
             FieldPanel('feature6_image_alt'),
             FieldPanel('feature6_link'),
             # SnippetChooserPanel('feature6_link'),
-          ], heading="Feature 6"),
-        ], heading="Featured Section"),
+          ], heading="Feature 6", classname='wagtailuiplus__panel--collapsed'),
+        ], heading="Featured Section", classname='wagtailuiplus__panel--collapsed'),
         MultiFieldPanel([
           FieldPanel('labventure_section_title'),
           FieldPanel('labventure_section_copy'),
@@ -670,7 +670,7 @@ class HomePage(Page):
           FieldPanel('labventure_section_hero_alt'),
           FieldPanel('labventure_section_button_text'),
           FieldPanel('labventure_section_button_link')
-        ], heading="LabVenture"),
+        ], heading="LabVenture", classname='wagtailuiplus__panel--collapsed'),
         MultiFieldPanel([
           FieldPanel('vitalsigns_section_title'),
           FieldPanel('vitalsigns_section_copy'),
@@ -679,14 +679,14 @@ class HomePage(Page):
           FieldPanel('vitalsigns_section_hero_alt'),
           FieldPanel('vitalsigns_section_button_text'),
           FieldPanel('vitalsigns_section_button_link')
-        ], heading="Citizen Science"),
+        ], heading="Citizen Science", classname='wagtailuiplus__panel--collapsed'),
         MultiFieldPanel([
           FieldPanel('gmri_section_title'),
           FieldPanel('gmri_section_copy'),
           ImageChooserPanel('gmri_section_logo'),
           ImageChooserPanel('gmri_section_hero'),
           FieldPanel('gmri_section_hero_alt'),
-        ], heading="GMRI EDU"),
+        ], heading="GMRI EDU", classname='wagtailuiplus__panel--collapsed'),
         MultiFieldPanel([
           MultiFieldPanel([
             FieldPanel('c2a_1_section_title'),
@@ -694,22 +694,22 @@ class HomePage(Page):
             FieldPanel('c2a_1_section_button_text'),
             FieldPanel('c2a_1_section_button_link'),
             FieldPanel('c2a_1_section_active')
-          ], heading="Call to Action 1"),
+          ], heading="Call to Action 1", classname='wagtailuiplus__panel--collapsed'),
           MultiFieldPanel([
             FieldPanel('c2a_2_section_title'),
             FieldPanel('c2a_2_section_copy'),
             FieldPanel('c2a_2_section_button_text'),
             FieldPanel('c2a_2_section_button_link'),
             FieldPanel('c2a_2_section_active')
-          ], heading="Call to Action 2"),
+          ], heading="Call to Action 2", classname='wagtailuiplus__panel--collapsed'),
           MultiFieldPanel([
             FieldPanel('c2a_3_section_title'),
             FieldPanel('c2a_3_section_copy'),
             FieldPanel('c2a_3_section_button_text'),
             FieldPanel('c2a_3_section_button_link'),
             FieldPanel('c2a_3_section_active')
-          ], heading="Call to Action 3")
-        ], heading="Call to Action")
+          ], heading="Call to Action 3", classname='wagtailuiplus__panel--collapsed')
+        ], heading="Call to Action", classname='wagtailuiplus__panel--collapsed')
     ]
 
     # search_fields = [

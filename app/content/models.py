@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 import requests
 
+from django import forms
+
 from django.db import models
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
@@ -30,6 +32,9 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtail.api import APIField
+
+from wagtail_blocks.blocks import HeaderBlock, ListBlock, ImageTextOverlayBlock, CroppedImagesWithTextBlock, \
+    ListWithImagesBlock, ThumbnailGalleryBlock, ChartBlock, MapBlock, ImageSliderBlock
 
 from modules.models import Module
 
@@ -84,24 +89,35 @@ class ContentPage(Page):
     max_length=100,
     null=True,
     blank=True,
-    help_text='Section title'
+    verbose_name='Introduction Title',
+    help_text='Title for intro copy (optional)'
   )
 
-  featured_copy = models.TextField(
+  featured_copy = RichTextField(
+    features=['bold', 'italic', 'link', 'ol', 'ul', 'document-link', 'image'],
     null=True,
     blank=True,
-    help_text='Featured content copy'
+    verbose_name='Introductory Content Copy',
+    help_text='Copy describing the program & the featured curricula'
   )
 
   body = StreamField(
       [
-          ('title', blocks.TitleBlock()),
-          ('copy', wagtail_blocks.RichTextBlock()),
-          ('image', ImageChooserBlock()),
-          ('asset', SnippetChooserBlock('assets.Asset')),
-          ('activity', SnippetChooserBlock('activity.Activity')),
-          ('document', DocumentChooserBlock()),
-          ('embed', EmbedBlock()),
+        ('title', blocks.TitleBlock()),
+        ('copy', wagtail_blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('asset', SnippetChooserBlock('assets.Asset')),
+        ('activity', SnippetChooserBlock('activity.Activity')),
+        ('document', DocumentChooserBlock()),
+        ('embed', EmbedBlock()),
+        ('header', HeaderBlock()),
+        ('list', ListBlock()),
+        ('image_text_overlay', ImageTextOverlayBlock()),
+        ('cropped_images_with_text', CroppedImagesWithTextBlock()),
+        ('list_with_images', ListWithImagesBlock()),
+        ('thumbnail_gallery', ThumbnailGalleryBlock()),
+        ('chart', ChartBlock()),
+        ('map', MapBlock()),
       ],
       null=True,
       blank=True
@@ -113,6 +129,10 @@ class ContentPage(Page):
       FieldPanel('image_alt'),
       FieldPanel('hero_text', classname="full"),
     ], heading="Hero section"),
+    MultiFieldPanel([
+      FieldPanel('featured_title'),
+      FieldPanel('featured_copy'),
+    ], heading="Introduction Section", classname='wagtailuiplus__panel--collapsed'),
     MultiFieldPanel([
       StreamFieldPanel('body'),
       SnippetChooserPanel('program'),
@@ -169,13 +189,16 @@ class SearchPage(Page):
     max_length=100,
     null=True,
     blank=True,
-    help_text='Section title'
+    verbose_name='Introduction Title',
+    help_text='Title for intro copy (optional)'
   )
 
-  featured_copy = models.TextField(
+  featured_copy = RichTextField(
+    features=['bold', 'italic', 'link', 'ol', 'ul', 'document-link', 'image'],
     null=True,
     blank=True,
-    help_text='Featured content copy'
+    verbose_name='Introductory Content Copy',
+    help_text='Copy describing the program & the featured curricula'
   )
 
   search_tag = models.TextField(
@@ -197,10 +220,10 @@ class SearchPage(Page):
       FieldPanel('image_alt'),
       FieldPanel('hero_text', classname="full"),
     ], heading="Hero Section"),
-    # MultiFieldPanel([
-    #   FieldPanel('featured_title'),
-    #   FieldPanel('featured_copy'),
-    # ], heading="Featured Section"),
+    MultiFieldPanel([
+      FieldPanel('featured_title'),
+      FieldPanel('featured_copy'),
+    ], heading="Introduction Section"),
     MultiFieldPanel([
       FieldPanel('search_tag'),
       SnippetChooserPanel('program'),
