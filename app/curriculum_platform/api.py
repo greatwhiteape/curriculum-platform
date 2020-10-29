@@ -8,7 +8,6 @@ api_router = WagtailAPIRouter('wagtailapi')
 
 from activity.endpoints import ActivitiesAPIEndpoint
 from assets.endpoints import AssetsAPIEndpoint
-from lessons.endpoints import LessonsAPIEndpoint
 from modules.endpoints import ModulesAPIEndpoint
 from taxonomy.endpoints import StandardAPIEndpoint, StandardsBodyAPIEndpoint, ProgramsAPIEndpoint, AudienceAPIEndpoint, TagAPIEndpoint, TopicAPIEndpoint, AssetTypeAPIEndpoint, ActivityTypeAPIEndpoint, TimeEstimateAPIEndpoint
 
@@ -23,7 +22,6 @@ api_router.register_endpoint('documents', DocumentsAPIViewSet)
 # Custom API Endpoints
 api_router.register_endpoint('activities', ActivitiesAPIEndpoint)
 api_router.register_endpoint('assets', AssetsAPIEndpoint)
-api_router.register_endpoint('lessons', LessonsAPIEndpoint)
 api_router.register_endpoint('modules', ModulesAPIEndpoint)
 api_router.register_endpoint('standards', StandardAPIEndpoint)
 api_router.register_endpoint('standards-body', StandardsBodyAPIEndpoint)

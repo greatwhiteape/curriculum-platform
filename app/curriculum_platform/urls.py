@@ -29,7 +29,6 @@ urlpatterns = [
 
     url(r'curriculum/activity/', include('activity.urls')),
     url(r'curriculum/assets/', include('assets.urls')),
-    url(r'curriculum/lessons/', include('lessons.urls')),
     url(r'curriculum/modules/', include('modules.urls')),
 ]
 

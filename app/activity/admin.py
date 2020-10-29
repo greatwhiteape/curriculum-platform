@@ -20,7 +20,7 @@ from .models import Activity
 @modeladmin_register
 class ActivityAdmin(ModelAdmin):
     model = Activity
-    menu_label = "Activity"
+    menu_label = "Lessons"
     menu_icon = "form"
     menu_order = 210
     add_to_settings_menu = False

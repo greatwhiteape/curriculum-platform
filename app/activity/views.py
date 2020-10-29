@@ -16,6 +16,7 @@ class ActivitiesView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['activity'] = serialize('json',Activity.objects.all())
+        # context['lesson'] = serialize('json',Activity.objects.all())
         return context
 
 class ActivityView(TemplateView):
@@ -24,6 +25,7 @@ class ActivityView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['activity'] = Activity.objects.get(id=kwargs['activity_id'])
+        # context['lesson'] = Activity.objects.get(id=kwargs['activity_id'])
         return context
 
 class ActivityStudentView(TemplateView):
@@ -32,4 +34,5 @@ class ActivityStudentView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['activity'] = Activity.objects.get(id=kwargs['activity_id'])
+        # context['lesson'] = Activity.objects.get(id=kwargs['activity_id'])
         return context
