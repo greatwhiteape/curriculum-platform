@@ -21,7 +21,6 @@ INSTALLED_APPS = [
     'assets',
     'content',
     'home',
-    'lessons',
     'modules',
     'search',
     'streams',

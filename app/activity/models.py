@@ -46,8 +46,12 @@ from taxonomy.serializers import (
 class Activity(ClusterableModel):
     class Meta:
         managed = True
-        verbose_name = 'Activity'
-        verbose_name_plural = 'Activities'
+        verbose_name = 'Lesson'
+        verbose_name_plural = 'Lessons'
+        # This was originally called activity. It is now Lessons, because EDU asked for it changed.
+        # They like to change their minds a lot, so I have not converted the entire app over to be named lesson, simply reskinned the app.
+        # verbose_name = 'Activity'
+        # verbose_name_plural = 'Activities'
 
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
@@ -176,8 +180,6 @@ class Activity(ClusterableModel):
         InlinePanel('standards_relationship', label="Standards Alignment"),
         InlinePanel('topic_relationship', label="Topics"),
         InlinePanel('tag_relationship', label="Tags"),
-        # SnippetChooserPanel("tag"),
-        # InlinePanel('tag_relationship', label="Tags"),
     ]
 
     api_fields = [
