@@ -1,7 +1,20 @@
 {% load wagtailcore_tags %}
+{% load menu_tags %}
 
+<ul class="nav navbar-nav w-100 justify-content-end" role="menu">
 {% for menuitem in menu_items %}
+  {% if menuitem.sub_menu %}
+  <li class="nav-item dropdown presentation {{ menuitem.text }}{{ menuitem.active_class }}" role="menuitem">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ menuitem.text }}</a>
+    <div class="dropdown-menu">
+      {% for sub_item in menuitem.sub_menu.items %}
+        <a class="dropdown-item" href="{{ sub_item.href }}">{{ sub_item.text }}</a>
+      {% endfor %}
+    </div>
+  {% else %}
   <li class="nav-item presentation {{ menuitem.text }}{{ menuitem.active_class }}" role="menuitem">
-        <a href="{% pageurl menuitem %}" class="nav-link">{{ menuitem.text }}</a>
+    <a href="{% pageurl menuitem %}" class="nav-link">{{ menuitem.text }}</a>
+  {% endif %}
   </li>
 {% endfor %}
+</ul>
