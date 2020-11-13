@@ -292,15 +292,59 @@ app-root {
     font-family: "Avenir", sans-serif;
     margin: 5vh auto 5vh auto;
 
+    h5 {
+      font:"AvenirHeavy";
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    h5.card-header {
+      min-height: 100px;
+    }
+
+    .box {
+      height: 450px !important;
+      overflow: hidden;
+
+      img {
+        max-height: 300px;
+        overflow: hidden;
+      }
+
+      h5 a {
+        color: white;
+      }
+    }
+
+    .grey-box {
+      height: 450px !important;
+      overflow: hidden;
+      background: #e9e9e9 url() no-repeat left top;
+
+      h5 {
+        color: $slightly-lighter-black;
+      }
+
+      p {
+        font-style: oblique;
+      }
+    }
+
+    p {
+      font: "Avenir";
+      font-size: 1rem;
+      font-weight:lighter;
+    }
+
     a {
       color: $slightly-lighter-black;
     }
 
     @media(min-width: 769px) {
       h1 {
+        font: "AvenirHeavy";
         color: $slightly-lighter-black;
-        font-size: 0.9rem;
-        font-weight: light;
+        font-size: 1.2rem;
         letter-spacing: 2.5px;
         text-transform: uppercase;
       }
@@ -329,38 +373,6 @@ app-root {
         font-size: 2rem;
       }
 
-    }
-
-    .box {
-      height: 450px !important;
-      overflow: hidden;
-      // width: auto;
-
-      // @media (max-width:991px) {
-      //   margin-bottom: 20px;
-
-      //   img {
-      //     max-height: 150px;
-      //   }
-      // }
-
-      // @media (min-width: 992px) {
-      //   margin-bottom: 10vh;
-      // }
-    }
-
-    .grey-box {
-      height: 450px !important;
-      overflow: hidden;
-      background: #e9e9e9 url() no-repeat left top;
-
-      // @media (max-width:991px) {
-      //   margin-bottom: 20px;
-      // }
-
-      // @media (min-width: 992px) {
-      //   margin-bottom: 20vh;
-      // }
     }
   }
 
