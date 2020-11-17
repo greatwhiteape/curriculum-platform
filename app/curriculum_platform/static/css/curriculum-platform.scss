@@ -292,27 +292,52 @@ app-root {
     font-family: "Avenir", sans-serif;
     margin: 5vh auto 5vh auto;
 
-    h5 {
-      font:"AvenirHeavy";
-      font-size: 1.2rem;
-      font-weight: 500;
-    }
+    .card {
+      border:none;
 
-    h5.card-header {
-      min-height: 100px;
-    }
+      .card-img-overlay {
+        padding: 0;
 
-    .box {
-      height: 450px !important;
-      overflow: hidden;
+        h5 {
+          font:"AvenirHeavy";
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
 
-      img {
-        max-height: 300px;
-        overflow: hidden;
-      }
+        h5.card-header {
+          // min-height: 100px;
 
-      h5 a {
-        color: white;
+          a {
+            color: white;
+          }
+        }
+
+        .card-body {
+          padding: 0;
+
+          .card-text {
+            background-color:white;
+            padding: 1rem 1.5rem;
+            margin:0;
+
+            font: "Avenir";
+            font-size: 1rem;
+            font-weight: lighter;
+
+            .tags {
+              font:"AvenirLight";
+              font-size: 0.8rem;
+              font-weight:lighter;
+              letter-spacing: 3px;
+
+              line-height: 1.2rem;
+            }
+          }
+
+          a {
+            color: $slightly-lighter-black;
+          }
+        }
       }
     }
 
@@ -328,16 +353,6 @@ app-root {
       p {
         font-style: oblique;
       }
-    }
-
-    p {
-      font: "Avenir";
-      font-size: 1rem;
-      font-weight:lighter;
-    }
-
-    a {
-      color: $slightly-lighter-black;
     }
 
     @media(min-width: 769px) {

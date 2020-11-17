@@ -53,7 +53,7 @@ class hpModuleBlock(blocks.StructBlock):
   )
 
   class Meta:
-    template = "streams/hp_currCard_block.html"
+    template = "streams/hp_moduleCard_block.html"
     icon = "edit"
     label = "Module Chooser Block"
     help_text = "Add module to home page 'Featured' section"
@@ -84,7 +84,7 @@ class hpActivityBlock(blocks.StructBlock):
   )
 
   class Meta:
-    template = "streams/hp_currCard_block.html"
+    template = "streams/hp_activityCard_block.html"
     icon = "edit"
     label = "Activity Chooser Block"
     help_text = "Add activity to home page 'Featured' section"
@@ -115,7 +115,7 @@ class hpAssetBlock(blocks.StructBlock):
   )
 
   class Meta:
-    template = "streams/hp_currCard_block.html"
+    template = "streams/hp_assetCard_block.html"
     icon = "edit"
     label = "Asset Chooser Block"
     help_text = "Add asset to home page 'Featured' section"
