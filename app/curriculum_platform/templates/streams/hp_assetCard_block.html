@@ -1,4 +1,4 @@
-{% load static wagtailimages_tags wagtailcore_tags %}
+{% comment %} {% load static wagtailimages_tags wagtailcore_tags %}
 
 {% image self.image fill-600x600 as image %}
 <div class="col">
@@ -10,6 +10,19 @@
         <p class="card-text"><a href="/curriculum/assets/{{ self.asset.id }}-{{ self.asset.slug }}">{{ self.copy }}</a></p>
         <p class="card-text text-uppercase text-right"><span class="tags">{% if self.asset.program %}{{ self.asset.program }} | {% endif %}ASSET</span></p>
       </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+{% image self.image fill-600x450 as image %}
+<div class="col">
+  <div class="card box h-100 d-inline-block mb-5 d-flex flex-column justify-content-end">
+    <h5 class="card-header" style="background-color:{% if self.asset.program.program_color %}{{ self.asset.program.program_color }}{% else %}#8e8a8a{% endif %}"><a href="/curriculum/assets/{{ self.asset.id }}-{{ self.asset.slug }}">{{ self.title }}</a></h5>
+    <a href="/curriculum/assets/{{ self.asset.id }}-{{ self.asset.slug }}"><img src="{{ image.url }}" class="card-img-top" alt="{{ image.alt }}" /></a>
+    <div class="card-body h-100 d-flex flex-column justify-content-end">
+      <p class="card-text"><a href="/curriculum/assets/{{ self.asset.id }}-{{ self.asset.slug }}">{{ self.copy }}</a></p>
+      <p class="card-text text-uppercase text-right"><span class="tags">{% if self.asset.program %}{{ self.asset.program }} | {% endif %}ASSET</span></p>
     </div>
   </div>
 </div>

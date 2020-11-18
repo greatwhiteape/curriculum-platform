@@ -295,8 +295,8 @@ app-root {
     .card {
       border:none;
 
-      .card-img-overlay {
-        padding: 0;
+      // .card-img-overlay {
+      //   padding: 0;
 
         h5 {
           font:"AvenirHeavy";
@@ -338,20 +338,23 @@ app-root {
             color: $slightly-lighter-black;
           }
         }
-      }
+      // }
     }
 
     .grey-box {
       height: 450px !important;
       overflow: hidden;
-      background: #e9e9e9 url() no-repeat left top;
+      background: #e9e9e9;
 
       h5 {
         color: $slightly-lighter-black;
+        padding: 1rem;
       }
 
-      p {
+      p.card-text {
+        background: #e9e9e9 !important;
         font-style: oblique;
+        font-size: 1.3rem !important;
       }
     }
 
