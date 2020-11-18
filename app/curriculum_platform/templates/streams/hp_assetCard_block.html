@@ -1,6 +1,6 @@
 {% load static wagtailimages_tags wagtailcore_tags %}
 
-{% image self.image fill-600x450 as image %}
+{% image self.image fill-600x600 as image %}
 <div class="col">
   <div class="card box h-100 d-inline-block mb-5 d-flex flex-column justify-content-end">
     <a href="/curriculum/assets/{{ self.asset.id }}-{{ self.asset.slug }}"><img src="{{ image.url }}" class="card-img-top" alt="{{ image.alt }}" /></a>
