@@ -8,7 +8,7 @@
       <h5 class="card-header" style="background-color:{% if self.activity.program.program_color %}{{ self.activity.program.program_color }}{% else %}#8e8a8a{% endif %}"><a href="/curriculum/activity/{{ self.activity.id }}-{{ self.activity.slug }}">{{ self.title }}</a></h5>
       <div class="card-body h-100 d-flex flex-column justify-content-end">
         <p class="card-text"><a href="/curriculum/activity/{{ self.activity.id }}-{{ self.activity.slug }}">{{ self.copy }}</a></p>
-        <p class="card-text text-uppercase text-right"><span class="tags">{% if self.activity.program %} {{ self.activity.program }} | {% endif %}Activity</span></p>
+        <p class="card-text text-uppercase text-right"><span class="tags">{% if self.activity.program %} {{ self.activity.program }} | {% endif %}Lesson</span></p>
       </div>
     </div>
   </div>
