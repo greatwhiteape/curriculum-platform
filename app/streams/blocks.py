@@ -1,106 +1,109 @@
 from wagtail.core import blocks
+from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
 from django.core.exceptions import ValidationError
 from django.forms.utils import ErrorList
 
 class TitleBlock(blocks.StructBlock):
-    text = blocks.CharBlock(
-        required=True,
-        help_text='Text to display',
-    )
+  text = blocks.CharBlock(
+    required=True,
+    help_text='Text to display',
+  )
 
-    class Meta:
-        template = "streams/title_block.html"
-        icon = "edit"
-        label = "Title"
-        help_text = "Centered text to display on the page"
+  class Meta:
+    template = "streams/title_block.html"
+    icon = "edit"
+    label = "Title"
+    help_text = "Centered text to display on the page"
 
 class Link(blocks.StructBlock):
-    link_text = blocks.CharBlock(
-        max_length=50,
-        default='Asset can be accessed here.'
-    )
+  link_text = blocks.CharBlock(
+    max_length=50,
+    default='Asset can be accessed here.'
+  )
 
-    url = blocks.URLBlock(
-        required=True,
-        help_text="Link to external resource"
-    )
+  url = blocks.URLBlock(
+    required=True,
+    help_text="Link to external resource"
+  )
 
-    class Meta:
-        template = "streams/link_block.html"
-        icon = "edit"
-        label = "Link"
-        help_text = "Link to external resource"
+  class Meta:
+    template = "streams/link_block.html"
+    icon = "edit"
+    label = "Link"
+    help_text = "Link to external resource"
 
 class GoogleDocEmbed(blocks.StructBlock):
-    url = blocks.URLBlock(
-        required=True,
-        help_text="Link to Google Doc"
-    )
+  url = blocks.URLBlock(
+    required=True,
+    help_text="Link to Google Doc"
+  )
 
-    class Meta:
-        template = "streams/gd_embed_block.html"
-        icon = "edit"
-        label = "Google Doc"
-        help_text = "Embed a Google Doc"
+  class Meta:
+    template = "streams/gd_embed_block.html"
+    icon = "edit"
+    label = "Google Doc"
+    help_text = "Embed a Google Doc"
 
 class CODAPEmbed(blocks.StructBlock):
-    url = blocks.URLBlock(
-        required=True,
-        help_text="Link to CODAP"
-    )
+  url = blocks.URLBlock(
+    required=True,
+    help_text="Link to CODAP"
+  )
 
-    class Meta:
-        template = "streams/CODAP_embed_block.html"
-        icon = "edit"
-        label = "CODAP"
-        help_text = "Embed a CODAP exercise"
+  class Meta:
+    template = "streams/CODAP_embed_block.html"
+    icon = "edit"
+    label = "CODAP"
+    help_text = "Embed a CODAP exercise"
 
 
 class ChapterBlock(blocks.StructBlock):
-    title = blocks.CharBlock(
-        required=True,
-        help_text='Chapter Title',
-    )
-    body = blocks.RichTextBlock(
-        required=False,
-        help_text='Chapter Description',
-    )
+  title = blocks.CharBlock(
+    required=True,
+    help_text='Chapter Title',
+  )
+  body = blocks.RichTextBlock(
+    required=False,
+    help_text='Chapter Description',
+  )
 
-    class Meta:
-        template = "streams/chapter_block.html"
-        icon = "edit"
-        label = "Chapter Block"
-        help_text = "Chapter Description"
+  class Meta:
+    template = "streams/chapter_block.html"
+    icon = "edit"
+    label = "Chapter Block"
+    help_text = "Chapter Description"
 
 
 
 class LessonBlock(blocks.StructBlock):
-    title = blocks.CharBlock(
-        required=True,
-        help_text='Chapter Title',
-    )
-    body = blocks.RichTextBlock(
-        required=True,
-        help_text='Chapter Description',
-    )
+  title = blocks.CharBlock(
+    required=True,
+    help_text='Chapter Title',
+  )
+  body = blocks.RichTextBlock(
+    required=True,
+    help_text='Chapter Description',
+  )
 
-    class Meta:
-        template = "streams/chapter_block.html"
-        icon = "edit"
-        label = "Chapter Block"
-        help_text = "Chapter Description"
+  class Meta:
+    template = "streams/chapter_block.html"
+    icon = "edit"
+    label = "Chapter Block"
+    help_text = "Chapter Description"
 
 class YouTubeBlock(blocks.StructBlock):
-    youtube_video = blocks.CharBlock(
-        required=True,
-        help_text='YouTube Video ID (https://youtu.be/XXX-XXX the XXX-XXX section)',
-    )
+  youtube_video = blocks.CharBlock(
+    required=True,
+    help_text='YouTube Video ID (https://youtu.be/XXX-XXX the XXX-XXX section)',
+  )
 
-    class Meta:
-        template = "streams/video_block.html"
-        icon = "media"
-        label = "Embed YouTube Video"
+  class Meta:
+    template = "streams/video_block.html"
+    icon = "media"
+    label = "Embed YouTube Video"
 
 
 

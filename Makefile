@@ -28,7 +28,7 @@ sass:
 	sass app/curriculum_platform/static/css/curriculum-platform.scss app/curriculum_platform/static/css/curriculum-platform.css
 
 watch-sass:
-	sass --watch app/curriculum_platform/static/css/curriculum-platform.scss:app/curriculum_platform/static/css/curriculum-platform.css
+	sass --watch --trace app/curriculum_platform/static/css/curriculum-platform.scss:app/curriculum_platform/static/css/curriculum-platform.css
 
 static:
 	docker-compose exec web python /app/manage.py collectstatic --noinput -i gmri-bootstrap
