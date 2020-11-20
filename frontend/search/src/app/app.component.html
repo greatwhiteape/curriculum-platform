@@ -184,7 +184,7 @@
           <div class="d-flex align-items-center justify-content-between">
             <button ngbPanelToggle class="btn btn-link container-fluid text-left pl-0">
               <h5 class="mt-4">
-                Type of Activity
+                Type of Lesson
                 <fa-icon *ngIf="!opened" class="float-right" [icon]="this.faPlus"></fa-icon>
                 <fa-icon *ngIf="opened" class="float-right" [icon]="this.faMinus"></fa-icon>
               </h5>
@@ -263,11 +263,10 @@
           </div>
         </ng-template>
       </li>
-      <li [ngbNavItem]="2">
+      <!-- <li [ngbNavItem]="2">
         <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Lessons</h5></a>
         <ng-template ngbNavContent>
           <div id="lesson_container">
-            <!-- <h3 class="my-4">Lessons</h3> -->
             <ul id="lesson_search_results" class="list-group search-results" *ngFor="let lesson of this.lessons | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
               <li class="list-group-item border-0">
                 <a href="{{ baseURL }}curriculum/lessons/{{ lesson.id }}-{{ lesson.slug }}">
@@ -280,9 +279,9 @@
             </ul>
           </div>
         </ng-template>
-      </li>
+      </li> -->
       <li [ngbNavItem]="3">
-        <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Activities</h5></a>
+        <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Lessons</h5></a>
         <ng-template ngbNavContent>
           <div id="activity_container">
             <!-- <h3 class="my-4">Activities</h3> -->
@@ -291,6 +290,7 @@
               <ng-container>
                 <li class="list-group-item border-0">
                   <a href="{{ baseURL }}curriculum/activity/{{ activity.id }}-{{ activity.slug }}" target="_blank">
+                  <!-- <a href="{{ baseURL }}curriculum/lessons/{{ activity.id }}-{{ activity.slug }}" target="_blank"> -->
                     <h3 class="h3">
                       {{ activity.title }}
                     </h3>

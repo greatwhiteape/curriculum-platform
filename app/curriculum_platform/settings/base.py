@@ -21,7 +21,6 @@ INSTALLED_APPS = [
     'assets',
     'content',
     'home',
-    'lessons',
     'modules',
     'search',
     'streams',
@@ -30,11 +29,14 @@ INSTALLED_APPS = [
     'cas',
 
     'rest_framework',
-    'wagtailfontawesome',
     'corsheaders',
     'modelcluster',
     'taggit',
+
     'wagtailmenus',
+    'wagtailuiplus',
+    'wagtailfontawesome',
+    'wagtail_blocks',
 
     'wagtail.api.v2',
     'wagtail.contrib.forms',

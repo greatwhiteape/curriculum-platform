@@ -20,7 +20,7 @@ from .models import Module
 @modeladmin_register
 class ModuleAdmin(ModelAdmin):
     model = Module
-    menu_label = "Module"
+    menu_label = "Modules"
     menu_icon = "form"
     menu_order = 400
     add_to_settings_menu = False

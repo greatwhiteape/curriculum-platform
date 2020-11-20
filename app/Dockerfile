@@ -1,4 +1,4 @@
-FROM python:3.7.0
+FROM python:3.7
 
 # Output logging faster
 ENV PYTHONUNBUFFERED 1
@@ -8,6 +8,15 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # geodjango spatial requirements
 # RUN apt-get update && apt-get install -y \
 #     binutils
+
+# Upgrade pip
+RUN /usr/local/bin/python -m pip install --upgrade pip
+
+RUN pip install wagtailuiplus
+RUN pip install wagtail_blocks
+
+# Install python-urllib3 requirement for Boto3
+# RUN apt-get update && apt-get install -y python-urllib3
 
 # Working directory
 RUN mkdir /app
