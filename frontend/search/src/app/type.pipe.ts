@@ -8,7 +8,6 @@ export class TypePipe implements PipeTransform {
   transform(items: any[], selected_types?: any[]): any[] {
     if (!items) { return [{}]; }
     if (!selected_types) { return items; }
-
     return items.filter( item => this.checkFilter(item, selected_types));
   }
 

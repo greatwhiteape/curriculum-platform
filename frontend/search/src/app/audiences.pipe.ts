@@ -7,7 +7,6 @@ export class AudiencesPipe implements PipeTransform {
   transform(items: any[], selected_audiences?: any[]): any[] {
     if (!items) { return [{}]; }
     if (!selected_audiences) { return items; }
-    console.log('Audience Filter: ', items, selected_audiences);
     return items.filter( item => this.checkFilter(item, selected_audiences));
   }
 
