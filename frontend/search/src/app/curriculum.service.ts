@@ -12,9 +12,8 @@ export interface dataStructure {
 export class CurriculumService {
 
   constructor(private http: HttpClient) { }
-  
+
   public getAssets(baseURL) {
-    console.log('Assets: ', baseURL + 'api/v2/assets/?format=json')
     return this.http.get(baseURL + 'api/v2/assets/?format=json');
   };
 
@@ -43,17 +42,14 @@ export class CurriculumService {
   };
 
   public getModules(baseURL) {
-    console.log('getModules: ', baseURL + 'api/v2/modules/?format=json');
     return this.http.get(baseURL + 'api/v2/modules/?format=json');
   };
 
   public getLessons(baseURL) {
-    console.log('getLessons: ', baseURL + 'api/v2/lessons/?format=json');
     return this.http.get(baseURL + 'api/v2/lessons/?format=json');
   };
 
   public getActivities(baseURL) {
-    console.log('getActivities: ', baseURL + 'api/v2/activities/?format=json');
     return this.http.get(baseURL + 'api/v2/activities/?format=json');
   };
 

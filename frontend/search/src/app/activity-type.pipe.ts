@@ -4,11 +4,9 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'activityType'
 })
 export class ActivityTypePipe implements PipeTransform {
-
   transform(items: any[], selected_types?: any[]): any[] {
     if (!items) { return [{}]; }
     if (!selected_types) { return items; }
-    console.log('Activity Type Pipe: ', items, selected_types);
     return items.filter( item => this.checkFilter(item, selected_types));
   }
 

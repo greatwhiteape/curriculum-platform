@@ -122,16 +122,6 @@ export class AppComponent {
       this.getSelectedPrograms();
     });
 
-    this.currService.getLessons(this.baseURL).subscribe((data: dataStructure) => {
-      data.items.forEach(lesson => {
-        if (lesson.live) this.lessons.push(lesson);
-      })
-      this.lessons.forEach(element => {
-        element.selected = false;
-      });
-      this.getSelectedPrograms();
-    });
-
     this.currService.getAssets(this.baseURL).subscribe((data: dataStructure) => {
       data.items.forEach(asset => {
         if (asset.live) this.assets.push(asset);
@@ -144,50 +134,13 @@ export class AppComponent {
 
     this.currService.getActivities(this.baseURL).subscribe((data: dataStructure) => {
       data.items.forEach(activity => {
-        console.log(activity);
         if (activity.live) this.activities.push(activity);
       })
-      console.log('Activities: ', this.activities);
       this.activities.forEach(element => {
         element.selected = false;
       });
       this.getSelectedPrograms();
     });
-
-
-    // this.currService.getAssets(this.baseURL).subscribe((response: CustomResponse) => {
-    //   if (response) {
-    //     const data: any = Object.entries(response);
-    //     console.log('Get Assets: ',data);
-    //     if (data[0][1]) {
-    //       console.log(data[0][1])
-    //       data.forEach(array => {
-    //         array[1].forEach(element => {
-    //           this.assets.push(element);
-    //         });
-    //       });
-    //     }
-    //   }
-    // });
-
-
-    // this.currService.getActivities(this.baseURL).subscribe((response: CustomResponse) => {
-    //   if (response) {
-    //     const data: any = Object.entries(response);
-    //     console.log(data);
-    //     if (data[0][1]) {
-    //       console.log(data[0][1])
-    //       data.forEach(array => {
-    //         console.log(array);
-    //         array[1].forEach(element => {
-    //           console.log(element, this.activities)
-    //           this.activities.push(element);
-    //           console.log(this.activities)
-    //         });
-    //       });
-    //     }
-    //   }
-    // });
 
   }
 
@@ -207,7 +160,6 @@ export class AppComponent {
   }
 
   getSelectedTags() {
-    console.log('Get Selected Tags: ',this.selected_tags, this.tags);
     this.selected_tags = this.tags.filter(s => {
       return s.selected;
     });
