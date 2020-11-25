@@ -13,7 +13,10 @@ export class AudiencesPipe implements PipeTransform {
 
   checkFilter(object, selected_audiences) {
     if (selected_audiences.length > 0) {
+      console.log('Selected Audiences: ',selected_audiences);
+      console.log('Object: ', object);
       const some = selected_audiences.some(audience => object.audience_relationship.some(item => item.audience.id === audience.id));
+      // const some = selected_audiences.some(audience => object.audience)
       return some;
     } else {
       return true;
