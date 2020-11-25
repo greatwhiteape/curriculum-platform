@@ -78,7 +78,7 @@ class Asset(ClusterableModel):
         'taxonomy.Program',
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
+        blank=False,
         related_name='+',
     )
     asset_type = models.ForeignKey(

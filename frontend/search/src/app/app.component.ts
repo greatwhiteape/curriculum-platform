@@ -122,15 +122,15 @@ export class AppComponent {
       this.getSelectedPrograms();
     });
 
-    this.currService.getLessons(this.baseURL).subscribe((data: dataStructure) => {
-      data.items.forEach(lesson => {
-        if (lesson.live) this.lessons.push(lesson);
-      })
-      this.lessons.forEach(element => {
-        element.selected = false;
-      });
-      this.getSelectedPrograms();
-    });
+    // this.currService.getLessons(this.baseURL).subscribe((data: dataStructure) => {
+    //   data.items.forEach(lesson => {
+    //     if (lesson.live) this.lessons.push(lesson);
+    //   })
+    //   this.lessons.forEach(element => {
+    //     element.selected = false;
+    //   });
+    //   this.getSelectedPrograms();
+    // });
 
     this.currService.getAssets(this.baseURL).subscribe((data: dataStructure) => {
       data.items.forEach(asset => {
