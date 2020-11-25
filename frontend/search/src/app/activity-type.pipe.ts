@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'activityType'
 })
 export class ActivityTypePipe implements PipeTransform {
-
   transform(items: any[], selected_types?: any[]): any[] {
     if (!items) { return [{}]; }
     if (!selected_types) { return items; }

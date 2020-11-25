@@ -146,8 +146,8 @@ class Activity(ClusterableModel):
     activity_type = models.ForeignKey(
         'taxonomy.ActivityType',
         null=True,
-        blank=True,
-        on_delete = models.SET_NULL
+        blank=False,
+        on_delete = models.CASCADE
     )
 
     @property
