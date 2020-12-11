@@ -40,6 +40,7 @@ from taxonomy.serializers import (
     StandardsSerializer,
     TopicSerializer,
     TagSerializer,
+    LearningSpaceSerializer,
 )
 
 @register_snippet
@@ -177,6 +178,13 @@ class Module(ClusterableModel):
         return audience
 
     @property
+    def learning_spaces(self):
+        learning_spaces = [
+            n.learning_space for n in self.learningspace_relationship.all()
+        ]
+        return learning_spaces
+
+    @property
     def tags(self):
         tags = [
             n.tag for n in self.tag_relationship.all()
@@ -214,6 +222,7 @@ class Module(ClusterableModel):
             SnippetChooserPanel('program'),
             SnippetChooserPanel('time_estimate'),
             InlinePanel('audience_relationship', label="Audience"),
+            InlinePanel('learningspace_relationship', label="Learning Space"),
             InlinePanel('standards_relationship', label="Standards Alignment"),
             InlinePanel('topic_relationship', label="Topics"),
             InlinePanel('tag_relationship', label="Tags"),
@@ -234,6 +243,7 @@ class Module(ClusterableModel):
         APIField('program', serializer=ProgramSerializer()),
         APIField('time_estimate', serializer=TimeEstimateSerializer()),
         APIField('audience_relationship'),
+        APIField('learningspace_relationship'),
         APIField('standards_relationship'),
         APIField('topic_relationship'),
         APIField('tag_relationship'),
@@ -280,6 +290,26 @@ class ModuleAudienceRelationship(models.Model):
 
     api_fields = [
         APIField('audience', serializer=AudienceSerializer())
+    ]
+
+class ModuleLearningSpaceRelationship(models.Model):
+    module = ParentalKey(
+        'Module',
+        related_name='learningspace_relationship'
+    )
+    learning_space = models.ForeignKey(
+        'taxonomy.LearningSpace',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    panels = [
+        FieldPanel('learning_space')
+    ]
+
+    api_fields = [
+        APIField('learning_space', serializer=LearningSpaceSerializer())
     ]
 
 class ModuleStandardsRelationship(models.Model):

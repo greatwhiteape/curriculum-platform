@@ -41,6 +41,7 @@ from taxonomy.serializers import (
     TopicSerializer,
     TagSerializer,
     ActivityTypeSerializer,
+    LearningSpaceSerializer,
 )
 @register_snippet
 class Activity(ClusterableModel):
@@ -157,6 +158,13 @@ class Activity(ClusterableModel):
         ]
         return tags
 
+    @property
+    def learning_spaces(self):
+        learning_spaces = [
+            n.learning_space for n in self.learningspace_relationship.all()
+        ]
+        return learning_spaces
+
     # tag = models.ManyToManyField(
     #     'taxonomy.Tag',
     #     blank=True
@@ -234,6 +242,26 @@ class ActivityAudienceRelationship(models.Model):
 
     api_fields = [
         APIField('audience', serializer=AudienceSerializer())
+    ]
+
+class ActivityLearningSpaceRelationship(models.Model):
+    activity = ParentalKey(
+        'Activity',
+        related_name='learningspace_relationship'
+    )
+    learning_space = models.ForeignKey(
+        'taxonomy.LearningSpace',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    panels = [
+        FieldPanel('learning_space')
+    ]
+
+    api_fields = [
+        APIField('learning_space', serializer=LearningSpaceSerializer())
     ]
 
 class ActivityStandardsRelationship(models.Model):

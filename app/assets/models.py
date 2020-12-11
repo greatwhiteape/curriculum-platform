@@ -37,6 +37,7 @@ from taxonomy.serializers import (
     TopicSerializer,
     TagSerializer,
     AssetTypeSerializer,
+    LearningSpaceSerializer,
 )
 
 
@@ -116,6 +117,13 @@ class Asset(ClusterableModel):
         return audience
 
     @property
+    def learning_spaces(self):
+        learning_spaces = [
+            n.learning_space for n in self.learningspace_relationship.all()
+        ]
+        return tags
+
+    @property
     def tags(self):
         tags = [
             n.tag for n in self.tag_relationship.all()
@@ -146,6 +154,7 @@ class Asset(ClusterableModel):
       SnippetChooserPanel("program"),
       SnippetChooserPanel('time_estimate'),
       InlinePanel('audience_relationship', label="Audience"),
+      InlinePanel('learning_space', label="Learning Space"),
       InlinePanel('standards_relationship', label="Standards Alignment"),
       InlinePanel('topic_relationship', label="Topics"),
       InlinePanel('tag_relationship', label="Tags"),
@@ -161,6 +170,7 @@ class Asset(ClusterableModel):
         APIField("asset_type", serializer=AssetTypeSerializer()),
         APIField("topic", serializer=TopicSerializer()),
         APIField('asset_tag_relationship', serializer=TagSerializer()),
+        APIField("learning_space", serializer=LearningSpaceSerializer())
     ]
 
 class AssetTagRelationship(models.Model):
@@ -201,6 +211,26 @@ class AssetAudienceRelationship(models.Model):
 
   api_fields = [
       APIField('audience', serializer=AudienceSerializer())
+  ]
+
+class AssetLearningSpaceRelationship(models.Model):
+  asset = ParentalKey(
+      'Asset',
+      related_name='learningspace_relationship'
+  )
+  learning_space = models.ForeignKey(
+      'taxonomy.LearningSpace',
+      null=True,
+      blank=True,
+      on_delete=models.SET_NULL,
+  )
+
+  panels = [
+      FieldPanel('learning_space')
+  ]
+
+  api_fields = [
+      APIField('learning_space', serializer=LearningSpaceSerializer())
   ]
 
 class AssetStandardsRelationship(models.Model):

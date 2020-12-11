@@ -1,6 +1,6 @@
 from wagtail.api.v2.views import BaseAPIViewSet
 
-from .models import Standard, StandardsBody, Program, Audience, Tag, Topic, AssetType, ActivityType, TimeEstimate
+from .models import Standard, StandardsBody, Program, Audience, Tag, Topic, AssetType, ActivityType, TimeEstimate, LearningSpace
 
 
 class ProgramsAPIEndpoint(BaseAPIViewSet):
@@ -98,3 +98,9 @@ class TimeEstimateAPIEndpoint(BaseAPIViewSet):
 
     listing_default_fields = BaseAPIViewSet.listing_default_fields + ['time_estimate']
 
+class LearningSpaceAPIEndpoint(BaseAPIViewSet):
+    model = LearningSpace
+
+    body_fields = BaseAPIViewSet.body_fields + ['learning_space']
+
+    listing_default_fields = BaseAPIViewSet.listing_default_fields + ['learning_space']

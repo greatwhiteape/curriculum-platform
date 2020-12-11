@@ -2,7 +2,7 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdmin, modeladmin_register, ModelAdminGroup
 )
 
-from .models import Program, StandardsBody, Standard, Audience, Topic, AssetType, ActivityType, Tag, TimeEstimate
+from .models import Program, StandardsBody, Standard, Audience, Topic, AssetType, ActivityType, Tag, TimeEstimate, LearningSpace
 
 
 class ProgramAdmin(ModelAdmin):
@@ -14,7 +14,7 @@ class ProgramAdmin(ModelAdmin):
     exclude_from_explorer = False
     list_display = ("program_name", "program_url")
     search_fields = ("program_name", "program_description", "program_url")
-    
+
 
 class StandardsBodyAdmin(ModelAdmin):
     model = StandardsBody
@@ -36,7 +36,7 @@ class StandardAdmin(ModelAdmin):
     exclude_from_explorer = False
     list_display = ("standard", "standard_group", "description")
     search_fields = ("standard", "standard_group", "description")
-    
+
 
 class AudienceAdmin(ModelAdmin):
     model = Audience
@@ -102,13 +102,24 @@ class TimeEstimateAdmin(ModelAdmin):
     exclude_from_explorer = False
     list_display = ("time_estimate")
     search_fields = ("time_estimate")
-    
+
+class LearningSpaceAdmin(ModelAdmin):
+    model = LearningSpace
+    menu_label = "Learning Spaces"
+    menu_icon = "snippet"
+    menu_order = 350
+    add_to_settings_menu = False
+    exclude_from_explorer = False
+    list_display = ("learning_space")
+    search_fields = ("learning_space")
+
+
 # @TODO Fix this...
-# Works when linking through Snippets, 
-# but does not work when linking through 
-# TaxAdminGroup 
+# Works when linking through Snippets,
+# but does not work when linking through
+# TaxAdminGroup
 # (seems to be missing /snippets/ in link...)
-# 
+#
 # @modeladmin_register
 # class TaxonomyAdminGroup(ModelAdminGroup):
 #     menu_label = 'Lookup Elements'
@@ -116,11 +127,12 @@ class TimeEstimateAdmin(ModelAdmin):
 #     items = (
 #         ActivityTypeAdmin,
 #         AssetTypeAdmin,
-#         AudienceAdmin, 
+#         AudienceAdmin,
 #         ProgramAdmin,
 #         StandardsBodyAdmin,
 #         StandardAdmin,
 #         TagAdmin,
-#         TimeEstimateAdmin, 
+#         TimeEstimateAdmin,
 #         TopicAdmin,
+#         LearningSpaceAdmin,
 #     )

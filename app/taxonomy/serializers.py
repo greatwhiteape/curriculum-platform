@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Standard, StandardsBody, Program, Audience, Tag, Topic, AssetType, ActivityType, TimeEstimate
+from .models import Standard, StandardsBody, Program, Audience, Tag, Topic, AssetType, ActivityType, TimeEstimate, LearningSpace
 
 class ProgramSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,14 +8,14 @@ class ProgramSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class StandardsBodySerializer(serializers.ModelSerializer):
-    class Meta: 
+    class Meta:
         model = StandardsBody
         fields = '__all__'
 
 class StandardsSerializer(serializers.ModelSerializer):
     standard_group = StandardsBodySerializer(many=False, read_only=True)
 
-    class Meta: 
+    class Meta:
         model = Standard
         fields = '__all__'
 
@@ -47,4 +47,9 @@ class ActivityTypeSerializer(serializers.ModelSerializer):
 class TimeEstimateSerializer(serializers.ModelSerializer):
     class Meta:
         model = TimeEstimate
+        fields = '__all__'
+
+class LearningSpaceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LearningSpace
         fields = '__all__'
