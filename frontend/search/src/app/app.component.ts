@@ -4,7 +4,7 @@ import { fromEventPattern } from 'rxjs';
 import { CurriculumService, dataStructure } from './curriculum.service';
 import { ProgramsPipe } from './programs.pipe';
 import { TagPipe } from './tag.pipe';
-// import { LearningSpacesPipe } from './learning-space.pipe';
+import { LearningSpacePipe } from './learning-space.pipe';
 
 @Component({
   selector: 'app-root',
@@ -92,6 +92,13 @@ export class AppComponent {
     this.currService.getAudiences(this.baseURL).subscribe((data: dataStructure) => {
       this.audiences = data.items;
       this.audiences.forEach(element => {
+        element.selected = false;
+      });
+    });
+
+    this.currService.getLearningSpaces(this.baseURL).subscribe((data: dataStructure) => {
+      this.learning_spaces = data.items;
+      this.learning_spaces.forEach(element => {
         element.selected = false;
       });
     });

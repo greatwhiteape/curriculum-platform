@@ -78,7 +78,6 @@
     </div>
   </div> -->
 <!-- </div> -->
-
 <div class="row">
   <div class="col-md-3">
     <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
@@ -149,6 +148,7 @@
         </ng-template>
       </ngb-panel>
       <!-- Learning Space Panel -->
+      LS: {{ learning_spaces }}
       <ngb-panel>
         <ng-template ngbPanelHeader let-opened="opened">
           <div class="d-flex align-items-center justify-content-between">
@@ -285,7 +285,7 @@
         <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Modules</h5></a>
         <ng-template ngbNavContent>
           <div id="module_container">
-            <ul id="module_search_results" class="list-group search-results" *ngFor="let module of this.modules | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics">
+            <ul id="module_search_results" class="list-group search-results" *ngFor="let module of this.modules | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | learningSpace: selected_learning_spaces">
               <li class="list-group-item border-0">
                 <a href="{{ baseURL }}curriculum/modules/{{ module.id }}-{{ module.slug }}">
                   <h3 class="h3">
@@ -302,7 +302,7 @@
         <a ngbNavLink><h5 class="my-lg-4 mx-lg-3">Lessons</h5></a>
         <ng-template ngbNavContent>
           <div id="activity_container">
-            <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types">
+            <ul class="list-group" *ngFor="let activity of this.activities | programs: selected_programs | audiences: selected_audiences | tag: selected_tags | topic: selected_topics | activityType: selected_activity_types | learningSpace: selected_learning_spaces">
               <ng-container>
                 <li class="list-group-item border-0">
                   <a href="{{ baseURL }}curriculum/activity/{{ activity.id }}-{{ activity.slug }}" target="_blank">

@@ -26,6 +26,7 @@ export class CurriculumService {
   };
 
   public getLearningSpaces(baseURL) {
+    console.log('learning Spaces: ', baseURL + 'api/v2/learning-spaces/?format=json')
     return this.http.get(baseURL + 'api/v2/learning-spaces/?format=json');
   };
 
