@@ -14,7 +14,7 @@ xkcdpass
 requests==2.21.0
 
 djangorestframework
-django-rest-swagger
+drf-yasg
 django-import-export
 django-polymorphic
 django-cors-headers

@@ -1,8 +1,10 @@
 import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { fromEventPattern } from 'rxjs';
 import { CurriculumService, dataStructure } from './curriculum.service';
 import { ProgramsPipe } from './programs.pipe';
 import { TagPipe } from './tag.pipe';
+import { LearningSpacesPipe } from './learning-space.pipe';
 
 @Component({
   selector: 'app-root',
@@ -183,6 +185,13 @@ export class AppComponent {
     });
   }
 
+  // Getting Selected programs and Count
+  getSelectedLearningSpaces() {
+    this.selected_learning_spaces = this.learning-spaces.filter(s => {
+      return s.selected;
+    });
+  }
+
   // Clearing All Selections
   clearSelection() {
     this.programs = this.programs.filter(g => {
@@ -195,6 +204,7 @@ export class AppComponent {
     this.getSelectedTopics();
     this.getSelectedActivityTypes();
     this.getSelectedAssetTypes();
+    this.getSelectedLearningSpaces();
   }
 
   deleteModulesOnly() {
@@ -266,6 +276,17 @@ export class AppComponent {
       return true;
     });
     this.getSelectedAssetTypes();
+  }
+
+  // Delete Single Listed program Tag
+  deleteLearningSpaces(id: number) {
+    this.learning_spaces = this.learning_spaces.filter(g => {
+      if (g.id == id) {
+        g.selected = false;
+      }
+      return true;
+    });
+    this.getSelectedLearningSpaces();
   }
 }
 

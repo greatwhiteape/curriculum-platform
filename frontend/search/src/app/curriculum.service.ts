@@ -25,6 +25,10 @@ export class CurriculumService {
     return this.http.get(baseURL + 'api/v2/audiences/?format=json');
   };
 
+  public getLearningSpaces(baseURL) {
+    return this.http.get(baseURL + 'api/v2/learning-spaces/?format=json');
+  };
+
   public getTopics(baseURL) {
     return this.http.get(baseURL + 'api/v2/topics/?format=json');
   };
