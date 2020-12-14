@@ -4,7 +4,7 @@ import { fromEventPattern } from 'rxjs';
 import { CurriculumService, dataStructure } from './curriculum.service';
 import { ProgramsPipe } from './programs.pipe';
 import { TagPipe } from './tag.pipe';
-import { LearningSpacesPipe } from './learning-space.pipe';
+// import { LearningSpacesPipe } from './learning-space.pipe';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +41,9 @@ export class AppComponent {
   tags;
   selected_tags;
   selected_tags_count: number = 0;
+  learning_spaces;
+  selected_learning_spaces;
+  selected_learning_spaces_count: number = 0;
   topics;
   selected_topics;
   selected_topics_count: number = 0;
@@ -187,7 +190,7 @@ export class AppComponent {
 
   // Getting Selected programs and Count
   getSelectedLearningSpaces() {
-    this.selected_learning_spaces = this.learning-spaces.filter(s => {
+    this.selected_learning_spaces = this.learning_spaces.filter(s => {
       return s.selected;
     });
   }
