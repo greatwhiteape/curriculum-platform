@@ -55,16 +55,29 @@
             Overview
           </a>
         </li>
+
+
         <li class="col-3 nav-item">
           <a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">
             <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-details-inactive.svg' %}" role="presentation" alt="Clipboard Icon">
-            Details
+            {% if module.is_educator %}
+              Key Considerations
+            {% else %}
+              Details
+            {% endif %}
           </a>
         </li>
+
+
+
         <li class="col-3 nav-item">
           <a id="tab-C" href="#pane-C" class="nav-link" data-toggle="tab" role="tab">
             <img class="d-none d-lg-inline-block pr-1" src="{% static 'images/icon-tab-lessons-inactive.svg' %}" role="presentation" alt="Teacher Icon">
-            Lessons
+            {% if module.is_educator %}
+              Parts
+            {% else %}
+              Lessons
+            {% endif %}
           </a>
         </li>
       </ul>
@@ -83,35 +96,22 @@
 
             <!-- Note: New place of `data-parent` -->
             <div id="collapse-A" class="collapse show" data-parent="#content" role="tabpanel" aria-labelledby="heading-A">
-              <div class="card-body">
-                <div class="my-4">
-                {{ module.overview_copy|safe }}
-                </div>
-                <div class="my-4">
-                  <g:sharetoclassroom class="d-inline" size=32 url="{{ request.build_absolute_uri }}student-page"></g:sharetoclassroom>
-                  <h5 class="d-inline mb-2 px-2 red-text"><small>Link Student Page in Google Classroom</small></h5>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
-            <div class="card-header" role="tab" id="heading-B">
-              <h5 class="mb-0">
-                <a class="collapsed" data-toggle="collapse" href="#collapse-B" aria-expanded="false" aria-controls="collapse-B">
-                  Details
-                </a>
-              </h5>
-            </div>
-            <div id="collapse-B" class="collapse" data-parent="#content" role="tabpanel" aria-labelledby="heading-B">
               <div class="card-body">
 
-                <h3 class="my-5 font-weight-light">Details</h3>
+                <div class="row">
+                  <div class="col py-3">
+                    {% if module.learning_outcomes %}
+                    <h4>Learning Outcomes</h4>
+                    {{ module.learning_outcomes|safe }}
+                    {% endif %}
+                  </div>
+                </div>
 
-                <div class="row border-top border-bottom mb-3" id="te_a">
+                <div class="row row-cols-1 row-cols-md-2 border-top border-bottom mb-3" id="te_a">
 
                   {% if module.time_estimate %}
-                  <div class="col col-md-2 py-3">
+                  <div class="col col-md-4 py-3">
                     <p>
                       <strong>Time Estimate</strong><br />
                       <small class="grey-text">{{ module.time_estimate }}</small>
@@ -120,7 +120,7 @@
                   {% endif %}
 
                   {% if module.audience_relationship.all|length > 0 %}
-                  <div class="col col-md-2 py-3">
+                  <div class="col col-md-4 py-3">
                     <p>
                       <strong>Audience</strong><br />
                       <small class="grey-text">
@@ -131,15 +131,6 @@
                     </p>
                   </div>
                   {% endif %}
-                </div>
-
-                <div class="row">
-                  <div class="col py-3">
-                    {% if module.learning_outcomes %}
-                    <h4>Learning Outcomes</h4>
-                    {{ module.learning_outcomes|safe }}
-                    {% endif %}
-                  </div>
                 </div>
 
                 {% if module.standards_relationship.all|length > 0 %}
@@ -165,6 +156,27 @@
                   </div>
                 </div>
                 {% endif %}
+                <div class="my-4 py-4 border-top border-bottom">
+                  <g:sharetoclassroom class="d-inline" size=32 url="{{ request.build_absolute_uri }}student-page"></g:sharetoclassroom>
+                  <h5 class="d-inline mb-2 px-2 red-text"><small>Link Student Page in Google Classroom</small></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
+            <div class="card-header" role="tab" id="heading-B">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapse-B" aria-expanded="false" aria-controls="collapse-B">
+                  Details
+                </a>
+              </h5>
+            </div>
+            <div id="collapse-B" class="collapse" data-parent="#content" role="tabpanel" aria-labelledby="heading-B">
+              <div class="card-body">
+                <div class="my-4">
+                {{ module.overview_copy|safe }}
+                </div>
               </div>
             </div>
           </div>

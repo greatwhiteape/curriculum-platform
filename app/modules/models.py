@@ -252,6 +252,9 @@ class Module(ClusterableModel):
     def __str__(self):
         return self.title
 
+    def is_educator(self, **kwargs):
+      return self.audience_relationship.filter(audience=6)
+
 class ModuleTagRelationship(models.Model):
     module = ParentalKey(
         'Module',
@@ -351,3 +354,4 @@ class ModuleTopicRelationship(models.Model):
     api_fields = [
         APIField('topic', serializer=TopicSerializer())
     ]
+
