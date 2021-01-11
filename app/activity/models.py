@@ -41,6 +41,7 @@ from taxonomy.serializers import (
     TopicSerializer,
     TagSerializer,
     ActivityTypeSerializer,
+    LearningSpaceSerializer,
 )
 @register_snippet
 class Activity(ClusterableModel):
@@ -157,6 +158,13 @@ class Activity(ClusterableModel):
         ]
         return tags
 
+    @property
+    def learning_spaces(self):
+        learning_spaces = [
+            n.learning_space for n in self.learningspace_relationship.all()
+        ]
+        return learning_spaces
+
     # tag = models.ManyToManyField(
     #     'taxonomy.Tag',
     #     blank=True
@@ -167,33 +175,35 @@ class Activity(ClusterableModel):
 
 
     panels = [
-        FieldPanel("live"),
-        FieldPanel("slug"),
-        FieldPanel("title"),
-        # FieldPanel("teachers_guide"),
-        FieldPanel("overview_copy"),
-        StreamFieldPanel('teachers_desc'),
-        StreamFieldPanel('students_desc'),
-        SnippetChooserPanel('program'),
-        FieldPanel('activity_type'),
-        InlinePanel('audience_relationship', label="Audience"),
-        InlinePanel('standards_relationship', label="Standards Alignment"),
-        InlinePanel('topic_relationship', label="Topics"),
-        InlinePanel('tag_relationship', label="Tags"),
+      FieldPanel("live"),
+      FieldPanel("slug"),
+      FieldPanel("title"),
+      # FieldPanel("teachers_guide"),
+      FieldPanel("overview_copy"),
+      StreamFieldPanel('teachers_desc'),
+      StreamFieldPanel('students_desc'),
+      SnippetChooserPanel('program'),
+      FieldPanel('activity_type'),
+      InlinePanel('audience_relationship', label="Audience"),
+      InlinePanel('learningspace_relationship', label="Learning Space"),
+      InlinePanel('standards_relationship', label="Standards Alignment"),
+      InlinePanel('topic_relationship', label="Topics"),
+      InlinePanel('tag_relationship', label="Tags"),
     ]
 
     api_fields = [
-        APIField("live"),
-        APIField('title'),
-        APIField('overview_copy'),
-        APIField('teachers_desc'),
-        APIField('students_desc'),
-        APIField('program', serializer=ProgramSerializer()),
-        APIField('activity_type'),
-        APIField('audience_relationship'),
-        APIField('standards_relationship'),
-        APIField('topic_relationship'),
-        APIField('tag_relationship'),
+      APIField("live"),
+      APIField('title'),
+      APIField('overview_copy'),
+      APIField('teachers_desc'),
+      APIField('students_desc'),
+      APIField('program', serializer=ProgramSerializer()),
+      APIField('activity_type'),
+      APIField('audience_relationship'),
+      APIField('learningspace_relationship'),
+      APIField('standards_relationship'),
+      APIField('topic_relationship'),
+      APIField('tag_relationship'),
     ]
 
 class ActivityTagRelationship(models.Model):
@@ -234,6 +244,26 @@ class ActivityAudienceRelationship(models.Model):
 
     api_fields = [
         APIField('audience', serializer=AudienceSerializer())
+    ]
+
+class ActivityLearningSpaceRelationship(models.Model):
+    activity = ParentalKey(
+        'Activity',
+        related_name='learningspace_relationship'
+    )
+    learning_space = models.ForeignKey(
+        'taxonomy.LearningSpace',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    panels = [
+        FieldPanel('learning_space')
+    ]
+
+    api_fields = [
+        APIField('learning_space', serializer=LearningSpaceSerializer())
     ]
 
 class ActivityStandardsRelationship(models.Model):

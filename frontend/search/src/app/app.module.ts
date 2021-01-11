@@ -14,6 +14,7 @@ import { TagPipe } from './tag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AssetTypePipe } from './asset-type.pipe';
 import { ActivityTypePipe } from './activity-type.pipe';
+import { LearningSpacePipe } from './learning-space.pipe';
 
 @NgModule({
    declarations: [
@@ -25,6 +26,8 @@ import { ActivityTypePipe } from './activity-type.pipe';
       TagPipe,
       AssetTypePipe,
       ActivityTypePipe,
+      LearningSpacePipe,
+      LearningSpacePipe,
    ],
    imports: [
       BrowserModule,

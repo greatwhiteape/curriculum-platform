@@ -17,11 +17,11 @@ class Program(models.Model):
 
     def __str__(self):
         return self.program_name
-    
-    class Meta: 
+
+    class Meta:
         verbose_name = "Program"
         verbose_name_plural = "Programs"
-    
+
     api_fields = [
         APIField('program_name'),
         APIField('program_description'),
@@ -59,13 +59,13 @@ class Standard(models.Model):
     def __str__(self):
         return '%s %s' % (self.standard_group, self.standard)
 
-@register_snippet        
+@register_snippet
 class Audience(models.Model):
     class Meta:
         managed = True
         verbose_name = 'Intended Age Range'
         verbose_name_plural = 'Intended Age Ranges'
-    
+
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
     age_range = models.CharField(max_length=50)
@@ -94,7 +94,7 @@ class AssetType(models.Model):
         managed = True
         verbose_name = 'Type of Asset'
         verbose_name_plural = 'Type of Assets'
-    
+
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
     asset_type = models.CharField(max_length=50)
@@ -118,7 +118,7 @@ class Tag(models.Model):
 
 @register_snippet
 class TimeEstimate(models.Model):
-    class Meta: 
+    class Meta:
         managed = True
         verbose_name = 'Time Estimate'
         verbose_name_plural = 'Time Estimates'
@@ -136,10 +136,24 @@ class ActivityType(models.Model):
         managed = True
         verbose_name = 'Type of Activity'
         verbose_name_plural = 'Type of Activities'
-    
+
     createDate = models.DateTimeField(auto_now_add=True)
     modifiedDate = models.DateTimeField(auto_now=True)
     activity_type = models.CharField(max_length=50)
 
     def __str__(self):
         return self.activity_type
+
+@register_snippet
+class LearningSpace(models.Model):
+    class Meta:
+        managed = True
+        verbose_name = 'Learning Space'
+        verbose_name_plural = 'Learning Space'
+
+    createDate = models.DateTimeField(auto_now_add=True)
+    modifiedDate = models.DateTimeField(auto_now=True)
+    learning_space = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.learning_space

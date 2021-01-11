@@ -9,7 +9,7 @@ api_router = WagtailAPIRouter('wagtailapi')
 from activity.endpoints import ActivitiesAPIEndpoint
 from assets.endpoints import AssetsAPIEndpoint
 from modules.endpoints import ModulesAPIEndpoint
-from taxonomy.endpoints import StandardAPIEndpoint, StandardsBodyAPIEndpoint, ProgramsAPIEndpoint, AudienceAPIEndpoint, TagAPIEndpoint, TopicAPIEndpoint, AssetTypeAPIEndpoint, ActivityTypeAPIEndpoint, TimeEstimateAPIEndpoint
+from taxonomy.endpoints import StandardAPIEndpoint, StandardsBodyAPIEndpoint, ProgramsAPIEndpoint, AudienceAPIEndpoint, TagAPIEndpoint, TopicAPIEndpoint, AssetTypeAPIEndpoint, ActivityTypeAPIEndpoint, TimeEstimateAPIEndpoint, LearningSpaceAPIEndpoint
 
 # Add the three endpoints using the "register_endpoint" method.
 # The first parameter is the name of the endpoint (eg. pages, images). This
@@ -32,3 +32,4 @@ api_router.register_endpoint('topics', TopicAPIEndpoint)
 api_router.register_endpoint('asset-type', AssetTypeAPIEndpoint)
 api_router.register_endpoint('activity-type', ActivityTypeAPIEndpoint)
 api_router.register_endpoint('time-estimates', TimeEstimateAPIEndpoint)
+api_router.register_endpoint('learning-spaces', LearningSpaceAPIEndpoint)

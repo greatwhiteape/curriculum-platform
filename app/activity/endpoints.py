@@ -17,7 +17,8 @@ class ActivitiesAPIEndpoint(BaseAPIViewSet):
         "audience_relationship",
         "activity_type",
         "topic",
-        'tag_relationship',
+        "tag_relationship",
+        "learningspace_relationship",
     ]
 
     listing_default_fields = BaseAPIViewSet.listing_default_fields + [
@@ -31,5 +32,6 @@ class ActivitiesAPIEndpoint(BaseAPIViewSet):
         "audience_relationship",
         "activity_type",
         "topic",
-        'tag_relationship',
+        "tag_relationship",
+        "learningspace_relationship",
     ]
